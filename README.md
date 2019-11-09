@@ -6,13 +6,13 @@
 |------|----|-------|
 |nickname|string|null: false|
 |email|string|null: false, unique: true|
+|password|string||
 |family_name|string|null: false| 
 |first_name|string|null: false|
 |family_name_cana|string|null: false|
 |first_name_cana|string|null: false|
 |birth|string|null: false|
-|uid|references|primary_key: true, unique: true|
-|provide|integer|
+|profile|text||
 |image|string||
 |point|integer||
 
@@ -23,26 +23,41 @@
 |first_name|string|null: false|
 |family_name_cana|string|null: false|
 |first_name_cana|string|null: false|
-|postal|integer|null: false|
+|postal|string|null: false|
 |prefectures|string|null: false|
 |city|string|null: false|
-|address|integer|null: false|
+|address|string|null: false|
 |build|string|null: false|
-|tel|integer|null: false|
-|user_id|integer|null: false, foreign_key|
+|tel|string|null: false|
+|user|referenes|null: false, foreign_key|
 
 ## creditsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|number|integer|null: false|
-|deadline|integer|null: false|
+|number|string|null: false|
+|deadline_month|integer|null: false|
+|deadline_year|integer|null: false|
 |securitycode|integer|null: false, unique: true|
-|user_id|integer|null: false, foreign_key|
+|user|references|null: false, foreign_key|
+
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key|
+|credit|references|null: false, foreign_key|
+|customer_id|integer|null: false|
 
 ## phone_numbersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |tel|integer|null: false|
+|user_id|integer|null: false, foreign_key|
+
+## sns_credentialsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|uid|string|unique: true|
+|provider|string|unique: true|
 |user_id|integer|null: false, foreign_key|
 
 
