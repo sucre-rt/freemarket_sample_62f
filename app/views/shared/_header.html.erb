@@ -1,0 +1,46 @@
+<header id="header">
+  <div id="header__upper-contents">
+    <h1 id="header__upper-contents__logo">
+      <%= link_to '/' do %>
+        <%= image_tag 'fmarket_logo_red.svg', id: 'logo', width: '134px' %>
+      <% end %>
+    </h1>
+    <form action="/search/" id="header__upper-contents__search">
+      <input type="search" name="keyword" placeholder="何かお探しですか？" id="header__upper-contents__search-box" value="">
+      <button id="header__upper-contents__search-button"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div id="header__lower-contents">
+    <div id="header__lower-contents__left-contents">
+      <ul id="header__lower-contents__left-contents__menu">
+        <li><i class="fa fa-list"></i>カテゴリーから探す</li>
+        <li><i class="fa fa-tag"></i>ブランドから探す</li>
+      </ul>
+    </div>
+    <div id="header__lower-contents__right-contents">
+      <ul id="header__lower-contents__right-contents__menu">
+        <li class="sign_up">新規会員登録</li>
+        <li class="login">ログイン</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<nav id="nav">
+  <ul id="nav__scope">
+    <li>メルカリ</li>
+    <li>メルカリなら新品も中古もお得！キャンプ用品 大特集！</li>
+  </ul>
+</nav>
+
+<main id="main">
+  <section id="main__cover" class="content"></section>
+  <section id="main__leading">
+    <p>キャンプ用品は揃えるのにお金がかかる!? メルカリならそんな心配も無用です！<br>人気の定番ブランドもお得価格で買えるので、キャンプ初心者も安心して始められます！</p>
+  </section>
+  <section id="main__banner">
+    <div>
+      <%= image_tag 'index_menu_01.png', class: 'main__banner__image' %>
+    </div>
+  </section>
+</main>

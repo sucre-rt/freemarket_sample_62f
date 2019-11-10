@@ -1,0 +1,237 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$blue: #3f00ff;
+$red: #ff0000;
+$black: #000;
+$white: #fff;
+$gray: #ccc;
+$light-gray: #f3f3f3;
+
+$width: 70.0rem;
+
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin block {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+@mixin center-in-block {
+  width: $width;
+  margin: auto;
+}
+
+html {
+  height: 100%;
+  background-color: $white;
+  font-size: 62.5%;
+
+  font-family: Meiryo, sans-serif;
+  //letter-spacing: 0.05em;
+}
+
+body {
+  height: 100%;
+  font-size: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+#header {
+  @include block;
+  @include clearfix;
+
+  padding-top: 0.8rem;
+
+  background-color: $white;
+  border-bottom: 0.1rem solid $light-gray;
+
+  z-index: 3;
+
+  &__upper-contents {
+    @include center-in-block;
+
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+
+    height: 4.0rem;
+
+    background-color: transparent;
+
+    &__logo {
+      display: block;
+
+      margin-right: 4.5rem;
+    }
+
+    &__search {
+      @include block;
+
+      &-box {
+        width: 100%;
+        height: 4.0rem;
+        padding: 0 4.2rem 0 1.0rem;
+
+        font-size: 1.6rem;
+        background-color: $light-gray;
+
+        border-radius: 0.4rem;
+        outline-style: none;
+        border: 0.1rem solid $gray;
+      }
+
+      &-button {
+        position: absolute;
+        right: 1.6rem;
+        top: 0;
+
+        font-size: 1.6rem;
+        line-height: 4.0rem;
+      }
+    }
+  }
+
+  &__lower-contents {
+    @include center-in-block;
+    @include clearfix;
+
+    height: 4.4rem;
+    margin-top: 0.8rem;
+
+    &__left-contents {
+      float: left;
+
+      &__menu {
+        li {
+          display: block;
+          float: left;
+
+          margin-right: 2.0rem;
+
+          font-size: 1.4rem;
+          font-weight: bold;
+          line-height: 3.8rem;
+
+          .fa {
+            margin-right: 0.8rem;
+
+            font-size: 1.6rem;
+            color: $red;
+          }
+        }
+      }
+    }
+
+    &__right-contents {
+      float: right;
+
+      &__menu {
+        li {
+          display: block;
+          float: left;
+
+          padding: 0.8rem 1.0rem;
+          margin-left: 1.4rem;
+
+          font-size: 1.4rem;
+          line-height: 1.4rem;
+          color: $white;
+          background-color: $red;
+          border: 0.1rem solid $red;
+          border-radius: 0.4rem;
+
+          &.login {
+            color: $blue;
+            border: 0.1rem solid $blue;
+            background-color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+#nav {
+  @include block;
+  @include clearfix;
+
+  height: 4.8rem;
+
+  background-color: $white;
+  box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
+  z-index: 2;
+
+  &__scope {
+    @include center-in-block;
+
+    li {
+      float: left;
+
+      font-size: 1.4rem;
+      line-height: 4.8rem;
+
+      &:after {
+        content: ">";
+        margin: 0 0.8rem;
+      }
+
+      &:last-child {
+        font-weight: bold;
+
+        &:after {
+          content: "";
+        }
+      }
+    }
+  }
+}
+
+#main {
+  @include block;
+  z-index: 1;
+
+  &__cover {
+    position: relative;
+    
+    width: 100%;
+    height: 40.0rem;
+    background-color: #edece8;
+    z-index: 0;
+  }
+
+  &__leading {
+    padding: 3.0rem 0 4.0rem 0;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+    text-align: center;
+  }
+
+  &__banner {
+    @include center-in-block;
+  }
+}
