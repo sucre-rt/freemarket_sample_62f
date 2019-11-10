@@ -11,7 +11,7 @@
 |first_name|string|null: false|
 |family_name_cana|string|null: false|
 |first_name_cana|string|null: false|
-|birth|string|null: false|
+|birth|date|null: false|
 |profile|text||
 |image|string||
 |point|integer||
@@ -27,7 +27,7 @@
 |prefectures|string|null: false|
 |city|string|null: false|
 |address|string|null: false|
-|build|string|null: false|
+|build|string||
 |tel|string|null: false|
 |user|referenes|null: false, foreign_key|
 
@@ -37,7 +37,7 @@
 |number|string|null: false|
 |deadline_month|integer|null: false|
 |deadline_year|integer|null: false|
-|securitycode|integer|null: false, unique: true|
+|securitycode|integer|null: false|
 |user|references|null: false, foreign_key|
 
 ## cardsテーブル
@@ -50,15 +50,15 @@
 ## phone_numbersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|tel|integer|null: false|
-|user_id|integer|null: false, foreign_key|
+|tel|string|null: false|
+|user|references|null: false, foreign_key|
 
 ## sns_credentialsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |uid|string|unique: true|
 |provider|string|unique: true|
-|user_id|integer|null: false, foreign_key|
+|user|references|null: false, foreign_key|
 
 
 
@@ -67,14 +67,14 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|information|string|null: false|
+|information|text|null: false|
 |price|integer|null: false|
 |area|string|null: false|
 |status|string|null: false|
-|sending_days|integer|null: false|
+|sending_days|string|null: false|
 |profit|integer|null: false|
 |selling_status|string|null: false|
-|user_id|integer|null: false, foreign_key|
+|user|references|null: false, foreign_key|
 |category_id|integer|null: false|
 |delivery_id|integer|null: false|
 |brand_id|integer|null: false|
@@ -95,7 +95,7 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|null: false, unique: true|
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -121,22 +121,21 @@
 ## paymentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|buyer|string||
+|user|references|null: false, foreign_key|
 |method_payment|string|null: false|
-|produck_id|integer|null: false|
+|product_id|integer|null: false|
 |point|integer||
 
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |product_id|integer|null: false|
-|user_id|integer|null: false, foreign_key|
+|user|references|null: false, foreign_key|
 
 ## evaluationsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|exhibit_user_id|integer|null: false, foreign_key|
-|buy_user_id|integer|null: false|
+|user|references|null: false, foreign_key|
 |comment|string||
 |evaluation|string||
 |product_id|integer|null: false|
@@ -146,11 +145,11 @@
 |------|----|-------|
 |exhibit_user_id|integer|null: false, foreign_key|
 |buy_user_id|integer|null: false, foreign_key|
-|message|string||
+|message|text|null: false|
 
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |product_id|integer|null: false|
-|user_id|integer|null: false|
-|message|string|null: false|
+|user|references|null: false, foreign_key|
+|message|text|null: false|
