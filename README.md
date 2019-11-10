@@ -141,7 +141,7 @@
 |name|string|null: false|
 |path|string|null: false|
 ### Association
-- has_many :category_size
+- has_many :category_sizes
 - has_many :sizes, through: :category_sizes
 
 ## category_sizesテーブル
@@ -189,10 +189,9 @@
 ## transactionsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|exhibit_user_id|integer|null: false, foreign_key|
 |user|references|null: false, foreign_key|
 |message|text|null: false|
-|product_id|integer|null: false|
+|product|references|null: false, foreign_key|
 ### Association
 - belongs_to :user
 - belongs_to :product
@@ -200,7 +199,7 @@
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|product_id|integer|null: false|
+|product|references|null: false, foreign_key|
 |user|references|null: false, foreign_key|
 |message|text|null: false|
 ### Association
