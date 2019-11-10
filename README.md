@@ -12,7 +12,7 @@
 |family_name_cana|string|null: false|
 |first_name_cana|string|null: false|
 |birthday|date|null: false|
-|phone|string|null: false, unique: true|
+|telphone|string|null: false, unique: true|
 |profile|text||
 |image|string||
 |point|integer||
