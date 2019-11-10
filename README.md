@@ -17,12 +17,12 @@
 |image|string||
 |point|integer||
 ### Association
-- hase_many :payments
-- hase_many :products
-- hase_many :likes
-- hase_many :messages
-- hase_many :evaluations
-- hase_many :sns_credentials
+- has_many :payments
+- has_many :products
+- has_many :likes
+- has_many :messages
+- has_many :evaluations
+- has_many :sns_credentials, dependent: :destory
 - has_one :adress, dependent: :destroy
 - has_one :credit, dependent: :destory
 
@@ -92,12 +92,12 @@
 |delivery|references|null: false, foreign_key|
 |brand|references|null: false, foreign_key|
 ### Association
-- has_one :evaluation, dependent: :destroy
-- has_one :payment, dependent: :destory
-- has_many :likes
-- has_many :transactions
+- has_one :evaluation
+- has_one :payment
+- has_many :likes, dependetnt: :destory
+- has_many :transactions, 
 - has_many :messages
-- has_many :images
+- has_many :images, dependent: :destory
 - belongs_to :user
 - belongs_to :category
 - belongs_to :delivery
