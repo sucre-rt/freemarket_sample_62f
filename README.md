@@ -23,8 +23,8 @@
 - hase_many :messages
 - hase_many :evaluations
 - hase_many :sns_credentials
-- has_one :adress
-- has_one :credit
+- has_one :adress, dependent: :destroy
+- has_one :credit, dependent: :destory
 
 ## addressesテーブル
 |Column|Type|Options|
@@ -92,8 +92,8 @@
 |delivery|references|null: false, foreign_key|
 |brand|references|null: false, foreign_key|
 ### Association
-- has_one :evaluation
-- has_one :payment
+- has_one :evaluation, dependent: :destroy
+- has_one :payment, dependent: :destory
 - has_many :likes
 - has_many :transactions
 - has_many :messages
