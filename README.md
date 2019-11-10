@@ -11,7 +11,7 @@
 |first_name|string|null: false|
 |family_name_cana|string|null: false|
 |first_name_cana|string|null: false|
-|birth|date|null: false|
+|birthday|date|null: false|
 |profile|text||
 |image|string||
 |point|integer||
@@ -23,11 +23,11 @@
 |first_name|string|null: false|
 |family_name_cana|string|null: false|
 |first_name_cana|string|null: false|
-|postal|string|null: false|
+|postal_code|string|null: false|
 |prefectures|string|null: false|
 |city|string|null: false|
 |address|string|null: false|
-|build|string||
+|building|string||
 |tel|string|null: false|
 |user|referenes|null: false, foreign_key|
 
@@ -37,7 +37,7 @@
 |number|string|null: false|
 |deadline_month|integer|null: false|
 |deadline_year|integer|null: false|
-|securitycode|integer|null: false|
+|security_code|integer|null: false|
 |user|references|null: false, foreign_key|
 
 ## cardsテーブル
@@ -75,10 +75,10 @@
 |profit|integer|null: false|
 |selling_status|string|null: false|
 |user|references|null: false, foreign_key|
-|category_id|integer|null: false|
-|delivery_id|integer|null: false|
-|brand_id|integer|null: false|
-|payment_id|integer|null: false|
+|category|references|null: false, foreign_key|
+|delivery|references|null: false, foreign_key|
+|brand|references|null: false, foreign_key|
+|payment|references|null: false, foreign_key|
 
 ## deliveriesテーブル
 |Column|Type|Options|
@@ -101,7 +101,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|product_id|integer|null: false|
+|product|references|null: false, foreign_key|
 
 ## categoriesテーブル
 |Column|Type|Options|
@@ -109,11 +109,11 @@
 |name|string|null: false|
 |path|string|null: false|
 
-## category_seizesテーブル
+## category_sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|size-id|integer|null: false|
-|category_id|integer|null: false|
+|size|references|null: false, foreign_key|
+|category|references|null: false, foreign_key|
 
 
 
@@ -123,13 +123,13 @@
 |------|----|-------|
 |user|references|null: false, foreign_key|
 |method_payment|string|null: false|
-|product_id|integer|null: false|
+|product|references|null: false, foreign_key|
 |point|integer||
 
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|product_id|integer|null: false|
+|product|references|null: false, foreign_key|
 |user|references|null: false, foreign_key|
 
 ## evaluationsテーブル
@@ -138,14 +138,15 @@
 |user|references|null: false, foreign_key|
 |comment|string||
 |evaluation|string||
-|product_id|integer|null: false|
+|product|references|null: false, foreign_key|
 
-## transactionテーブル
+## transactionsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |exhibit_user_id|integer|null: false, foreign_key|
-|buy_user_id|integer|null: false, foreign_key|
+|user|references|null: false, foreign_key|
 |message|text|null: false|
+|product_id|integer|null: false|
 
 ## messagesテーブル
 |Column|Type|Options|
