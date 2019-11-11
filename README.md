@@ -22,9 +22,9 @@
 - has_many :likes
 - has_many :messages
 - has_many :evaluations
-- has_many :sns_credentials, dependent: :destory
+- has_many :sns_credentials, dependent: :destroy
 - has_one :adress, dependent: :destroy
-- has_one :credit, dependent: :destory
+- has_one :credit, dependent: :destroy
 
 ## addressesテーブル
 |Column|Type|Options|
@@ -94,11 +94,11 @@
 ### Association
 - has_one :evaluation
 - has_one :payment
-- has_many :likes, dependetnt: :destory
+- has_many :likes, dependetnt: :destroy
 - has_many :transactions, 
 - has_many :messages
-- has_many :images, dependent: :destory
-- belongs_to :user
+- has_many :images, dependent: :destroy
+- belongs_to :userns
 - belongs_to :category
 - belongs_to :delivery
 - belongs_to :brand
