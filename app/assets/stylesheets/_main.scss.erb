@@ -3,12 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-$blue: #3f00ff;
-$red: #ff0000;
+$blue: #0099e8;
+$red: #ea352d;
 $black: #212121;
 $white: #fff;
 $gray: #ccc;
+$aqua: #d9edef;
 $light-gray: #f3f3f3;
+$yellow-gray: #f4f3ee;
 $brown: #7b4626;
 
 $small: 1.4rem;
@@ -16,8 +18,7 @@ $medium: 1.6rem;
 
 $break-point: (
   more-sm: 768px,
-  more-md: 992px,
-  more-lg: 1200px
+  more-md: 1068px
 );
 
 @mixin media-queries($key) {
@@ -26,16 +27,12 @@ $break-point: (
   }
 }
 
-@mixin responsive-width{
+@mixin responsive-width {
   @include media-queries(more-sm) {
     width: 700px;
   }
 
   @include media-queries(more-md)  {
-    width: 1020px;
-  }
-
-  @include media-queries(more-lg)  {
     width: 1020px;
   }
 
@@ -54,6 +51,12 @@ $break-point: (
   display: block;
   position: relative;
   width: 100%;
+}
+
+@mixin inner {
+  width: 90%;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 html {
@@ -88,11 +91,7 @@ button {
 
 a {
   text-decoration: none;
-}
-
-img {
-  width: 100%;
-  display: block;
+  color: $black;
 }
 
 .header {
@@ -168,16 +167,15 @@ img {
           display: block;
           float: left;
 
-          margin-right: 2.0rem;
+          margin-right: 2.8rem;
 
           font-size: $small;
           font-weight: bold;
-          line-height: 4.0rem;
+          line-height: 3.6rem;
 
           .fa {
             margin-right: 0.8rem;
 
-            font-size: $medium;
             color: $red;
           }
         }
@@ -193,7 +191,7 @@ img {
           float: left;
 
           padding: 0.8rem 1.0rem;
-          margin-left: $small;
+          margin-left: 1.2rem;
 
           font-size: $small;
           line-height: $small;
@@ -257,21 +255,31 @@ img {
 
     width: 100%;
     height: 40.0rem;
-    background-color: #edece8;
+    background-color: $yellow-gray;
     z-index: 0;
   }
 
   &__leading {
     padding: 3.0rem 0 4.0rem 0;
-    font-size: $medium;
-    line-height: 2.8rem;
-    text-align: center;
+
+    &__inner {
+      &__text {
+        font-size: $medium;
+        line-height: 2.8rem;
+        text-align: center;
+
+        &-strong {
+          font-weight: bold;
+          color: $red;
+        }
+      }
+    }
   }
 
   &__banner {
-    width: 90%;
-    max-width: 98.0rem;
-    margin: auto;
+    @include inner;
+
+    margin-bottom: 8.0rem;
 
     display: -webkit-box;
     display: -ms-flexbox;
@@ -284,31 +292,42 @@ img {
 
     &__main {
       width: 50%;
-      border-radius: 0.5rem;
-      overflow: hidden;
+
+      &-a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5rem;
+        background-color: $brown;
+        overflow: hidden;
+      }
+
+      &-image {
+        width: 100%;
+      }
 
       &-text {
         font-size: $medium;
         padding: 1.2rem;
 
         color: white;
-        background-color: $brown;
       }
     }
 
     &__sub {
-      width: 49%;
-      overflow: hidden;
+      width: calc(50% - 1.0rem);
 
       &-a {
         display: table;
         width: 100%;
-        padding: 1.2rem;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.0rem;
+        padding: 1.2rem 1.0rem;
         border-radius: 0.5rem;
         background-color: $red;
 
-        @include clearfix;
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
 
       &-image {
@@ -324,6 +343,7 @@ img {
         display: table-cell;
         width: 100%;
         height: 8.0rem;
+        padding-left: 1.5rem;
 
         font-size: $medium;
         color: $white;
@@ -332,11 +352,156 @@ img {
       }
     }
   }
+
+  &__category, &__brand {
+    @include block;
+
+    padding: 4.0rem 0 6.0rem 0;
+
+    background-color: $yellow-gray;
+    text-align: center;
+
+    &__inner {
+      @include inner;
+
+      &__header {
+        &-image {
+          width: 6.0rem;
+          margin-bottom: 1.0rem;
+        }
+
+        &-title {
+          display: block;
+          font-size: 2.0rem;
+          font-weight: bold;
+        }
+      }
+
+      &__list {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin-top: 10px;
+
+        &-a {
+          width: 16%;
+          margin: 16px 2%;
+        }
+
+        &-image {
+          overflow: hidden;
+          border-radius: 100px;
+
+          width: 100%;
+
+          box-shadow: 1px 2px 2px rgba(0,0,0,0.2);
+        }
+
+        &-title {
+          font-size: $medium;
+          font-weight: bold;
+          margin-top: 1.2rem;
+        }
+      }
+    }
+  }
+
+  &__category {
+    background-color: $yellow-gray;
+  }
+
+  &__brand {
+    background-color: $aqua;
+  }
+
+  &__others {
+    //margin-top: 8.0rem;
+    padding: 4.0rem 0 5.0rem 0;
+
+    //background-color: $yellow-gray;
+    text-align: center;
+
+    &__inner {
+      @include inner;
+
+      &__header {
+        display: block;
+        font-size: 2.0rem;
+        font-weight: bold;
+      }
+
+      &__button {
+        display: block;
+        width: 40.0rem;
+        margin: 0 auto;
+        margin-top: 2.0rem;
+        padding: 1.6rem 0;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        border-radius: 100.0rem;
+        color: $white;
+        background-color: $red;
+      }
+    }
+  }
+
+  &__app {
+    padding: 4.0rem 0 5.0rem 0;
+
+    background-image: url("<%= asset_url('index_menu_01.png') %>");
+    background-size: cover;
+
+    &__inner {
+      @include responsive-width;
+
+      h2, h3 {
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+
+        font-size: 1.6rem;
+        color: $white;
+
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        font-weight: bold;
+      }
+
+      h2 {
+        font-size: 2.4rem;
+      }
+
+      &__links {
+        margin-top: 1.2rem;
+        display: table;
+
+        a {
+          display: table-cell;
+          vertical-align: middle;
+          padding-right: 2.0rem;
+        }
+
+        &-mercari {
+          img {
+            padding: 1.2rem;
+            border-radius: 1.2rem;
+            background-color: $white;
+            box-sizing: content-box;
+          }
+        }
+      }
+    }
+  }
 }
 
 .footer {
   @include block;
 
-  height: 10.0rem;
+  height: 20.0rem;
   background-color: $black;
 }

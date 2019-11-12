@@ -2,7 +2,7 @@
   <div class="header__upper-contents">
     <h1 class="header__upper-contents__logo">
       <%= link_to '/' do %>
-        <%= image_tag 'fmarket_logo_red.svg', class: 'header__upper-contents__logo-image', width: '134px', height: '36px' %>
+        <%= image_tag 'fmarket_logo_red.svg', class: 'header__upper-contents__logo-image', height: '36px' %>
       <% end %>
     </h1>
     <form action="/search/" class="header__upper-contents__search">
@@ -32,37 +32,3 @@
     <li>メルカリなら新品も中古もお得！キャンプ用品 大特集！</li>
   </ul>
 </nav>
-
-<main class="main">
-  <section class="main__cover" class="content"></section>
-  <section class="main__leading">
-    <p>キャンプ用品は揃えるのにお金がかかる!? メルカリならそんな心配も無用です！<br>人気の定番ブランドもお得価格で買えるので、キャンプ初心者も安心して始められます！</p>
-  </section>
-  <section class="main__banner">
-    <div class="main__banner__main">
-      <%= link_to '/', class: 'main__banner__main-a' do %>
-        <%= image_tag 'index_menu_01.png', class: 'main__banner__main-image' %>
-        <p class="main__banner__main-text">初心者も安心！3万円から始める、<br>中古キャンプ用品</p>
-      <% end %>
-    </div>
-
-    <div class="main__banner__sub">
-      <%= link_to '/', class: 'main__banner__sub-a' do %>
-        <%= image_tag 'index_menu_01.png', class: 'main__banner__sub-image' %>
-        <p class="main__banner__sub-text">初心者も安心！3万円から始める、<br>中古キャンプ用品</p>
-      <% end %>
-      <%= link_to '/', class: 'main__banner__sub-a' do %>
-        <%= image_tag 'index_menu_01.png', class: 'main__banner__sub-image' %>
-        <p class="main__banner__sub-text">初心者も安心！3万円から始める、<br>中古キャンプ用品</p>
-      <% end %>
-      <%= link_to '/', class: 'main__banner__sub-a' do %>
-        <%= image_tag 'index_menu_01.png', class: 'main__banner__sub-image' %>
-        <p class="main__banner__sub-text">初心者も安心！3万円から始める、<br>中古キャンプ用品</p>
-      <% end %>
-    </div>
-  </section>
-</main>
-
-
-<footer class="footer">
-</footer>
