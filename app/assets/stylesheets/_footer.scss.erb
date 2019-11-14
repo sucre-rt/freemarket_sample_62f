@@ -1,0 +1,50 @@
+@import "./variable";
+@import "./mixin";
+
+.footer {
+  @include block;
+  background-color: $black;
+
+
+  &__inner {
+    @include responsive-width;
+    display: flex;
+
+    font-size: 1.4rem;
+    line-height: 3.0rem;
+    color: $gray;
+
+    &__about, &__help, &__privacy, &__nation {
+      margin-top: 1.4rem;
+      padding-right: 4.0rem;
+
+      &__header {
+        font-size: 1.6rem;
+        line-height: 3.2rem;
+        color: $white;
+        font-weight: bold;
+      }
+
+      &__list {
+        font-size: 1.2rem;
+        line-height: 3.2rem;
+      }
+    }
+  }
+
+  &__copyright {
+    position: relative;
+    @include responsive-width;
+    font-size: 1.2rem;
+    line-height: 3.3rem;
+    color: $gray;
+    text-align: center;
+
+    padding: 3.0rem 0;
+
+    &__logo {
+      position: absolute;
+      left: 0;
+    }
+  }
+}

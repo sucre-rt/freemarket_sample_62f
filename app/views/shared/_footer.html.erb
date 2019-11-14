@@ -1,2 +1,54 @@
 <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__inner__about">
+      <h1 class="footer__inner__about__header">メルカリについて</h1>
+      <ul class="footer__inner__about__list">
+        <li class="footer__inner__about__list-item">会社概要</li>
+        <li class="footer__inner__about__list-item">採用情報</li>
+        <li class="footer__inner__about__list-item">プレスリリース</li>
+        <li class="footer__inner__about__list-item">公式ブログ</li>
+        <li class="footer__inner__about__list-item">メルカリロゴ利用ガイドライン</li>
+      </ul>
+    </div>
+    <div class="footer__inner__help">
+      <h1 class="footer__inner__help__header">ヘルプ＆ガイド</h1>
+      <ul class="footer__inner__help__list">
+        <li class="footer__inner__help__list-item">メルカリガイド</li>
+        <li class="footer__inner__help__list-item">らくらくメルカリ便</li>
+        <li class="footer__inner__help__list-item">ゆうゆうメルカリ便</li>
+        <li class="footer__inner__help__list-item">大型メルカリ便</li>
+        <li class="footer__inner__help__list-item">車体取引ガイド</li>
+        <li class="footer__inner__help__list-item">メルカリあんしん・あんぜん宣言！</li>
+        <li class="footer__inner__help__list-item">偽ブランド品撲滅への取り組み</li>
+        <li class="footer__inner__help__list-item">メルカリボックス</li>
+      </ul>
+    </div>
+    <div class="footer__inner__privacy">
+      <h1 class="footer__inner__privacy__header">プライバシーと利用規約</h1>
+      <ul class="footer__inner__privacy__list">
+        <li class="footer__inner__privacy__list-item">プライバシーポリシー</li>
+        <li class="footer__inner__privacy__list-item">メルカリ利用規約</li>
+        <li class="footer__inner__privacy__list-item">あんしんスマホサポート制度に関する利用特約</li>
+        <li class="footer__inner__privacy__list-item">コンプライアンスポリシー</li>
+        <li class="footer__inner__privacy__list-item">個人データの安全管理に係る基本方針</li>
+        <li class="footer__inner__privacy__list-item">特定商取引に関する表記</li>
+        <li class="footer__inner__privacy__list-item">資金決済法に基づく表示</li>
+        <li class="footer__inner__privacy__list-item">法令順守と犯罪抑止のために</li>
+      </ul>
+    </div>
+    <div class="footer__inner__nation">
+      <h1 class="footer__inner__nation__header">国</h1>
+      <ul class="footer__inner__nation__list">
+        <li class="footer__inner__nation__list-item">日本</li>
+        <li class="footer__inner__nation__list-item">United States</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__copyright">
+    <%= link_to '/', class: 'footer__copyright__logo' do %>
+      <%= image_tag 'logo_white_mercari.svg', class: 'footer__copyright__logo-image', width: '132px', height: '33px' %>
+    <% end %>
+    <p>© 2019 Mercari</p>
+  </div>
 </footer>

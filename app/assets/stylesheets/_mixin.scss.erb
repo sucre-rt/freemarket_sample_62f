@@ -1,0 +1,37 @@
+@mixin media-queries($key) {
+  @media(min-width: map-get($break-point, $key)) {
+    @content;
+  }
+}
+
+@mixin responsive-width {
+  @include media-queries(more-sm) {
+    width: 700px;
+  }
+
+  @include media-queries(more-md)  {
+    width: 1020px;
+  }
+
+  margin: auto;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin block {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+@mixin inner {
+  width: 90%;
+  max-width: 980px;
+  margin: 0 auto;
+}

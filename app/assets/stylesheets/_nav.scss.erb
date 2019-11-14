@@ -1,0 +1,37 @@
+@import "./variable";
+@import "./mixin";
+
+.nav {
+  @include block;
+  @include clearfix;
+
+  height: 4.8rem;
+
+  background-color: $white;
+  box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
+  z-index: 2;
+
+  &__scope {
+    @include responsive-width;
+
+    li {
+      float: left;
+
+      font-size: $small;
+      line-height: 4.8rem;
+
+      &:after {
+        content: ">";
+        margin: 0 0.8rem;
+      }
+
+      &:last-child {
+        font-weight: bold;
+
+        &:after {
+          content: "";
+        }
+      }
+    }
+  }
+}
