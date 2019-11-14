@@ -380,18 +380,4 @@
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
               %p.main__hobbys__inner__list-item-title 初心者も安心！
-  %aside.app{"style": "background-image: url('#{asset_path('background_02.jpg')}');"}
-    .app__inner
-      %hgroup.app__inner__header
-        %h3
-          スマホでかんたんフリマアプリ
-          %h2 今すぐ無料ダウンロード！
-      .app__inner__links
-        = link_to '/', class: 'app__inner__links-mercari' do
-          = image_tag 'logo_red.svg', width: '40px', height: '40px'
-        = link_to '/', class: 'app__inner__links-app-store' do
-          = image_tag 'app-store.svg', width: '134px', height: '40px'
-        = link_to '/', class: 'app__inner__links-google-play' do
-          = image_tag 'google-play.svg', width: '134px', height: '40px'
-      = image_tag 'app.png', class: 'app__inner__app-image'
   = render partial: 'shared/footer'

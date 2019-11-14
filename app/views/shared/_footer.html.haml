@@ -1,3 +1,17 @@
+%aside.app{"style": "background-image: url('#{asset_path('background_02.jpg')}');"}
+  .app__inner
+    %hgroup.app__inner__header
+      %h3
+        スマホでかんたんフリマアプリ
+        %h2 今すぐ無料ダウンロード！
+    .app__inner__links
+      = link_to '/', class: 'app__inner__links-mercari' do
+        = image_tag 'logo_red.svg', width: '40px', height: '40px'
+      = link_to '/', class: 'app__inner__links-app-store' do
+        = image_tag 'app-store.svg', width: '134px', height: '40px'
+      = link_to '/', class: 'app__inner__links-google-play' do
+        = image_tag 'google-play.svg', width: '134px', height: '40px'
+    = image_tag 'app.png', class: 'app__inner__app-image'
 %footer.footer
   .footer__inner
     .footer__inner__about

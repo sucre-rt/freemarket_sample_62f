@@ -9,7 +9,7 @@
 
   background-color: $white;
   box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
-  z-index: 2;
+  z-index: 3;
 
   &__scope {
     @include responsive-width;
