@@ -1,6 +1,3 @@
-// Place all the styles related to the main controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 @import "./variable";
 @import "./mixin";
 
@@ -11,7 +8,6 @@ html {
   color: $black;
   font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   font-weight: 500;
-  //letter-spacing: 0.05em;
 }
 
 body {

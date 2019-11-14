@@ -1,7 +1,7 @@
 #wrapper
   = render partial: 'shared/header'
   %main.main
-    %section.main__cover{:style => "background-image: url('#{asset_path('background_01.jpg')}');"}
+    %section.main__cover{"style": "background-image: url('#{asset_path('background_01.jpg')}');"}
     %section.main__category
       .main__category__inner
         %h2.main__category__inner__header
@@ -380,7 +380,7 @@
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
               %p.main__hobbys__inner__list-item-title 初心者も安心！
-  %aside.app{:style => "background-image: url('#{asset_path('background_02.jpg')}');"}
+  %aside.app{"style": "background-image: url('#{asset_path('background_02.jpg')}');"}
     .app__inner
       %hgroup.app__inner__header
         %h3

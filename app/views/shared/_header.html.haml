@@ -4,8 +4,8 @@
       %h1.header__upper-contents__logo
         = link_to '/' do
           = image_tag 'fmarket_logo_red.svg', class: 'header__upper-contents__logo-image', height: '36px'
-      %form.header__upper-contents__search{:action => "/search/"}
-        %input.header__upper-contents__search-box{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :value => ""}/
+      %form.header__upper-contents__search{"action": "/search/"}
+        %input.header__upper-contents__search-box{"name": "keyword", "placeholder": "何かお探しですか？", "type": "search", "value": ""}/
         %button.header__upper-contents__search-button
           %i.fa.fa-search
     .header__lower-contents
