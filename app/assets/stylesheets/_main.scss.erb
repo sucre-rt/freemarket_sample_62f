@@ -51,113 +51,16 @@ a {
     position: relative;
 
     width: 100%;
-    height: 40.0rem;
+    height: 39.0rem;
     background-image: url("<%= asset_url('background_01.jpg') %>");
     background-size: cover;
     z-index: 0;
   }
 
-
-  /*
-  &__leading {
-    padding: 3.0rem 0 4.0rem 0;
-
-    &__inner {
-      &__text {
-        font-size: $medium;
-        line-height: 2.8rem;
-        text-align: center;
-
-        &-strong {
-          font-weight: bold;
-          color: $red;
-        }
-      }
-    }
-  }
-
-  &__banner {
-    @include inner;
-
-    margin-bottom: 8.0rem;
-
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-
-    &__main {
-      width: 50%;
-
-      &-a {
-        display: block;
-        width: 100%;
-        height: 100%;
-        border-radius: 0.5rem;
-        background-color: $brown;
-        overflow: hidden;
-      }
-
-      &-image {
-        width: 100%;
-      }
-
-      &-text {
-        font-size: $medium;
-        padding: 1.2rem;
-
-        color: white;
-      }
-    }
-
-    &__sub {
-      width: calc(50% - 1.0rem);
-
-      &-a {
-        display: table;
-        width: 100%;
-        margin-bottom: 1.0rem;
-        padding: 1.2rem 1.0rem;
-        border-radius: 0.5rem;
-        background-color: $red;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-
-      &-image {
-        display: table-cell;
-
-        border-radius: 0.5rem;
-
-        width: 8.0rem;
-        height: 8.0rem;
-      }
-
-      &-text {
-        display: table-cell;
-        width: 100%;
-        height: 8.0rem;
-        padding-left: 1.5rem;
-
-        font-size: $medium;
-        color: $white;
-
-        vertical-align: middle;
-      }
-    }
-  }
-  */
-
   &__category {
     @include block;
 
-    padding: 4.0rem 0 6.0rem 0;
+    padding: 6.0rem 0 3.0rem 0;
     text-align: center;
 
     &__inner {
@@ -173,7 +76,7 @@ a {
         li {
           font-size: 1.4rem;
           font-weight: bold;
-          padding: 0.8rem;
+          padding: 0.8rem 1.4rem;
           border-radius: 10.0rem;
           background-color: $light-gray;
           display: inline-block;
@@ -184,7 +87,7 @@ a {
     }
   }
 
-  &__ladies {
+  &__ladies, &__mens, &__electronics, &__hobbys {
     @include block;
 
     padding: 4.0rem 0 2.0rem 0;
