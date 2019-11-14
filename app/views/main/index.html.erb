@@ -589,29 +589,28 @@
         </ul>
       </div>
     </section>
-
-
-    <section class="main__app">
-      <div class="main__app__inner">
-        <hgroup class="main__app__inner__header">
-          <h3>スマホでかんたんフリマアプリ</h2>
-          <h2>今すぐ無料ダウンロード！</h2>
-        </hgroup>
-        <div class="main__app__inner__links">
-          <%= link_to '/', class: 'main__app__inner__links-mercari' do %>
-            <%= image_tag 'logo_red.svg', width: '40px', height: '40px' %>
-          <% end %>
-          <%= link_to '/', class: 'main__app__inner__links-app-store' do %>
-            <%= image_tag 'app-store.svg', width: '134px', height: '40px' %>
-          <% end %>
-          <%= link_to '/', class: 'main__app__inner__links-google-play' do %>
-            <%= image_tag 'google-play.svg', width: '134px', height: '40px' %>
-          <% end %>
-        </div>
-        <%= image_tag 'app.png', class: 'main__app__inner__app-image' %>
-      </div>
-    </section>
   </main>
+
+  <aside class="app">
+    <div class="app__inner">
+      <hgroup class="app__inner__header">
+        <h3>スマホでかんたんフリマアプリ</h2>
+        <h2>今すぐ無料ダウンロード！</h2>
+      </hgroup>
+      <div class="app__inner__links">
+        <%= link_to '/', class: 'app__inner__links-mercari' do %>
+          <%= image_tag 'logo_red.svg', width: '40px', height: '40px' %>
+        <% end %>
+        <%= link_to '/', class: 'app__inner__links-app-store' do %>
+          <%= image_tag 'app-store.svg', width: '134px', height: '40px' %>
+        <% end %>
+        <%= link_to '/', class: 'app__inner__links-google-play' do %>
+          <%= image_tag 'google-play.svg', width: '134px', height: '40px' %>
+        <% end %>
+      </div>
+      <%= image_tag 'app.png', class: 'app__inner__app-image' %>
+    </div>
+  </aside>
 
   <%= render partial: 'shared/footer' %>
 </div>

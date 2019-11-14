@@ -1,7 +1,6 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import "./variable";
 @import "./mixin";
 
@@ -9,9 +8,7 @@ html {
   height: 100%;
   background-color: $white;
   font-size: 62.5%;
-
   color: $black;
-
   font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
   font-weight: 500;
   //letter-spacing: 0.05em;
@@ -39,7 +36,6 @@ a {
   text-decoration: none;
   color: $black;
 }
-
 @import './header';
 @import './nav';
 
@@ -47,9 +43,11 @@ a {
   @include block;
   z-index: 1;
 
+  background-color: $light-gray;
+  padding-bottom: 6.0rem;
+
   &__cover {
     position: relative;
-
     width: 100%;
     height: 39.0rem;
     background-image: url("<%= asset_url('background_01.jpg') %>");
@@ -59,9 +57,9 @@ a {
 
   &__category {
     @include block;
-
-    padding: 6.0rem 0 3.0rem 0;
+    padding: 6.0rem 0 3.0rem;
     text-align: center;
+    background-color: $white;
 
     &__inner {
       @include inner;
@@ -82,20 +80,21 @@ a {
           display: inline-block;
           margin-right: 1.2rem;
         }
-
       }
     }
   }
 
-  &__ladies, &__mens, &__electronics, &__hobbys {
+  &__electronics,
+  &__hobbys,
+  &__ladies,
+  &__mens {
     @include block;
-
-    padding: 4.0rem 0 2.0rem 0;
+    padding: 4.0rem 0 2.0rem;
     background-color: $yellow-gray;
-
 
     &__inner {
       @include responsive-width;
+
       &__header {
         font-size: 2.4rem;
         font-weight: bold;
@@ -110,11 +109,9 @@ a {
         &-item {
           box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
           width: calc(20% - 2.0rem);
-
           font-size: 1.4rem;
           margin: 1.0rem;
           display: inline-block;
-
           background-color: $white;
 
           &-image {
@@ -124,104 +121,69 @@ a {
           &-title {
             padding: 10px;
             height: 6.2rem;
-
           }
         }
       }
     }
   }
+}
 
-  &__others {
-    //margin-top: 8.0rem;
-    padding: 4.0rem 0 5.0rem 0;
+.app {
+  position: relative;
+  background-image: url("<%= asset_url('background_02.jpg') %>");
+  background-size: cover;
 
-    //background-color: $yellow-gray;
-    text-align: center;
-
-    &__inner {
-      @include inner;
-
-      &__header {
-        display: block;
-        font-size: 2.0rem;
-        font-weight: bold;
-      }
-
-      &__button {
-        display: block;
-        width: 40.0rem;
-        margin: 0 auto;
-        margin-top: 2.0rem;
-        padding: 1.6rem 0;
-        font-size: 1.6rem;
-        line-height: 1.6rem;
-        border-radius: 100.0rem;
-        color: $white;
-        background-color: $red;
-      }
-    }
-  }
-
-  &__app {
+  &__inner {
+    width: 75.0rem;
+    height: 26.0rem;
+    margin: auto;
     position: relative;
 
-    background-image: url("<%= asset_url('background_02.jpg') %>");
-    background-size: cover;
+    &__app-image {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      width: auto;
+    }
 
-    &__inner {
-      width: 75.0rem;
-      height: 26.0rem;
-      margin: auto;
-      position: relative;
+    &__header {
+      padding: 4.0rem 0 0;
+    }
 
-      &__app-image {
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
+    h2,
+    h3 {
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 2.4rem;
+      color: $white;
+      margin-bottom: 0.5rem;
+    }
 
-        height: 100%;
-        width: auto;
+    h3 {
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 3.6rem;
+    }
+
+    &__links {
+      margin-top: 1.2rem;
+      display: table;
+
+      a {
+        display: table-cell;
+        vertical-align: middle;
+        padding-right: 2.0rem;
       }
 
-      &__header {
-        padding: 4.0rem 0 0 0;
-      }
-
-      h2, h3 {
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
-
-        font-size: 2.4rem;
-        color: $white;
-
-        margin-bottom: 0.5rem;
-      }
-
-      h3 {
-        font-weight: bold;
-      }
-
-      h2 {
-        font-size: 3.6rem;
-      }
-
-      &__links {
-        margin-top: 1.2rem;
-        display: table;
-
-        a {
-          display: table-cell;
-          vertical-align: middle;
-          padding-right: 2.0rem;
-        }
-
-        &-mercari {
-          img {
-            padding: 1.2rem;
-            border-radius: 1.2rem;
-            background-color: $white;
-            box-sizing: content-box;
-          }
+      &-mercari {
+        img {
+          padding: 1.2rem;
+          border-radius: 1.2rem;
+          background-color: $white;
+          box-sizing: content-box;
         }
       }
     }
