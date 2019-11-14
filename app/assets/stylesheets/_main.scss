@@ -9,7 +9,7 @@ html {
   background-color: $white;
   font-size: 62.5%;
   color: $black;
-  font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   font-weight: 500;
   //letter-spacing: 0.05em;
 }
@@ -50,7 +50,6 @@ a {
     position: relative;
     width: 100%;
     height: 39.0rem;
-    background-image: url("<%= asset_url('background_01.jpg') %>");
     background-size: cover;
     z-index: 0;
   }
@@ -130,7 +129,6 @@ a {
 
 .app {
   position: relative;
-  background-image: url("<%= asset_url('background_02.jpg') %>");
   background-size: cover;
 
   &__inner {
