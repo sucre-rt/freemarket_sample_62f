@@ -1,6 +1,38 @@
 @import "./variable";
 @import "./mixin";
 
+html {
+  height: 100%;
+  background-color: $light-gray;
+  font-size: 62.5%;
+  color: $black;
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-weight: 500;
+}
+
+body {
+  height: 100%;
+  font-size: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
 .header {
   @include block;
   @include clearfix;
@@ -11,7 +43,7 @@
   box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
   border-bottom: 0.1rem solid $light-gray;
 
-  z-index: 3;
+  z-index: 2;
 
   &__upper-contents {
     @include responsive-width;
@@ -72,14 +104,20 @@
 
       &__menu {
         li {
-          display: block;
           float: left;
-
           margin-right: 2.8rem;
 
           font-size: $small;
           font-weight: bold;
           line-height: 3.6rem;
+
+          a {
+            display: block;
+
+            &:hover {
+              color: $blue;
+            }
+          }
 
           .fa {
             margin-right: 0.8rem;
@@ -95,23 +133,29 @@
 
       &__menu {
         li {
-          display: block;
           float: left;
 
-          padding: 0.8rem 1.0rem;
           margin-left: 1.2rem;
 
           font-size: $small;
           line-height: $small;
-          color: $white;
-          background-color: $red;
-          border: 0.1rem solid $red;
-          border-radius: 0.4rem;
+
+          a {
+            display: block;
+            padding: 0.8rem 1.0rem;
+
+            color: $white;
+            background-color: $red;
+            border: 0.1rem solid $red;
+            border-radius: 0.4rem;
+          }
 
           &.login {
-            color: $blue;
-            border: 0.1rem solid $blue;
-            background-color: $white;
+            a {
+              color: $blue;
+              border: 0.1rem solid $blue;
+              background-color: $white;
+            }
           }
         }
       }

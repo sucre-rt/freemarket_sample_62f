@@ -1,46 +1,14 @@
 @import "./variable";
 @import "./mixin";
-
-html {
-  height: 100%;
-  background-color: $white;
-  font-size: 62.5%;
-  color: $black;
-  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-  font-weight: 500;
-}
-
-body {
-  height: 100%;
-  font-size: 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  appearance: none;
-}
-
-a {
-  text-decoration: none;
-  color: $black;
-}
 @import './header';
 @import './nav';
 
 .main {
   @include block;
   z-index: 1;
+  margin-bottom: 8.0rem;
 
   background-color: $light-gray;
-  padding-bottom: 6.0rem;
 
   &__cover {
     position: relative;
@@ -50,7 +18,7 @@ a {
     z-index: 0;
   }
 
-  &__category {
+  &__category, &__brand {
     @include block;
     padding: 6.0rem 0 3.0rem;
     text-align: center;
@@ -62,18 +30,24 @@ a {
       &__header {
         font-size: 2.8rem;
         font-weight: bold;
-        margin-bottom: 0.8rem;
+        margin-bottom: 1.4rem;
       }
 
       &__list {
-        li {
+        &-link {
+          display: inline-block;
+
           font-size: 1.4rem;
           font-weight: bold;
-          padding: 0.8rem 1.4rem;
-          border-radius: 10.0rem;
-          background-color: $light-gray;
-          display: inline-block;
+
           margin-right: 1.2rem;
+
+          &-a {
+            display: block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 10.0rem;
+            background-color: $light-gray;
+          }
         }
       }
     }
@@ -84,7 +58,7 @@ a {
   &__ladies,
   &__mens {
     @include block;
-    padding: 4.0rem 0 2.0rem;
+    padding: 4.0rem 0 2.0rem 0;
     background-color: $yellow-gray;
 
     &__inner {
@@ -108,6 +82,13 @@ a {
           margin: 1.0rem;
           display: inline-block;
           background-color: $white;
+          border: 0.1rem solid transparent;
+
+          transition: 0.4s;
+
+          &:hover {
+            border: 0.1rem solid $blue;
+          }
 
           &-image {
             width: 100%;
@@ -123,63 +104,4 @@ a {
   }
 }
 
-.app {
-  position: relative;
-  background-size: cover;
-
-  &__inner {
-    width: 75.0rem;
-    height: 26.0rem;
-    margin: auto;
-    position: relative;
-
-    &__app-image {
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      height: 100%;
-      width: auto;
-    }
-
-    &__header {
-      padding: 4.0rem 0 0;
-    }
-
-    h2,
-    h3 {
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
-      font-size: 2.4rem;
-      color: $white;
-      margin-bottom: 0.5rem;
-    }
-
-    h3 {
-      font-weight: bold;
-    }
-
-    h2 {
-      font-size: 3.6rem;
-    }
-
-    &__links {
-      margin-top: 1.2rem;
-      display: table;
-
-      a {
-        display: table-cell;
-        vertical-align: middle;
-        padding-right: 2.0rem;
-      }
-
-      &-mercari {
-        img {
-          padding: 1.2rem;
-          border-radius: 1.2rem;
-          background-color: $white;
-          box-sizing: content-box;
-        }
-      }
-    }
-  }
-}
+@import './footer';
