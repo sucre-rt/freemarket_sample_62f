@@ -1,0 +1,10 @@
+<h2>電話番号の確認</h2>
+
+<%= form_for @user, url: sms_signup_index_path, method: :get do |f| %>
+
+  携帯電話の番号
+  <%= f.text_field :telphone, autofocus: true, autocomplete: "telphone", placeholder: "携帯電話の番号の入力" %>
+  <%= f.submit 'SMSを送信する' %>
+
+
+<% end %>
