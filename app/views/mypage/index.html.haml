@@ -57,8 +57,10 @@
     .main__right-content
       .main__right-content__header{"style": "background-image: url('#{asset_path('background_01.jpg')}');"}
       %ul.main__right-content__tabs
-        %li.main__right-content__tabs-active お知らせ
-        %li.main__right-content__tabs-inactive やることリスト
+        %li.main__right-content__tabs-active
+          = link_to "お知らせ", '/', class: 'main__right-content__tabs-active-a'
+        %li.main__right-content__tabs-inactive
+          = link_to "やることリスト", '/', class: 'main__right-content__tabs-inactive-a'
       %ul.main__right-content__lists
         %li.main__right-content__lists__item
           = image_tag 'index_menu_02.png', class: 'main__right-content__lists__item-image'
@@ -90,8 +92,10 @@
     .main__right-content
       %h2.main__right-content__title 購入した商品
       %ul.main__right-content__tabs
-        %li.main__right-content__tabs__active 取引中
-        %li.main__right-content__tabs__inactive 過去の取引
+        %li.main__right-content__tabs-active
+          = link_to "取引中", '/', class: 'main__right-content__tabs-active-a'
+        %li.main__right-content__tabs-inactive
+          = link_to "過去の取引", '/', class: 'main__right-content__tabs-inactive-a'
       %ul.main__right-content__lists
         %li.main__right-content__lists__none{"style": "background-image: url('#{asset_path('logo_gray.svg')}');"}
           取引中の商品がありません

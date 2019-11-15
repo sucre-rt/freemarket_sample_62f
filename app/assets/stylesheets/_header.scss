@@ -104,14 +104,16 @@ a {
 
       &__menu {
         li {
-          display: block;
           float: left;
-
           margin-right: 2.8rem;
 
           font-size: $small;
           font-weight: bold;
           line-height: 3.6rem;
+
+          a {
+            display: block;
+          }
 
           .fa {
             margin-right: 0.8rem;
@@ -127,23 +129,29 @@ a {
 
       &__menu {
         li {
-          display: block;
           float: left;
 
-          padding: 0.8rem 1.0rem;
           margin-left: 1.2rem;
 
           font-size: $small;
           line-height: $small;
-          color: $white;
-          background-color: $red;
-          border: 0.1rem solid $red;
-          border-radius: 0.4rem;
+
+          a {
+            display: block;
+            padding: 0.8rem 1.0rem;
+
+            color: $white;
+            background-color: $red;
+            border: 0.1rem solid $red;
+            border-radius: 0.4rem;
+          }
 
           &.login {
-            color: $blue;
-            border: 0.1rem solid $blue;
-            background-color: $white;
+            a {
+              color: $blue;
+              border: 0.1rem solid $blue;
+              background-color: $white;
+            }
           }
         }
       }

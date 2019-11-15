@@ -6,9 +6,9 @@
 .main {
   @include block;
   z-index: 1;
+  margin-bottom: 8.0rem;
 
   background-color: $light-gray;
-  padding-bottom: 6.0rem;
 
   &__cover {
     position: relative;
@@ -18,7 +18,7 @@
     z-index: 0;
   }
 
-  &__category {
+  &__category, &__brand {
     @include block;
     padding: 6.0rem 0 3.0rem;
     text-align: center;
@@ -30,18 +30,24 @@
       &__header {
         font-size: 2.8rem;
         font-weight: bold;
-        margin-bottom: 0.8rem;
+        margin-bottom: 1.4rem;
       }
 
       &__list {
-        li {
+        &-link {
+          display: inline-block;
+
           font-size: 1.4rem;
           font-weight: bold;
-          padding: 0.8rem 1.4rem;
-          border-radius: 10.0rem;
-          background-color: $light-gray;
-          display: inline-block;
+
           margin-right: 1.2rem;
+
+          &-a {
+            display: block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 10.0rem;
+            background-color: $light-gray;
+          }
         }
       }
     }
@@ -52,7 +58,7 @@
   &__ladies,
   &__mens {
     @include block;
-    padding: 4.0rem 0 2.0rem;
+    padding: 4.0rem 0 2.0rem 0;
     background-color: $yellow-gray;
 
     &__inner {

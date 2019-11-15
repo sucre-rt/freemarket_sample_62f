@@ -6,6 +6,7 @@
 .main {
   @include responsive-width;
 
+  background-color: $light-gray;
   margin-top: 4.0rem;
 
   &__left-content {
@@ -69,6 +70,10 @@
 
     &__tabs {
       width: 100%;
+
+      a {
+        display: block;
+      }
 
       &-active, &-inactive {
         width: 50%;
