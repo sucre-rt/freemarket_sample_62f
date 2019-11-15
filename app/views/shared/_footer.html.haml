@@ -1,0 +1,78 @@
+%aside.app{"style": "background-image: url('#{asset_path('background_02.jpg')}');"}
+  .app__inner
+    %hgroup.app__inner__header
+      %h3
+        スマホでかんたんフリマアプリ
+        %h2 今すぐ無料ダウンロード！
+    .app__inner__links
+      = link_to '/', class: 'app__inner__links-mercari' do
+        = image_tag 'logo_red.svg', width: '40px', height: '40px'
+      = link_to '/', class: 'app__inner__links-app-store' do
+        = image_tag 'app-store.svg', width: '134px', height: '40px'
+      = link_to '/', class: 'app__inner__links-google-play' do
+        = image_tag 'google-play.svg', width: '134px', height: '40px'
+    = image_tag 'app.png', class: 'app__inner__app-image'
+%footer.footer
+  .footer__inner
+    .footer__inner__about
+      %h1.footer__inner__about__header メルカリについて
+      %ul.footer__inner__about__list
+        %li.footer__inner__about__list-item
+          = link_to "会社概要", '/', class: 'footer__inner__about__list-item-a'
+        %li.footer__inner__about__list-item
+          = link_to "採用情報", '/', class: 'footer__inner__about__list-item-a'
+        %li.footer__inner__about__list-item
+          = link_to "プレスリリース", '/', class: 'footer__inner__about__list-item-a'
+        %li.footer__inner__about__list-item
+          = link_to "公式ブログ", '/', class: 'footer__inner__about__list-item-a'
+        %li.footer__inner__about__list-item
+          = link_to "メルカリロゴ利用ガイドライン", '/', class: 'footer__inner__about__list-item-a'
+    .footer__inner__help
+      %h1.footer__inner__help__header ヘルプ＆ガイド
+      %ul.footer__inner__help__list
+        %li.footer__inner__help__list-item
+          = link_to "メルカリガイド", '/', class: 'footer__inner__help__list-item-a'
+        %li.footer__inner__help__list-item
+          = link_to "らくらくメルカリ便", '/', class: 'footer__inner__help__list-item-a'
+        %li.footer__inner__help__list-item
+          = link_to "ゆうゆうメルカリ便", '/', class: 'footer__inner__help__list-item-a'
+        %li.footer__inner__help__list-item
+          = link_to "大型メルカリ便", '/', class: 'footer__inner__help__list-item-a'
+        %li.footer__inner__help__list-item
+          = link_to "車体取引ガイド", '/', class: 'footer__inner__help__list-item-a'
+        %li.footer__inner__help__list-item
+          = link_to "メルカリあんしん・あんぜん宣言！", '/', class: 'footer__inner__help__list-item-a'
+        %li.footer__inner__help__list-item
+          = link_to "偽ブランド品撲滅への取り組み", '/', class: 'footer__inner__help__list-item-a'
+        %li.footer__inner__help__list-item
+          = link_to "メルカリボックス", '/', class: 'footer__inner__help__list-item-a'
+    .footer__inner__privacy
+      %h1.footer__inner__privacy__header プライバシーと利用規約
+      %ul.footer__inner__privacy__list
+        %li.footer__inner__privacy__list-item
+          = link_to "プライバシーポリシー", '/', class: 'footer__inner__privacy__list-item-a'
+        %li.footer__inner__privacy__list-item
+          = link_to "メルカリ利用規約", '/', class: 'footer__inner__privacy__list-item-a'
+        %li.footer__inner__privacy__list-item
+          = link_to "あんしんスマホサポート制度に関する利用特約", '/', class: 'footer__inner__privacy__list-item-a'
+        %li.footer__inner__privacy__list-item
+          = link_to "コンプライアンスポリシー", '/', class: 'footer__inner__privacy__list-item-a'
+        %li.footer__inner__privacy__list-item
+          = link_to "個人データの安全管理に係る基本方針", '/', class: 'footer__inner__privacy__list-item-a'
+        %li.footer__inner__privacy__list-item
+          = link_to "特定商取引に関する表記", '/', class: 'footer__inner__privacy__list-item-a'
+        %li.footer__inner__privacy__list-item
+          = link_to "資金決済法に基づく表示", '/', class: 'footer__inner__privacy__list-item-a'
+        %li.footer__inner__privacy__list-item
+          = link_to "法令順守と犯罪抑止のために", '/', class: 'footer__inner__privacy__list-item-a'
+    .footer__inner__nation
+      %h1.footer__inner__nation__header 国
+      %ul.footer__inner__nation__list
+        %li.footer__inner__nation__list-item
+          = link_to "日本", '/', class: 'footer__inner__nation__list-item-a'
+          %li.footer__inner__privacy__list-item
+            = link_to "United States", '/', class: 'footer__inner__nation__list-item-a'
+  .footer__copyright
+    = link_to '/', class: 'footer__copyright__logo' do
+      = image_tag 'logo_white_mercari.svg', class: 'footer__copyright__logo-image', width: '132px', height: '33px'
+    %p © 2019 Mercari

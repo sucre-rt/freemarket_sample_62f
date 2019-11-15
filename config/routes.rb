@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     end
   end
   root 'main#index'
+  resources :mypage, only: [:index]
 end

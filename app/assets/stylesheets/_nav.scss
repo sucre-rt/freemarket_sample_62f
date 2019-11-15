@@ -1,0 +1,43 @@
+@import "./variable";
+@import "./mixin";
+
+.nav {
+  @include block;
+  @include clearfix;
+
+  height: 4.8rem;
+
+  background-color: $white;
+  box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
+  z-index: 3;
+
+  &__scope {
+    @include responsive-width;
+
+    li {
+      float: left;
+
+      font-size: $small;
+      line-height: 4.8rem;
+
+      &:after {
+        content: "";
+        display: inline-block;
+        border-top: 0.1rem solid $black;
+        border-right: 0.1rem solid $black;
+        width: 0.6rem;
+        height: 0.6rem;
+        transform: rotate(45deg);
+        margin: 0 1.0rem 0 0.5rem;
+      }
+
+      &:last-child {
+        font-weight: bold;
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}

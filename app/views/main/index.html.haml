@@ -1,0 +1,391 @@
+#wrapper
+  = render partial: 'shared/header'
+  %main.main
+    %section.main__cover{"style": "background-image: url('#{asset_path('background_01.jpg')}');"}
+    %section.main__category
+      .main__category__inner
+        %h2.main__category__inner__header
+          人気のカテゴリー
+        %ul.main__category__inner__list
+          %li.main__category__inner__list-link
+            = link_to "レディース", '/', class: 'main__category__inner__list-link-a'
+          %li.main__category__inner__list-link
+            = link_to "メンズ", '/', class: 'main__category__inner__list-link-a'
+          %li.main__category__inner__list-link
+            = link_to "家電・スマホ・カメラ", '/', class: 'main__category__inner__list-link-a'
+          %li.main__category__inner__list-link
+            = link_to "おもちゃ・ホビー・グッズ", '/', class: 'main__category__inner__list-link-a'
+    %section.main__ladies
+      .main__ladies__inner
+        %h2.main__ladies__inner__header
+          レディース新着アイテム
+        %ul.main__ladies__inner__list
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！初心者も安心！初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+    %section.main__mens
+      .main__mens__inner
+        %h2.main__mens__inner__header
+          メンズ新着アイテム
+        %ul.main__mens__inner__list
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+    %section.main__electronics
+      .main__electronics__inner
+        %h2.main__electronics__inner__header
+          家電・スマホ・カメラ新着アイテム
+        %ul.main__electronics__inner__list
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+    %section.main__hobbys
+      .main__hobbys__inner
+        %h2.main__hobbys__inner__header
+          おもちゃ・ホビー・グッズ新着アイテム
+        %ul.main__hobbys__inner__list
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+    %section.main__category
+      .main__brand__inner
+        %h2.main__brand__inner__header
+          人気のブランド
+        %ul.main__brand__inner__list
+          %li.main__brand__inner__list-link
+            = link_to "シャネル", '/', class: 'main__brand__inner__list-link-a'
+          %li.main__brand__inner__list-link
+            = link_to "ルイヴィトン", '/', class: 'main__brand__inner__list-link-a'
+          %li.main__brand__inner__list-link
+            = link_to "シュプリーム", '/', class: 'main__brand__inner__list-link-a'
+          %li.main__brand__inner__list-link
+            = link_to "ナイキ", '/', class: 'main__brand__inner__list-link-a'
+    %section.main__ladies
+      .main__ladies__inner
+        %h2.main__ladies__inner__header
+          レディース新着アイテム
+        %ul.main__ladies__inner__list
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！初心者も安心！初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+          %li.main__ladies__inner__list-item
+            = link_to '/', class: 'main__ladies__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
+              %p.main__ladies__inner__list-item-title 初心者も安心！
+    %section.main__mens
+      .main__mens__inner
+        %h2.main__mens__inner__header
+          メンズ新着アイテム
+        %ul.main__mens__inner__list
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+          %li.main__mens__inner__list-item
+            = link_to '/', class: 'main__mens__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %p.main__mens__inner__list-item-title 初心者も安心！
+    %section.main__electronics
+      .main__electronics__inner
+        %h2.main__electronics__inner__header
+          家電・スマホ・カメラ新着アイテム
+        %ul.main__electronics__inner__list
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+          %li.main__electronics__inner__list-item
+            = link_to '/', class: 'main__electronics__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %p.main__electronics__inner__list-item-title 初心者も安心！
+    %section.main__hobbys
+      .main__hobbys__inner
+        %h2.main__hobbys__inner__header
+          おもちゃ・ホビー・グッズ新着アイテム
+        %ul.main__hobbys__inner__list
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          %li.main__hobbys__inner__list-item
+            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
+              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %p.main__hobbys__inner__list-item-title 初心者も安心！
+  = render partial: 'shared/footer'
