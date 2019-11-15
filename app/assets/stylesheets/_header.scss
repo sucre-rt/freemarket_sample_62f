@@ -113,6 +113,10 @@ a {
 
           a {
             display: block;
+
+            &:hover {
+              color: $blue;
+            }
           }
 
           .fa {

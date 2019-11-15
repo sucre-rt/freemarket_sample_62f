@@ -29,19 +29,45 @@
 
 
       &-link {
+        position: relative;
         font-size: 1.4rem;
         border-bottom: 0.1rem solid $light-gray;
 
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          border-top: 0.2rem solid $gray;
+          border-right: 0.2rem solid $gray;
+          width: 0.8rem;
+          height: 0.8rem;
+          transform: translate(0, -50%) rotate(45deg);
+
+          margin: 0 auto;
+          top: 50%;
+          bottom: 0;
+          right: 1.6rem;
+          transition: 0.4s;
+        }
+
+        &.gray {
+          color: $black;
+          background-color: $gray;
+          font-weight: bold;
+
+          &:after {
+            border-color: $black;
+          }
+        }
+
+        &:hover:after {
+          border-color: $black;
+          right: 1.2rem;
+        }
+
         &-a {
           display: block;
-          width: 100%;
           padding: 1.4rem;
-
-          &.gray {
-            color: $black;
-            background-color: $gray;
-            font-weight: bold;
-          }
         }
       }
     }

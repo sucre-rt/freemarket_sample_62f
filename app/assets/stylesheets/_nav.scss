@@ -21,15 +21,21 @@
       line-height: 4.8rem;
 
       &:after {
-        content: ">";
-        margin: 0 0.8rem;
+        content: "";
+        display: inline-block;
+        border-top: 0.1rem solid $black;
+        border-right: 0.1rem solid $black;
+        width: 0.6rem;
+        height: 0.6rem;
+        transform: rotate(45deg);
+        margin: 0 1.0rem 0 0.5rem;
       }
 
       &:last-child {
         font-weight: bold;
 
         &:after {
-          content: "";
+          display: none;
         }
       }
     }

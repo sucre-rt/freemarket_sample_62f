@@ -82,6 +82,13 @@
           margin: 1.0rem;
           display: inline-block;
           background-color: $white;
+          border: 0.1rem solid transparent;
+
+          transition: 0.4s;
+
+          &:hover {
+            border: 0.1rem solid $blue;
+          }
 
           &-image {
             width: 100%;
