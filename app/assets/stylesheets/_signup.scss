@@ -1,141 +1,12 @@
 @import "./color";
 @import "./mixin";
+@import "./header2";
+@import "./footer2";
 
-.user-header{
-  height: 128px;
-  text-align: center;
-  background-color: $signup-color;
-  font-size: 12px;
-  h1 {
-    display: inline-block;
-    padding: 40px 0 0 0;
-    a {
-      line-height: 49px;
-    }
-  }
-  .progress-bar{
-    padding: 40px 0 0 44px;
-    display: inline-block;
-    vertical-align: top;
-    font-size: 0;
-    .bar-list{
-      li{
-      display: inline-block;
-      min-width: 60px;
-      font-size: 12px;
-      margin: 0 40px 0 0;
-      position: relative;
-      z-index: 1;
-      color: #888;
-        &:last-child {
-        margin-right: 0;
-        }
-        &.active{
-        color: $attention-color;
-        font-weight: 600;
-          .progress-status{
-            background-color: $attention-color;
-            &::before{
-              background-color: $attention-color;
-            }
-          }
-        }
-        &.through{
-          color: $attention-color;
-          font-weight: 600;
-          .progress-status{
-            background-color: $attention-color;
-            &::after{
-              background-color: $attention-color;
-            }
-            &::before{
-              background-color: $attention-color;
-            }
-          }
-
-        }
-      }
-      .progress-status {
-        width: 12px;
-        height: 12px;
-        margin: 8px auto 0;
-        background: $boder-normal;
-        border-radius: 50%;
-      }
-      .status-first, .status-middle{
-        &::after{
-          @include status-bar
-        }
-      }
-      .status-last, .status-middle{
-        &::before{
-          @include status-bar
-        }
-      }
-      .status-middle, .status-first {
-        &::after{
-          left: 50%;
-        }
-      }
-      .status-middle, .status-last{
-        &::before{
-        right: 50%;
-        }
-      }
-    }
-  }
+* {
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
 }
-.user-footer {
-  background-color: $signup-color;
-  width: 100vw;
-  height: 220px;
-  // position: absolute;
-  // right: 0;
-  // bottom: 0;
-  // left: 0;
-  text-align: center;
-  // padding: 40px 0 40px 0;
-  // a{
-  //   text-decoration: none;
-  // }
-  .footer-box{
-    width: 456px;
-    height: 140px;
-    margin: 0 auto;
-    padding: 40px 0 40px 0;
-    text-align: center;
-    ul {
-      font-size: 12px;
-
-      li {
-        display: inline-block;
-        margin: 0 0 0 16px;
-        a {
-          color: $user-default-color;
-          text-decoration: none;
-          &:hover {
-            color: #666666;
-            text-decoration: underline;
-            // padding-bottom: 1px;
-          }
-        }
-      }
-    }
-    
-
-    img {
-      margin: 40px auto 0;
-    }
-
-    p{
-      // margin: 8px 0 0;
-      small {
-        font-size: 13px;
-      }
-    }
-  }
-}
-
 
 
 .user-main{
@@ -398,6 +269,103 @@
   transition: all ease-out .3s;
   cursor: pointer;
   text-align: center;
+}
+
+.market-contents-first{
+  .market-main-first{                       //メインコンテンツ部分
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 180px 0;
+    background: #f5f5f5;
+    border-width: 0;
+    .market-container-first{                   //中の白い部分
+      display: block;
+      width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      h2 {                                //新規会員登録の部分  http://localhost:3000/users/password/new
+        padding: 32px;
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: center;
+        font-weight: bold; 
+      }
+    }
+  }
+
+  .market-button-first{                     //ボタンコンテンツのエリア
+    padding: 24px 16px 40px;
+    height: 247px;
+    border-top: 1px solid #f5f5f5;
+    margin: 0;
+    &__content{                       //ボタンアイコンたち
+      max-width: 343px;
+      margin: 0 auto;
+      width: 343px;
+      height: 182px;
+      .button-email{                      //emailボタン全般
+        color: #fff;
+        background-color: #ea352d;
+        border-radius: 4px;
+        display: block;
+        width: 100%;
+        line-height: 50px;
+        text-decoration: none;
+        text-align: center;
+        position: relative;
+        font-size: 14px;
+        
+        .fa-envelope{
+          position: absolute;
+          font-size: 16px;
+          top: 50%;
+          left: 15px;
+          transform: translate(0, -50%);
+        }
+      }
+      .button-facebook{
+        margin: 16px 0 0;
+        background: #385185;
+        color: #fff;
+        font-size: 14px;
+        border-radius: 4px;
+        display: block;
+        width: 100%;
+        line-height: 45px;
+        text-decoration: none;
+        text-align: center;
+        position: relative;
+        .fa-facebook-square{
+          position: absolute;
+          font-size: 26px;
+          top: 50%;
+          left: 15px;
+          transform: translate(0, -50%);
+        }
+      }
+      .button-google{
+        margin: 16px 0 0;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        border-radius: 4px;
+        display: block;
+        width: 100%;
+        line-height: 45px;
+        text-decoration: none;
+        text-align: center; 
+        position: relative;
+        .fa-google{
+          position: absolute;
+          font-size: 20px;
+          top: 50%;
+          left: 15px;
+          transform: translate(0, -50%);
+        }
+      }
+    }
+  }
 }
 
 

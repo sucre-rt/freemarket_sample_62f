@@ -1,0 +1,24 @@
+#wrapper 
+  = render partial: 'shared/header3'
+  .market-contents-first
+    %header.market-header-first
+      / ヘッダー部分
+    %main.market-main-first
+      / 登録ボタンコンテンツ部分
+      %section.market-container-first
+        / グレー部分を除いた白部分のみ
+        %h2.market-user.registration 新規会員登録
+        .market-button-first.registration
+          / 登録ボタン部分
+          .market-button-first__content
+            / 登録ボタン部分 内側部分
+            %a.button-email{href: "/signup/registration"}
+              %i.fa.fa-envelope
+              メールアドレスで登録する
+            %button#facebook-login.button-facebook{href: "#"}
+              %i.fa.fa-facebook-square
+              Facebookで登録する
+            %button#google-login.button-google{href: "#"}
+              %i.fa.fa-google
+              Googleで登録する
+  = render partial: 'shared/footer3'

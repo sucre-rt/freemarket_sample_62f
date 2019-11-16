@@ -1,0 +1,150 @@
+@import "./variable";
+@import "./mixin";
+@import "./color";
+@import './header2';
+@import './footer2';
+
+* {
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+}
+
+
+
+.market-contents-second{
+  .market-main-second{
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    border-width: 0;
+    .market-container-second{  
+      margin: 0 auto;                                  //グレーを除いた白部分のみ全般
+      max-width: none;
+      width: 456px;
+      font-size: 14px;
+      background: #fff;
+      &__no-login-account{                                //新規会員登録ボタンエリア全般
+        padding: 32px 64px;
+        text-align: center;
+        background-repeat: no-repeat;
+        margin: 0;
+      }
+      &__new-login{                                      //新規会員登録ボタン
+        display: block;
+        margin: 8px 0 0;
+        border: 1px solid #0099e8;
+        background: #0099e8;
+        color: #fff;
+        line-height: 40px;
+        text-decoration: none;
+      }
+    }
+    .login-contents-second{                                     //facerbookとgoogleのログインボタンエリア全般
+      position: relative;
+      padding: 32px 64px;
+      border-top: 1px solid #eee;
+      &__button-facebook{                                //facebookのボタン
+        position: relative;
+        font-size: 14px;
+        margin: 0;
+        background: #385185;
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        border: 1px solid transparent;
+
+        &:before {
+          position: absolute;
+          display: block;
+          font-family: "FontAwesome";
+          content: "\f082";
+        
+          font-size: 26px;
+          top: 50%;
+          left: 15px;
+          float: left;
+          transform: translate(0, -50%);
+        }
+      }
+      &__button-google{                                 //googleのボタン
+        position: relative;
+        font-size: 14px;
+        margin: 16px 0 0;
+        background: #fff;
+        border: #979797 solid 1px;
+        color: #333;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+
+        &:before {
+          position: absolute;
+          display: block;
+          font-family: "FontAwesome";
+
+          content: "\f1a0";
+          
+          font-size: 26px;
+          top: 50%;
+          left: 15px;
+          float: left;
+          transform: translate(0, -50%);
+        }
+      }
+    }
+      .login-form-area-second{                                 //メアド、パスワード、ロボット、ログインエリア全般
+        padding: 24px 64px 32px;
+        width: 100%;
+          &__login-text-email{                                      //email入力フォーム
+            margin: 0;
+            width: 100%;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          &__login-text-password{                                   //パスワード入力フォーム
+            margin: 24px 0 0;
+            width: 100%;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+        
+        &__captha {
+          width: 328px;
+          height: 78px;
+          background: red;
+          margin-top: 24px;
+        }
+        &__login-submit{                                          //ログインボタン
+          margin: 24px 0 0;
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          transition: all ease-out .3s;
+          cursor: pointer;
+          text-align: center;
+        }
+        &__password {
+          display: block;
+          margin-top: 24px;
+          text-decoration: none;
+        }
+    }
+  }
+}

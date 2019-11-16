@@ -1,5 +1,8 @@
 class SignupController < ApplicationController
   
+  def index
+  end
+
   def registration
     @status1 ="active"
     @status2 =""
