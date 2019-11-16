@@ -1,10 +1,22 @@
 class SignupController < ApplicationController
   
   def registration
+    @status1 ="active"
+    @status2 =""
+    @status3 =""
+    @status4 =""
+    @status5 =""
+
     @user = User.new
   end
 
   def sms_confirmation
+    @status1 ="through"
+    @status2 ="active"
+    @status3 =""
+    @status4 =""
+    @status5 =""
+
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -14,20 +26,46 @@ class SignupController < ApplicationController
     session[:first_name_cana] = user_params[:first_name_cana]
     session[:birthday] = user_params[:birthday]
     @user = User.new
+
   end
 
   def sms
+    @status1 ="through"
+    @status2 ="active"
+    @status3 =""
+    @status4 =""
+    @status5 =""
+
     session[:telphone] = user_params[:telphone]
     @user = User.new
   end
 
   def address
+    @status1 ="through"
+    @status2 ="through"
+    @status3 ="active"
+    @status4 =""
+    @status5 =""
+
+    @user = User.new
   end
 
   def credit_card
+    @status1 ="through"
+    @status2 ="through"
+    @status3 ="through"
+    @status4 ="active"
+    @status5 =""
+
+    @user = User.new
   end
 
   def done
+    @status1 ="through"
+    @status2 ="through"
+    @status3 ="through"
+    @status4 ="through"
+    @status5 ="active"
   end
 
   def create
@@ -63,7 +101,7 @@ class SignupController < ApplicationController
       :family_name_cana,
       :first_name_cana,
       :birthday,
-      :telphone
+      :telphone,
     )
   end
 

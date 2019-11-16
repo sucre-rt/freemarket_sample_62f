@@ -1,0 +1,32 @@
+#wrapper 
+  = render partial: 'shared/header2'
+  .user-main
+    .user-main__content
+      %h2.user-title 電話番号認証
+      %form.user-form
+      = form_for @user, url: address_signup_index_path, method: :get do |f|
+        .user-form__content
+          .user-form__content__group
+            %label 認証番号
+            %input{placeholder: "認証番号を入力", class: "user-form__content__group__default"}
+          %p.user-text
+            SMSで届いた認証番号を入力してください
+          =f.submit "認証して完了", class: "user-btn-default user-btn-red"
+      %form.user-form
+        .user-form__content
+          .user-form__content__group
+            %label 30秒たっても認証番号が届かない方へ
+          %p.user-text
+            電話で認証番号を聞くこともできます。
+          =submit_tag "電話で認証番号を聞く（通話無料）", class: "user-btn-default user-btn-red"
+      %form.user-form
+        .user-form__content
+          .user-form__content__group
+            %label 認証番号を再送することもできます。もう一度電話番号を入力して下さい。
+          %p.user-text
+            = link_to "電話番号を再度入力する", '#'
+          %p.user-text
+            ※SMSが届かない場合は
+            = link_to "SMS受信設定", '#'
+            を確認して、もう一度電話番号を入力してください。
+  = render partial: 'shared/footer2'
