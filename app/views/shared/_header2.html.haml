@@ -1,0 +1,21 @@
+%body
+  %header.user-header
+    %h1
+      = link_to image_tag("fmarket_logo_red.svg", width: '185', height: "49", alt: "freemarket"), '#'
+    %nav.progress-bar
+      %ol.bar-list
+        %li{class: "#{@status1}"}
+          会員情報
+          .progress-status.status-first
+        %li{class: "#{@status2}"}
+          電話番号認証
+          .progress-status.status-middle
+        %li{class: "#{@status3}"}
+          お届け先住所入力
+          .progress-status.status-middle
+        %li{class: "#{@status4}"}
+          支払い方法
+          .progress-status.status-middle
+        %li{class: "#{@status5}"}
+          完了
+          .progress-status.status-last

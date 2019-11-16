@@ -1,0 +1,50 @@
+.user-footer {
+  background-color: $signup-color;
+  width: 100vw;
+  height: 220px;
+  // position: absolute;
+  // right: 0;
+  // bottom: 0;
+  // left: 0;
+  text-align: center;
+  // padding: 40px 0 40px 0;
+  // a{
+  //   text-decoration: none;
+  // }
+  .footer-box{
+    width: 456px;
+    height: 140px;
+    margin: 0 auto;
+    padding: 40px 0 40px 0;
+    text-align: center;
+    ul {
+      font-size: 12px;
+
+      li {
+        display: inline-block;
+        margin: 0 0 0 16px;
+        a {
+          color: $user-default-color;
+          text-decoration: none;
+          &:hover {
+            color: #666666;
+            text-decoration: underline;
+            // padding-bottom: 1px;
+          }
+        }
+      }
+    }
+    
+
+    img {
+      margin: 40px auto 0;
+    }
+
+    p{
+      // margin: 8px 0 0;
+      small {
+        font-size: 13px;
+      }
+    }
+  }
+}

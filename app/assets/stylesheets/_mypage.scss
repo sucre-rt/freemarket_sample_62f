@@ -2,6 +2,8 @@
 @import "./mixin";
 @import './header';
 @import './nav';
+@import "./color";
+
 
 .main {
   @include responsive-width;

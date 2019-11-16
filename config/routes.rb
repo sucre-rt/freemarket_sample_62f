@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'main#index'
+  resources :mypage, only: [:index]
+  resources :login, only: [:index]
+  
   resources :signup do
     collection do
       get 'registration'
@@ -12,6 +16,5 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
-  root 'main#index'
-  resources :mypage, only: [:index]
+
 end

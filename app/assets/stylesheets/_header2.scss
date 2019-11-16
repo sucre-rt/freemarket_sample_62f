@@ -1,0 +1,89 @@
+@import "./variable";
+@import "./mixin";
+@import "./color";
+
+
+.user-header{
+  height: 128px;
+  text-align: center;
+  background-color: $signup-color;
+  font-size: 12px;
+  h1 {
+    display: inline-block;
+    padding: 40px 0 0 0;
+    a {
+      line-height: 49px;
+    }
+  }
+  .progress-bar{
+    padding: 40px 0 0 44px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+    .bar-list{
+      li{
+      display: inline-block;
+      min-width: 60px;
+      font-size: 12px;
+      margin: 0 40px 0 0;
+      position: relative;
+      z-index: 1;
+      color: #888;
+        &:last-child {
+        margin-right: 0;
+        }
+        &.active{
+        color: $attention-color;
+        font-weight: 600;
+          .progress-status{
+            background-color: $attention-color;
+            &::before{
+              background-color: $attention-color;
+            }
+          }
+        }
+        &.through{
+          color: $attention-color;
+          font-weight: 600;
+          .progress-status{
+            background-color: $attention-color;
+            &::after{
+              background-color: $attention-color;
+            }
+            &::before{
+              background-color: $attention-color;
+            }
+          }
+
+        }
+      }
+      .progress-status {
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        background: $boder-normal;
+        border-radius: 50%;
+      }
+      .status-first, .status-middle{
+        &::after{
+          @include status-bar
+        }
+      }
+      .status-last, .status-middle{
+        &::before{
+          @include status-bar
+        }
+      }
+      .status-middle, .status-first {
+        &::after{
+          left: 50%;
+        }
+      }
+      .status-middle, .status-last{
+        &::before{
+        right: 50%;
+        }
+      }
+    }
+  }
+}

@@ -36,3 +36,58 @@
   max-width: 980px;
   margin: 0 auto;
 }
+
+@mixin status-bar{
+  background: $boder-normal;
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  box-sizing: border-box;
+}
+
+@mixin sub-title{
+  line-height: 1.5;
+  text-align: center;
+  font-weight: 550;
+}
+
+@mixin form-default{
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid $boder-normal;
+  background: $white-color;
+  line-height: 1.5;
+  font-size: 16px;
+  box-sizing: border-box;
+  min-height: 1.5em;
+}
+
+@mixin attension($color: white){
+  background-color: $color;
+  margin: 0 0 0 8px;
+  padding: 3px 4px;
+  border-radius: 2px;
+  color: $white-color;
+  font-size: 12px;
+  vertical-align: top;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+@mixin select-box{
+  display: inline-block;
+  margin: 8px 0 0 2px;
+  position: relative;
+}
+
+@mixin select-icon{
+  position: absolute;
+  right: 12px;
+  top: 35%;
+  color: #888;
+}

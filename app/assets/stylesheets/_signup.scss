@@ -1,0 +1,372 @@
+@import "./color";
+@import "./mixin";
+@import "./header2";
+@import "./footer2";
+
+* {
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+}
+
+
+.user-main{
+  background-color: $signup-color;
+  display: block;
+  color: $user-default-color;
+  padding: 0 0 100px;
+  a{
+    text-decoration: none;
+  }
+  &__content{
+    width: 700px;
+    margin: 0 auto;
+    background: $white-color;
+    .user-title{
+      @include sub-title;
+      font-size: 22px;
+      padding: 32px;
+    }
+    .user-form{
+      border-top: 1px solid #f5f5f5;
+      &__content{
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 40px;
+        &__group{
+          margin: 24px 0 0;
+          &:first-child{
+            margin: 0;
+          }
+          label{
+            font-weight: 600;
+            display: inline-block;
+            font-size: 14px;
+          }
+          &--attention{
+            @include attension($attention-color);
+          }
+          &--optional{
+            @include attension($boder-normal);
+          }
+          .form-half{
+            display: flex;
+          }
+          &__default{
+            @include form-default;
+            font-size: 15px;
+            width: 100%;
+            margin: 8px 0 0;
+            &.half{
+              margin-right: 8px;
+              width: calc(50% - 6px);
+            }
+          }
+          .checkbox-default{
+            margin: 16px 0 0;
+            position: relative;
+            font-size: 0;
+            .fa-check{
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 1;
+              width: 20px;
+              height: 20px;
+              border-radius: 2px;
+              background: $white-color;
+              border: 1px solid #ccc;
+              font-size: 10px;
+              line-height: 17px;
+              text-align: center;
+              color: $white-color;
+              vertical-align: middle;
+              padding-top: 2px;
+              box-sizing: border-box;
+            }
+            label{
+              position: relative;
+              z-index: 2;
+              padding: 0 0 0 28px;
+              font-size: 14px;
+              font-weight: 400;
+              vertical-align: middle;
+              cursor: pointer;
+            }
+          }
+          .user-password-show{
+            display: none;
+          }
+          .sub-title{
+            font-size: 16px;
+            font-weight: bold;
+          }
+          &__user-select{
+            display: flex;
+            span{
+              font-size: 14px;
+              margin: 0 2px;
+            }
+            &__birthday-select{
+              &__box{
+                @include select-box;
+                width: calc(34% - 17px);
+                &:first-of-type{
+                  width: 76px;
+                }
+                .fa-chevron-down{
+                  @include select-icon;
+                }
+              }
+            }
+            &__long-box{
+              width: 100%;
+              @include select-box;
+              .fa-chevron-down{
+                @include select-icon;
+              }
+            }
+            &__middle-box{
+              width: 100%;
+                &__year, &__month{
+                width: 70%;
+                @include select-box;
+                .fa-chevron-down{
+                  @include select-icon;
+                }
+              }
+            }
+          }
+        }
+        .user-select-default{
+          background: $white-color;
+          padding: 0 10px;
+          width: 100%;
+          height: 48px;
+          border-radius: 4px;
+          border: 1px solid $boder-normal;
+          font-size: 16px;
+          line-height: 1.5;
+          cursor: pointer;
+          min-height: 1.5em;
+          box-sizing: border-box;
+          -webkit-appearance: none;
+          // &.select-long{
+          //   position: relative;
+          //   .fa-chevron-down{
+          //     position: absolute;
+          //     right: 12px;
+          //     top: 35%;
+          //     color: #888;
+          //   }
+          // }
+        }
+        .user-form-info{
+          margin: 8px 0 0;
+          color: #888;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .image-box{
+    width: 100%;
+    height: 260px;
+    background-image: url(https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1a32f2aebd89cf6f43bc2e4b39.jpg);
+    background-size: 100% 260px;
+    background-repeat:  no-repeat; 
+    position: relative;
+    .left-menus{
+      text-align: center;
+      width: 400px;
+
+      &__img-sub-title{
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        padding-top: 50px;
+      }
+      &__img-title{
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+      &__img-icons{
+        display: flex;
+        line-height: 74px;
+        margin-left: 25px;
+        a {
+          height: 50px;
+        }
+        .appstore-icon, .gogleplay-icon{
+          margin-left: 10px;
+        }
+
+      }
+    }
+    .phone-box{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 260px;
+      width: 300px;
+      .phone-img{
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.new_user {
+  padding: 20px 0 70px 0;
+}
+
+.user-text{
+  margin: 8px 0 0;
+  font-size: 14px;
+  position: relative;
+  a{
+    color: #0099e8;
+    .fa-angle-right{
+    // font-weight: 600;
+    font-size: 24px;
+    }
+    &:hover{
+      color: #00b6e8;
+      text-decoration: underline;
+    }
+  }
+}
+
+
+
+.user-text-big{
+  margin: 8px 0 0;
+  font-size: 16px;
+}
+
+.user-text-right{
+  text-align: right;
+  line-height: inherit;
+}
+.user-text-center{
+  text-align: center;
+}
+.user-btn-red{
+  margin: 24px 0 0;
+  background: $attention-color;
+  border: 1px solid $attention-color;
+  color: $white-color;
+}
+.user-btn-default{
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  // border: 1px solid transparent;
+  // -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.market-contents-first{
+  .market-main-first{                       //メインコンテンツ部分
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 180px 0;
+    background: #f5f5f5;
+    border-width: 0;
+    .market-container-first{                   //中の白い部分
+      display: block;
+      width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      h2 {                                //新規会員登録の部分  http://localhost:3000/users/password/new
+        padding: 32px;
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: center;
+        font-weight: bold; 
+      }
+    }
+  }
+
+  .market-button-first{                     //ボタンコンテンツのエリア
+    padding: 24px 16px 40px;
+    height: 247px;
+    border-top: 1px solid #f5f5f5;
+    margin: 0;
+    &__content{                       //ボタンアイコンたち
+      max-width: 343px;
+      margin: 0 auto;
+      width: 343px;
+      height: 182px;
+      .button-email{                      //emailボタン全般
+        color: #fff;
+        background-color: #ea352d;
+        border-radius: 4px;
+        display: block;
+        width: 100%;
+        line-height: 50px;
+        text-decoration: none;
+        text-align: center;
+        position: relative;
+        font-size: 14px;
+        
+        .fa-envelope{
+          position: absolute;
+          font-size: 16px;
+          top: 50%;
+          left: 15px;
+          transform: translate(0, -50%);
+        }
+      }
+      .button-facebook{
+        margin: 16px 0 0;
+        background: #385185;
+        color: #fff;
+        font-size: 14px;
+        border-radius: 4px;
+        display: block;
+        width: 100%;
+        line-height: 45px;
+        text-decoration: none;
+        text-align: center;
+        position: relative;
+        .fa-facebook-square{
+          position: absolute;
+          font-size: 26px;
+          top: 50%;
+          left: 15px;
+          transform: translate(0, -50%);
+        }
+      }
+      .button-google{
+        margin: 16px 0 0;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        border-radius: 4px;
+        display: block;
+        width: 100%;
+        line-height: 45px;
+        text-decoration: none;
+        text-align: center; 
+        position: relative;
+        .fa-google{
+          position: absolute;
+          font-size: 20px;
+          top: 50%;
+          left: 15px;
+          transform: translate(0, -50%);
+        }
+      }
+    }
+  }
+}
+
+

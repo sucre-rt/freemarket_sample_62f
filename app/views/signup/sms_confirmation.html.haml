@@ -1,0 +1,20 @@
+#wrapper 
+  = render partial: 'shared/header2'
+  .user-main
+    .user-main__content
+      %h2.user-title 電話番号の確認
+      %form.user-form
+      = form_for @user, url: sms_signup_index_path, method: :get do |f|
+        .user-form__content
+          .user-form__content__group
+            %label 電話番号の確認
+            =f.text_field :telphone, placeholder: "携帯電話の番号を入力", class: "user-form__content__group__default"
+          %p.user-text 本人確認のため、電話番号のSMS(ショートサービス)を利用して認証を行います。
+          =f.submit "SMSを送信する", class: "user-btn-default user-btn-red"
+          %p.user-text ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+          .user-form__content__group.user-text-right
+            %p.user-text
+              = link_to '#', method: :get do
+                電話番号の確認が必要な理由
+                %i.fa.fa-angle-right
+  = render partial: 'shared/footer2'

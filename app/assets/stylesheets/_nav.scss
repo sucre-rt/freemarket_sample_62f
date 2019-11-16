@@ -1,5 +1,7 @@
 @import "./variable";
 @import "./mixin";
+@import "./color";
+
 
 .nav {
   @include block;
