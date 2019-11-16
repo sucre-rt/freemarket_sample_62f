@@ -1,3 +1,7 @@
+@import "./variable";
+@import "./mixin";
+@import "./color";
+
 .user-footer {
   background-color: $signup-color;
   width: 100vw;
