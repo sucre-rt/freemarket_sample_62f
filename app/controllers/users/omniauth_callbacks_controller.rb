@@ -27,13 +27,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       # SNS情報が登録されていなければサインアップさせる
       @sns = info[:sns]
-
-      # SNSでログインした際に、パスワードを自動で発行させる
-      # number = [*0..9].sample(2)*''   # 数字を2つランダムで取り出す
-      # alpha = [*'A'..'Z', *'a'..'z'].sample(5)*''   #アルファベットをランダムで5つ取り出す
-      # password = (number + alpha).split("").shuffle.join    # 取り出した数字と英字をシャッフル
-      # @user[:encrypted_password] = password
-
       @status1 ="active"
       render "/signup/registration"
     end
