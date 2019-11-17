@@ -17,15 +17,31 @@ class SignupController < ApplicationController
     session[:uid] = user_params[:uid]
     session[:provider] = user_params[:provider]
 
-    session[:nickname] = user_params[:nickname]
-    session[:email] = user_params[:email]
-    session[:password] = user_params[:password]
-    session[:family_name] = user_params[:family_name]
-    session[:first_name] = user_params[:first_name]
-    session[:family_name_cana] = user_params[:family_name_cana]
-    session[:first_name_cana] = user_params[:first_name_cana]
-    session[:birthday] = user_params[:birthday]
-    @user = User.new
+    if session[:uid].blank?
+      session[:nickname] = user_params[:nickname]
+      session[:email] = user_params[:email]
+      session[:password] = user_params[:password]
+      session[:family_name] = user_params[:family_name]
+      session[:first_name] = user_params[:first_name]
+      session[:family_name_cana] = user_params[:family_name_cana]
+      session[:first_name_cana] = user_params[:first_name_cana]
+      session[:birthday] = user_params[:birthday]
+      @user = User.new
+    else
+      # SNSでログインした際に、パスワードを自動で発行させる
+      number = [*0..9].sample(2)*''   # 数字を2つランダムで取り出す
+      alpha = [*'A'..'Z', *'a'..'z'].sample(5)*''   #アルファベットをランダムで5つ取り出す
+      password = (number + alpha).split("").shuffle.join    # 取り出した数字と英字をシャッフル
+      session[:nickname] = user_params[:nickname]
+      session[:email] = user_params[:email]
+      session[:password] = password
+      session[:family_name] = user_params[:family_name]
+      session[:first_name] = user_params[:first_name]
+      session[:family_name_cana] = user_params[:family_name_cana]
+      session[:first_name_cana] = user_params[:first_name_cana]
+      session[:birthday] = user_params[:birthday]
+      @user = User.new
+    end
   end
 
   def sms
@@ -74,7 +90,7 @@ class SignupController < ApplicationController
       birthday:         session[:birthday],
       telphone:         session[:telphone]
     )
-    binding.pry
+
     if @user.save && session[:uid].blank?
       # ログインするための情報を保管
       session[:id] = @user.id

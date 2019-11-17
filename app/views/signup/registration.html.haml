@@ -13,18 +13,18 @@
           .user-form__content__group
             %label ニックネーム
             %span.user-form__content__group--attention 必須
-            =f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "user-form__content__group__default"
+            =f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例)フリマケ太郎", class: "user-form__content__group__default"
 
           .user-form__content__group
             %label メールアドレス
             %span.user-form__content__group--attention 必須
-            =f.email_field :email, autocomplete: "email", class: "user-form__content__group__default"
+            =f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "user-form__content__group__default"
           
           - unless @sns.present?
             .user-form__content__group.user-form__content__password
               %label パスワード
               %span.user-form__content__group--attention 必須
-              =f.password_field :password, autocomplete: "password", class: "user-form__content__group__default"
+              =f.password_field :password, autocomplete: "password", placeholder: "7文字以上", class: "user-form__content__group__default"
               .user-form__content__password__check
                 .checkbox-default
                   %input
@@ -42,15 +42,15 @@
             %label お名前(全角) 
             %span.user-form__content__group--attention 必須
             .form-half
-              =f.text_field :family_name, autocomplete: "family_name", placeholder: "例) 山田", class: "user-form__content__group__default"
-              =f.text_field :first_name, autocomplete: "first_name", placeholder: "例) 彩", class: "user-form__content__group__default"
+              =f.text_field :family_name, autocomplete: "family_name", placeholder: "例) 山田", class: "user-form__content__group__default half"
+              =f.text_field :first_name, autocomplete: "first_name", placeholder: "例) 彩", class: "user-form__content__group__default half"
 
           .user-form__content__group
             %label お名前カナ(全角)
             %span.user-form__content__group--attention 必須
             .form-half
-              =f.text_field :family_name_cana, autocomplete: "family_name_cana", placeholder: "例) ヤマダ", class: "user-form__content__group__default"
-              =f.text_field :first_name_cana, autocomplete: "first_name_cana", placeholder: "例) アヤ", class: "user-form__content__group__default"
+              =f.text_field :family_name_cana, autocomplete: "family_name_cana", placeholder: "例) ヤマダ", class: "user-form__content__group__default half"
+              =f.text_field :first_name_cana, autocomplete: "first_name_cana", placeholder: "例) アヤ", class: "user-form__content__group__default half"
 
           .user-form__content__group
             %label 生年月日 
