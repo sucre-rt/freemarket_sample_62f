@@ -5,21 +5,15 @@ class SignupController < ApplicationController
 
   def registration
     @status1 ="active"
-    @status2 =""
-    @status3 =""
-    @status4 =""
-    @status5 =""
 
     @user = User.new
+
   end
 
   def sms_confirmation
     @status1 ="through"
     @status2 ="active"
-    @status3 =""
-    @status4 =""
-    @status5 =""
-
+    binding.pry
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -35,9 +29,6 @@ class SignupController < ApplicationController
   def sms
     @status1 ="through"
     @status2 ="active"
-    @status3 =""
-    @status4 =""
-    @status5 =""
 
     session[:telphone] = user_params[:telphone]
     @user = User.new
@@ -47,8 +38,6 @@ class SignupController < ApplicationController
     @status1 ="through"
     @status2 ="through"
     @status3 ="active"
-    @status4 =""
-    @status5 =""
 
     @user = User.new
   end
@@ -58,7 +47,6 @@ class SignupController < ApplicationController
     @status2 ="through"
     @status3 ="through"
     @status4 ="active"
-    @status5 =""
 
     @user = User.new
   end
@@ -105,6 +93,13 @@ class SignupController < ApplicationController
       :first_name_cana,
       :birthday,
       :telphone,
+    )
+  end
+
+  def sns_credential_params
+    params.require(:sns_credential).permit(
+      :uid,
+      :provider,
     )
   end
 
