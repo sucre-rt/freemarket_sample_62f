@@ -27,6 +27,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       # SNS情報が登録されていなければサインアップさせる
       @sns = info[:sns]
+      binding.pry
       @status1 ="active"
       render "/signup/registration"
     end

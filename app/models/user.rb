@@ -9,8 +9,6 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   VALID_NAME_CANA = /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/
 
-
-
   validates :nickname, presence: true
   validates :email, presence: true
   validates :password, format: { with: VALID_PASSWORD_REGEX }
@@ -30,6 +28,8 @@ class User < ApplicationRecord
   has_many :sns_credentials, dependent: :destroy
   has_one :adress, dependent: :destroy
   has_one :credit, dependent: :destroy
+
+  accepts_nested_attributes_for :sns_credentials
 
   # Oauth認証
 

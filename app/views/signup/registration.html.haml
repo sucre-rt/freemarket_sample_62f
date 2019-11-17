@@ -5,6 +5,10 @@
       %h2.user-title 会員情報入力
       %form.user-form
       = form_for @user, url: sms_confirmation_signup_index_path, method: :get do |f|
+        - if @sns.present?
+          = f.fields_for @sns do |i|
+            =i.text_field :uid, type: "hidden", value: @sns[:uid]
+            =i.text_field :provider, type: "hidden", value: @sns[:provider]
         .user-form__content
           .user-form__content__group
             %label ニックネーム
