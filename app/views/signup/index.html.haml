@@ -15,10 +15,10 @@
             %a.button-email{href: "/signup/registration"}
               %i.fa.fa-envelope
               メールアドレスで登録する
-            %button#facebook-login.button-facebook{href: "#"}
+            %button#facebook-login.button-facebook
               %i.fa.fa-facebook-square
-              Facebookで登録する
-            %button#google-login.button-google{href: "#"}
+              = link_to "Facebookで登録する", user_facebook_omniauth_authorize_path, method: :post
+            %button#google-login.button-google
               %i.fa.fa-google
-              Googleで登録する
+              = link_to "Googleで登録する", user_google_oauth2_omniauth_authorize_path, method: :post
   = render partial: 'shared/footer3'

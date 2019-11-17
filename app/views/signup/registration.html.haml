@@ -15,19 +15,19 @@
             %label メールアドレス
             %span.user-form__content__group--attention 必須
             =f.email_field :email, autocomplete: "email", class: "user-form__content__group__default"
-
-          .user-form__content__group.user-form__content__password
-            %label パスワード
-            %span.user-form__content__group--attention 必須
-            =f.password_field :password, autocomplete: "password", class: "user-form__content__group__default"
-            .user-form__content__password__check
-              .checkbox-default
-                %input
-                  %i.fa.fa-check
-                  %label パスワードを表示する
-                .user-form__content__password__check__show
-                  %span.user-password-show
-
+          
+          - unless @sns.present?
+            .user-form__content__group.user-form__content__password
+              %label パスワード
+              %span.user-form__content__group--attention 必須
+              =f.password_field :password, autocomplete: "password", class: "user-form__content__group__default"
+              .user-form__content__password__check
+                .checkbox-default
+                  %input
+                    %i.fa.fa-check
+                    %label パスワードを表示する
+                  .user-form__content__password__check__show
+                    %span.user-password-show
 
           .user-form__content__group
             %h3.sub-title 本人確認
@@ -78,20 +78,19 @@
               =f.text_field :birthday, autocomplete: "birthday", type: "hidden", value: "19900101"
               %p.user-form-info
                 ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-            .user-form__content
-              .user-form__content__group
-                %br
-                  reCAPTCHA用スペース
-                  %br
-                  .user-form__content__group
-                    %p.user-text.user-text-center
-                      「次へ進む」のボタンを押すことにより、
-                      =link_to "利用規約", '#'
-                      に同意したものとみなします
-                    = f.submit '次へ進む', class: "user-btn-default user-btn-red"
-                  .user-form__content__group.user-text-right
-                    %p.user-text
-                      = link_to '#' do
-                        本人情報の登録について
-                        %i.fa.fa-angle-right
+          .user-form__content__group
+            %br
+            reCAPTCHA用スペース
+            %br
+            .user-form__content__group
+              %p.user-text.user-text-center
+                「次へ進む」のボタンを押すことにより、
+                =link_to "利用規約", '#'
+                に同意したものとみなします
+              = f.submit '次へ進む', class: "user-btn-default user-btn-red"
+            .user-form__content__group.user-text-right
+              %p.user-text
+                = link_to '#' do
+                  本人情報の登録について
+                  %i.fa.fa-angle-right
   = render partial: 'shared/footer2'
