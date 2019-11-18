@@ -83,3 +83,8 @@ gem 'font-awesome-rails'
 gem 'devise'
 gem 'haml-rails'
 gem 'pry-rails'
+
+#画像関連Gem
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
