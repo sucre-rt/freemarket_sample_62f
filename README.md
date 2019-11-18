@@ -24,7 +24,7 @@
 - has_many :evaluations
 - has_many :sns_credentials, dependent: :destroy
 - has_one :adress, dependent: :destroy
-- has_one :credit, dependent: :destroy
+- has_one :card, dependent: :destroy
 
 ## addressesテーブル
 |Column|Type|Options|
@@ -43,18 +43,6 @@
 ### Association
 - belongs_to :user
 
-## creditsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|number|string|null: false|
-|deadline_month|integer|null: false|
-|deadline_year|integer|null: false|
-|security_code|integer|null: false|
-|user|references|null: false, foreign_key|
-### Association
-- belongs_to :user
-- has_many :cards
-
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -63,7 +51,6 @@
 |customer_id|string|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :card
 
 ## sns_credentialsテーブル
 |Column|Type|Options|
