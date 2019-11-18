@@ -9,9 +9,13 @@ Rails.application.routes.draw do
     post 'login', to: 'devise/sessions#create', as: :user_session
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
+  resources :users do
+    resources :mypage, only: [:index]
+  end
+
   
   root 'main#index'
-  resources :mypage, only: [:index]
+  
   resources :login, only: [:index]
   
   resources :signup do
