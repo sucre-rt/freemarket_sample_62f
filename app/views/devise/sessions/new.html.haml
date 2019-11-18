@@ -1,0 +1,42 @@
+#wrapper
+  = render partial: 'shared/header3'
+.market-contents-second
+  %header.market-header-second
+    / ヘッダー
+  %main.market-main-second
+    / ヘッダーとフッダーを除いた部分全般
+    .market-container-second
+      / グレーを除いた白部分のみ
+      .market-container-second__no-login-account
+        / 新規会員登録ボタンエリア
+        %p アカウントをお持ちでない方はこちら
+        = link_to "新規会員登録", signup_index_path, class: "market-container-second__new-login"
+      - if Rails.env.development?    # 開発環境のみOauth認証の実装
+        .login-contents-second
+          %button#facebook-login.login-contents-second__button-facebook
+            %i.icon-facebook
+            = link_to "Facebookでログイン", user_facebook_omniauth_authorize_path, method: :post
+          %button#google-login.login-contents-second__button-google
+            %i.icon-google
+            = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post
+      - if Rails.env.production?    # 本番環境ではハリボテ
+        .login-contents-second
+          %button#facebook-login.login-contents-second__button-facebook
+            %i.icon-facebook
+            = link_to "Facebookでログイン", "#"
+          %button#google-login.login-contents-second__button-google
+            %i.icon-google
+            = link_to "Googleでログイン", "#"
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        / メアド、パスワード、ロボ確認、ログインの部分全般
+        .login-form-area-second
+          .login-form-area-second__login-groups
+            / メアド登録フォーム
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "login-form-area-second__login-text-email", placeholder: "メールアドレス"
+          .login-form-area-second__login-groups
+            / パスワード登録フォーム
+            = f.password_field :password, autocomplete: "current-password", class: "login-form-area-second__login-text-password", placeholder: "パスワード"
+          .login-form-area-second__captha 仮ロボ認証
+          = f.submit "ログイン", class: "login-form-area-second__login-submit"
+          = link_to "パスワードをお忘れの方", new_user_password_path, class: "login-form-area-second__password"
+  = render partial: 'shared/footer3'
