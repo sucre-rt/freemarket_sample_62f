@@ -14,4 +14,7 @@ class Product < ApplicationRecord
   has_many :messages
   has_many :images, dependent: :destroy
   belongs_to :users
+  belongs_to :category
+  belongs_to :delivery
+  belongs_to :brand
 end
