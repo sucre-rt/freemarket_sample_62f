@@ -10,7 +10,7 @@
       .market-container-second__no-login-account
         / 新規会員登録ボタンエリア
         %p アカウントをお持ちでない方はこちら
-        %a.market-container-second__new-login{href: "/signup"} 新規会員登録
+        = link_to "新規会員登録", signup_index_path, class: "market-container-second__new-login"
       - if Rails.env.development?    # 開発環境のみOauth認証の実装
         .login-contents-second
           %button#facebook-login.login-contents-second__button-facebook
