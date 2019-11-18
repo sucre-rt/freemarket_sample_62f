@@ -28,6 +28,5 @@ config/master.key
 
 config/credentials.yml.enc
 
-.env
-
 config/secrets.yml
+.env
