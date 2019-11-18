@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users,
+  devise_for :users, 
   controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
-  }  #callback関数を呼び出せるようにする
+  },  #callback関数を呼び出せるようにする
+  skip: [:sessions]
+  as :user do
+    get 'login', to: 'devise/sessions#new', as: :new_user_session
+    post 'login', to: 'devise/sessions#create', as: :user_session
+    delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
+  end
   
   root 'main#index'
   resources :mypage, only: [:index]
