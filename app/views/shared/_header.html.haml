@@ -20,10 +20,25 @@
               %i.fa.fa-tag>
               ブランドから探す
       .header__lower-contents__right-contents
-        %ul.header__lower-contents__right-contents__menu
-          %li.sign_up
-            = link_to '/signup/' do
-              新規会員登録
-          %li.login
-            = link_to '/login/' do
-              ログイン
+        - if user_signed_in?
+          %ul.header__lower-contents__right-contents__after-login-menu
+            %li.after-login
+              = link_to '#' do
+                いいね！一覧
+            %li.after-login
+              = link_to '#' do
+                お知らせ
+            %li.after-login
+              = link_to '#' do
+                やることリスト
+            %li.after-login
+              = link_to "/users/#{current_user.id}/mypage" do
+                マイページ
+        - else
+          %ul.header__lower-contents__right-contents__menu
+            %li.sign_up
+              = link_to '/signup/' do
+                新規会員登録
+            %li.login
+              = link_to '/login/' do
+                ログイン
