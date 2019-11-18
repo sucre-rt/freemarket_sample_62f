@@ -15,10 +15,18 @@
             %a.button-email{href: "/signup/registration"}
               %i.fa.fa-envelope
               メールアドレスで登録する
-            %button#facebook-login.button-facebook{href: "#"}
-              %i.fa.fa-facebook-square
-              Facebookで登録する
-            %button#google-login.button-google{href: "#"}
-              %i.fa.fa-google
-              Googleで登録する
+            - if Rails.env.development?    # 開発環境のみOauth認証の実装
+              %button#facebook-login.button-facebook
+                %i.fa.fa-facebook-square
+                = link_to "Facebookで登録する", user_facebook_omniauth_authorize_path, method: :post
+              %button#google-login.button-google
+                %i.fa.fa-google
+                = link_to "Googleで登録する", user_google_oauth2_omniauth_authorize_path, method: :post
+            - if Rails.env.production?    # 本番環境ではハリボテ
+              %button#facebook-login.button-facebook
+                %i.fa.fa-facebook-square
+                = link_to "Facebookで登録する", "#"
+              %button#google-login.button-google
+                %i.fa.fa-google
+                = link_to "Googleで登録する", "#"
   = render partial: 'shared/footer3'

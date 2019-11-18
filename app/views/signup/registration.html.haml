@@ -5,29 +5,33 @@
       %h2.user-title 会員情報入力
       %form.user-form
       = form_for @user, url: sms_confirmation_signup_index_path, method: :get do |f|
+        - if @sns.present?
+          = f.fields_for @sns do |i|
+            =i.text_field :uid, type: "hidden", value: @sns[:uid]
+            =i.text_field :provider, type: "hidden", value: @sns[:provider]
         .user-form__content
           .user-form__content__group
             %label ニックネーム
             %span.user-form__content__group--attention 必須
-            =f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "user-form__content__group__default"
+            =f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例)フリマケ太郎", class: "user-form__content__group__default"
 
           .user-form__content__group
             %label メールアドレス
             %span.user-form__content__group--attention 必須
-            =f.email_field :email, autocomplete: "email", class: "user-form__content__group__default"
-
-          .user-form__content__group.user-form__content__password
-            %label パスワード
-            %span.user-form__content__group--attention 必須
-            =f.password_field :password, autocomplete: "password", class: "user-form__content__group__default"
-            .user-form__content__password__check
-              .checkbox-default
-                %input
-                  %i.fa.fa-check
-                  %label パスワードを表示する
-                .user-form__content__password__check__show
-                  %span.user-password-show
-
+            =f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "user-form__content__group__default"
+          
+          - unless @sns.present?
+            .user-form__content__group.user-form__content__password
+              %label パスワード
+              %span.user-form__content__group--attention 必須
+              =f.password_field :password, autocomplete: "password", placeholder: "7文字以上", class: "user-form__content__group__default"
+              .user-form__content__password__check
+                .checkbox-default
+                  %input
+                    %i.fa.fa-check
+                    %label パスワードを表示する
+                  .user-form__content__password__check__show
+                    %span.user-password-show
 
           .user-form__content__group
             %h3.sub-title 本人確認
@@ -38,15 +42,15 @@
             %label お名前(全角) 
             %span.user-form__content__group--attention 必須
             .form-half
-              =f.text_field :family_name, autocomplete: "family_name", placeholder: "例) 山田", class: "user-form__content__group__default"
-              =f.text_field :first_name, autocomplete: "first_name", placeholder: "例) 彩", class: "user-form__content__group__default"
+              =f.text_field :family_name, autocomplete: "family_name", placeholder: "例) 山田", class: "user-form__content__group__default half"
+              =f.text_field :first_name, autocomplete: "first_name", placeholder: "例) 彩", class: "user-form__content__group__default half"
 
           .user-form__content__group
             %label お名前カナ(全角)
             %span.user-form__content__group--attention 必須
             .form-half
-              =f.text_field :family_name_cana, autocomplete: "family_name_cana", placeholder: "例) ヤマダ", class: "user-form__content__group__default"
-              =f.text_field :first_name_cana, autocomplete: "first_name_cana", placeholder: "例) アヤ", class: "user-form__content__group__default"
+              =f.text_field :family_name_cana, autocomplete: "family_name_cana", placeholder: "例) ヤマダ", class: "user-form__content__group__default half"
+              =f.text_field :first_name_cana, autocomplete: "first_name_cana", placeholder: "例) アヤ", class: "user-form__content__group__default half"
 
           .user-form__content__group
             %label 生年月日 
@@ -78,20 +82,19 @@
               =f.text_field :birthday, autocomplete: "birthday", type: "hidden", value: "19900101"
               %p.user-form-info
                 ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-            .user-form__content
-              .user-form__content__group
-                %br
-                  reCAPTCHA用スペース
-                  %br
-                  .user-form__content__group
-                    %p.user-text.user-text-center
-                      「次へ進む」のボタンを押すことにより、
-                      =link_to "利用規約", '#'
-                      に同意したものとみなします
-                    = f.submit '次へ進む', class: "user-btn-default user-btn-red"
-                  .user-form__content__group.user-text-right
-                    %p.user-text
-                      = link_to '#' do
-                        本人情報の登録について
-                        %i.fa.fa-angle-right
+          .user-form__content__group
+            %br
+            reCAPTCHA用スペース
+            %br
+            .user-form__content__group
+              %p.user-text.user-text-center
+                「次へ進む」のボタンを押すことにより、
+                =link_to "利用規約", '#'
+                に同意したものとみなします
+              = f.submit '次へ進む', class: "user-btn-default user-btn-red"
+            .user-form__content__group.user-text-right
+              %p.user-text
+                = link_to '#' do
+                  本人情報の登録について
+                  %i.fa.fa-angle-right
   = render partial: 'shared/footer2'
