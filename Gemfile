@@ -53,11 +53,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
 
-  #Oauth認証
-  gem 'omniauth-rails_csrf_protection'
-  gem 'omniauth-facebook'
-  gem 'omniauth-google-oauth2'  
-  gem 'dotenv-rails'
+
 end
 
 group :development do
@@ -89,4 +85,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 
+#Oauth認証
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'  
+gem 'dotenv-rails'
 gem 'omniauth'
