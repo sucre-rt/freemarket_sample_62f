@@ -19,15 +19,15 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :telphone, presence: true
 
-  has_many :sns_credentials
+  has_many :sns_credentials, dependent: :destroy
   has_many :payments
   has_many :products
   has_many :likes
   has_many :messages
   has_many :evaluations
-  has_many :sns_credentials
-  has_one :adress
-  has_one :credit
+  has_many :sns_credentials, dependent: :destroy
+  has_one :adress, dependent: :destroy
+  has_one :credit, dependent: :destroy
 
   accepts_nested_attributes_for :sns_credentials
 
