@@ -16,7 +16,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @omniauth = request.env['omniauth.auth']
     # request.env['omniauth.auth']に、provider・uid・info{"email","name","image"}・credentialsなどの全ての情報が入っている
-
+    
     info = User.find_oauth(@omniauth)  # userモデルのfind_oauthメソッドの呼び出し
     @user = info[:user]
 
