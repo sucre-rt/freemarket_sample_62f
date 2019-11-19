@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   validates :area, presence: true
   validates :status, presence: true
   validates :sending_days, presence: true
-  validates :user, presence: true
+  validates :user_id, presence: true
 
   has_one :evaluation
   has_one :payment
