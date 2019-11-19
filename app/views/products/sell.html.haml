@@ -1,6 +1,24 @@
 #wrapper
  = render partial: 'shared/header3' 
  //ここからメインコンテンツ
- 
+ %main.single-main
+  %section.l-single-container.buy-item-container
+   .sell-container
+    %h2.l-single-head
+     商品の情報を入力
+    %form.sell-form
+     .sell-upload-box
+      %h3.sell-upload-head
+       出品画像
+       %span.form-require 必須
+      %p 最大10枚までアップロードできます
+      .sell-dropbox-container.clearfix.state-image-number-10
+       .sell-upload-drop-box.have-item-0
+        %input.sell-upload-drop-file{type: "file"} 
+        %pre.visible-pc ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+
+      
+
+
  //ここまでメインコンテンツ
  = render partial: 'shared/footer2'

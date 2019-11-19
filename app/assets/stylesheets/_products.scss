@@ -4,3 +4,135 @@
 @import "./footer2";
 @import './nav';
 @import "./color";
+
+
+html {
+  height: 100%;
+  background-color: $light-gray;
+  font-size: 62.5%;
+  color: $black;
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-weight: 500;
+}
+
+body {
+  line-height: 1;
+  font-size: 14px;
+  height: 100%;
+  color: #333;
+}
+
+h2,h3{
+  font-weight: bold;
+}
+
+p{
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;}
+
+* {
+  
+  box-sizing: border-box;
+}
+
+*, ::before, ::after {
+  border-style: solid;
+  border-width: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+.form-require, .form-arbitrary, .message-is-seller, .news-private{
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+
+.single-main{
+  @include block;
+}
+
+.l-single-container{
+  width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  h2.l-single-head{
+    padding: 32px 16px;
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+  }
+}
+
+.sell-form{
+  border-top: 1px solid #eee;
+  .sell-upload-box{
+    width: 620px;
+    padding: 40px;
+    .sell-upload-head{
+      font-size: 16px;
+      .form-require{
+        background: #ea352d;
+      }
+      &+p{
+        margin: 8px 0 0;
+        line-height: 1.5;
+        color: #333;
+      }
+    }
+  }
+}
+
+.sell-dropbox-container {
+  margin: 16px auto 0;
+  display: block;
+  width: 620px;
+}
+
+.sell-upload-drop-box {
+  position: relative;
+  padding: 40px;
+  min-height: 162px;
+  background: #f5f5f5;
+  border: 1px dashed #ccc;
+  font-size: 0;
+  text-align: center;
+  transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
+  cursor: pointer;
+  .sell-upload-drop-file{
+    display: none;
+  }
+}
+
+.sell-upload-drop-box pre {
+  position: absolute;
+  top: 40%;
+  left: 16px;
+  right: 16px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+}
