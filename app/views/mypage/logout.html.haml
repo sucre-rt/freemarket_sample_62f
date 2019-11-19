@@ -1,0 +1,10 @@
+#wrapper
+  = render partial: 'shared/header'
+  = render partial: 'shared/nav'
+  %main.main
+    = render partial: 'leftcontent'
+    .main__right-content
+      .main__right-content__mypage-button
+        =link_to "ログアウト", destroy_user_session_path, method: :delete 
+
+  = render partial: 'shared/footer'
