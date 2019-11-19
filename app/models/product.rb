@@ -9,10 +9,10 @@ class Product < ApplicationRecord
 
   has_one :evaluation
   has_one :payment
-  has_many :likes, dependetnt: :destroy
+  has_many :likes
   has_many :transactions
   has_many :messages
-  has_many :images, dependent: :destroy
+  has_many :images
   belongs_to :users
   belongs_to :category
   belongs_to :delivery
