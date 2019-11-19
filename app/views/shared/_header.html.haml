@@ -32,7 +32,7 @@
               = link_to '#' do
                 やることリスト
             %li.after-login
-              = link_to user_mypage_index_path(current_user.id) do
+              = link_to mypage_index_path do
                 マイページ
         - else
           %ul.header__lower-contents__right-contents__menu
