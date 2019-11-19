@@ -43,4 +43,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :products do
+    collection do
+      get 'sell'
+    end
+  end
+
 end
