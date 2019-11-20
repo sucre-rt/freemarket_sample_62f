@@ -13,6 +13,8 @@ Rails.application.config.assets.precompile += %w( _main.css )
 Rails.application.config.assets.precompile += %w( _mypage.css )
 Rails.application.config.assets.precompile += %w( _signup.css )
 Rails.application.config.assets.precompile += %w( _login.css )
+Rails.application.config.assets.precompile += %w( _products.css )
+
 
 
 # Precompile additional assets.
