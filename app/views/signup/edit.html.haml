@@ -1,0 +1,10 @@
+#wrapper
+  = render partial: 'shared/header'
+  = render partial: 'shared/nav'
+  %main.main
+    = render partial: 'mypage/leftcontent'
+    .main__right-content
+      .main__right-content__user-info
+        %h2 本人情報の登録
+
+  = render partial: 'shared/footer'

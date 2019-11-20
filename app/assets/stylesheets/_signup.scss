@@ -2,6 +2,7 @@
 @import "./mixin";
 @import "./header2";
 @import "./footer2";
+@import "./mypage";
 
 * {
   box-sizing: border-box;
@@ -371,6 +372,7 @@
         text-decoration: none;
         text-align: center; 
         position: relative;
+        border: 1px solid #ccc;
         a{
           display: block;
           font-size: 14px;
