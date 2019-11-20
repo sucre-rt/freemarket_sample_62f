@@ -56,6 +56,8 @@ a {
   text-decoration: none;
   color: $black;
 }
+
+
 .form-require, .form-arbitrary, .message-is-seller, .news-private{
   margin: 0 0 0 8px;
   padding: 2px 4px;
@@ -70,6 +72,9 @@ a {
   clear: both;
 }
 
+.form-group:first-child {
+  margin: 0;
+}
 
 .single-main{
   @include block;
@@ -173,6 +178,52 @@ a {
     }
   }
 }
-.form-group2{
+.form-group{
   margin: 40px 0 0;
+}
+
+.sell-content {
+  padding: 40px;
+  border-top: 1px solid #eee;
+  .sell-sub-head {
+    color: #888;
+    font-size: 14px;
+    float: left;
+  }
+  .sell-form-box {
+    float: right;
+    width: 400px;
+    margin: 0;
+  }
+}
+.form-group .select-wrap {
+  margin: 8px 0 0;
+  select {
+    width: 100%;
+}
+}
+.select-wrap {
+  position: relative;
+  background: #fff;
+  .icon-arrow-bottom {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    z-index: 2;
+    color: #888;
+    font-size: 8px;
+    transform: translate(0, -50%);
+  }
+}
+.select-default {
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
 }

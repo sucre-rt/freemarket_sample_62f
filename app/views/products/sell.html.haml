@@ -16,6 +16,7 @@
        .sell-upload-drop-box.have-item-0
         %input.sell-upload-drop-file{type: "file"} 
         %pre.visible-pc ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+     //ここから"商品詳細"
      .sell-content
       .form-group
        %label
@@ -23,14 +24,75 @@
         %span.form-require 必須
        %div
         %input.input-default{placeholder: "商品名（必須 40文字まで)"}
-      .form-group2
+      .form-group
        %label
-        商品名
+        商品の説明
         %span.form-require 必須
        %div
         %textarea.textarea-default{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
-
-      
+     .sell-content.clearfix
+      %h3.sell-sub-head 商品の詳細
+      .sell-form-box
+       .form-group
+        %label
+         カテゴリー
+         %span.form-require 必須
+        %div
+         .select-wrap
+          %i.icon-arrow-bottom
+          %select.select-default
+           %option{value: ""} ---
+       .form-group
+        %label
+         商品の状態
+         %span.form-require 必須
+        %div
+         .select-wrap
+          %i.icon-arrow-bottom
+          %select.select-default
+           %option{value: ""} ---
+           %option{value: "1"} 新品、未使用
+           %option{value: "2"} 未使用に近い
+           %option{value: "3"} 目立った傷や汚れなし
+           %option{value: "4"} やや傷や汚れあり
+           %option{value: "5"} 傷や汚れあり
+           %option{value: "6"} 全体的に状態が悪い
+     //ここまで"商品詳細"
+     //ここから"配送について"
+     .sell-content.clearfix
+      %h3.sell-sub-head 商品の詳細
+      .sell-form-box
+       .form-group
+        %label
+         配送料の負担
+         %span.form-require 必須
+        %div
+         .select-wrap
+          %i.icon-arrow-bottom
+          %select.select-default
+           %option{value: ""} ---
+       .form-group
+        %label
+         発送元の地域
+         %span.form-require 必須
+        %div
+         .select-wrap
+          %i.icon-arrow-bottom
+          %select.select-default
+           %option{value: ""} ---
+        .form-group
+        %label
+         発送までの日数
+         %span.form-require 必須
+        %div
+         .select-wrap
+          %i.icon-arrow-bottom
+          %select.select-default
+           %option{value: ""} ---
+     //ここまで配送について
+     //ここから販売価格
+     .sell-content.clearfix
+     //"ここまで販売価格"
 
 
  //ここまでメインコンテンツ
