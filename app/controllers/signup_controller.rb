@@ -109,6 +109,13 @@ class SignupController < ApplicationController
     end
   end
 
+    # ユーザー情報確認ページ
+    def edit
+    end
+  
+    # ユーザープロフィールページ
+    def profile
+    end
 
   private
  # 許可するキーを設定します
@@ -141,14 +148,6 @@ class SignupController < ApplicationController
         provider: params[:user][:sns_credential][:provider]
       )
     end
-  end
-
-  # ユーザー情報確認ページ
-  def edit
-  end
-
-  # ユーザープロフィールページ
-  def profile
   end
 
 end
