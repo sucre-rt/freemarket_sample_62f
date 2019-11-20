@@ -6,7 +6,7 @@
     .main__right-content
       .main__right-content__user-info
         %h2 プロフィール
-        = form_for @user, url: signup_path(@id), method: :PATCH, html: {class: "profile-form"} do |f|
+        = form_for current_user, url: signup_path(current_user.id), method: :PATCH, html: {class: "profile-form"} do |f|
           .profile-form__name-block
             .profile-form__name-block__box
               = image_tag "https://static.mercdn.net/images/member_photo_noimage.png"

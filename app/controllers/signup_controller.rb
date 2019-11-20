@@ -115,13 +115,10 @@ class SignupController < ApplicationController
   
     # ユーザープロフィールページ
     def profile
-      @id = current_user.id
-      @user = User.find_by(id: @id)
     end
 
     def update
-      @user = User.find_by(id: current_user.id)
-      if @user.update(update_params)
+      if current_user.update(update_params)
         flash[:notice] = "変更しました。"
         redirect_to profile_signup_path
       else 
