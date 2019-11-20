@@ -36,4 +36,10 @@ Rails.application.routes.draw do
     get 'mypage/identification', to: 'signup#edit', as: :identification_signup
   end
 
+  resources :products do
+    collection do
+      get 'sell'
+    end
+  end
+
 end

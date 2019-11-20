@@ -105,9 +105,10 @@ class SignupController < ApplicationController
       redirect_to done_signup_index_path
     else
       @status1 = "active"
-      render '/signup/registration'
+      redirect_to controller: :signup, action: :registration
     end
   end
+
 
   private
  # 許可するキーを設定します

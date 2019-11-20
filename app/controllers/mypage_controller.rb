@@ -1,5 +1,4 @@
 class MypageController < ApplicationController
-  
   def index
   end
 
