@@ -1,4 +1,6 @@
 class SignupController < ApplicationController
+
+  before_action :set_data, only: [:profile, :update]
   
   def index
   end
@@ -109,12 +111,18 @@ class SignupController < ApplicationController
     end
   end
 
-    # ユーザー情報確認ページ
+    # ユーザー情報確認ページ addressコントローラマージされたらそっちに移す
     def edit
     end
   
     # ユーザープロフィールページ
     def profile
+    end
+
+    def update
+      @user.update(update_params)
+      flash[:notice] = "変更しました。"
+      redirect_to profile_signup_path
     end
 
   private
@@ -148,6 +156,18 @@ class SignupController < ApplicationController
         provider: params[:user][:sns_credential][:provider]
       )
     end
+  end
+
+  def update_params
+    params.require(:user).permit(
+      :nickname,
+      :profile
+    )
+  end
+
+  def set_data
+    @id = current_user.id
+    @user = User.find_by(id: @id)
   end
 
 end

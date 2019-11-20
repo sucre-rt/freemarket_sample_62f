@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   
   root 'main#index'
   
-  resources :signup, only: [:create, :index] do
+  resources :signup, only: [:create, :index, :update] do
     collection do
       get 'registration'
       get 'sms_confirmation'
