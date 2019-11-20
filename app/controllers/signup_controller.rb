@@ -1,7 +1,5 @@
 class SignupController < ApplicationController
 
-  before_action :set_data, only: [:profile, :update]
-  
   def index
   end
 
@@ -117,9 +115,12 @@ class SignupController < ApplicationController
   
     # ユーザープロフィールページ
     def profile
+      @id = current_user.id
+      @user = User.find_by(id: @id)
     end
 
     def update
+      @user = User.find_by(id: current_user.id)
       @user.update(update_params)
       flash[:notice] = "変更しました。"
       redirect_to profile_signup_path
@@ -163,11 +164,6 @@ class SignupController < ApplicationController
       :nickname,
       :profile
     )
-  end
-
-  def set_data
-    @id = current_user.id
-    @user = User.find_by(id: @id)
   end
 
 end
