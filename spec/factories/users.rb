@@ -12,4 +12,16 @@ FactoryBot.define do
     telphone              {"0120333906"}
   end
 
+  factory :another_user, class: User do
+    nickname              {"testくん"}
+    email                 {"test@ggggmail.com"}
+    password              {"test1111"}
+    family_name           {"桜"}
+    first_name            {"咲"}
+    family_name_cana      {"サクラ"}
+    first_name_cana       {"サク"}
+    birthday              {20191112}
+    telphone              {"00000000000"}
+  end
+
 end
