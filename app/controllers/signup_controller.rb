@@ -147,5 +147,8 @@ class SignupController < ApplicationController
   def edit
   end
 
+  # ユーザープロフィールページ
+  def profile
+  end
 
 end

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   end
   as :signup do
     get 'mypage/identification', to: 'signup#edit', as: :identification_signup
+    get 'mypage/profile', to: 'signup#profile', as: :profile_signup
   end
 
   resources :products do
