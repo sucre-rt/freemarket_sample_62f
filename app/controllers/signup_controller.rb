@@ -1,5 +1,5 @@
 class SignupController < ApplicationController
-  
+
   def index
   end
 
@@ -109,6 +109,23 @@ class SignupController < ApplicationController
     end
   end
 
+    # ユーザー情報確認ページ addressコントローラマージされたらそっちに移す
+    def edit
+    end
+  
+    # ユーザープロフィールページ
+    def profile
+    end
+
+    def update
+      if current_user.update(update_params)
+        flash[:notice] = "変更しました。"
+        redirect_to profile_signup_path
+      else 
+        flash[:notice] = "変更に失敗しました。"
+        redirect_to profile_signup_path
+      end
+    end
 
   private
  # 許可するキーを設定します
@@ -143,9 +160,11 @@ class SignupController < ApplicationController
     end
   end
 
-  # ユーザー情報確認ページ
-  def edit
+  def update_params
+    params.require(:user).permit(
+      :nickname,
+      :profile
+    )
   end
-
 
 end

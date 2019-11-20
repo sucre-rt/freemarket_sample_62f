@@ -250,7 +250,6 @@
         border-bottom: 1px solid $boder-mypage;
       }
       .mypage-form {
-        height: 1180px;
         padding: 64px;
         &__content {
           p {
@@ -327,6 +326,47 @@
       }
       .mypage-btn {
         margin-top: 40px;
+      }
+    }
+    .profile-form {
+      &__name-block {
+        padding: 72px 16px 24px;
+        background-image: url(https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?33127105);
+        background-size: cover;
+        text-align: center;
+        &__box {
+          display: inline-block;
+          text-align: center;
+          height: 60px;
+          img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+          }
+          .input-default {
+            vertical-align: top;
+            width: 220px;
+            margin: 6px 0 0 8px;
+            height: 50px;
+            border-radius: 4px;
+            padding: 10px 16px 8px;
+            border: 1px solid $boder-normal;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .profile-block {
+      padding: 40px 16px;
+      .text-area-default {
+        min-height: 216px;
+        width: 100%;
+        display: block;
+        border: 1px solid $boder-normal;
+        padding: 10px;
+        color: $user-default-color;
+        font-size: 16px;
       }
     }
   }

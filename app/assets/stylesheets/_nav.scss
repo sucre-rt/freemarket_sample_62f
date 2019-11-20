@@ -2,44 +2,73 @@
 @import "./mixin";
 @import "./color";
 
+.pankuzu-box {
+  position: relative;
 
-.nav {
-  @include block;
-  @include clearfix;
+  .nav {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    @include block;
+    @include clearfix;
 
-  height: 4.8rem;
+    height: 4.8rem;
 
-  background-color: $white;
-  box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
-  z-index: 3;
+    background-color: $white;
+    box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
+    z-index: 3;
 
-  &__scope {
-    @include responsive-width;
+    &__scope {
+      @include responsive-width;
 
-    li {
-      float: left;
+      li {
+        float: left;
 
-      font-size: $small;
-      line-height: 4.8rem;
-
-      &:after {
-        content: "";
-        display: inline-block;
-        border-top: 0.1rem solid $black;
-        border-right: 0.1rem solid $black;
-        width: 0.6rem;
-        height: 0.6rem;
-        transform: rotate(45deg);
-        margin: 0 1.0rem 0 0.5rem;
-      }
-
-      &:last-child {
-        font-weight: bold;
+        font-size: $small;
+        line-height: 4.8rem;
 
         &:after {
-          display: none;
+          content: "";
+          display: inline-block;
+          border-top: 0.1rem solid $black;
+          border-right: 0.1rem solid $black;
+          width: 0.6rem;
+          height: 0.6rem;
+          transform: rotate(45deg);
+          margin: 0 1.0rem 0 0.5rem;
+        }
+
+        &:last-child {
+          font-weight: bold;
+
+          &:after {
+            display: none;
+          }
         }
       }
+    }
+  }
+
+  .flash-message {
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    height: 70px;
+    width: 100%;
+    background: #dff0d8;
+    color: #468847;
+    font-size: 16px;
+    text-align: center;
+    line-height: 70px;
+    font-weight: bold;
+    .fa-times {
+      position: absolute;
+      right: 8px;
+      top: 35%;
+      width: 44px;
+      height: 44px;
+      font-size: 25px;
+      cursor: pointer;
     }
   }
 }

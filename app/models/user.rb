@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true
-  validates :password, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, format: { with: VALID_PASSWORD_REGEX }, on: :create
   validates :family_name, presence: true
   validates :first_name, presence: true
   validates :family_name_cana, presence: true, format: { with: VALID_NAME_CANA }
