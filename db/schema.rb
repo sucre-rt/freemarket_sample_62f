@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_030051) do
+
+ActiveRecord::Schema.define(version: 2019_11_20_103514) do
 
   create_table "adresses", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
@@ -27,9 +28,11 @@ ActiveRecord::Schema.define(version: 2019_11_19_030051) do
     t.index ["user_id"], name: "index_adresses_on_user_id"
   end
 
+
   create_table "images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
     t.integer "product_id", null: false
+    t.string "images"
     t.index ["product_id"], name: "index_images_on_product_id"
   end
 
