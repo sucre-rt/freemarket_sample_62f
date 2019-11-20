@@ -2,6 +2,7 @@
 @import "./mixin";
 @import "./header2";
 @import "./footer2";
+@import "./mypage";
 
 * {
   box-sizing: border-box;
@@ -138,27 +139,7 @@
           }
         }
         .user-select-default{
-          background: $white-color;
-          padding: 0 10px;
-          width: 100%;
-          height: 48px;
-          border-radius: 4px;
-          border: 1px solid $boder-normal;
-          font-size: 16px;
-          line-height: 1.5;
-          cursor: pointer;
-          min-height: 1.5em;
-          box-sizing: border-box;
-          -webkit-appearance: none;
-          // &.select-long{
-          //   position: relative;
-          //   .fa-chevron-down{
-          //     position: absolute;
-          //     right: 12px;
-          //     top: 35%;
-          //     color: #888;
-          //   }
-          // }
+          @include select-default;
         }
         .user-form-info{
           margin: 8px 0 0;
@@ -371,6 +352,7 @@
         text-decoration: none;
         text-align: center; 
         position: relative;
+        border: 1px solid #ccc;
         a{
           display: block;
           font-size: 14px;
