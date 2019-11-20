@@ -121,9 +121,13 @@ class SignupController < ApplicationController
 
     def update
       @user = User.find_by(id: current_user.id)
-      @user.update(update_params)
-      flash[:notice] = "変更しました。"
-      redirect_to profile_signup_path
+      if @user.update(update_params)
+        flash[:notice] = "変更しました。"
+        redirect_to profile_signup_path
+      else 
+        flash[:notice] = "変更に失敗しました。"
+        redirect_to profile_signup_path
+      end
     end
 
   private
