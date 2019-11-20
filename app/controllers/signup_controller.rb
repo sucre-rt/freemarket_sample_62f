@@ -142,5 +142,9 @@ class SignupController < ApplicationController
     end
   end
 
+  # ユーザー情報確認ページ
+  def edit
+  end
+
 
 end
