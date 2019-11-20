@@ -80,6 +80,7 @@ gem 'font-awesome-rails'
 gem 'devise'
 gem 'haml-rails'
 gem 'pry-rails'
+gem 'jquery-rails'
 
 #画像関連Gem
 gem 'carrierwave'
