@@ -1,0 +1,17 @@
+#wrapper
+  = render partial: 'shared/header'
+  = render partial: 'shared/nav'
+  %main.main
+    = render partial: 'mypage/leftcontent'
+    .main__right-content
+      .main__right-content__user-info
+        %h2 プロフィール
+        = form_for "#", html: {class: "profile-form"} do |f|
+          .profile-form__name-block
+            .profile-form__name-block__box
+              = image_tag "https://static.mercdn.net/images/member_photo_noimage.png"
+              = f.text_field :nickname, placeholder: "例)AYA☆セール中", class: "input-default"
+          .profile-block
+            = f.text_area :profile, placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪", class: "text-area-default"
+            = f.submit "変更する", class: "user-btn-default user-btn-red"
+  = render partial: 'shared/footer'
