@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :mypage, only: [:index]
   as :mypage do
     get 'logout', to: 'mypage#logout', as: :logout_mypage
+    get 'mypage/identification', to: 'mypage#identification', as: :identification_mypage
   end
 
 
