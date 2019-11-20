@@ -240,6 +240,15 @@
         }
       }
     }
+    &__user-info {
+      text-align: center;
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+        padding: 8px 24px;
+        border-bottom: 1px solid $boder-mypage;
+      }
+    }
   }
   @include clearfix;
 }

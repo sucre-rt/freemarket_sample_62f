@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :mypage, only: [:index]
   as :mypage do
     get 'logout', to: 'mypage#logout', as: :logout_mypage
-    get 'mypage/identification', to: 'mypage#identification', as: :identification_mypage
   end
 
 
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
   
   root 'main#index'
   
-  resources :signup do
+  resources :signup, only: [:create, :index] do
     collection do
       get 'registration'
       get 'sms_confirmation'
@@ -32,6 +31,9 @@ Rails.application.routes.draw do
       get 'credit_card'
       get 'done'
     end
+  end
+  as :signup do
+    get 'mypage/identification', to: 'signup#edit', as: :identification_signup
   end
 
 end
