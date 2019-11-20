@@ -38,13 +38,8 @@ Rails.application.routes.draw do
 
   resources :products do
     collection do
-      get 'sell'
-    end
-  end
-
-  resources :products do
-    collection do
-      get 'sell'
+      get 'sell_test'
+      get 'done'
     end
   end
 

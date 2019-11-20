@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_071923) do
+ActiveRecord::Schema.define(version: 2019_11_20_103514) do
 
   create_table "images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
     t.integer "product_id", null: false
+    t.string "images"
     t.index ["product_id"], name: "index_images_on_product_id"
   end
 
