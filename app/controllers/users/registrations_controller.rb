@@ -15,13 +15,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def edit
-    
+    @user = current_user
+    @birthday = @user.birthday.strftime('%Y/%m/%d')
+    @prefecture = User.set_prefecture
   end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = current_user
+    if @user.update(user_update_params)
+      flash[:notice] = "変更しました。"
+      redirect_to edit_user_registration_path
+    else 
+      flash[:notice] = "変更に失敗しました。"
+      redirect_to edit_user_registration_path
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -58,4 +66,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def user_update_params
+    params.require(:user).permit(
+      :postal_code,
+      :prefecture,
+      :city,
+      :address,
+      :building
+    )
+  end
+
 end
