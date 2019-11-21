@@ -3,8 +3,7 @@
   .user-main
     .user-main__content
       %h2.user-title 電話番号の確認
-      %form.user-form
-      = form_for @user, url: sms_signup_index_path, method: :get do |f|
+      = form_for @user, url: sms_signup_index_path, method: :get, html: { class: "user-form"} do |f|
         .user-form__content
           .user-form__content__group
             %label 電話番号の確認

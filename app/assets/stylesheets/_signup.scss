@@ -29,10 +29,11 @@
     }
     .user-form{
       border-top: 1px solid #f5f5f5;
+      padding: 24px 16px 40px;
       &__content{
-        max-width: 450px;
+        max-width: 320px;
         margin: 0 auto;
-        padding: 40px;
+        // padding: 40px;
         &__group{
           margin: 24px 0 0;
           &:first-child{
