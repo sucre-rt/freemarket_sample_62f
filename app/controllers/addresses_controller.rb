@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
 
-  # マイページ→本人情報ページ
+  # マイページ→発送元・届け先住所変更ページ用
+  # 間違って作りました
   def edit
     @prefecture = Address.set_prefecture
     @user = current_user
