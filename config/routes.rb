@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'login', to: 'devise/sessions#new', as: :new_user_session
     post 'login', to: 'devise/sessions#create', as: :user_session
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
+    get 'mypage/identification', to: 'devise/registrations#edit', as: :identification_registration
   end
   
   resources :mypage, only: [:index]
@@ -33,7 +34,6 @@ Rails.application.routes.draw do
     end
   end
   as :signup do
-    get 'mypage/identification', to: 'signup#edit', as: :identification_signup
     get 'mypage/profile', to: 'signup#profile', as: :profile_signup
   end
 
