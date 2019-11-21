@@ -9,17 +9,13 @@
           .user-form__content__group
             %label お名前
             %span.user-form__content__group--attention 必須
-            = f.text_field :family_name
-              %input{placeholder: "例) 山田", class: "user-form__content__group__default"}
-            = f.text_field :first_name
-              %input{placeholder: "例) 綾", class: "user-form__content__group__default"}
+            %input{placeholder: "例) 山田", class: "user-form__content__group__default"}
+            %input{placeholder: "例) 綾", class: "user-form__content__group__default"}
           .user-form__content__group
             %label お名前カナ
             %span.user-form__content__group--attention 必須
-            = f.text_field :family_name_cana
-              %input{placeholder: "例) ヤマダ", class: "user-form__content__group__default"}
-            = f.text_field :first_name_cana
-              %input{placeholder: "例) アヤ", class: "user-form__content__group__default"}
+            %input{placeholder: "例) ヤマダ", class: "user-form__content__group__default"}
+            %input{placeholder: "例) アヤ", class: "user-form__content__group__default"}
           .user-form__content__group
             %label 郵便番号
             %span.user-form__content__group--attention 必須
