@@ -15,13 +15,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def edit
-    @user = current_user
-    @birthday = @user.birthday.strftime('%Y/%m/%d')
+    @birthday = current_user.birthday.strftime('%Y/%m/%d')
     @prefecture = User.set_prefecture
   end
 
   def update
-    @user = current_user
     if @user.update(user_update_params)
       flash[:notice] = "変更しました。"
       redirect_to edit_user_registration_path

@@ -19,13 +19,13 @@
           .mypage-form__group
             %label お名前
             %p 
-              = @user.family_name
-              = @user.first_name
+              = current_user.family_name
+              = current_user.first_name
           .mypage-form__group
             %label お名前カナ
             %p 
-              = @user.family_name_cana
-              = @user.first_name_cana
+              = current_user.family_name_cana
+              = current_user.first_name_cana
           .mypage-form__group
             %label 生年月日
             %p
