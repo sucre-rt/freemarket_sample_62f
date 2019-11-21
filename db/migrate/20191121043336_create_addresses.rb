@@ -1,6 +1,6 @@
-class CreateAdresses < ActiveRecord::Migration[5.0]
+class CreateAddresses < ActiveRecord::Migration[5.0]
   def change
-    create_table :adresses do |t|
+    create_table :addresses do |t|
       t.string :family_name, null: false
       t.string :first_name, null: false
       t.string :family_name_cana, null: false
@@ -12,6 +12,7 @@ class CreateAdresses < ActiveRecord::Migration[5.0]
       t.string :building
       t.string :tel, null: false
       t.references :user, null: false, foreign_key: true
+      t.timestamps
     end
   end
 end

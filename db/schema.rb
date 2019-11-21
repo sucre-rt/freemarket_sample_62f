@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_030051) do
+ActiveRecord::Schema.define(version: 2019_11_21_043336) do
 
-  create_table "adresses", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "addresses", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "first_name", null: false
     t.string "family_name_cana", null: false
@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(version: 2019_11_19_030051) do
     t.string "building"
     t.string "tel", null: false
     t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_adresses_on_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,7 +79,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_030051) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "adresses", "users"
+  add_foreign_key "addresses", "users"
   add_foreign_key "images", "products"
   add_foreign_key "products", "users"
   add_foreign_key "sns_credentials", "users"

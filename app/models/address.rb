@@ -1,4 +1,5 @@
-class Adress < ApplicationRecord
+class Address < ApplicationRecord
+  
   validates :family_name, presence: true
   validates :first_name, presence: true
   validates :family_name_cana, presence: true
@@ -7,8 +8,6 @@ class Adress < ApplicationRecord
   validates :prefecture, presence: true
   validates :city, presence: true
   validates :address, presence: true
-  validates :user, presence: true
 
-  belongs_to :user, optional: true
-
+  belongs_to :user
 end
