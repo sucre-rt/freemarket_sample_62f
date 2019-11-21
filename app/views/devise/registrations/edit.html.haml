@@ -6,7 +6,7 @@
     .main__right-content
       .main__right-content__user-info
         %h2 本人情報の登録
-        = form_for @user, url: user_registration_path, method: :patch, html: {class: "mypage-form"} do |f|
+        = form_for current_user, url: user_registration_path, method: :patch, html: {class: "mypage-form"} do |f|
           .mypage-form__content
             %p
               お客さまの本人情報をご登録ください。

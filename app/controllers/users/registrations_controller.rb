@@ -20,7 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    if @user.update(user_update_params)
+    if current_user.update(user_update_params)
       flash[:notice] = "変更しました。"
       redirect_to edit_user_registration_path
     else 
