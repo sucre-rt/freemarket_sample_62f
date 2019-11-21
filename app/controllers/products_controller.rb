@@ -8,7 +8,6 @@ class ProductsController < ApplicationController
   def sell_test
     @product = Product.new
     @product.images.build
-
   end
 
   def create
