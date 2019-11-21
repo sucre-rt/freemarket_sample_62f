@@ -26,8 +26,7 @@
             .user-form__content__group__user-select
               .user-form__content__group__user-select__long-box
                 %i.fa.fa-chevron-down
-                %select.user-select-default
-                  %option 北海道
+                = f.select :prefecture, @prefecture, {}, { class: "user-select-default" }
           .user-form__content__group
             %label 市区町村
             %span.user-form__content__group--attention 必須
