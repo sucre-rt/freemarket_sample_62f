@@ -109,10 +109,6 @@ class SignupController < ApplicationController
       redirect_to controller: :signup, action: :registration
     end
   end
-
-    # ユーザー情報確認ページ addressコントローラマージされたらそっちに移す
-    def edit
-    end
   
     # ユーザープロフィールページ
     def profile
