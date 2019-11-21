@@ -91,7 +91,7 @@ class SignupController < ApplicationController
       birthday:         session[:birthday],
       telphone:         session[:telphone]
     )
-    @user.build_address(user_params[:address_attributes])
+    # @user.build_address(user_params[:address_attributes])
     if @user.save && session[:uid].blank?
       # ログインするための情報を保管
       session[:id] = @user.id
@@ -110,10 +110,6 @@ class SignupController < ApplicationController
     end
   end
 
-    # ユーザー情報確認ページ addressコントローラマージされたらそっちに移す
-    def edit
-    end
-  
     # ユーザープロフィールページ
     def profile
     end
