@@ -68,6 +68,7 @@ class SignupController < ApplicationController
     @status4 ="active"
 
     @user = User.new
+    @user.build_adress
   end
 
   def done
@@ -91,7 +92,7 @@ class SignupController < ApplicationController
       birthday:         session[:birthday],
       telphone:         session[:telphone]
     )
-    @user.build_address(user_params[:address_attributes])
+    @user.build_adress(user_params[:adress_attributes])
     if @user.save && session[:uid].blank?
       # ログインするための情報を保管
       session[:id] = @user.id
@@ -142,7 +143,7 @@ class SignupController < ApplicationController
         :first_name_cana,
         :birthday,
         :telphone,
-        address_attributes: [:family_name, :first_name, :amily_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, :user]
+        adress_attributes: [:id, :family_name, :first_name, :family_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, :building, :tel]
       )
     else
       params.require(:user).permit(
@@ -155,6 +156,7 @@ class SignupController < ApplicationController
         :first_name_cana,
         :birthday,
         :telphone,
+        adress_attributes: [:id, :family_name, :first_name, :family_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, :building, :tel]
       ).merge(
         uid: params[:user][:sns_credential][:uid],
         provider: params[:user][:sns_credential][:provider]
