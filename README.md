@@ -39,7 +39,7 @@
 |address|string|null: false|
 |building|string||
 |tel|string|null: false|
-|user|referenes|null: false, foreign_key|
+|user|references|null: false, foreign_key|
 ### Association
 - belongs_to :user
 
