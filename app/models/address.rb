@@ -10,4 +10,9 @@ class Address < ApplicationRecord
   validates :address, presence: true
 
   belongs_to :user
+
+  # def self.set_prefecture
+  #   prefecture = [ 北海道: "北海道", 青森県: "青森県", 岩手県: "岩手県" ]
+  # end
+
 end

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get 'logout', to: 'mypage#logout', as: :logout_mypage
   end
 
+  resources :addresses, only: [:update]
   as :addresses do
     get 'mypage/identification', to: 'addresses#edit', as: :identification_addresses
   end
