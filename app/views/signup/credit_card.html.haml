@@ -3,8 +3,7 @@
   .user-main
     .user-main__content
       %h2.user-title 支払い方法
-      %form.user-form
-      = form_for @user, url: signup_index_path, method: :post do |f|
+      = form_for @user, url: signup_index_path, method: :post, html: { class: "user-form"} do |f|
         .user-form__content
           .user-form__content__group
             %label カード番号

@@ -5,7 +5,18 @@ class SignupController < ApplicationController
 
   def registration
     @status1 ="active"
-
+    @years = []
+    Date.today.year.downto(1900){ |year|
+      @years << year
+    }
+    @days = []
+    for day in 1..31 do
+      if day.to_s.length == 1
+        @days << "0" + "#{day}"
+      else
+        @days << day
+      end
+    end
     @user = User.new
   end
 
@@ -60,8 +71,8 @@ class SignupController < ApplicationController
     @status3 ="active"
 
     @user = User.new
+    @prefecture = User.set_prefecture
     @user.build_address
-    
   end
 
   def credit_card

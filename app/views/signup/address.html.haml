@@ -3,8 +3,7 @@
   .user-main
     .user-main__content
       %h2.user-title 発送元・お届け先住所入力
-      %form.user-form
-      = form_for @user, url: credit_card_signup_index_path, method: :get do |f|
+      = form_for @user, url: credit_card_signup_index_path, method: :get, html: { class: "user-form"} do |f|
         = f.fields_for :address do |a|
           .user-form__content
             .user-form__content__group
@@ -27,8 +26,7 @@
               .user-form__content__group__user-select
                 .user-form__content__group__user-select__long-box
                   %i.fa.fa-chevron-down
-                  %select.user-select-default
-                    %option 北海道
+                  = a.select :prefecture, @prefecture, {}, class: "user-select-default"
             =a.text_field :prefecture, autocomplete: "prefecture", type: "hidden", value: "北海道"
             .user-form__content__group
               %label 市区町村
