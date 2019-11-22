@@ -58,7 +58,7 @@ class SignupController < ApplicationController
     @status3 ="active"
 
     @user = User.new
-    @user.build_adress
+    @user.build_address
   end
 
   def credit_card
@@ -91,7 +91,7 @@ class SignupController < ApplicationController
       birthday:         session[:birthday],
       telphone:         session[:telphone]
     )
-    @user.build_address(user_params[:address_attributes])
+    # @user.build_address(user_params[:address_attributes])
     if @user.save && session[:uid].blank?
       # ログインするための情報を保管
       session[:id] = @user.id
@@ -138,7 +138,7 @@ class SignupController < ApplicationController
         :first_name_cana,
         :birthday,
         :telphone,
-        address_attributes: [:family_name, :first_name, :amily_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, :user]
+        address_attributes: [:id, :family_name, :first_name, :amily_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, ]
       )
     else
       params.require(:user).permit(
