@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   validates :area, presence: true
   validates :status, presence: true
   validates :sending_days, presence: true
-  validates :user, presence: true
+  validates :user_id, presence: true
 
   has_one :evaluation
   has_one :payment
@@ -13,6 +13,7 @@ class Product < ApplicationRecord
   has_many :transactions
   has_many :messages
   has_many :images, dependent: :destroy
+  accepts_nested_attributes_for :images
   belongs_to :user
   belongs_to :category
   belongs_to :delivery

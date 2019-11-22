@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get 'sell'
+      get 'done'
     end
   end
 

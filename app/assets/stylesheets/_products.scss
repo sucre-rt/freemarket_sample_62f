@@ -146,7 +146,7 @@ a {
   transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
   cursor: pointer;
   .sell-upload-drop-file{
-    display: none;
+    // display: none;
   }
 }
 
@@ -240,6 +240,10 @@ a {
   font-size: 16px;
   line-height: 1.5;
   cursor: pointer;
+}
+
+.form-arbitrary {
+  background: #ccc;
 }
 
 .sell-price {
