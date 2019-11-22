@@ -42,7 +42,11 @@
                     .select-wrap
                       %i.icon-arrow-bottom
                       %select.select-default
-                        %option{value: "1"} ---
+                        %option{value: ""} ---
+                        %option{value: "1"} レディース
+                    =f.text_field :category_id, autocomplete: "category", type: "hidden", value: "1001"
+                    =f.text_field :size_id, autocomplete: "category", type: "hidden", value: "1"
+                    =f.text_field :brand_id, autocomplete: "category", type: "hidden", value: "1"
                 .form-group
                   %label
                     商品の状態
@@ -59,6 +63,7 @@
                         %option{value: "5"} 傷や汚れあり
                         %option{value: "6"} 全体的に状態が悪い
                       //ここまで"商品詳細"
+                    =f.text_field :status, autocomplete: "status", type: "hidden", value: "新品、未使用"
             //ここから"配送について"
             .sell-content.clearfix
               %h3.sell-sub-head 商品の詳細
@@ -72,6 +77,9 @@
                       %i.icon-arrow-bottom
                       %select.select-default
                         %option{value: ""} ---
+                        %option{value: "1"} 送料込み(出品者負担)
+                        %option{value: "2"} 着払い(購入者負担)
+                    =f.text_field :delivery_id, autocomplete: "delivery", type: "hidden", value: "1"
                 .form-group
                   %label
                     発送元の地域
@@ -81,6 +89,8 @@
                       %i.icon-arrow-bottom
                       %select.select-default
                         %option{value: ""} ---
+                        %option{value: "北海道"} 北海道
+                    =f.text_field :area, autocomplete: "area", type: "hidden", value: "北海道"
                 .form-group
                   %label
                     発送までの日数
@@ -90,6 +100,10 @@
                       %i.icon-arrow-bottom
                       %select.select-default
                         %option{value: ""} ---
+                        %option{value: "1~2日で発送"} 1~2日で発送
+                        %option{value: "2~3日で発送"} 2~3日で発送
+                        %option{value: "4~7日で発送"} 4~7日で発送
+                    =f.text_field :sending_days, autocomplete: "sending_days", type: "hidden", value: "1~2日で発送"
             //ここまで配送について
             //ここから販売価格
             .sell-content.clearfix
@@ -104,7 +118,8 @@
                       .l-right.sell-price-input
                         ¥
                         %div
-                          %input.input-default{value: "", placeholder: "例）300"}
+                          =f.text_field :price, autocomplete: "price", placeholder: "例）300", class: "input-default"
+                          =f.text_field :profit, autocomplete: "profit", type: "hidden", class: "input-default", value: 100
                   %li.clearfix
                     .l-left
                       販売手数料 (10%)
