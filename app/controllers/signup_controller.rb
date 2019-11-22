@@ -5,7 +5,14 @@ class SignupController < ApplicationController
 
   def registration
     @status1 ="active"
-
+    @years = []
+    Date.today.year.downto(1900){ |year|
+      @years << year
+    }
+    @days = []
+    for day in 1..31 do
+      @days << day
+    end
     @user = User.new
   end
 
