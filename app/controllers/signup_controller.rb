@@ -58,7 +58,7 @@ class SignupController < ApplicationController
     @status3 ="active"
 
     @user = User.new
-    @user.build_address
+    # @user.build_address
   end
 
   def credit_card
