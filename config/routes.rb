@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, 
   controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations:  'users/registrations'
   },  #callback関数を呼び出せるようにする
   skip: [:sessions]
   as :user do
@@ -33,7 +34,6 @@ Rails.application.routes.draw do
     end
   end
   as :signup do
-    get 'mypage/identification', to: 'signup#edit', as: :identification_signup
     get 'mypage/profile', to: 'signup#profile', as: :profile_signup
   end
 

@@ -60,8 +60,12 @@ class SignupController < ApplicationController
     @status3 ="active"
 
     @user = User.new
+<<<<<<< HEAD
     @user.build_address
 
+=======
+    # @user.build_address
+>>>>>>> origin
   end
 
   def credit_card
