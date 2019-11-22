@@ -70,7 +70,7 @@ class SignupController < ApplicationController
 
     @user = User.new
     @prefecture = User.set_prefecture
-    # @user.build_adress
+    @user.build_adress
   end
 
   def credit_card
@@ -150,7 +150,7 @@ class SignupController < ApplicationController
         :first_name_cana,
         :birthday,
         :telphone,
-        address_attributes: [:family_name, :first_name, :amily_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, :user]
+        address_attributes: [:id, :family_name, :first_name, :amily_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, ]
       )
     else
       params.require(:user).permit(

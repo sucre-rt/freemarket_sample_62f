@@ -72,7 +72,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :postal_code,
       :prefecture,
       :city,
-      :address,
+      :user_address,
       :building
     )
   end
