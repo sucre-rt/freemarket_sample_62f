@@ -42,6 +42,7 @@ class SignupController < ApplicationController
       session[:birthday] = user_params[:birthday]
       @user = User.new
     end
+
   end
 
   def sms
@@ -49,6 +50,7 @@ class SignupController < ApplicationController
     @status2 ="active"
 
     session[:telphone] = user_params[:telphone]
+
     @user = User.new
   end
 
@@ -58,17 +60,32 @@ class SignupController < ApplicationController
     @status3 ="active"
 
     @user = User.new
-    @user.build_adress
+    @user.build_address
+
   end
 
   def credit_card
+
     @status1 ="through"
     @status2 ="through"
     @status3 ="through"
     @status4 ="active"
 
     @user = User.new
-    @user.build_adress
+    #ここからアドレス
+    addreses = user_params[:address_attributes]                             #変数に入れてる
+    session[:ad_family_name] = addreses[:family_name]
+    session[:ad_first_name] = addreses[:first_name]
+    session[:ad_family_name_cana] = addreses[:family_name_cana]
+    session[:ad_first_name_cana] = addreses[:first_name_cana]
+    session[:postal_code] = addreses[:postal_code]
+    session[:prefecture] = addreses[:prefecture]
+    session[:city] = addreses[:city]
+    session[:address] = addreses[:address]
+    session[:building] = addreses[:building]
+    session[:tel] = addreses[:tel]
+    #ここまでアドレス
+
   end
 
   def done
@@ -92,7 +109,19 @@ class SignupController < ApplicationController
       birthday:         session[:birthday],
       telphone:         session[:telphone]
     )
-    @user.build_adress(user_params[:adress_attributes])
+    @user.build_address(
+      family_name:      session[:ad_family_name],
+      first_name:       session[:ad_first_name],
+      family_name_cana: session[:ad_family_name_cana],
+      first_name_cana:  session[:ad_first_name_cana],
+      postal_code:      session[:postal_code],
+      prefecture:       session[:prefecture],
+      city:             session[:city],
+      address:          session[:address],
+      building:         session[:building],
+      tel:              session[:tel]
+    )
+
     if @user.save && session[:uid].blank?
       # ログインするための情報を保管
       session[:id] = @user.id
@@ -109,29 +138,33 @@ class SignupController < ApplicationController
       @status1 = "active"
       redirect_to controller: :signup, action: :registration
     end
+
   end
 
-    # ユーザー情報確認ページ addressコントローラマージされたらそっちに移す
-    def edit
-    end
-  
-    # ユーザープロフィールページ
-    def profile
-    end
+  # ユーザー情報確認ページ addressコントローラマージされたらそっちに移す
+  def edit
+  end
 
-    def update
-      if current_user.update(update_params)
-        flash[:notice] = "変更しました。"
-        redirect_to profile_signup_path
-      else 
-        flash[:notice] = "変更に失敗しました。"
-        redirect_to profile_signup_path
-      end
+  # ユーザープロフィールページ
+  def profile
+  end
+
+  def update
+
+    if current_user.update(update_params)
+      flash[:notice] = "変更しました。"
+      redirect_to profile_signup_path
+    else 
+      flash[:notice] = "変更に失敗しました。"
+      redirect_to profile_signup_path
     end
+    
+  end
 
   private
  # 許可するキーを設定します
-   def user_params
+  def user_params
+
     if params[:user][:sns_credential].blank?
       params.require(:user).permit(
         :nickname,
@@ -143,7 +176,7 @@ class SignupController < ApplicationController
         :first_name_cana,
         :birthday,
         :telphone,
-        adress_attributes: [:id, :family_name, :first_name, :family_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, :building, :tel]
+        address_attributes: [:id, :family_name, :first_name, :family_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, :building, :tel]
       )
     else
       params.require(:user).permit(
@@ -156,12 +189,13 @@ class SignupController < ApplicationController
         :first_name_cana,
         :birthday,
         :telphone,
-        adress_attributes: [:id, :family_name, :first_name, :family_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, :building, :tel]
+        address_attributes: [:id, :family_name, :first_name, :family_name_cana, :first_name_cana, :postal_code, :prefecture, :city, :address, :building, :tel]
       ).merge(
         uid: params[:user][:sns_credential][:uid],
         provider: params[:user][:sns_credential][:provider]
       )
     end
+
   end
 
   def update_params

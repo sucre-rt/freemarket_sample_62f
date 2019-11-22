@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
          # omniauthに対応できるようにdeviseの機能を拡張
 
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
-  VALID_NAME_CANA = /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/
+  # VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+  # VALID_NAME_CANA = /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/
 
   # validates :nickname, presence: true
   # validates :email, presence: true
@@ -26,11 +26,11 @@ class User < ApplicationRecord
   has_many :messages
   has_many :evaluations
   has_many :sns_credentials, dependent: :destroy
-  has_one :adress, dependent: :destroy
+  has_one :address, dependent: :destroy
   has_one :credit, dependent: :destroy
 
   accepts_nested_attributes_for :sns_credentials
-  accepts_nested_attributes_for :adress
+  accepts_nested_attributes_for :address
 
   # Oauth認証
 
