@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to done_products_path
     else
-      redirect_to controller: :products, action: :sell_test
+      redirect_to controller: :products, action: :sell
     end
 
   end
@@ -34,7 +34,7 @@ private
       :delivery_id,
       :brand_id,
       images_attributes: [:id, :image]
-    ).merge(user_id: 1)
+    ).merge(user_id: current_user.id)
   end
 
 end
