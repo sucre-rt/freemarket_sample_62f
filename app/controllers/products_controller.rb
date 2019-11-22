@@ -1,11 +1,6 @@
 class ProductsController < ApplicationController
 
-  # def sell
-  #   @product = Product.new
-  #   @product.image.build
-  # end
-
-  def sell_test
+  def sell
     @product = Product.new
     @product.images.build
   end
@@ -35,6 +30,9 @@ private
       :sending_days,
       :profit,
       :selling_status,
+      :category_id,
+      :delivery_id,
+      :brand_id,
       images_attributes: [:id, :image]
     ).merge(user_id: 1)
   end

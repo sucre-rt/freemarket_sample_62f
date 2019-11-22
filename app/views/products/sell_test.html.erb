@@ -1,24 +1,38 @@
 <%= form_for @product, url: products_path, method: :post do |f| %>
-  <%= f.fields_for :images do |i| %>
-    <%= i.label :name, "画像"%>
-    <%= i.file_field :image%>
-    <%= f.label :name, "商品名"%>
-    <%= f.text_field :name %>
-    <%= f.label :name, "説明"%>
-    <%= f.text_field :information %>
-    <%= f.label :name, "値段"%>
-    <%= f.text_field :price %>
-    <%= f.label :name, "地域"%>
-    <%= f.text_field :area %>
-    <%= f.label :name, "状態"%>
-    <%= f.text_field :status %>
-    <%= f.label :name, "発送までの日数"%>
-    <%= f.text_field :sending_days %>
-    <%= f.label :name, "利益"%>
-    <%= f.text_field :profit %>
-    <%= f.label :name, "販売状況"%>
-    <%= f.text_field :selling_status %>
-    <%= f.submit %>
-  <% end %>
+  <div>
+    <h1>product</h1>
+      <%= f.fields_for :images do |i| %>
+        <%= i.label :name, "画像"%>
+        <%= i.file_field :image%>
+        <%= f.label :name, "商品名"%>
+        <%= f.text_field :name %>
+        <%= f.label :name, "説明"%>
+        <%= f.text_field :information %>
+        <%= f.label :name, "値段"%>
+        <%= f.text_field :price %>
+        <%= f.label :name, "地域"%>
+        <%= f.text_field :area %>
+        <%= f.label :name, "状態"%>
+        <%= f.text_field :status %>
+        <%= f.label :name, "発送までの日数"%>
+        <%= f.text_field :sending_days %>
+        <%= f.label :name, "利益"%>
+        <%= f.text_field :profit %>
+        <%= f.label :name, "販売状況"%>
+        <%= f.text_field :selling_status %>
+      <% end %>
+  </div>
+
+  <br>
+  
+  <div>
+    <%= f.text_field :category_id, value: 3, type: "hidden" %>
+    <%= f.text_field :delivery_id, value: 1, type: "hidden" %>
+    <%= f.text_field :brand_id, value: 1, type: "hidden" %>
+  </div>
+
+  <div>
+  <%= f.submit %>
+  </div>
 
 <% end %>
