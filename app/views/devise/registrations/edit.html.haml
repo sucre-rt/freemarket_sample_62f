@@ -6,7 +6,7 @@
     .main__right-content
       .main__right-content__user-info
         %h2 本人情報の登録
-        = form_for "#", html: {class: "mypage-form"} do |f|
+        = form_for current_user, url: user_registration_path, method: :patch, html: {class: "mypage-form"} do |f|
           .mypage-form__content
             %p
               お客さまの本人情報をご登録ください。
@@ -18,13 +18,18 @@
                 %i.fa.fa-angle-right
           .mypage-form__group
             %label お名前
-            %p ユーザーの苗字　名前の変数
+            %p 
+              = current_user.family_name
+              = current_user.first_name
           .mypage-form__group
             %label お名前カナ
-            %p ユーザーの苗字　名前の変数
+            %p 
+              = current_user.family_name_cana
+              = current_user.first_name_cana
           .mypage-form__group
             %label 生年月日
-            %p 生年月日の変数
+            %p
+              = @birthday
           .mypage-form__group
             %label 郵便番号
             %span 任意
@@ -35,7 +40,7 @@
             .mypage-form__group__select
               .mypage-form__group__select__box
                 %i.fa.fa-chevron-down
-                = f.select :prefecture, { 北海道: 1 , 青森県: 2 }
+                = f.select :prefecture, @prefecture
           .mypage-form__group
             %label 市区町村
             %span 任意
@@ -43,7 +48,7 @@
           .mypage-form__group
             %label 番地
             %span 任意
-            = f.text_field :address, placeholder: "例) 青山1−1−1", class: "mypage-form__group__form-default"
+            = f.text_field :user_address, placeholder: "例) 青山1−1−1", class: "mypage-form__group__form-default"
           .mypage-form__group
             %label 建物名
             %span 任意

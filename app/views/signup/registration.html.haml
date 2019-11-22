@@ -3,8 +3,7 @@
   .user-main
     .user-main__content
       %h2.user-title 会員情報入力
-      %form.user-form
-      = form_for @user, url: sms_confirmation_signup_index_path, method: :get do |f|
+      = form_for @user, url: sms_confirmation_signup_index_path, method: :get, html: { class: "user-form"} do |f|
         - if @sns.present?
           = f.fields_for @sns do |i|
             =i.text_field :uid, type: "hidden", value: @sns[:uid]
@@ -60,26 +59,40 @@
                 .user-form__content__group__user-select__birthday-select
                   .user-form__content__group__user-select__birthday-select__box.year
                     %i.fa.fa-chevron-down
-                    %select.user-select-default
+                    %select.user-select-default#user-birthday-year
                       %option ---
-                      %option{value: 1990} 1990
+                      - @years.each do |year|
+                        %option{value: year}
+                          = year
                   %span 年
                 .user-form__content__group__user-select__birthday-select
                   .user-form__content__group__user-select__birthday-select__box.month
                     %i.fa.fa-chevron-down
-                    %select.user-select-default
+                    %select.user-select-default#user-birthday-month
                       %option ---
-                      %option{value: 01} 01
+                      %option{value: "01"} 01
+                      %option{value: "02"} 02
+                      %option{value: "03"} 03
+                      %option{value: "04"} 04
+                      %option{value: "05"} 05
+                      %option{value: "06"} 06
+                      %option{value: "07"} 07
+                      %option{value: "08"} 08
+                      %option{value: "09"} 09
+                      %option{value: 10} 10
+                      %option{value: 11} 11
+                      %option{value: 12} 12
                   %span 月
                 .user-form__content__group__user-select__birthday-select
                   .user-form__content__group__user-select__birthday-select__box.day
                     %i.fa.fa-chevron-down
-                    %select.user-select-default
+                    %select.user-select-default#user-birthday-day
                       %option ---
-                      %option{value: 01} 01
+                      - @days.each do |day|
+                        %option{value: day}
+                          = day
                   %span 日
-              %input{name: "birthday", type: "hidden", value: "19900101"}
-              =f.text_field :birthday, autocomplete: "birthday", type: "hidden", value: "19900101"
+              =f.text_field :birthday, autocomplete: "birthday", type: "hidden", value: "", class: "user-birthday-data"
               %p.user-form-info
                 ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           .user-form__content__group

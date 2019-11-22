@@ -16,6 +16,11 @@
 |profile|text||
 |image|string||
 |point|integer||
+|postal_code|string||
+|prefecture|string||
+|city|string||
+|address|string||
+|building|string||
 ### Association
 - has_many :payments
 - has_many :products
