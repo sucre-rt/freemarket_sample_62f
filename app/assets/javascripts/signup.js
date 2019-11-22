@@ -1,22 +1,12 @@
 $(function(){
 
-  let birthday = []
+  // 生年月日取得
+  $('.user-form__content__group__user-select').find('.user-select-default').change(function(){
+    let year = $('#user-birthday-year').val();
+    let month = $('#user-birthday-month').val();
+    let day = $('#user-birthday-day').val();
+    let birthday = year + month + day
+    $('#user_birthday').val(birthday)
+  });
 
-  $('#user-birthday-year').change(function(){
-    let year = $("option:selected").val();
-    // birthday.push(year)
-    // $('#user_birthday').val(year);
-  });
-  $('#user-birthday-month').change(function(){
-    let month = $("option:selected").val();
-    // birthday.push(month)
-    // $('#user_birthday').val(birthday.join(','));
-  });
-  $('#user-birthday-day').change(function(){
-    let day = $("option:selected").val();
-    // birthday.push(day)
-  })
-  console.log(year);
-  let user_birthday = birthday.join(',');
-  $('#user_birthday').val(user_birthday);
 })

@@ -11,7 +11,11 @@ class SignupController < ApplicationController
     }
     @days = []
     for day in 1..31 do
-      @days << day
+      if day.to_s.length == 1
+        @days << "0" + "#{day}"
+      else
+        @days << day
+      end
     end
     @user = User.new
   end
