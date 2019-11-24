@@ -22,6 +22,9 @@ class ProductsController < ApplicationController
   def done
   end
 
+  def show
+  end
+
 private
 
   def product_params
