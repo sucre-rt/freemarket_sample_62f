@@ -14,9 +14,10 @@
                 %span.form-require 必須
               %p 最大10枚までアップロードできます
               .sell-dropbox-container.clearfix.state-image-number-10
-                .sell-upload-drop-box.have-item-0
-                  =i.file_field :image, class: "sell-upload-drop-file"
-                  %pre.visible-pc ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                %label
+                  .sell-upload-drop-box.have-item-0
+                    =i.file_field :image, class: "sell-upload-drop-file"
+                    %pre.visible-pc ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
             //ここから"商品詳細"
             .sell-content
               .form-group
