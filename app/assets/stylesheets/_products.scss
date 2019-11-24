@@ -350,6 +350,10 @@ a {
           overflow: hidden;
           cursor: pointer;
           opacity: .4;
+          img {
+            width: 60px;
+            height: 60px;
+          }
         }
         .image-list-active {
           opacity: 1;
