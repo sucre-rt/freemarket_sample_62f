@@ -96,7 +96,6 @@ class SignupController < ApplicationController
     session[:building] = addreses[:building]
     session[:tel] = addreses[:tel]
     #ここまでアドレス
-
   end
 
   def done
@@ -132,7 +131,6 @@ class SignupController < ApplicationController
       building:         session[:building],
       tel:              session[:tel]
     )
-
     if @user.save && session[:uid].blank?
       # ログインするための情報を保管
       session[:id] = @user.id
