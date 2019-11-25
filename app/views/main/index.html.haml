@@ -20,91 +20,21 @@
         %h2.main__ladies__inner__header
           レディース新着アイテム
         %ul.main__ladies__inner__list
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！初心者も安心！初心者も安心！
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！
-          %li.main__ladies__inner__list-item
-            = link_to '/', class: 'main__ladies__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__ladies__inner__list-item-image'
-              %p.main__ladies__inner__list-item-title 初心者も安心！
+          - @products.each_with_index do |product, i|
+            %li.main__ladies__inner__list-item
+              = link_to '/', class: 'main__ladies__inner__list-item-a' do
+                = image_tag("/uploads/image/image/#{i+1}/#{product.images[0][:image]}/", class: 'main__ladies__inner__list-item-image')
+                %p.main__ladies__inner__list-item-title #{product.name}
     %section.main__mens
       .main__mens__inner
         %h2.main__mens__inner__header
           メンズ新着アイテム
         %ul.main__mens__inner__list
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
+          - @products.each_with_index do |product, i|
+            %li.main__mens__inner__list-item
+              = link_to '/', class: 'main__ladies__inner__list-item-a' do
+                = image_tag("/uploads/image/image/#{i+1}/#{product.images[0][:image]}/", class: 'main__mens__inner__list-item-image')
+                %p.main__mens__inner__list-item-title #{product.name}
     %section.main__electronics
       .main__electronics__inner
         %h2.main__electronics__inner__header
