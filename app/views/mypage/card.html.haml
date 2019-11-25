@@ -1,0 +1,41 @@
+#wrapper
+  = render partial: 'shared/header'
+  = render partial: 'shared/nav'
+  %main.main
+    = render partial: 'leftcontent'
+    .main__right-content
+      .main__right-content__user-info
+        %h2 支払い方法
+        -if @card.blank?
+          .mypage-card-content
+            .mypage-card-content__box
+              %h3.mypage-card-content__box__sub-title
+                クレジットカード一覧
+            .mypage-card-content__btn-box
+              .mypage-card-content__btn-box__btn
+                = link_to card_new_path do
+                  %i.fa.fa-credit-card
+                  クレジットカードを追加する
+            .mypage-card-content__link-box
+              = link_to "#" do
+                %span 支払い方法について
+                %i.fa.fa-angle-right
+        -else
+          .mypage-card-content
+            .mypage-card-content__box
+              %h3.mypage-card-content__box__sub-title
+                クレジットカード一覧
+            %ul.payment-list
+              %li
+                =form_for "#", html: {class: "mypage-card-content__box set-parent"} do |f|
+                  = image_tag "logo_visa.gif", width: '40', height: '25', alt: "visa"
+                  .setting-card-info
+                    ************0000
+                  .setting-card-info
+                    12 / 21
+                  = f.submit "削除する", class: "card-delete-btn"
+              .mypage-card-content__link-box
+                = link_to "#" do
+                  %span 支払い方法について
+                  %i.fa.fa-angle-right                
+  = render partial: 'shared/footer'

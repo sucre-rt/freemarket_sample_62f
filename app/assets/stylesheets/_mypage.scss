@@ -253,6 +253,10 @@
       .mypage-form {
         padding: 64px;
         &__content {
+          h3 {
+            font-size: 16px;
+            font-weight: bold;
+          }
           p {
             font-size: 14px;
             text-align: left;
@@ -372,6 +376,83 @@
     }
   }
   @include clearfix;
+}
+
+.mypage-card-content {
+  padding: 64px;
+  border-top: 1px solid #f5f5f5;
+  &__box {
+    max-width: 320px;
+    margin: 0 auto;
+    &__sub-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+  &__btn-box {
+    padding: 24px 0;
+    border-bottom: 1px solid #eee;
+    &__btn {
+      max-width: 320px;
+      margin: 0 auto;
+      a {
+        margin-bottom: 8px !important;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        display: block;
+        line-height: 48px;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: center;
+        .fa-credit-card {
+          margin-right: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  &__link-box {
+    font-size: 14px;
+    a {
+      display: block;
+      margin: 40px 0 0;
+      text-align: right;
+      color: #0099e8;
+      &:hover{
+        color: #00b6e8;
+        text-decoration: underline;
+      }
+      .fa-angle-right{
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+  .payment-list {
+    li {
+      padding: 24px 0;
+      border-bottom: 1px solid #eee;
+      .setting-card-info {
+        margin: 8px 0 0;
+        font-size: 16px;
+      }
+      .card-delete-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1px 6px;
+        background: #fff;
+        border-radius: 3px;
+        border: 1px solid #ea352d;
+        color: #ea352d;
+        font-size: 14px;
+      }
+    }
+  }
+}
+.set-parent {
+  position: relative;
 }
 
 @import './header';

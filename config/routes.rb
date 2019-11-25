@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :mypage, only: [:index]
   as :mypage do
     get 'logout', to: 'mypage#logout', as: :logout_mypage
+    get 'mypage/card', to: 'mypage#card', as: :card_mypage
   end
 
 
