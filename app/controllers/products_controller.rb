@@ -14,14 +14,14 @@ class ProductsController < ApplicationController
     end
 
   end
-
+ 
   def done
   end
   
   def show
     @product1 = Product.find(params[:id])
     @product2 = Product.find(params[:id]).images
-    binding.pry
+    @postage = @product1.delivery.responsibility.include?("出品者負担") ? "送料込み" : "着払い"
   end
 
 

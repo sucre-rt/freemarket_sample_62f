@@ -32,11 +32,10 @@
         margin: 0 auto;
         width: 320px;
         height: 287px;
-        h3{                                      //商品写真
+        img{                                      //商品写真
           font-size: 22px;
           width: 64px;
           height: 64px;
-          background-color: red;
         }
         p{
           width: calc(100% - 80px);
@@ -50,7 +49,7 @@
           width: 323px;
           height: 223px;
         }
-        .buy-price{                             //値段
+        .buy-price{                                //値段
           width: 320px;
           height: 33px;
           text-align: center;
@@ -58,13 +57,13 @@
           line-height: 1.5;
           font-size: 22px;
           font-weight: 600;
-          span{
+          span{                                     //送料込みか否か
             margin: 0 0 0 8px;
             font-size: 14px;
             font-weight: 400;
           }
         }
-        .buy-point{                             //ポイント表示部分
+        .buy-point{                                //ポイント表示部分
           background: #ccc;
           margin: 16px 0 0;
           list-style: none;

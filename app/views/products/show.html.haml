@@ -7,18 +7,18 @@
       %section.buy-item
         .buy-item__inner
           %h3.buy-item-image
-            = @product2[:image]
-            %img.lazyloaded
+            = image_tag "/uploads/image/image/#{@product2[0][:id]}/#{@product2[0][:image]}"
           %p.buy-item-name
             = @product1[:name]
           %form.buy-farm{action: "#", method: "POST", novalidate: "novalidate" }
             %p.buy-price
-              = @product1[:price]
+              = "¥ #{@product1[:price]}"
               %span.buy-item-shopping
-               
+                = @postage
             %ul.buy-point
               %li.point-parent
-                .user-buy-point po
+                .user-buy-point
+                  
             %ul.buy-all-price
               %li.price-row
                 .user-buy-all-price 支払い金額
