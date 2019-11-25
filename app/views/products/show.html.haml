@@ -91,12 +91,12 @@
             = f.submit 'コメントする', class: "product-mesage-submit"
     
     %ul.product-link-list
-      -unless @back_product.name.blank?
+      -unless @back_product.blank?
         %li.product-link-list__left
-          = link_to "#{@back_product.name}", "#"
-      -unless @next_product.name.blank?
+          = link_to "#{@back_product.name}", product_path(@back_product.id)
+      -unless @next_product.blank?
         %li.product-link-list__right
-          = link_to "#{@next_product.name}", "#"
+          = link_to "#{@next_product.name}", product_path(@next_product.id)
 
     .product-media-box
       %ul.product-media-box__list
@@ -137,7 +137,7 @@
           - unless @category_other_products.blank?
             -@category_other_products.each do |product|
               .product-introduction-box-content__product-box
-                = link_to "#" do
+                = link_to product_path(product.id) do
                   %figure.product-box-photo
                     = image_tag("/uploads/image/image/#{product.images[0][:id]}/#{product.images[0][:image]}")
                   .product-box-body
