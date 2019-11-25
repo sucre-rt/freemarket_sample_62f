@@ -45,7 +45,7 @@
                   .user-form__content__group__user-select__middle-box__year
                     %i.fa.fa-chevron-down
                     %select.user-select-default
-                      - @years.each do |year|
+                      - card_years.each do |year|
                         %option{value: year}
                           = year
                   %span 年
