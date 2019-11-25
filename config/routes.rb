@@ -44,4 +44,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :card, only: [:create]
+  as :card do
+    get 'mypage/card/create', to: 'card#new', as: :card_new
+  end
+
 end

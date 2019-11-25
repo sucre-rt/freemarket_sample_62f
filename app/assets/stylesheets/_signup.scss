@@ -140,6 +140,9 @@
                 @include select-box;
                 .fa-chevron-down{
                   @include select-icon;
+                  z-index: 10;
+                  font-size: 16px;
+                  font-weight: 100;
                 }
               }
             }
