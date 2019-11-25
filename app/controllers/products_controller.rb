@@ -24,11 +24,7 @@ class ProductsController < ApplicationController
     @seller = @product.user
     @category = @product.category
     @delivery = @product.delivery
-    if @delivery.responsibility.include?("出品者負担")
-      @postage = "送料込み"
-    else
-      @postage = "着払い"
-    end
+    @postage = @delivery.responsibility.include?("出品者負担") ? "送料込み" : "着払い"
     @back_product = Product.where('id < ?', @product.id).first
     @next_product = Product.where('id > ?', @product.id).first
     @seller_other_products = Product.where(user_id: @seller.id).order("id DESC").limit(6).where.not(id: @product.id)
