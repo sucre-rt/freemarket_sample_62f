@@ -17,6 +17,13 @@ class ProductsController < ApplicationController
 
   def done
   end
+  
+  def show
+    @product1 = Product.find(params[:id])
+    @product2 = Product.find(params[:id]).images
+    binding.pry
+  end
+
 
 private
 

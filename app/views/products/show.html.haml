@@ -1,0 +1,39 @@
+#wrapper
+  = render partial: 'shared/header3'
+  %main.single-main
+    %section.single-main__l-single-container
+      %h2.l-single-head
+        購入内容の確認
+      %section.buy-item
+        .buy-item__inner
+          %h3.buy-item-image
+            = @product2[:image]
+            %img.lazyloaded
+          %p.buy-item-name
+            = @product1[:name]
+          %form.buy-farm{action: "#", method: "POST", novalidate: "novalidate" }
+            %p.buy-price
+              = @product1[:price]
+              %span.buy-item-shopping
+               
+            %ul.buy-point
+              %li.point-parent
+                .user-buy-point po
+            %ul.buy-all-price
+              %li.price-row
+                .user-buy-all-price 支払い金額
+                .user-buy-all-prices
+                  -#  %span{"####" => "####"} ¥#######
+            %button.btn-default.btn-red.bold{type: "submit"} 購入する
+      %section.buy-user-info
+        .buy-user-info__adress
+          %h3 配送先
+          %a.buy-user-info-text
+          %span 変更する
+          %i.icon-arrow-right
+
+      %section.buy-credit
+        .buy-credit__info
+
+
+  = render partial: 'shared/footer2'
