@@ -27,7 +27,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       # SNS情報が登録されていなければサインアップさせる
       @sns = info[:sns]
+
+      # 遷移先のビューで必要なデータ
       @status1 ="active"
+      @years = []
+        Date.today.year.downto(1900){ |year|
+          @years << year
+        }
+      @days = []
+      for day in 1..31 do
+        if day.to_s.length == 1
+          @days << "0" + "#{day}"
+        else
+          @days << day
+        end
+      end
       render "/signup/registration"
     end
   end

@@ -2,83 +2,78 @@
   = render partial: 'shared/header'
   %main.main
     .product-box-content
-      %h2.product-box-content__product-name 商品タイトル
+      %h2.product-box-content__product-name 
+        = @product.name
       .product-box-content__product-main-content
         .product-box-content__product-main-content__product-image
           .product-box-content__product-main-content__product-image__big
-            = image_tag "logo_white.svg"
+            = image_tag("/uploads/image/image/#{@images[0][:id]}/#{@images[0][:image]}")
           .product-box-content__product-main-content__product-image__others
-            .image-list
-              = image_tag "test_image.jpg"
-            .image-list
-              = image_tag "logo_white.svg"
-            .image-list
-              = image_tag "test_image2.jpg"
-            .image-list
-              = image_tag "logo_white.svg"
-            .image-list
-              = image_tag "test_image3.jpg"
-            .image-list
-              = image_tag "logo_white.svg"
+            -@images.each do |img|
+              .image-list
+                = image_tag("/uploads/image/image/#{img[:id]}/#{img[:image]}")
 
         %table.product-box-content__product-main-content__product-information
           %tbody
             %tr
               %th 出品者
               %td
-                = link_to "変数　名前", "#" 
+                = link_to "#{@seller.nickname}", "#" 
                 .seller-evalution
                   .seller-ratings
                     %i.fa.fa-smile-o
-                    %span 数
+                    %span 0
                   .seller-ratings
                     %i.fa.fa-meh-o
-                    %span 数
+                    %span 0
                   .seller-ratings
                     %i.fa.fa-frown-o
-                    %span 数
+                    %span 0
             %tr
               %th カテゴリー
               %td
-                = link_to "カテゴリー１", "#"
+                = link_to "#{@category.name}", "#"
                 = link_to "カテゴリー２", "#", class: "sub-category"
                 = link_to "カテゴリー３", "#", class: "sub-category"
             %tr
               %th ブランド
               %td
-                = link_to "変数", "#"
+                -if @product.brand != nil
+                  = link_to "#{@product.brand.name}", "#"
             %tr
               %th 商品の状態
               %td
-                変数
+                = @product.status
             %tr
               %th 配送料の負担
               %td 
-                変数
+                = @delivery.responsibility
             %tr
               %th 配送の方法
               %td
-                変数
+                = @delivery.way
             %tr
               %th 配送元地域
               %td
-                = link_to "変数", "#" 
+                = link_to "#{@product.area}", "#" 
             %tr
               %th 発送日の目安
               %td
-                変数
+                = @product.sending_days
 
       .product-box-content__product-price-box
-        %span.product-price 値段変数
+        %span.product-price
+          ="¥#{@product.price.to_s(:delimited)}"
         %span.pruduct-tax  (税込)
-        %span.product-postage 送料変数
+        %span.product-postage
+          = @postage
 
       .product-box-content__buy-btn
         = link_to "購入画面に進む", "#"
 
       .product-box-content__product-information
         %p.product-box-content__product-information__text
-          商品の説明文
+          = @product.information
 
       .product-box-content__btn-box
         .product-box-content__btn-box__left
@@ -96,10 +91,12 @@
             = f.submit 'コメントする', class: "product-mesage-submit"
     
     %ul.product-link-list
-      %li.product-link-list__left
-        = link_to "前の商品", "#"
-      %li.product-link-list__right
-        = link_to "次の商品", "#"
+      -unless @back_product.blank?
+        %li.product-link-list__left
+          = link_to "#{@back_product.name}", product_path(@back_product.id)
+      -unless @next_product.blank?
+        %li.product-link-list__right
+          = link_to "#{@next_product.name}", product_path(@next_product.id)
 
     .product-media-box
       %ul.product-media-box__list
@@ -116,133 +113,41 @@
     .products-introduction
       .products-introduction__user
         %h2.product-box-head
-          = link_to "「出品者の名前」さんのその他の商品", "#", class: "product-box-head__link"
+          = link_to "#{@seller.nickname}さんのその他の商品", "#", class: "product-box-head__link"
         .product-introduction-box-content
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
+          - unless @seller_other_products.blank?
+            -@seller_other_products.each do |product|
+              .product-introduction-box-content__product-box
+                = link_to product_path(product.id) do
+                  %figure.product-box-photo
+                    = image_tag("/uploads/image/image/#{product.images[0][:id]}/#{product.images[0][:image]}")
+                  .product-box-body
+                    %h3.product-box-body__title
+                      =product.name
+                    .product-box-body__other
+                      .product-box-body__other__price
+                        = "¥#{product.price.to_s(:delimited)}"
+                      .product-box-body__other__like
+                        %span 数
 
       .products-introduction__category
         %h2.product-box-head
-          = link_to "カテゴリー名　その他の商品", "#", class: "product-box-head__link"
+          = link_to "#{@category.name}その他の商品", "#", class: "product-box-head__link"
         .product-introduction-box-content
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
-          .product-introduction-box-content__product-box
-            = link_to "#" do
-              %figure.product-box-photo
-                = image_tag "logo_white.svg"
-              .product-box-body
-                %h3.product-box-body__title 商品タイトルううううううううううううううううううう
-                .product-box-body__other
-                  .product-box-body__other__price 値段
-                  .product-box-body__other__like
-                    %span 数
+          - unless @category_other_products.blank?
+            -@category_other_products.each do |product|
+              .product-introduction-box-content__product-box
+                = link_to product_path(product.id) do
+                  %figure.product-box-photo
+                    = image_tag("/uploads/image/image/#{product.images[0][:id]}/#{product.images[0][:image]}")
+                  .product-box-body
+                    %h3.product-box-body__title
+                      = product.name
+                    .product-box-body__other
+                      .product-box-body__other__price
+                        = "¥#{product.price.to_s(:delimited)}"
+                      .product-box-body__other__like
+                        %span 数
   
     %nav.bread-crumbs-bottom
       %ul
