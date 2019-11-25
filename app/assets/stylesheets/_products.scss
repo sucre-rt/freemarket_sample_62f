@@ -490,6 +490,11 @@ a {
       .report-btn {
         @include product-btn;
         margin: 0 0 0 16px;
+        -webkit-transition: all ease-out .3s;
+        transition: all ease-out .3s;
+        &:hover {
+          opacity: .7;
+        }
       }
     }
     &__right {
@@ -677,6 +682,7 @@ a {
           position: relative;
           margin: 0;
           img {
+            object-fit: cover;
             position: absolute;
             top: 50%;
             transform: translate(0, -50%);
@@ -684,7 +690,8 @@ a {
             bottom: 0;
             left: 0;
             z-index: 1;
-            width: 100%;
+            width: 220px;
+            height: 220px;
           }
         }
         .product-box-body {
