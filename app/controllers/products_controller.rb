@@ -19,6 +19,18 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+    @images = @product.images
+    @seller = @product.user
+    @category = @product.category
+    @delivery = @product.delivery
+    if @delivery.responsibility.include?("出品者負担")
+      @postage = "送料込み"
+    else
+      @postage = "着払い"
+    end
+    @seller_other_products = Product.where(user_id: @seller.id).order("id DESC").limit(6).where.not(id: @product.id)
+    @category_other_products = Product.where(category_id: @category.id).order("id DESC").limit(6).where.not(id: @product.id)
   end
 
 private
