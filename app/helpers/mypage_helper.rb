@@ -1,20 +1,19 @@
 module MypageHelper
 
   def card_icon(card)
-    if card.brand == "Visa"
+    case card.brand
+    when "Visa"
       "logo_visa.gif"
-    elsif card.brand == "MasterCard"
+    when "MasterCard"
       "mc_vrt_pos.png"
-    elsif card.brand == "JCB"
+    when "JCB"
       "jcb-logomark-img-01.gif"
-    elsif card.brand == "American Express"
+    when "American Express"
       "amex-logomark-img-04.gif"
-    elsif card.brand == "Diners Club"
+    when "Diners Club"
       "diners-logomark-img-01.gif"
-    elsif card.brand == "Discover"
+    when "Discover"
       "discover-logomark-img.gif"
-    else
-      ""
     end
   end
 
