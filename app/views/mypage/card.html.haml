@@ -27,12 +27,12 @@
                 クレジットカード一覧
             %ul.payment-list
               %li
-                =form_for "#", html: {class: "mypage-card-content__box set-parent"} do |f|
-                  = image_tag "logo_visa.gif", width: '40', height: '25', alt: "visa"
+                =form_for :card, url: card_path(@card.id), method: :delete, html: {class: "mypage-card-content__box set-parent"} do |f|
+                  = image_tag "#{@card_icon}", width: '40', height: '25', alt: "visa"
                   .setting-card-info
-                    ************0000
+                    = "************#{@card_infomation.last4}"
                   .setting-card-info
-                    12 / 21
+                    = "#{@card_infomation.exp_month} / #{@card_infomation.exp_year}"
                   = f.submit "削除する", class: "card-delete-btn"
               .mypage-card-content__link-box
                 = link_to "#" do
