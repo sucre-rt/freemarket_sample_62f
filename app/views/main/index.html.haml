@@ -4,7 +4,15 @@
     %p 出品
     %i.fa.fa-camera
   %main.main
-    %section.main__cover{"style": "background-image: url('#{asset_path('background_01.jpg')}');"}
+    .main__slider
+      .main__slider__controller
+        %button.main__slider__controller__button-left
+        %button.main__slider__controller__button-right
+      %ul.main__slider__contents
+        %li.main__slider__contents__item{"style": "background-image: url('#{asset_path('background_01.jpg')}');"}
+        %li.main__slider__contents__item{"style": "background-image: url('#{asset_path('background_02.jpg')}');"}
+        %li.main__slider__contents__item{"style": "background-image: url('#{asset_path('background_01.jpg')}');"}
+        %li.main__slider__contents__item{"style": "background-image: url('#{asset_path('background_02.jpg')}');"}
     %section.main__category
       .main__category__inner
         %h2.main__category__inner__header
@@ -29,6 +37,7 @@
               %li.main__ladies__inner__list-item
                 = link_to '/', class: 'main__ladies__inner__list-item-a' do
                   = image_tag("#{image.image}/", class: 'main__ladies__inner__list-item-image')
+                  %span.main__hobbys__inner__list-item-price ¥#{@products[image.product_id-1].price.to_s(:delimited)}
                   %p.main__ladies__inner__list-item-title #{@products[image.product_id-1].name}
               - last_num = image.product_id-1
     %section.main__mens
@@ -39,42 +48,52 @@
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
           %li.main__mens__inner__list-item
             = link_to '/', class: 'main__mens__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
+              %span.main__mens__inner__list-item-price ¥1,500
               %p.main__mens__inner__list-item-title 初心者も安心！
     %section.main__electronics
       .main__electronics__inner
@@ -84,42 +103,52 @@
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
           %li.main__electronics__inner__list-item
             = link_to '/', class: 'main__electronics__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
+              %span.main__electronics__inner__list-item-price ¥1,500
               %p.main__electronics__inner__list-item-title 初心者も安心！
     %section.main__hobbys
       .main__hobbys__inner
@@ -129,42 +158,52 @@
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
           %li.main__hobbys__inner__list-item
             = link_to '/', class: 'main__hobbys__inner__list-item-a' do
               = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
+              %span.main__hobbys__inner__list-item-price ¥1,500
               %p.main__hobbys__inner__list-item-title 初心者も安心！
     %section.main__category
       .main__brand__inner
