@@ -35,6 +35,7 @@ $(function(){
       } else {    // payjpとの通信に失敗した場合
 
         alert("カードの登録に失敗しました");
+        form.find("input[type=submit]").prop("disabled", false);  // ページを更新しなくても再度入力を行えるようにする
 
       };
     });
