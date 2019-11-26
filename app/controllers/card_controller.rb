@@ -1,9 +1,9 @@
 class CardController < ApplicationController
   include CardHelper
+  before_action :set_card_data, only: [:new, :destroy]
 
   def new
-    card = Card.where(user_id: current_user.id)
-    redirect_to card_mypage_path unless card.blank?
+    redirect_to card_mypage_path unless @card.blank?
   end
 
   def create
@@ -36,16 +36,21 @@ class CardController < ApplicationController
   end
 
   def destroy
-    card = Card.find_by(user_id: current_user.id)
-    if card != nil
+    if @card != nil
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete   # payjp側の情報を削除
-      card.destroy       # cardテーブルの情報を削除
+      @card.destroy       # cardテーブルの情報を削除
       redirect_to card_mypage_path
     else
       redirect_to card_mypage_path
     end
+  end
+
+  private
+
+  def set_card_data
+    @card = current_user.card
   end
   
 end

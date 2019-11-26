@@ -10,7 +10,7 @@ class MypageController < ApplicationController
 
   # クレジットカード登録画面
   def card
-    @card = Card.find_by(user_id: current_user.id)
+    @card = current_user.card
     
     # payjpからカード情報を取り出す
     if @card != nil
