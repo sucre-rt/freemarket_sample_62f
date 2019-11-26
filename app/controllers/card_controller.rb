@@ -9,7 +9,7 @@ class CardController < ApplicationController
   def create
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
 
-    unless params['payjp_token'].blank?
+    unless params['payjp_token'].blank?   # jsにより、params['payjp_token']を受け取れる
 
       # payjp上でユーザーを作成。payjpにカード情報を登録
       customer = Payjp::Customer.create(
