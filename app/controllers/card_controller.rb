@@ -1,10 +1,9 @@
 class CardController < ApplicationController
   include CardHelper
-  require 'dotenv'
 
   def new
     card = Card.where(user_id: current_user.id)
-    redirect_to card_mypage_path if card.nil?
+    redirect_to card_mypage_path unless card.blank?
   end
 
   def create
