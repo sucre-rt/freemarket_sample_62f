@@ -34,5 +34,18 @@ class CardController < ApplicationController
     end
 
   end
+
+  def destroy
+    card = Card.find_by(user_id: current_user.id)
+    if card != nil
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete   # payjp側の情報を削除
+      card.destroy       # cardテーブルの情報を削除
+      redirect_to card_mypage_path
+    else
+      redirect_to card_mypage_path
+    end
+  end
   
 end

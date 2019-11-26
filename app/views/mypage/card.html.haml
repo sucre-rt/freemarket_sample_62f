@@ -27,7 +27,7 @@
                 クレジットカード一覧
             %ul.payment-list
               %li
-                =form_for "#", html: {class: "mypage-card-content__box set-parent"} do |f|
+                =form_for :card, url: card_path(@card.id), method: :delete, html: {class: "mypage-card-content__box set-parent"} do |f|
                   = image_tag "#{@card_icon}", width: '40', height: '25', alt: "visa"
                   .setting-card-info
                     = "************#{@card_infomation.last4}"
