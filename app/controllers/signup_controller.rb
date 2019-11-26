@@ -83,6 +83,8 @@ class SignupController < ApplicationController
     @status4 ="active"
 
     @user = User.new
+    @user.build_card
+
     #ここからアドレス
     addreses = user_params[:address_attributes]                             #変数に入れてる
     session[:ad_family_name] = addreses[:family_name]
