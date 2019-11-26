@@ -3,43 +3,44 @@
   .user-main
     .user-main__content
       %h2.user-title 支払い方法
-      = form_for @user, url: signup_index_path, method: :post, html: { class: "user-form"} do |f|
-        .user-form__content
-          .user-form__content__group
-            %label カード番号
-            %span.user-form__content__group--attention 必須
-            %input{placeholder: "半角数字のみ", class: "user-form__content__group__default"}
-          .card-icon
-            = image_tag "logo_visa.gif", width: '37', height: '25', alt: "visa"
-            = image_tag "mc_vrt_pos.png", width: '37', height: '30', alt: "master"
-            = image_tag "saison.jpg", width: '37', height: '25', alt: "saison"
-            = image_tag "jcb-logomark-img-01.gif", width: '37', height: '25', alt: "jcb"
-            = image_tag "amex-logomark-img-04.gif", width: '25', height: '25', alt: "amex"
-            = image_tag "diners-logomark-img-01.gif", width: '37', height: '25', alt: "diners"
-            = image_tag "discover-logomark-img.gif", width: '37', height: '25', alt: "discover"
-          .user-form__content__group
-            %label 有効期限
-            %span.user-form__content__group--attention 必須
-            .user-form__content__group__user-select
-              .user-form__content__group__user-select__middle-box
-                .user-form__content__group__user-select__middle-box__month
-                  %i.fa.fa-chevron-down
-                  %select.user-select-default
-                    %option 01
-                %span 月
-              .user-form__content__group__user-select__middle-box
-                .user-form__content__group__user-select__middle-box__year
-                  %i.fa.fa-chevron-down
-                  %select.user-select-default
-                    %option 19
-                %span 年
-          .user-form__content__group
-            %label セキュリティコード
-            %span.user-form__content__group--attention 必須
-            %input{placeholder: "カード背面の4桁もしくは3桁の番号", class: "user-form__content__group__default"}
-            %p.user-text.user-text-right
-              = link_to "#", method: :get do
-                %i.fa.fa-question-circle>
+      = form_for @user, url: signup_index_path, method: :post, html: { class: "user-form", id: "signup-card-form" } do |f|
+        = f.fields_for :card do |i|
+          .user-form__content
+            .user-form__content__group
+              %label カード番号
+              %span.user-form__content__group--attention 必須
+              = i.text_field :number, placeholder: "半角数字のみ", maxlength: "16", id: "signup-card-number", class: "user-form__content__group__default"
+            .card-icon
+              = image_tag "logo_visa.gif", width: '37', height: '25', alt: "visa"
+              = image_tag "mc_vrt_pos.png", width: '37', height: '30', alt: "master"
+              = image_tag "saison.jpg", width: '37', height: '25', alt: "saison"
+              = image_tag "jcb-logomark-img-01.gif", width: '37', height: '25', alt: "jcb"
+              = image_tag "amex-logomark-img-04.gif", width: '25', height: '25', alt: "amex"
+              = image_tag "diners-logomark-img-01.gif", width: '37', height: '25', alt: "diners"
+              = image_tag "discover-logomark-img.gif", width: '37', height: '25', alt: "discover"
+            .user-form__content__group
+              %label 有効期限
+              %span.user-form__content__group--attention 必須
+              .user-form__content__group__user-select
+                .user-form__content__group__user-select__middle-box
+                  .user-form__content__group__user-select__middle-box__month
+                    %i.fa.fa-chevron-down
+                    %select.user-select-default
+                      %option 01
+                  %span 月
+                .user-form__content__group__user-select__middle-box
+                  .user-form__content__group__user-select__middle-box__year
+                    %i.fa.fa-chevron-down
+                    %select.user-select-default
+                      %option 19
+                  %span 年
+            .user-form__content__group
+              %label セキュリティコード
+              %span.user-form__content__group--attention 必須
+              %input{placeholder: "カード背面の4桁もしくは3桁の番号", class: "user-form__content__group__default"}
+              %p.user-text.user-text-right
+                = link_to "#", method: :get do
+                  %i.fa.fa-question-circle>
                 カード背面の番号とは？
-          =f.submit "次へ進む", class: "user-btn-default user-btn-red"
+            =f.submit "次へ進む", class: "user-btn-default user-btn-red", id: "signup-token-submit"
   = render partial: 'shared/footer2'
