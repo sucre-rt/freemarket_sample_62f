@@ -1,5 +1,8 @@
 #wrapper
   = render partial: 'shared/header'
+  = link_to '/products/sell/', class: 'pagetop' do
+    %p 出品
+    %i.fa.fa-camera
   %main.main
     %section.main__cover{"style": "background-image: url('#{asset_path('background_01.jpg')}');"}
     %section.main__category
