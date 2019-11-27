@@ -35,7 +35,7 @@ p{
   margin-inline-end: 0px;}
 
 * {
-  
+
   box-sizing: border-box;
 }
 
@@ -335,9 +335,14 @@ a {
       margin: 0 auto;
       background: #fafafa;
       &__big {
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 0;
         img {
+          display: inline-block;
           width: 300px;
           height: 300px;
+          object-fit: cover;
         }
       }
       &__others {
