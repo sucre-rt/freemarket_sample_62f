@@ -6,7 +6,7 @@
       .sell-container
         %h2.l-single-head
           商品の情報を入力
-        = form_for @product, url: products_path, meshod: :post, html: { class: "sell-form"} do |f| 
+        = form_for @product, url: products_path, meshod: :post, html: { class: "sell-form", multipart: true} do |f| 
           = f.fields_for :images do |i|
             .sell-upload-box
               %h3.sell-upload-head
@@ -14,9 +14,10 @@
                 %span.form-require 必須
               %p 最大10枚までアップロードできます
               .sell-dropbox-container.clearfix.state-image-number-10
-                .sell-upload-drop-box.have-item-0
-                  =i.file_field :image, class: "sell-upload-drop-file"
-                  %pre.visible-pc ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                %label
+                  .sell-upload-drop-box.have-item-0
+                    =i.file_field :image, name: "images[:image][]", class: "sell-upload-drop-file", multiple: true
+                    %pre.visible-pc ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
             //ここから"商品詳細"
             .sell-content
               .form-group
@@ -46,8 +47,7 @@
                         %option{value: ""} ---
                         %option{value: "1"} レディース
                     =f.text_field :category_id, autocomplete: "category", type: "hidden", value: "1001"
-                    =f.text_field :size_id, autocomplete: "category", type: "hidden", value: "1"
-                    =f.text_field :brand_id, autocomplete: "category", type: "hidden", value: "1"
+                    =f.text_field :brand_id, autocomplete: "brand", type: "hidden", value: "1"
                 .form-group
                   %label
                     商品の状態

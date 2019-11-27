@@ -52,7 +52,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key|
-|credit|references|null: false, foreign_key|
+|card_id|string|null: false|
 |customer_id|string|null: false|
 ### Association
 - belongs_to :user
