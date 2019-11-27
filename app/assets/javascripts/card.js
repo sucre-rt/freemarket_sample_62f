@@ -7,7 +7,6 @@ $(function(){
   $(form).on("click", "#card-token-submit", function(e){
     e.preventDefault();
     form.find("input[type=submit]").prop("disabled", true); // submitボタンを無効にし直接アプリに値が送られてくるのを防ぐ
-
     // ユーザーが入力したデータからカードを作成
     let card = {
       number:     parseInt($("#card-number").val()), // 入力されたカード情報の文字列を整数に変換して取得

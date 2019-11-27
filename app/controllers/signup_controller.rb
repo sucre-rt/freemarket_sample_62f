@@ -1,5 +1,5 @@
 class SignupController < ApplicationController
-  include SignupHelper
+  include SignupHelper, CardHelper
   before_action :set_user, only: [:registration, :sms_confirmation, :sms, :address, :credit_card]
 
   def index
@@ -58,9 +58,7 @@ class SignupController < ApplicationController
 
   def credit_card
     status_bar("through", "through", "through", "active", "")
-
-    @user.build_card
-
+    
     #ここからアドレス
     addreses = user_params[:address_attributes]                             #変数に入れてる
     session[:ad_family_name]      = addreses[:family_name]
@@ -81,7 +79,9 @@ class SignupController < ApplicationController
   end
 
   def create
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
 
+    # ユーザーの生成
     @user = User.new(
       nickname:         session[:nickname],
       email:            session[:email],
@@ -93,6 +93,7 @@ class SignupController < ApplicationController
       birthday:         session[:birthday],
       telphone:         session[:telphone]
     )
+    # 配送元住所の生成
     @user.build_address(
       family_name:      session[:ad_family_name],
       first_name:       session[:ad_first_name],
@@ -104,6 +105,14 @@ class SignupController < ApplicationController
       address:          session[:address],
       building:         session[:building],
       tel:              session[:tel]
+    )
+    # クレジットカードの生成
+    customer = Payjp::Customer.create(
+      card:  params['payjp_token']
+    )
+    @user.build_card(
+      customer_id:  customer.id,
+      card_id:      customer.default_card
     )
 
     if @user.save && session[:uid].blank?

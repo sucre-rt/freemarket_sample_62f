@@ -10,22 +10,22 @@ $(function(){
 })
 
 // カード情報の取得
-$(function(){
+// $(function(){
 
-  Payjp.setPublicKey('pk_test_34d7bf26ffb0a19c8c6ad2e1'); // payjp公開鍵
+//   Payjp.setPublicKey('pk_test_34d7bf26ffb0a19c8c6ad2e1'); // payjp公開鍵
 
-  let form = $("#signup-card-form");
+//   let form = $("#signup-card-form");
 
-  $(form).on("click", "#signup-token-submit", function(e){
-    e.preventDefault();
-    form.find("input[type=submit]").prop("disabled", true);
+//   $(form).on("click", "#signup-token-submit", function(e){
+//     e.preventDefault();
+//     form.find("input[type=submit]").prop("disabled", true);
 
-    let card = {
-      number:     parseInt($("#signup-card-number").val()), // 入力されたカード情報の文字列を整数に変換して取得
-      exp_month:  parseInt($("#signup-exp-month").val()),
-      exp_year:   parseInt($("#signup-exp-year").val()),
-      cvc:        parseInt($("#signup-cvc").val())
-    };
-  })
+//     let card = {
+//       number:     parseInt($("#signup-card-number").val()), // 入力されたカード情報の文字列を整数に変換して取得
+//       exp_month:  parseInt($("#signup-exp-month").val()),
+//       exp_year:   parseInt($("#signup-exp-year").val()),
+//       cvc:        parseInt($("#signup-cvc").val())
+//     };
+//   })
 
-})
+// })
