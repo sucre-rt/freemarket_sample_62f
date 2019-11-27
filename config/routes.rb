@@ -38,10 +38,14 @@ Rails.application.routes.draw do
     get 'mypage/profile', to: 'signup#profile', as: :profile_signup
   end
 
-  resources :products do
+  resources :products, only: [:create, :show] do
     collection do
       get 'sell'
       get 'done'
+    end
+    member do
+      get 'pay'
+      post 'buy'
     end
   end
 

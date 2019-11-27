@@ -1,0 +1,11 @@
+%h2 購入を確定しますか？
+%p 
+  =@product.name
+%p 
+  =@product.price
+%br
+%h3 支払い方法
+= "**** **** **** " + @payjp_card.last4
+%br
+=form_for :product, url: buy_product_path(@product.id), method: :post do |f|
+  =f.submit "購入"

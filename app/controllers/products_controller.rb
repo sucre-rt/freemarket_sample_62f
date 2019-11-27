@@ -28,10 +28,34 @@ class ProductsController < ApplicationController
     @category = @product.category
     @delivery = @product.delivery
     @postage = @delivery.responsibility.include?("出品者負担") ? "送料込み" : "着払い"
-    @back_product = Product.where('id < ?', @product.id).first
+    @back_product = Product.where('id < ?', @product.id).order("id DESC").first
     @next_product = Product.where('id > ?', @product.id).first
     @seller_other_products = Product.where(user_id: @seller.id).order("id DESC").limit(6).where.not(id: @product.id)
     @category_other_products = Product.where(category_id: @category.id).order("id DESC").limit(6).where.not(id: @product.id)
+  end
+
+  def pay
+    @product = Product.find(params[:id])
+    if current_user.card == nil
+      redirect_to card_new_path
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      card = current_user.card
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @payjp_card = customer.cards.retrieve(card.card_id)
+    end
+  end
+
+  def buy
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    card = current_user.card
+    product = Product.find(params[:id])
+    Payjp::Charge.create(
+      amount:   product.price,
+      customer: card.customer_id,
+      currency: 'jpy'
+    )
+    redirect_to done_products_path
   end
 
 private
