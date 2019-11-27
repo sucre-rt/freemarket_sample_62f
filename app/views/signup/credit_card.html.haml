@@ -3,12 +3,13 @@
   .user-main
     .user-main__content
       %h2.user-title 支払い方法
-      = form_for @user, url: signup_index_path, method: :post, html: { class: "user-form"} do |f|
+      = form_for @user, url: signup_index_path, method: :post, html: { class: "user-form", id: "card-form" } do |f|
+        -# = f.fields_for @card, html: {id: "card-form"} do |i|
         .user-form__content
           .user-form__content__group
             %label カード番号
             %span.user-form__content__group--attention 必須
-            %input{placeholder: "半角数字のみ", class: "user-form__content__group__default"}
+            = text_field_tag :number, "", placeholder: "半角数字のみ", maxlength: "16", id: "card-number", class: "user-form__content__group__default"
           .card-icon
             = image_tag "logo_visa.gif", width: '37', height: '25', alt: "visa"
             = image_tag "mc_vrt_pos.png", width: '37', height: '30', alt: "master"
@@ -24,22 +25,35 @@
               .user-form__content__group__user-select__middle-box
                 .user-form__content__group__user-select__middle-box__month
                   %i.fa.fa-chevron-down
-                  %select.user-select-default
-                    %option 01
+                  %select.user-select-default#card-exp-month{name: "exp_month", type: "text"}
+                    %option{value: "01"} 01
+                    %option{value: "02"} 02
+                    %option{value: "03"} 03
+                    %option{value: "04"} 04
+                    %option{value: "05"} 05
+                    %option{value: "06"} 06
+                    %option{value: "07"} 07
+                    %option{value: "08"} 08
+                    %option{value: "09"} 09
+                    %option{value: 10} 10
+                    %option{value: 11} 11
+                    %option{value: 12} 12
                 %span 月
               .user-form__content__group__user-select__middle-box
                 .user-form__content__group__user-select__middle-box__year
                   %i.fa.fa-chevron-down
-                  %select.user-select-default
-                    %option 19
+                  %select.user-select-default#card-exp-year{name: "exp_year", type: "text"}
+                    - card_years.each do |year|
+                      %option{value: year}
+                        = year
                 %span 年
           .user-form__content__group
             %label セキュリティコード
             %span.user-form__content__group--attention 必須
-            %input{placeholder: "カード背面の4桁もしくは3桁の番号", class: "user-form__content__group__default"}
+            = text_field_tag :cvc, "", placeholder: "カード背面の4桁もしくは3桁の番号", maxlength: "4", class: "user-form__content__group__default", id: "card-cvc"
             %p.user-text.user-text-right
               = link_to "#", method: :get do
                 %i.fa.fa-question-circle>
-                カード背面の番号とは？
-          =f.submit "次へ進む", class: "user-btn-default user-btn-red"
+              カード背面の番号とは？
+          =f.submit "次へ進む", class: "user-btn-default user-btn-red", id: "card-token-submit"
   = render partial: 'shared/footer2'
