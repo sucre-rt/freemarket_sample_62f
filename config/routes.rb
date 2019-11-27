@@ -42,6 +42,8 @@ Rails.application.routes.draw do
     collection do
       get 'sell'
       get 'done'
+      get 'category_children' 
+      get 'category_grandchildren'
     end
   end
 
