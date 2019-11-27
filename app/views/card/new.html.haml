@@ -6,12 +6,12 @@
     .main__right-content
       .main__right-content__user-info
         %h2 クレジットカード情報入力
-        = form_for :card, url: card_index_path, method: :post, html: { class: "user-form", id: "mypage-card-form"} do |f|
+        = form_for :card, url: card_index_path, method: :post, html: { class: "user-form", id: "card-form"} do |f|
           .user-form__content
             .user-form__content__group
               %label カード番号
               %span.user-form__content__group--attention 必須
-              = f.text_field :number, placeholder: "半角数字のみ", maxlength: "16", id: "mypage-card-number", class: "user-form__content__group__default"
+              = f.text_field :number, placeholder: "半角数字のみ", maxlength: "16", id: "card-number", class: "user-form__content__group__default"
             .card-icon
               = image_tag "logo_visa.gif", width: '37', height: '25', alt: "visa"
               = image_tag "mc_vrt_pos.png", width: '37', height: '30', alt: "master"
@@ -27,7 +27,7 @@
                 .user-form__content__group__user-select__middle-box
                   .user-form__content__group__user-select__middle-box__month
                     %i.fa.fa-chevron-down
-                    = f.select :exp_month, "", {}, class: "user-select-default", id: "mypage-exp-month" do
+                    = f.select :exp_month, "", {}, class: "user-select-default", id: "card-exp-month" do
                       %option{value: "01"} 01
                       %option{value: "02"} 02
                       %option{value: "03"} 03
@@ -44,7 +44,7 @@
                 .user-form__content__group__user-select__middle-box
                   .user-form__content__group__user-select__middle-box__year
                     %i.fa.fa-chevron-down
-                    = f.select :exp_year, "", {}, class: "user-select-default", id: "mypage-exp-year" do
+                    = f.select :exp_year, "", {}, class: "user-select-default", id: "card-exp-year" do
                       - card_years.each do |year|
                         %option{value: year}
                           = year
@@ -52,12 +52,12 @@
             .user-form__content__group
               %label セキュリティコード
               %span.user-form__content__group--attention 必須
-              = f.text_field :cvc, placeholder: "カード背面の4桁もしくは3桁の番号", maxlength: "4", class: "user-form__content__group__default", id: "mypage-cvc"
+              = f.text_field :cvc, placeholder: "カード背面の4桁もしくは3桁の番号", maxlength: "4", class: "user-form__content__group__default", id: "card-cvc"
               %p.user-text.user-text-right
                 = link_to "#", method: :get do
                   %i.fa.fa-question-circle>
                   カード背面の番号とは？
-            =f.submit "次へ進む", class: "user-btn-default user-btn-red", id: "mypage-token-submit"
+            =f.submit "次へ進む", class: "user-btn-default user-btn-red", id: "card-token-submit"
 
 
   = render partial: 'shared/footer'
