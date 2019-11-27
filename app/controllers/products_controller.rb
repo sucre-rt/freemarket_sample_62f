@@ -17,8 +17,19 @@ class ProductsController < ApplicationController
     end
 
   end
-
+ 
   def done
+  end
+  
+  def pay
+    @product1 = Product.find(params[:id])
+    @product2 = Product.find(params[:id]).images
+
+    @postage = @product1.delivery.responsibility.include?("出品者負担") ? "送料込み" : "着払い"
+    @havepoint = @product1.user.point
+    @havepoint == 0 ? @havepoint = "ポイントがありません" : @havepoint
+    @addressinfo = @product1.user.address
+
   end
 
   def show

@@ -1,0 +1,224 @@
+*{
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  box-sizing: inherit;
+}
+
+
+.single-main{                                    //コンテンツ部分全体
+  display: block;
+  height: 745.19px;
+  width: 100%;
+  &__l-single-container{                        //コンテンツ白い部分全体
+    background-color: #fff;
+    width: 700px;
+    margin: 0 auto;
+    h2{                                         //題名部分
+      padding: 16px;
+      font-size: 22px;
+      line-height: 1.5;
+      text-align: center;
+      height: 65px;
+    }
+
+    .buy-item{                                   //商品情報部分
+      text-align: center;
+      margin: 0;
+      padding: 24px 12.5% 0;
+      border-top: 1px solid #f5f5f5;
+      height: 312px;
+      &__inner{
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 320px;
+        margin: 0 auto;
+        width: 320px;
+        height: 287px;
+        img{                                      //商品写真
+          font-size: 22px;
+          width: 64px;
+          height: 64px;
+        }
+        p{
+          width: calc(100% - 80px);
+          margin: 0 0 0 16px;
+          text-align: left;
+          font-size: 16px;
+          line-height: 1.5;
+          font-weight: 600;
+        }
+        form{
+          width: 323px;
+          height: 223px;
+        }
+        .buy-price{                                //値段
+          width: 320px;
+          height: 33px;
+          text-align: center;
+          margin: 8px 0 0;
+          line-height: 1.5;
+          font-size: 22px;
+          font-weight: 600;
+          span{                                     //送料込みか否か
+            margin: 0 0 0 8px;
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
+        .buy-point{                                //ポイント表示部分
+          background: #ccc;
+          margin: 16px 0 0;
+          list-style: none;
+          width: 320px;
+          padding: 16px;
+          border: 1px solid #ccc;
+        }
+
+        .buy-all-price{                             //支払金額全般
+          display: table;
+          border-collapse: collapse;
+          width: 100%;
+          .price-row{
+            font-size: 18px;
+            border: 0;
+            height: 60px;
+            display: table-row;
+            font-weight: 600;
+            .user-buy-all-price:first-child {
+              text-align: left;
+            }
+            .user-buy-all-price{ 
+              display: table-cell;
+              padding: 16px 0;
+              text-align: right;
+
+              .data-buy-pay{
+                font-size: 28px;
+              }
+            }
+          }
+        }
+        .button{                                //購入ボタン
+          margin: 8px 0 0;
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+        }
+      }
+    }
+
+    .buy-user-info{                             //配送先の住所情報
+      margin: 40px 0 0;
+      padding: 24px 12.5% 0;
+      border-top: 1px solid #f5f5f5;
+      height: 127.59px;
+      &__adress{                                //住所
+        line-height: 1.4;
+        max-width: 320px;
+        height: 102.59px;
+        margin: 0 auto;
+        a{
+          display: block;
+          margin: 8px 0 0;
+          font-size: 14px;
+          line-height: 1.4;
+          font-style: normal;
+        }
+        .buy-user-info-fix::after{
+          content: "";
+          display: block;
+          position: absolute;
+          border-top: 0.2rem solid #0099e8;
+          border-right: 0.2rem solid #0099e8;
+          width: 0.8rem;
+          height: 0.8rem;
+          transform: translate(0, -50%) rotate(45deg);
+          margin: 0 auto;
+          top: 50%;
+          bottom: 0;
+          right: -0.4rem;
+          transition: 0.4s;
+
+        }
+        .buy-user-info-fix{                     //変更する のボタン
+          position: relative;
+          display: block;
+          text-align: right;
+          color: #0099e8;
+          text-decoration: none;
+          span{
+            vertical-align: middle;
+          }
+          i{
+            vertical-align: middle;
+            margin: 0 0 0 8px;
+            display: inline-block;
+            font-family: 'icon-font';
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+          }
+        }
+      }
+    }
+
+    .buy-user-credit{                                //クレジットカード情報
+      margin: 40px 0 0;
+      padding: 24px 12.5% 40px;
+      border-top: 1px solid #f5f5f5;
+      height: 160.59px;
+      &__info{
+        max-width: 320px;
+        height: 95.59px;
+        margin: 0 auto;
+        line-height: 1.4;
+      }
+      a{
+        display: block;
+        margin: 8px 0 0;
+        font-size: 14px;
+        line-height: 1.4;
+        font-style: normal;
+      }
+      .buy-user-credit-fix::after{
+        content: "";
+        display: block;
+        position: absolute;
+        border-top: 0.2rem solid #0099e8;
+        border-right: 0.2rem solid #0099e8;
+        width: 0.8rem;
+        height: 0.8rem;
+        transform: translate(0, -50%) rotate(45deg);
+        margin: 0 auto;
+        top: 50%;
+        bottom: 0;
+        right: -0.4rem;
+        transition: 0.4s;
+      }
+      .buy-user-credit-fix{                     //変更する のボタン
+        position: relative;
+        display: block;
+        text-align: right;
+        color: #0099e8;
+        text-decoration: none;
+        span{
+          vertical-align: middle;
+        }
+        i{
+          vertical-align: middle;
+          margin: 0 0 0 8px;
+          display: inline-block;
+          font-family: 'icon-font';
+          font-style: normal;
+          font-weight: 400;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+      }
+    }
+  }
+}

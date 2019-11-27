@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   end
 
   resources :products do
+    member do
+      get 'pay'
+    end
     collection do
       get 'sell'
       get 'done'
