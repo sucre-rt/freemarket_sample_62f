@@ -53,6 +53,7 @@
                   %div
                     .select-wrap
                       %i.icon-arrow-bottom
+                      = f.select :status, options_for_select(status.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'} 
                       //ここまで"商品詳細"
             //ここから"配送について"
             .sell-content.clearfix
