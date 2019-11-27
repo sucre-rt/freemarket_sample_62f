@@ -45,7 +45,7 @@ RSpec.configure do |config|
 
   # OmniauthMock読み込み
   OmniAuth.config.test_mode = true
-  config.include OmniauthMacros
+  # config.include OmniauthMacros
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
