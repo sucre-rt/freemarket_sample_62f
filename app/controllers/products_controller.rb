@@ -1,9 +1,23 @@
 class ProductsController < ApplicationController
 
+  before_action :set_category, only: [:sell, :create]
+
   def sell
     @product = Product.new
     @product_image = @product.images.build
+    binding.pry
   end
+
+  #ここからAjax通信用
+  def category_children  
+    @category_children = Category.find(params[:productcategory]).children 
+  end
+
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:productcategory]).children
+  end
+  #ここまでAjax通信用 
+
 
   def create
     @product = Product.new(product_params)
@@ -51,6 +65,10 @@ private
       :brand_id,
       images_attributes: [:id, :product_id, :image]
     ).merge(user_id: current_user.id)
+  end
+
+  def set_category
+    @category = Category.all.order("id ASC").limit(2)
   end
 
 end
