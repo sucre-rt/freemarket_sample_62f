@@ -43,6 +43,8 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
 
+  config.include PayjpMock
+
   # OmniauthMock読み込み
   OmniAuth.config.test_mode = true
   # config.include OmniauthMacros
