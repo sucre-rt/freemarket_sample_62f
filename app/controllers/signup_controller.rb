@@ -116,17 +116,15 @@ class SignupController < ApplicationController
     )
 
     if @user.save && session[:uid].blank?
-      # ログインするための情報を保管
-      session[:id] = @user.id
-      redirect_to done_signup_index_path
+      sign_in_and_redirect @user
     elsif @user.save && session[:uid]
-      session[:id] = @user.id
+      session[:user_id] = @user.id
       SnsCredential.create(
         uid:        session[:uid],
         provider:   session[:provider],
         user_id:    session[:id]
       )
-      redirect_to done_signup_index_path
+      sign_in_and_redirect @user
     else
       @status1 = "active"
       redirect_to controller: :signup, action: :registration
@@ -224,6 +222,11 @@ class SignupController < ApplicationController
       :nickname,
       :profile
     )
+  end
+
+  # 新規登録後ログインした状態で登録完了ページにアクセスさせるためのルート定義
+  def after_sign_in_path_for(resource)
+    done_signup_index_path
   end
 
 end
