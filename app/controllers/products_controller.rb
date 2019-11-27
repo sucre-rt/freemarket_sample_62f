@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   def done
   end
   
-  def show
+  def pay
     @product1 = Product.find(params[:id])
     @product2 = Product.find(params[:id]).images
 
