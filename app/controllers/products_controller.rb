@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   def sell
     @product = Product.new
     @product_image = @product.images.build
-    binding.pry
   end
 
   #ここからAjax通信用
