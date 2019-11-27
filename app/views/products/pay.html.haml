@@ -1,11 +1,95 @@
-%h2 購入を確定しますか？
-%p 
-  =@product.name
-%p 
-  =@product.price
-%br
-%h3 支払い方法
-= "**** **** **** " + @payjp_card.last4
-%br
-=form_for :product, url: buy_product_path(@product.id), method: :post do |f|
-  =f.submit "購入"
+#wrapper
+  = render partial: 'shared/header3'
+  %main.single-main
+    %section.single-main__l-single-container
+      %h2.l-single-head
+        購入内容の確認
+      %section.buy-item
+        .buy-item__inner
+          %h3.buy-item-image
+            = image_tag "/uploads/image/image/#{@image[0][:id]}/#{@image[0][:image]}"
+          %p.buy-item-name
+            = @product[:name]
+            %p.buy-price
+              = "¥ #{@product.price.to_s(:delimited)}"
+              %span.buy-item-shopping
+                = @postage
+            %ul.buy-point
+              %li.point-parent
+                .user-buy-point
+                  = @havepoint
+            %ul.buy-all-price
+              %li.price-row
+                .user-buy-all-price 支払い金額
+                .user-buy-all-price
+                  %span.data-buy-pay
+                    = "¥ #{@product.price.to_s(:delimited)}"
+
+            - if current_user.address == nil || current_user.card == nil
+              .caution 配送先と支払い方法の入力を完了してください。
+              .caution-btn
+                購入する
+            -else
+              =form_for :product, url: buy_product_path(@product.id), method: :post do |f|
+                =f.submit "購入する", class: "btn-default btn-red bold"
+                
+      %section.buy-user-info
+        .buy-user-info__adress
+
+          -if current_user.address == nil
+            %h3 配送先
+            %address.buy-user-info-text
+              〒
+              %br
+              %br
+              %br
+              %br
+            %p.buy-user-info-text
+            = link_to "#", class: "buy-user-info-fix" do
+              %span 変更する
+              %i.icon-arrow-right
+
+          -else
+            %h3 配送先
+            %address.buy-user-info-text
+              = "〒 #{current_user.address.postal_code}"
+              %br
+              = current_user.address.prefecture 
+              = current_user.address.city
+              = current_user.address.address
+              = current_user.address.building 
+              %br
+              = current_user.address.family_name
+              = current_user.address.first_name
+            %p.buy-user-info-text
+            = link_to "#", class: "buy-user-info-fix" do
+              %span 変更する
+              %i.icon-arrow-right
+
+      %section.buy-user-credit
+        .buy-user-credit__info
+          - if current_user.card == nil
+            %h3 支払い方法
+            %a.buy-user-credit-text
+              %br
+              %br
+              %br
+            %p.buy-user-creit-text
+            = link_to card_new_path, class: "buy-user-credit-fix" do
+              %span 変更する
+              %i.icon-arrow-right
+
+          - else
+            %h3 支払い方法
+            %a.buy-user-credit-text
+              = "*************#{@payjp_card.last4}"
+              %br
+              = "#{@payjp_card.exp_month} / #{@payjp_card.exp_year}"
+              %br
+              = image_tag "#{@icon}", width: '40', height: '25'
+            %p.buy-user-creit-text
+            = link_to "#", class: "buy-user-credit-fix" do
+              %span 変更する
+              %i.icon-arrow-right
+
+  = render partial: 'shared/footer2'
