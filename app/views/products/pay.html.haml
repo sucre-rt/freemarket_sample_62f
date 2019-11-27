@@ -40,7 +40,7 @@
             = @addressinfo.family_name
             = @addressinfo.first_name
           %p.buy-user-info-text
-          %a.buy-user-info-fix{href: "#"}
+          = link_to "#", class: "buy-user-info-fix" do
             %span 変更する
             %i.icon-arrow-right
       %section.buy-user-credit
@@ -53,7 +53,7 @@
             %br
             VISAってるよ！
           %p.buy-user-creit-text
-          %a.buy-user-credit-fix{href: "#"}
+          = link_to "#", class: "buy-user-credit-fix" do
             %span 変更する
             %i.icon-arrow-right
 
