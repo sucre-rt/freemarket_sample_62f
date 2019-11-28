@@ -75,10 +75,7 @@
                   %div
                     .select-wrap
                       %i.icon-arrow-bottom
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "北海道"} 北海道
-                    =f.text_field :area, autocomplete: "area", type: "hidden", value: "北海道"
+                      = f.select :area, options_for_select(prefecture.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
                 .form-group
                   %label
                     発送までの日数
