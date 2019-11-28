@@ -2,24 +2,20 @@ require 'rails_helper'
 
 RSpec.describe ProductsController, type: :controller do
   before do
-    @product = FactoryBot.create(:product)
+    @image = FactoryBot.create(:image)
+    @product = @image.product
   end
 
-  # factorybotの確認
-  it "factory_botがproductを作成できている" do
-    product = @product
-    expect(product).to be_valid
-  end
-
-  # describe 'GET #show' do
+  describe 'GET #show' do
     
-  #   it "GET #showが呼ばれた時、正しいビューが表示される" do
-  #     product = create(:product)
-  #     get :show, params: { id: product }
-  #     expect(response).to render_template :show
-  #   end
+    it "GET #showが呼ばれた時、正しいビューが表示される" do
+      get :show, params: { id: @product }
+      expect(response).to render_template :show
+    end
 
-  # end
+
+
+  end
 
   # before do
   #   allow(Payjp::Charge).to receive(:create).and_return(PayjpMock.prepare_valid_charge)
