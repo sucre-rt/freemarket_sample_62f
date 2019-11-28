@@ -55,7 +55,7 @@ $(function(){
 
   function appendDeliveryChildrenBox(insertHTML){
     var deliverychildrenSelectHtml = '';
-    deliverychildrenSelectHtml = `<div class="form-group">
+    deliverychildrenSelectHtml = `<div class="form-group" id="form-group_children">
                                   <label>
                                   配送の方法
                                   <span class="form-require">必須</span>
@@ -63,11 +63,13 @@ $(function(){
                                   <div>
                                   <div class="select-wrap">
                                   <i class="icon-arrow-bottom"></i>
-                                  <select class="select-default" id="delivery_select" name="product[delivery_id]"><option value="">---</option>
+                                  <select class="select-default" id="delivery_children" name="product[delivery_id]"><option value="">---</option>
                                   ${insertHTML}
+                                  </select>
                                   </div>
                                   </div>
-                                  </div>`
+                                  </div>
+                                  <div class="form-group_children></div>"`
     $(".form-group_children").append(deliverychildrenSelectHtml);
   }
 
@@ -131,7 +133,6 @@ $(function(){
   });
 
   $(document).on('change', '#delivery_select', function(){
-
     var productdelivery = document.getElementById('delivery_select').value;
 
     if (productdelivery != ''){
@@ -148,9 +149,9 @@ $(function(){
         deliveries.forEach(function(delivery){
           insertHTML += appendOption_d(delivery);
         });
-        appendDeliveryChildrenBox(insertHTML);  
+        appendDeliveryChildrenBox(insertHTML);
         $(document).on('change', '#delivery_select',function(){
-          $('.form-group_children').remove();
+          $('#form-group_children').remove();
         })
       })
       .fail(function(){

@@ -42,6 +42,9 @@ Rails.application.routes.draw do
     collection do
       get 'sell'
       get 'done'
+      
+      #ajax用
+      get 'delivery_children'
       get 'category_children' 
       get 'category_grandchildren'
     end
