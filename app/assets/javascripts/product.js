@@ -19,36 +19,33 @@ $(function(){
   }
   function appendChidrenBox(insertHTML){ // 子セレクトボックスのhtml作成
     var childSelectHtml = '';
-      childSelectHtml = `
-                        <div class="select-wrapper" id= "children_wrapper">
-                        <i class="icon-arrow-bottom"></i>
-                        <select class="select-default" id="category_select" name="product[category_id]">
+      childSelectHtml = `<div class='product-select-wrapper' id= 'children_wrapper'>
+                        <div class='product_category-select'>
+                        <select class="category_select-box" id="child_category" name="product[category_id]">
                         <option value="---">---</option>
-                        ${insertHTML} 
+                        ${insertHTML}
                         </select>
                         </div>
-                        <div class= 'product_select-grandchildren'>
+                        <div class= 'select-grandchildren'>
                         </div>
-                        </div>
-                        `;
-    $('.product_select-children').append(childSelectHtml);
+                        </div>`;
+    $('.select-children').append(childSelectHtml);
   }
   function appendgrandChidrenBox(insertHTML){ // 孫セレクトボックスのhtml作成
     var grandchildrenSelectHtml = '';
-    grandchildrenSelectHtml = `
-                              <div class="select-wrap", id= 'grandchildren_wrapper'>
-                              <i class="icon-arrow-bottom"></i>
-                              <select class="select-default" id="category_select" name="product[category_id]">
+    grandchildrenSelectHtml = `<div class='product-select-wrapper' id= 'grandchildren_wrapper'>
+                              <div class='product_category-select'>
+                              <select class="category_select-box" id="grandchild_category" name="product[category_id]">
                               <option value="---">---</option>
                               ${insertHTML} 
                               </select>
                               </div>
                               <div class= 'product_select-grandchildren'>
                               </div>
-                              </div>
-                              `;
-    $('.product_select-grandchildren').append(grandchildrenSelectHtml);
+                              </div>`;
+    $('.select-grandchildren').append(grandchildrenSelectHtml);
   }
+
 
 
   $(document).on('change', '#category_select', function(){  // 親セレクトボックスの選択肢を変えたらイベント発火
