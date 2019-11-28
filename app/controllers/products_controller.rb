@@ -47,7 +47,6 @@ class ProductsController < ApplicationController
     @next_product = Product.where('id > ?', @product.id).first
     @seller_other_products = Product.where(user_id: @seller.id).order("id DESC").limit(6).where.not(id: @product.id)
     @category_other_products = Product.where(category_id: @category.id).order("id DESC").limit(6).where.not(id: @product.id)
-    binding.pry
   end
 
   def buy
