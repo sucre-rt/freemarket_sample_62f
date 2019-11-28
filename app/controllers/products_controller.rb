@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   include MypageHelper
+  before_action :set_product, only: [:pay, :show, :buy]
 
   def sell
     @product = Product.new
@@ -23,14 +24,11 @@ class ProductsController < ApplicationController
   end
   
   def pay
-    @product = Product.find(params[:id])
     @image = @product.images
     @postage = @product.delivery.responsibility.include?("出品者負担") ? "送料込み" : "着払い"
     @havepoint = @product.user.point == nil ? "ポイントがありません" : @product.user.point
 
-    if current_user.card == nil
-      
-    else
+    if current_user.card != nil
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       card = current_user.card
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -40,7 +38,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
     @images = @product.images
     @seller = @product.user
     @category = @product.category
@@ -54,20 +51,19 @@ class ProductsController < ApplicationController
 
   def buy
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    product = Product.find(params[:id])
     if current_user.card != nil
       card = current_user.card
       charge = Payjp::Charge.create(
-        amount:   product.price,
+        amount:   @product.price,
         customer: card.customer_id,
         currency: 'jpy'
       )
-      product.update(selling_status: "売却済")
+      @product.update(selling_status: "売却済")
       flash[:notice] = "商品を購入しました。"
-      redirect_to product_path(product.id)
+      redirect_to product_path(@product.id)
     else
       flash[:notice] = "商品の購入に失敗しました"
-      redirect_to product_path(product.id)
+      redirect_to product_path(@product.id)
     end
   end
 
@@ -88,6 +84,10 @@ private
       :brand_id,
       images_attributes: [:id, :product_id, :image]
     ).merge(user_id: current_user.id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
 end
