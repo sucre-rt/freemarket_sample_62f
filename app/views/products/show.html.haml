@@ -1,5 +1,6 @@
 #wrapper
   = render partial: 'shared/header'
+  = render partial: 'shared/nav'
   %main.main
     .product-box-content
       %h2.product-box-content__product-name 
@@ -12,6 +13,9 @@
             -@images.each do |img|
               .image-list
                 = image_tag("/uploads/image/image/#{img[:id]}/#{img[:image]}")
+          - if @product.selling_status == "売却済"
+            .product-box-content__product-main-content__product-image__soldout-box
+              .product-box-content__product-main-content__product-image__soldout-box__text SOLD
 
         %table.product-box-content__product-main-content__product-information
           %tbody
@@ -69,7 +73,11 @@
           = @postage
 
       .product-box-content__buy-btn
-        = link_to "購入画面に進む", "#"
+        -if @product.selling_status == "出品中"
+          = link_to "購入画面に進む", pay_product_path
+        - else
+          .sold-out
+            売り切れました
 
       .product-box-content__product-information
         %p.product-box-content__product-information__text
