@@ -5,9 +5,16 @@ class ProductsController < ApplicationController
   def sell
     @product = Product.new
     @product_image = @product.images.build
+    @delivery = Delivery.all.order("id ASC").limit(2) # deliveryの親
   end
 
   #ここからAjax通信用
+  ##delivery
+  def delivery_children  
+    @delivery_children = Delivery.find(params[:productdelivery]).children
+  end
+
+  ##category
   def category_children  
     @category_children = Category.find(params[:productcategory]).children 
   end
