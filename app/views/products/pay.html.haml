@@ -7,12 +7,11 @@
       %section.buy-item
         .buy-item__inner
           %h3.buy-item-image
-            = image_tag "/uploads/image/image/#{@product2[0][:id]}/#{@product2[0][:image]}"
+            = image_tag "/uploads/image/image/#{@image[0][:id]}/#{@image[0][:image]}"
           %p.buy-item-name
-            = @product1[:name]
-          %form.buy-farm{action: "#", method: "POST", novalidate: "novalidate" }
+            = @product[:name]
             %p.buy-price
-              = "¥ #{@product1.price.to_s(:delimited)}"
+              = "¥ #{@product.price.to_s(:delimited)}"
               %span.buy-item-shopping
                 = @postage
             %ul.buy-point
@@ -24,38 +23,73 @@
                 .user-buy-all-price 支払い金額
                 .user-buy-all-price
                   %span.data-buy-pay
-                    = "¥ #{@product1.price.to_s(:delimited)}"
-            %button.btn-default.btn-red.bold{type: "submit"} 購入する
+                    = "¥ #{@product.price.to_s(:delimited)}"
+
+            - if current_user.address == nil || current_user.card == nil
+              .caution 配送先と支払い方法の入力を完了してください。
+              .caution-btn
+                購入する
+            -else
+              =form_for :product, url: buy_product_path(@product.id), method: :post do |f|
+                =f.submit "購入する", class: "btn-default btn-red bold"
+                
       %section.buy-user-info
         .buy-user-info__adress
-          %h3 配送先
-          %address.buy-user-info-text
-            = "〒 #{@addressinfo.postal_code}"
-            %br
-            = @addressinfo.prefecture 
-            = @addressinfo.city
-            = @addressinfo.address
-            = @addressinfo.building 
-            %br
-            = @addressinfo.family_name
-            = @addressinfo.first_name
-          %p.buy-user-info-text
-          = link_to "#", class: "buy-user-info-fix" do
-            %span 変更する
-            %i.icon-arrow-right
+
+          -if current_user.address == nil
+            %h3 配送先
+            %address.buy-user-info-text
+              〒
+              %br
+              %br
+              %br
+              %br
+            %p.buy-user-info-text
+            = link_to "#", class: "buy-user-info-fix" do
+              %span 変更する
+              %i.icon-arrow-right
+
+          -else
+            %h3 配送先
+            %address.buy-user-info-text
+              = "〒 #{current_user.address.postal_code}"
+              %br
+              = current_user.address.prefecture 
+              = current_user.address.city
+              = current_user.address.address
+              = current_user.address.building 
+              %br
+              = current_user.address.family_name
+              = current_user.address.first_name
+            %p.buy-user-info-text
+            = link_to "#", class: "buy-user-info-fix" do
+              %span 変更する
+              %i.icon-arrow-right
+
       %section.buy-user-credit
         .buy-user-credit__info
-          %h3 支払い方法
-          %a.buy-user-credit-text
-            ****************
-            %br
-            01/01
-            %br
-            VISAってるよ！
-          %p.buy-user-creit-text
-          = link_to "#", class: "buy-user-credit-fix" do
-            %span 変更する
-            %i.icon-arrow-right
+          - if current_user.card == nil
+            %h3 支払い方法
+            %a.buy-user-credit-text
+              %br
+              %br
+              %br
+            %p.buy-user-creit-text
+            = link_to card_new_path, class: "buy-user-credit-fix" do
+              %span 変更する
+              %i.icon-arrow-right
 
+          - else
+            %h3 支払い方法
+            %a.buy-user-credit-text
+              = "*************#{@payjp_card.last4}"
+              %br
+              = "#{@payjp_card.exp_month} / #{@payjp_card.exp_year}"
+              %br
+              = image_tag "#{@icon}", width: '40', height: '25'
+            %p.buy-user-creit-text
+            = link_to "#", class: "buy-user-credit-fix" do
+              %span 変更する
+              %i.icon-arrow-right
 
   = render partial: 'shared/footer2'
