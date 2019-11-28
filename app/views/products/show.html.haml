@@ -68,19 +68,34 @@
         %span.product-postage
           = @postage
 
-      .product-box-content__buy-btn
-        = link_to "購入画面に進む", "#"
+      -# .product-box-content__buy-btn
+      -#   = link_to "購入画面に進む", "#"
 
       .product-box-content__product-information
         %p.product-box-content__product-information__text
           = @product.information
 
-      .product-box-content__btn-box
-        .product-box-content__btn-box__left
-          = button_tag "#{content_tag(:i, '', class: 'fa fa-heart')}いいね! 0".html_safe, type: :button, class: "like-btn"
-          = link_to "#{content_tag(:i, '', class: 'fa fa-flag-checkered')}不適切な商品の報告".html_safe, "#", class: "report-btn"
-        .product-box-content__btn-box__right
-          = link_to "#{content_tag(:i, '', class: 'fa fa-lock')}あんしん・あんぜんへの取り組み".html_safe, "#", class: "safe-guide"  
+      -# .product-box-content__btn-box
+      -#   .product-box-content__btn-box__left
+      -#     = button_tag "#{content_tag(:i, '', class: 'fa fa-heart')}いいね! 0".html_safe, type: :button, class: "like-btn"
+      -#     = link_to "#{content_tag(:i, '', class: 'fa fa-flag-checkered')}不適切な商品の報告".html_safe, "#", class: "report-btn"
+      -#   .product-box-content__btn-box__right
+      -#     = link_to "#{content_tag(:i, '', class: 'fa fa-lock')}あんしん・あんぜんへの取り組み".html_safe, "#", class: "safe-guide"  
+
+
+    .prduct-box-content-delete
+      .prduct-box-content-delete__content
+        %button#product-edit
+          %i.fa.fa-product-edit 商品の編集
+        .product-or
+          or
+        %button#product-stop
+          %i.fa.fa-product-sotop
+            出品を一旦停止する
+        %button#product-delete
+          =link_to "この商品を削除する", product_path(params[:id]), method: :delete ,class: "product-delete"
+          %i.fa.fa-product-delete
+
 
     .product-box-content-under
       .product-box-content-under__message
@@ -89,7 +104,8 @@
             %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             = f.text_area :text, class: "product-textarea"
             = f.submit 'コメントする', class: "product-mesage-submit"
-    
+
+
     %ul.product-link-list
       -unless @back_product.blank?
         %li.product-link-list__left

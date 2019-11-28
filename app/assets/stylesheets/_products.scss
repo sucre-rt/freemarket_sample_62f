@@ -782,3 +782,74 @@ a {
     }
   }
 }
+
+
+.prduct-box-content-delete{                           //商品削除機能あたり
+  width: 700px;
+  background: #fff;
+  margin: 24px auto;
+  &__content{                                        //内側
+    padding: 24px;
+    position: relative;
+    #product-edit{
+      width: 100%;
+      .fa-product-edit{
+        height: 50px;
+        font-size: 14px;
+        color: #fff;
+        background: #ea352d;
+        display: block;
+        line-height: 48px;
+        cursor: pointer;
+      }
+    }
+
+    .product-or{
+      height: 50px;
+      font-size: 14px;
+      color: #333;
+      background:  #fff;
+      display: block;
+      line-height: 48px;
+      text-align: center;
+    }
+
+    #product-stop{
+      width: 100%;
+      .fa-product-sotop{
+        height: 50px;
+        font-size: 14px;
+        color: #fff;
+        background: #aaa;
+        display: block;
+        line-height: 48px;
+        cursor: pointer;
+      }
+    }
+
+    #product-delete{
+      width: 100%;
+      margin-top: 20px;
+      height: 50px;
+      font-size: 14px;
+      color: #fff;
+      background: #aaa;
+      display: block;
+      line-height: 48px;
+      cursor: pointer;
+      .product-delete{
+        color: #fff;
+      }
+      // .fa-product-delete{
+      //   margin-top: 20px;
+      //   height: 50px;
+      //   font-size: 14px;
+      //   color: #fff;
+      //   background: #aaa;
+      //   display: block;
+      //   line-height: 48px;
+      //   cursor: pointer;
+      // }
+    }
+  }
+}

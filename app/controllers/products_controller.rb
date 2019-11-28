@@ -45,6 +45,13 @@ class ProductsController < ApplicationController
     @category_other_products = Product.where(category_id: @category.id).order("id DESC").limit(6).where.not(id: @product.id)
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    if @product.user_id == current_user.id
+      @product.destroy
+    end
+  end
+
 private
 
   def product_params
