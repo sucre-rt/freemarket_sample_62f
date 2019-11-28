@@ -54,15 +54,21 @@ class ProductsController < ApplicationController
 
   def buy
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    card = current_user.card
     product = Product.find(params[:id])
-    Payjp::Charge.create(
-      amount:   product.price,
-      customer: card.customer_id,
-      currency: 'jpy'
-    )
-    product.update(selling_status: "売却済")
-    redirect_to done_products_path
+    if current_user.card != nil
+      card = current_user.card
+      charge = Payjp::Charge.create(
+        amount:   product.price,
+        customer: card.customer_id,
+        currency: 'jpy'
+      )
+      product.update(selling_status: "売却済")
+      flash[:notice] = "商品を購入しました。"
+      redirect_to product_path(product.id)
+    else
+      flash[:notice] = "商品の購入に失敗しました"
+      redirect_to product_path(product.id)
+    end
   end
 
 private
