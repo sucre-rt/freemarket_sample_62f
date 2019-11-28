@@ -13,10 +13,16 @@ $(function(){
 
 //ここからajax通信
 $(function(){
-  function appendOption(category){ // optionの作成
+
+  function appendOption_c(category){ // optionの作成
     var html = `<option value="${category.id}">${category.name}</option>`;
     return html;
   }
+  function appendOption_d(delivery){
+    var html = `<option value="${delivery.id}">${delivery.responsibility}</option>`
+    return html;
+  }
+
   function appendChidrenBox(insertHTML){ // 子セレクトボックスのhtml作成
     var childSelectHtml = '';
       childSelectHtml = `<div class='product-select-wrapper' id= 'children_wrapper'>
@@ -31,6 +37,7 @@ $(function(){
                         </div>`;
     $('.select-children').append(childSelectHtml);
   }
+
   function appendgrandChidrenBox(insertHTML){ // 孫セレクトボックスのhtml作成
     var grandchildrenSelectHtml = '';
     grandchildrenSelectHtml = `<div class='product-select-wrapper' id= 'grandchildren_wrapper'>
@@ -44,6 +51,24 @@ $(function(){
                               </div>
                               </div>`;
     $('.select-grandchildren').append(grandchildrenSelectHtml);
+  }
+
+  function appendDeliveryChildrenBox(insertHTML){
+    var deliverychildrenSelectHtml = '';
+    deliverychildrenSelectHtml = `<div class="form-group">
+                                  <label>
+                                  配送の方法
+                                  <span class="form-require">必須</span>
+                                  </label>
+                                  <div>
+                                  <div class="select-wrap">
+                                  <i class="icon-arrow-bottom"></i>
+                                  <select class="select-default" id="delivery_select" name="product[delivery_id]"><option value="">---</option>
+                                  ${insertHTML}
+                                  </div>
+                                  </div>
+                                  </div>`
+    $(".form-group_children").append(deliverychildrenSelectHtml);
   }
 
 
@@ -63,7 +88,7 @@ $(function(){
         var insertHTML = '';
         children.forEach(function(child){  
   // forEachでchildに一つずつデータを代入｡子のoptionが一つずつ作成される｡
-          insertHTML += appendOption(child); 
+          insertHTML += appendOption_c(child); 
         });
         appendChidrenBox(insertHTML); 
         $(document).on('change', '#category_select', function(){
@@ -92,7 +117,7 @@ $(function(){
     .done(function(grandchildren){
       var insertHTML = '';
       grandchildren.forEach(function(grandchild){
-        insertHTML += appendOption(grandchild);
+        insertHTML += appendOption_c(grandchild);
         });
         appendgrandChidrenBox(insertHTML);  
         $(document).on('change', '#child_category',function(){
@@ -104,4 +129,34 @@ $(function(){
         })
     }
   });
+
+  $(document).on('change', '#delivery_select', function(){
+
+    var productdelivery = document.getElementById('delivery_select').value;
+
+    if (productdelivery != ''){
+
+      $.ajax ({
+        url: 'delivery_children',
+        type: 'GET',
+        data: { productdelivery: productdelivery },
+        dataType: 'json'
+      })
+
+      .done(function(deliveries){
+        var insertHTML = '';
+        deliveries.forEach(function(delivery){
+          insertHTML += appendOption_d(delivery);
+        });
+        appendDeliveryChildrenBox(insertHTML);  
+        $(document).on('change', '#delivery_select',function(){
+          $('.form-group_children').remove();
+        })
+      })
+      .fail(function(){
+        alert('カテゴリー取得に失敗しました');
+      })
+    }
+  });
+
 });

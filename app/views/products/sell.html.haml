@@ -66,11 +66,8 @@
                   %div
                     .select-wrap
                       %i.icon-arrow-bottom
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "1"} 送料込み(出品者負担)
-                        %option{value: "2"} 着払い(購入者負担)
-                    =f.text_field :delivery_id, autocomplete: "delivery", type: "hidden", value: "1"
+                      =f.collection_select :delivery_id, @delivery, :id, :responsibility, { prompt: "---" }, { class: "select-default", id: "delivery_select" }
+                .form-group_children
                 .form-group
                   %label
                     発送元の地域
