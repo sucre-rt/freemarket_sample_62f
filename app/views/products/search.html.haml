@@ -16,7 +16,7 @@
       .search-contener__right
         .search-contener__right__search-results
           %h2.serch_keyword
-            = "#{params[:product_like][:keyword]}"
+            = params[:product_like][:keyword]
             %span.serch_keyword--text の検索結果
           .search-contener__right__search-results__length
             - if @products.blank?
@@ -35,7 +35,7 @@
                           .soldout-box__text SOLD
                     .search-contener__right__search-results__all__box__img-box__information
                       %h3.product-title
-                        = "#{product.name}"
+                        = product.name
   
 
 
