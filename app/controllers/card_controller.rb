@@ -38,7 +38,7 @@ class CardController < ApplicationController
 
   def destroy
     if @card != nil
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete   # payjp側の情報を削除
       @card.destroy       # cardテーブルの情報を削除
