@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :sns_credentials
   accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :card
 
   def self.set_prefecture
     prefecture = ["北海道", "青森県", "岩手県","宮城県", "秋田県",

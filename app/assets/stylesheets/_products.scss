@@ -4,6 +4,7 @@
 @import "./footer2";
 @import './nav';
 @import "./color";
+@import "./pay";
 @import "./mypage";
 
 
@@ -12,7 +13,7 @@ html {
   background-color: $light-gray;
   font-size: 62.5%;
   color: $black;
-  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-family: メイリオ, Meiryo, Arial, 游ゴシック体, YuGothic, sans-serif;
   font-weight: 500;
 }
 
@@ -35,7 +36,7 @@ p{
   margin-inline-end: 0px;}
 
 * {
-  
+
   box-sizing: border-box;
 }
 
@@ -354,9 +355,14 @@ a {
       margin: 0 auto;
       background: #fafafa;
       &__big {
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 0;
         img {
+          display: inline-block;
           width: 300px;
           height: 300px;
+          object-fit: cover;
         }
       }
       &__others {
@@ -372,10 +378,37 @@ a {
           img {
             width: 60px;
             height: 60px;
+            object-fit: cover;
           }
         }
         .image-list-active {
           opacity: 1;
+        }
+      }
+      &__soldout-box {
+        &__text {
+          top: 24px;
+          font-size: 28px;
+          color: #fff;
+          position: absolute;
+          left: 0;
+          z-index: 2;
+          transform: rotate(-45deg);
+          letter-spacing: 2px;
+          font-weight: 600;
+        }
+        &::after {
+          border-width: 120px 120px 0 0;
+          border-color: #ea352d transparent;
+          display: block;
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          width: 0;
+          height: 0;
+          border-style: solid;
         }
       }
     }
@@ -481,6 +514,21 @@ a {
       background: #ea352d;
       color: $white-color;
       font-weight: bold;
+    }
+    .sold-out {
+      display: block;
+      position: absolute;
+      top:0;
+      left:0;
+      font-size: 24px;
+      line-height: 60px;
+      width: 100%;
+      height: 100%;
+      margin-top: 16px;
+      color: $white-color;
+      font-weight: bold;
+      background: #888;
+      cursor: not-allowed;
     }
   }
 

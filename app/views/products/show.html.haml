@@ -1,24 +1,29 @@
 #wrapper
   = render partial: 'shared/header'
+  = render partial: 'shared/nav'
   %main.main
     .product-box-content
-      %h2.product-box-content__product-name 
+      %h2.product-box-content__product-name
         = @product.name
       .product-box-content__product-main-content
         .product-box-content__product-main-content__product-image
           .product-box-content__product-main-content__product-image__big
-            = image_tag("/uploads/image/image/#{@images[0][:id]}/#{@images[0][:image]}")
+            -@images.each do |img|
+              = image_tag("/uploads/image/image/#{img[:id]}/#{img[:image]}")
           .product-box-content__product-main-content__product-image__others
             -@images.each do |img|
               .image-list
-                = image_tag("/uploads/image/image/#{img[:id]}/#{img[:image]}")
+                = image_tag("#{img.image}")
+          - if @product.selling_status == "売却済"
+            .product-box-content__product-main-content__product-image__soldout-box
+              .product-box-content__product-main-content__product-image__soldout-box__text SOLD
 
         %table.product-box-content__product-main-content__product-information
           %tbody
             %tr
               %th 出品者
               %td
-                = link_to "#{@seller.nickname}", "#" 
+                = link_to "#{@seller.nickname}", "#"
                 .seller-evalution
                   .seller-ratings
                     %i.fa.fa-smile-o
@@ -47,15 +52,15 @@
             %tr
               %th 配送料の負担
               %td 
-                = @delivery.responsibility
+                = @delivery
             %tr
               %th 配送の方法
               %td
-                = @delivery.way
+                = @delivery.responsibility
             %tr
               %th 配送元地域
               %td
-                = link_to "#{@product.area}", "#" 
+                = link_to "#{@product.area}", "#"
             %tr
               %th 発送日の目安
               %td
@@ -69,7 +74,11 @@
           = @postage
 
       .product-box-content__buy-btn
-        = link_to "購入画面に進む", "#"
+        -if @product.selling_status == "出品中"
+          = link_to "購入画面に進む", pay_product_path
+        - else
+          .sold-out
+            売り切れました
 
       .product-box-content__product-information
         %p.product-box-content__product-information__text
@@ -80,7 +89,7 @@
           = button_tag "#{content_tag(:i, '', class: 'fa fa-heart')}いいね! 0".html_safe, type: :button, class: "like-btn"
           = link_to "#{content_tag(:i, '', class: 'fa fa-flag-checkered')}不適切な商品の報告".html_safe, "#", class: "report-btn"
         .product-box-content__btn-box__right
-          = link_to "#{content_tag(:i, '', class: 'fa fa-lock')}あんしん・あんぜんへの取り組み".html_safe, "#", class: "safe-guide"  
+          = link_to "#{content_tag(:i, '', class: 'fa fa-lock')}あんしん・あんぜんへの取り組み".html_safe, "#", class: "safe-guide"
 
     .product-box-content-under
       .product-box-content-under__message
@@ -89,7 +98,7 @@
             %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             = f.text_area :text, class: "product-textarea"
             = f.submit 'コメントする', class: "product-mesage-submit"
-    
+
     %ul.product-link-list
       -unless @back_product.blank?
         %li.product-link-list__left
@@ -106,7 +115,7 @@
         %li
           = link_to "#" do
             %i.fa.fa-twitter
-        %li 
+        %li
           = link_to "#" do
             %i.fa.fa-pinterest
 
@@ -120,7 +129,7 @@
               .product-introduction-box-content__product-box
                 = link_to product_path(product.id) do
                   %figure.product-box-photo
-                    = image_tag("/uploads/image/image/#{product.images[0][:id]}/#{product.images[0][:image]}")
+                    = image_tag("#{product.images[0].image}")
                   .product-box-body
                     %h3.product-box-body__title
                       =product.name
@@ -139,7 +148,7 @@
               .product-introduction-box-content__product-box
                 = link_to product_path(product.id) do
                   %figure.product-box-photo
-                    = image_tag("/uploads/image/image/#{product.images[0][:id]}/#{product.images[0][:image]}")
+                    = image_tag("#{product.images[0].image}")
                   .product-box-body
                     %h3.product-box-body__title
                       = product.name
@@ -148,12 +157,12 @@
                         = "¥#{product.price.to_s(:delimited)}"
                       .product-box-body__other__like
                         %span 数
-  
+
     %nav.bread-crumbs-bottom
       %ul
         %li
           = link_to "メルカリ", "#"
         %li
-          %span 商品名 
+          %span 商品名
 
   = render partial: 'shared/footer'

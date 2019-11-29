@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     get 'mypage/profile', to: 'signup#profile', as: :profile_signup
   end
 
-  resources :products do
+  resources :products, only: [:create, :show] do
     collection do
       get 'sell'
       get 'done'
@@ -47,6 +47,10 @@ Rails.application.routes.draw do
       get 'delivery_children'
       get 'category_children' 
       get 'category_grandchildren'
+    end
+    member do
+      get 'pay'
+      post 'buy'
     end
   end
 
