@@ -8,7 +8,7 @@ class CardController < ApplicationController
 
   def create
     require 'payjp'
-    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     
     unless params['payjp_token'].blank?   # jsにより、params['payjp_token']を受け取れる
 
