@@ -97,6 +97,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @products = Product.product_like(like_search_params[:keyword])
+  end
+
 private
 
   def product_params
@@ -123,6 +127,11 @@ private
   def set_product
     @product = Product.find(params[:id])
   end
+
+  def like_search_params
+    params.fetch(:product_like, {}).permit(:keyword)
+  end
+
 
   def move_to_login
     redirect_to new_user_session_path unless user_signed_in?

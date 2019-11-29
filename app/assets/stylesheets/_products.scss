@@ -909,3 +909,172 @@ a {
     }
   }
 }
+
+// 商品検索結果
+.search-contener {
+  position: relative;
+  margin: 40px auto 0;
+  width: 1020px;
+  &__left  {
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+    &__details-search {
+      position: relative;
+      &__sort {
+        opacity: 1;
+        position: static;
+        width: auto;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        margin: 0 auto;
+        &__box {
+          background: #fff;
+          text-align: left;
+          .fa-angle-down {
+            @include select-icon;
+            font-size: 20px;
+            font-weight: bold;
+          }
+          .search-select {
+            @include select-default;
+          }
+        }
+      }
+      &__down-contents {
+        position: static;
+        display: block;
+        padding: 16px;
+        margin: 40px 0 0;
+        position: absolute;
+        z-index: 1;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        .sub-title {
+          font-size: 16px;
+          display: block;
+        }
+        &__form-group {
+          margin: 24px 0 0;
+        }
+      }
+    }
+  }
+
+  &__right {
+    float: right;
+    width: 700px;
+    &__search-results {
+      display: block;
+      clear: both;
+      .serch_keyword {
+        font-size: 22px;
+        margin: 0 0 8px;
+        font-weight: bold;
+        line-height: 1.4;
+        &--text {
+          font-size: 18px;
+          margin: 0 0 0 4px;
+          font-weight: 400;
+        }
+      }
+      &__length {
+        margin: 16px 0;
+        font-size: 12px;
+        color: #888;
+      }
+      &__all {
+        width: auto;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        clear: both;
+        &__box {
+          margin: 0 20px 20px 0;
+          width: 160px;
+          position: relative;
+          float: left;
+          background: #fff;
+          &:first-child {
+            margin-left: 0;
+          }
+          &:nth-child(4n) {
+            margin-right: 0;
+          }
+          &__img-box {
+            width: 160px;
+            height: 160px;
+            overflow: hidden;
+            position: relative;
+            padding: 0 0 100%;
+            .soldout-box {
+              &__text {
+                top: 16px;
+                font-size: 14px;
+                color: #fff;
+                position: absolute;
+                left: 0;
+                z-index: 2;
+                transform: rotate(-45deg);
+                letter-spacing: 2px;
+                font-weight: 600;
+              }
+              &::after {
+                border-width: 60px 60px 0 0;
+                border-color: #ea352d transparent;
+                display: block;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                width: 0;
+                height: 0;
+                border-style: solid;
+              }
+            }
+            &--img {
+              width: 160px;
+              height: 160px;
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: 1;
+            }
+            &__information {
+              position: relative;
+              height: 58px;
+              padding: 8px 12px;
+              .product-title {
+                font-size: 14px;
+                overflow: hidden;
+                position: relative;
+                font-weight: 400;
+                height: 3em;
+                line-height: 1.5;
+                word-break: break-word;
+                white-space: normal;
+                color: #333;
+                &::after {
+                  width: 30%;
+                  display: block;
+                  content: '';
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                  height: 1.5em;
+                  background: linear-gradient(to right, rgba(255,255,255,0), #fff 72%);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

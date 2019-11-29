@@ -1,0 +1,41 @@
+#wrapper
+  = render partial: 'shared/header'
+  %main.main
+    .search-contener
+      .search-contener__left
+        %form.search-contener__left__details-search
+          .search-contener__left__details-search__sort
+            .search-contener__left__details-search__sort__box
+              %i.fa.fa-angle-down
+              %select.search-select
+                %option 並び替え
+          .search-contener__left__details-search__down-contents
+            %h3.sub-title 詳細検索
+            .search-contener__left__details-search__down-contents__form-group
+
+      .search-contener__right
+        .search-contener__right__search-results
+          %h2.serch_keyword
+            = params[:product_like][:keyword]
+            %span.serch_keyword--text の検索結果
+          .search-contener__right__search-results__length
+            - if @products.blank?
+              該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+            - else
+              ="    1 - #{@products.length}件表示"
+          .search-contener__right__search-results__all
+            - unless @products.blank?
+              - @products.each do |product|
+                .search-contener__right__search-results__all__box
+                  = link_to product_path(product.id) do
+                    .search-contener__right__search-results__all__box__img-box
+                      = image_tag("#{product.images[0].image}", class: "search-contener__right__search-results__all__box__img-box--img")
+                      -if product.selling_status == "売却済"
+                        .soldout-box
+                          .soldout-box__text SOLD
+                    .search-contener__right__search-results__all__box__img-box__information
+                      %h3.product-title
+                        = product.name
+  
+
+
