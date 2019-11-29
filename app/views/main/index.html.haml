@@ -54,6 +54,9 @@
             - @men.each do |man|
               %li.main__mens__inner__list-item
                 = link_to product_path(man.id), class: 'main__mens__inner__list-item-a' do
+                  -if man.selling_status == "売却済"
+                    .soldout-box
+                      .soldout-box__text SOLD
                   = image_tag("#{man.images[0].image}", class: 'main__mens__inner__list-item-image')
                   %span.price-label
                     = "¥#{man.price.to_s(:delimited)}"
@@ -69,6 +72,9 @@
             - @home_appliances.each do |home_appliance|
               %li.main__electronics__inner__list-item
                 = link_to product_path(home_appliance.id), class: 'main__electronics__inner__list-item-a' do
+                  -if home_appliance.selling_status == "売却済"
+                    .soldout-box
+                      .soldout-box__text SOLD
                   = image_tag("#{home_appliance.images[0].image}", class: 'main__electronics__inner__list-item-image')
                   %span.price-label
                     = "¥#{home_appliance.price.to_s(:delimited)}"
@@ -84,6 +90,9 @@
             -@toys.each do |toy|
               %li.main__hobbys__inner__list-item
                 = link_to product_path(toy.id), class: 'main__hobbys__inner__list-item-a' do
+                  -if toy.selling_status == "売却済"
+                    .soldout-box
+                      .soldout-box__text SOLD
                   = image_tag("#{toy.images[0].image}", class: 'main__hobbys__inner__list-item-image')
                   %span.price-label
                     = "¥#{toy.price.to_s(:delimited)}"
