@@ -36,9 +36,9 @@
             %tr
               %th カテゴリー
               %td
-                = link_to "#{@category.name}", "#"
-                = link_to "カテゴリー２", "#", class: "sub-category"
-                = link_to "カテゴリー３", "#", class: "sub-category"
+                = link_to "#{@category.parent.parent.name}", "#"
+                = link_to "#{@category.parent.name}", "#", class: "sub-category"
+                = link_to "#{@category.name}", "#", class: "sub-category"
             %tr
               %th ブランド
               %td
@@ -50,8 +50,8 @@
                 = @product.status
             %tr
               %th 配送料の負担
-              %td
-                = @delivery
+              %td 
+                = @delivery.parent.responsibility
             %tr
               %th 配送の方法
               %td
@@ -155,7 +155,7 @@
 
       .products-introduction__category
         %h2.product-box-head
-          = link_to "#{@category.name}その他の商品", "#", class: "product-box-head__link"
+          = link_to "#{@category.name}(#{@category.parent.parent.name})その他の商品", "#", class: "product-box-head__link"
         .product-introduction-box-content
           - unless @category_other_products.blank?
             -@category_other_products.each do |product|

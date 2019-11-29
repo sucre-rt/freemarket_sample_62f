@@ -36,7 +36,7 @@
           .login-form-area-second__login-groups
             / パスワード登録フォーム
             = f.password_field :password, autocomplete: "current-password", class: "login-form-area-second__login-text-password", placeholder: "パスワード"
-          .login-form-area-second__captha 仮ロボ認証
+          = recaptcha_tags
           = f.submit "ログイン", class: "login-form-area-second__login-submit"
           = link_to "パスワードをお忘れの方", new_user_password_path, class: "login-form-area-second__password"
   = render partial: 'shared/footer3'
