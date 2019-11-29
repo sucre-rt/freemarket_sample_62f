@@ -1,6 +1,5 @@
 #wrapper
   = render partial: 'shared/header'
-  = render partial: 'shared/nav'
   %main.main
     .product-box-content
       %h2.product-box-content__product-name
@@ -51,7 +50,7 @@
                 = @product.status
             %tr
               %th 配送料の負担
-              %td 
+              %td
                 = @delivery
             %tr
               %th 配送の方法

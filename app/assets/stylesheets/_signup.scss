@@ -6,9 +6,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
 }
-
 
 .user-main{
   background-color: $signup-color;
@@ -163,7 +161,7 @@
     height: 260px;
     background-image: url(https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1a32f2aebd89cf6f43bc2e4b39.jpg);
     background-size: 100% 260px;
-    background-repeat:  no-repeat; 
+    background-repeat:  no-repeat;
     position: relative;
     .left-menus{
       text-align: center;
@@ -277,7 +275,7 @@
         font-size: 22px;
         line-height: 1.5;
         text-align: center;
-        font-weight: bold; 
+        font-weight: bold;
       }
     }
   }
@@ -303,7 +301,7 @@
         text-align: center;
         position: relative;
         font-size: 14px;
-        
+
         .fa-envelope{
           position: absolute;
           font-size: 16px;
@@ -356,7 +354,7 @@
         height: 50px;
         line-height: 45px;
         text-decoration: none;
-        text-align: center; 
+        text-align: center;
         position: relative;
         border: 1px solid #ccc;
         a{
@@ -383,5 +381,3 @@
     }
   }
 }
-
-
