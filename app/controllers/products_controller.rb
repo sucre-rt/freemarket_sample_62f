@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   include MypageHelper
   before_action :set_product, only: [:pay, :show, :buy, :destroy]
+  before_action :move_to_login, only: [:sell, :pay]
 
   def sell
     @product = Product.new
@@ -97,6 +98,10 @@ private
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end

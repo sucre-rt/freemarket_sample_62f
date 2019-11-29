@@ -3,6 +3,7 @@ FactoryBot.define do
   factory :user do
     nickname              {"test"}
     email                 {"test@test.com"}
+    initialize_with       { User.find_or_create_by(email: email)}
     password              {"test123"}
     family_name           {"目瑠花李"}
     first_name            {"太郎"}

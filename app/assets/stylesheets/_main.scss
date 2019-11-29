@@ -16,8 +16,83 @@
     position: relative;
     width: 100%;
     height: 39.0rem;
-    background-size: cover;
-    z-index: 0;
+    font-size: 0;
+    overflow: hidden;
+
+    &__controller {
+      width: 100%;
+      height: 100%;
+
+      &__button {
+        &-left, &-right {
+          position: absolute;
+          cursor: pointer;
+
+          width: 8.0rem;
+          height: 8.0rem;
+          top: 40%;
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 4.0rem;
+            height: 4.0rem;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border-top: 0.5rem solid $white;
+            border-right: 0.5rem solid $white;
+            filter: drop-shadow(0 0.3rem 0.3rem rgba($black, 0.5));
+          }
+        }
+
+        &-left {
+          left: 4.0rem;
+
+          &:before {
+            transform: rotate(-135deg);
+          }
+        }
+
+        &-right {
+          right: 4.0rem;
+
+          &:before {
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+
+    &__container {
+      white-space: nowrap;
+      font-size: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-100%);
+
+      &__item {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        z-index: 100;
+      }
+
+      &.sliding-left {
+        transform: translateX(-200%);
+        transition: 0.5s;
+      }
+
+      &.sliding-right {
+        transform: translateX(0%);
+        transition: 0.5s;
+      }
+    }
+
   }
 
   &__category, &__brand {
