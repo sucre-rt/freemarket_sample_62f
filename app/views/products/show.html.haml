@@ -90,6 +90,21 @@
         .product-box-content__btn-box__right
           = link_to "#{content_tag(:i, '', class: 'fa fa-lock')}あんしん・あんぜんへの取り組み".html_safe, "#", class: "safe-guide"
 
+    - if current_user == @product.user
+      .prduct-box-content-delete
+        .prduct-box-content-delete__content
+          %button#product-edit
+            %i.fa.fa-product-edit 商品の編集
+          .product-or
+            or
+          %button#product-stop
+            %i.fa.fa-product-sotop
+              出品を一旦停止する
+          %button#product-delete
+            =link_to "この商品を削除する", product_path(params[:id]), method: :delete ,class: "product-delete"
+            %i.fa.fa-product-delete
+
+
     .product-box-content-under
       .product-box-content-under__message
         .product-box-content__message__box

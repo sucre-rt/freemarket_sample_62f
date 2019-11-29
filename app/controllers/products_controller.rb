@@ -1,12 +1,32 @@
 class ProductsController < ApplicationController
   include MypageHelper
-  before_action :set_product, only: [:pay, :show, :buy]
+  before_action :set_product, only: [:pay, :show, :buy, :destroy]
   before_action :move_to_login, only: [:sell, :pay]
+
+  before_action :set_category, only: [:sell, :create]
 
   def sell
     @product = Product.new
     @product_image = @product.images.build
+    @delivery = Delivery.all.order("id ASC").limit(2) # deliveryの親
   end
+
+  #ここからAjax通信用
+  ##delivery
+  def delivery_children  
+    @delivery_children = Delivery.find(params[:productdelivery]).children
+  end
+
+  ##category
+  def category_children  
+    @category_children = Category.find(params[:productcategory]).children 
+  end
+
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:productcategory]).children
+  end
+  #ここまでAjax通信用 
+
 
   def create
     @product = Product.new(product_params)
@@ -68,6 +88,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    if @product.user_id == current_user.id
+      unless @product.destroy
+        flash[:notice] = "削除できなかったよ！"
+        redirect_to product_path(@product.id)
+      end
+    end
+  end
+
 private
 
   def product_params
@@ -87,6 +116,10 @@ private
     ).merge(user_id: current_user.id)
   end
 
+  def set_category
+    @category = Category.all.order("id ASC").limit(2)
+  end
+    
   def set_product
     @product = Product.find(params[:id])
   end
