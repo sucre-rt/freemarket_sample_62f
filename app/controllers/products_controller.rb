@@ -109,6 +109,7 @@ private
 
   def set_category
     @category = Category.all.order("id ASC").limit(2)
+  end
     
   def set_product
     @product = Product.find(params[:id])
