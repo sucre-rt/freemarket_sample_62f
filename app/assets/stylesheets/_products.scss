@@ -13,7 +13,7 @@ html {
   background-color: $light-gray;
   font-size: 62.5%;
   color: $black;
-  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-family: メイリオ, Meiryo, Arial, 游ゴシック体, YuGothic, sans-serif;
   font-weight: 500;
 }
 
@@ -36,7 +36,7 @@ p{
   margin-inline-end: 0px;}
 
 * {
-  
+
   box-sizing: border-box;
 }
 
@@ -336,9 +336,14 @@ a {
       margin: 0 auto;
       background: #fafafa;
       &__big {
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 0;
         img {
+          display: inline-block;
           width: 300px;
           height: 300px;
+          object-fit: cover;
         }
       }
       &__others {
@@ -354,6 +359,7 @@ a {
           img {
             width: 60px;
             height: 60px;
+            object-fit: cover;
           }
         }
         .image-list-active {
