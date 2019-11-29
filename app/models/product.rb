@@ -20,6 +20,6 @@ class Product < ApplicationRecord
   belongs_to :brand
 
   # 商品名のあいまい検索
-  scope :product_name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
+  scope :product_like, -> (keyword) { where('name LIKE ? or information LIKE ?', "%#{keyword}%", "%#{keyword}%") if keyword.present? }
 
 end

@@ -98,7 +98,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.product_name_like(name_search_params[:name])
+    @products = Product.product_like(like_search_params[:keyword])
   end
 
 private
@@ -128,8 +128,8 @@ private
     @product = Product.find(params[:id])
   end
 
-  def name_search_params
-    params.fetch(:product_name_like, {}).permit(:name)
+  def like_search_params
+    params.fetch(:product_like, {}).permit(:keyword)
   end
 
 
