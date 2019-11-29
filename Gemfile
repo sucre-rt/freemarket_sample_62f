@@ -96,10 +96,7 @@ gem 'omniauth'
 
 # クレジットカード
 gem 'payjp'
-<<<<<<< HEAD
 gem "gretel"
-=======
 
 # アンセストリー
 gem 'ancestry'
->>>>>>> master
