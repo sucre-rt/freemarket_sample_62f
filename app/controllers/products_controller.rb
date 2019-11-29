@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   include MypageHelper
-  before_action :set_product, only: [:pay, :show, :buy]
+  before_action :set_product, only: [:pay, :show, :buy, :destroy]
   before_action :move_to_login, only: [:sell, :pay]
 
   before_action :set_category, only: [:sell, :create]
@@ -85,6 +85,15 @@ class ProductsController < ApplicationController
     else
       flash[:notice] = "商品の購入に失敗しました"
       redirect_to product_path(@product.id)
+    end
+  end
+
+  def destroy
+    if @product.user_id == current_user.id
+      unless @product.destroy
+        flash[:notice] = "削除できなかったよ！"
+        redirect_to product_path(@product.id)
+      end
     end
   end
 
