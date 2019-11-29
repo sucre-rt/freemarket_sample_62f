@@ -36,17 +36,15 @@
             .sell-content.clearfix
               %h3.sell-sub-head 商品の詳細
               .sell-form-box
-                .form-group
+                .form-group.sell
                   %label
                     カテゴリー
                     %span.form-require 必須
-                  %div
+                  %div.select
                     .select-wrap
                       %i.icon-arrow-bottom
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "1"} レディース
-                    =f.text_field :category_id, autocomplete: "category", type: "hidden", value: "1001"
+                      = f.collection_select :category_id, @category, :id, :name, { prompt: "---" }, { class: "select-default", id: "category_select" }
+                  %div.select-children
                     =f.text_field :brand_id, autocomplete: "brand", type: "hidden", value: "1"
                 .form-group
                   %label
@@ -55,16 +53,8 @@
                   %div
                     .select-wrap
                       %i.icon-arrow-bottom
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "1"} 新品、未使用
-                        %option{value: "2"} 未使用に近い
-                        %option{value: "3"} 目立った傷や汚れなし
-                        %option{value: "4"} やや傷や汚れあり
-                        %option{value: "5"} 傷や汚れあり
-                        %option{value: "6"} 全体的に状態が悪い
+                      = f.select :status, options_for_select(status.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'} 
                       //ここまで"商品詳細"
-                    =f.text_field :status, autocomplete: "status", type: "hidden", value: "新品、未使用"
             //ここから"配送について"
             .sell-content.clearfix
               %h3.sell-sub-head 商品の詳細
@@ -76,11 +66,8 @@
                   %div
                     .select-wrap
                       %i.icon-arrow-bottom
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "1"} 送料込み(出品者負担)
-                        %option{value: "2"} 着払い(購入者負担)
-                    =f.text_field :delivery_id, autocomplete: "delivery", type: "hidden", value: "1"
+                      =f.collection_select :delivery_id, @delivery, :id, :responsibility, { prompt: "---" }, { class: "select-default", id: "delivery_select" }
+                .form-group_children
                 .form-group
                   %label
                     発送元の地域
@@ -88,10 +75,7 @@
                   %div
                     .select-wrap
                       %i.icon-arrow-bottom
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "北海道"} 北海道
-                    =f.text_field :area, autocomplete: "area", type: "hidden", value: "北海道"
+                      = f.select :area, options_for_select(prefecture.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
                 .form-group
                   %label
                     発送までの日数

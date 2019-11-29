@@ -96,3 +96,6 @@ gem 'omniauth'
 
 # クレジットカード
 gem 'payjp'
+
+# アンセストリー
+gem 'ancestry'
