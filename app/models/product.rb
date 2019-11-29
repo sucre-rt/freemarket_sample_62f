@@ -18,4 +18,8 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :delivery
   belongs_to :brand
+
+  # 商品名のあいまい検索
+  scope :product_name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
+
 end

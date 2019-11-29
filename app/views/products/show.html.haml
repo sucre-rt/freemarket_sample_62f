@@ -8,7 +8,7 @@
         .product-box-content__product-main-content__product-image
           .product-box-content__product-main-content__product-image__big
             -@images.each do |img|
-              = image_tag("/uploads/image/image/#{img[:id]}/#{img[:image]}")
+              = image_tag("#{img.image}")
           .product-box-content__product-main-content__product-image__others
             -@images.each do |img|
               .image-list

@@ -4,8 +4,8 @@
       %h1.header__upper-contents__logo
         = link_to '/' do
           = image_tag 'fmarket_logo_red.svg', class: 'header__upper-contents__logo-image', height: '36px'
-      %form.header__upper-contents__search{"action": "/search/"}
-        %input.header__upper-contents__search-box{"name": "keyword", "placeholder": "何かお探しですか？", "type": "search", "value": ""}/
+      = form_with scope: :product_name_like, url: search_products_path, method: :get, local: true, html: { class: "header__upper-contents__search"} do |f|
+        = f.text_field :name, class: "header__upper-contents__search-box", placeholder: "何かお探しですか？"
         %button.header__upper-contents__search-button
           %i.fa.fa-search
     .header__lower-contents

@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     collection do
       get 'sell'
       get 'done'
+      get 'search'
       
       #ajax用
       get 'delivery_children'
