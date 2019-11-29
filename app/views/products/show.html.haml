@@ -147,8 +147,9 @@
             -@category_other_products.each do |product|
               .product-introduction-box-content__product-box
                 = link_to product_path(product.id) do
-                  %figure.product-box-photo
-                    = image_tag("/uploads/image/image/#{product.images[0][:id]}/#{product.images[0][:image]}")
+                  - if Rails.env.development?
+                    %figure.product-box-photo
+                      = image_tag("/uploads/image/image/#{product.images[0][:id]}/#{product.images[0][:image]}")
                   .product-box-body
                     %h3.product-box-body__title
                       = product.name
