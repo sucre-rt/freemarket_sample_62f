@@ -146,12 +146,12 @@
             font-size: 16px;
           }
 
-        &__captha {
+        .g-recaptcha {
           width: 328px;
           height: 78px;
-          background: red;
           margin-top: 24px;
         }
+
         &__login-submit{                                          //ログインボタン
           margin: 24px 0 0;
           background: #ea352d;
