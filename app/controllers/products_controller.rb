@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     @havepoint = @product.user.point == nil ? "ポイントがありません" : @product.user.point
 
     if current_user.card != nil
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       card = current_user.card
       customer = Payjp::Customer.retrieve(card.customer_id)
       @payjp_card = customer.cards.retrieve(card.card_id)
@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
     if current_user.card != nil
       card = current_user.card
       charge = Payjp::Charge.create(
