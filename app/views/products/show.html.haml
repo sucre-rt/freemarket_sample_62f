@@ -127,8 +127,9 @@
             -@seller_other_products.each_with_index do |product, i|
               .product-introduction-box-content__product-box
                 = link_to product_path(product.id) do
-                  %figure.product-box-photo
-                    = image_tag("#{product.images[i].image}")
+                  -if Rails.env.development?
+                    %figure.product-box-photo
+                      = image_tag("#{product.images[i].image}")
                 .product-box-body
                   %h3.product-box-body__title
                     =product.name
@@ -146,8 +147,9 @@
             -@category_other_products.each_with_index do |product, i|
               .product-introduction-box-content__product-box
                 = link_to product_path(product.id) do
-                  %figure.product-box-photo
-                    = image_tag("#{product.images[i].image}")
+                  -if Rails.env.development?
+                    %figure.product-box-photo
+                      = image_tag("#{product.images[i].image}")
                   .product-box-body
                     %h3.product-box-body__title
                       = product.name
