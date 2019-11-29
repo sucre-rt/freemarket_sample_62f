@@ -61,7 +61,7 @@
                     %i.fa.fa-chevron-down
                     %select.user-select-default#user-birthday-year
                       %option ---
-                      - @years.each do |year|
+                      - birthday_years.each do |year|
                         %option{value: year}
                           = year
                   %span 年
@@ -88,7 +88,7 @@
                     %i.fa.fa-chevron-down
                     %select.user-select-default#user-birthday-day
                       %option ---
-                      - @days.each do |day|
+                      - set_days.each do |day|
                         %option{value: day}
                           = day
                   %span 日

@@ -27,10 +27,11 @@ class User < ApplicationRecord
   has_many :evaluations
   has_many :sns_credentials, dependent: :destroy
   has_one :address, dependent: :destroy
-  has_one :credit, dependent: :destroy
+  has_one :card, dependent: :destroy
 
   accepts_nested_attributes_for :sns_credentials
   accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :card
 
   def self.set_prefecture
     prefecture = ["北海道", "青森県", "岩手県","宮城県", "秋田県",

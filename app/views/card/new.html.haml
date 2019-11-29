@@ -1,0 +1,63 @@
+#wrapper
+  = render partial: 'shared/header'
+  = render partial: 'shared/nav'
+  %main.main
+    = render partial: 'mypage/leftcontent'
+    .main__right-content
+      .main__right-content__user-info
+        %h2 クレジットカード情報入力
+        = form_for :card, url: card_index_path, method: :post, html: { class: "user-form", id: "card-form"} do |f|
+          .user-form__content
+            .user-form__content__group
+              %label カード番号
+              %span.user-form__content__group--attention 必須
+              = f.text_field :number, placeholder: "半角数字のみ", maxlength: "16", id: "card-number", class: "user-form__content__group__default"
+            .card-icon
+              = image_tag "logo_visa.gif", width: '37', height: '25', alt: "visa"
+              = image_tag "mc_vrt_pos.png", width: '37', height: '30', alt: "master"
+              = image_tag "saison.jpg", width: '37', height: '25', alt: "saison"
+              = image_tag "jcb-logomark-img-01.gif", width: '37', height: '25', alt: "jcb"
+              = image_tag "amex-logomark-img-04.gif", width: '25', height: '25', alt: "amex"
+              = image_tag "diners-logomark-img-01.gif", width: '37', height: '25', alt: "diners"
+              = image_tag "discover-logomark-img.gif", width: '37', height: '25', alt: "discover"
+            .user-form__content__group
+              %label 有効期限
+              %span.user-form__content__group--attention 必須
+              .user-form__content__group__user-select
+                .user-form__content__group__user-select__middle-box
+                  .user-form__content__group__user-select__middle-box__month
+                    %i.fa.fa-chevron-down
+                    = f.select :exp_month, "", {}, class: "user-select-default", id: "card-exp-month" do
+                      %option{value: "01"} 01
+                      %option{value: "02"} 02
+                      %option{value: "03"} 03
+                      %option{value: "04"} 04
+                      %option{value: "05"} 05
+                      %option{value: "06"} 06
+                      %option{value: "07"} 07
+                      %option{value: "08"} 08
+                      %option{value: "09"} 09
+                      %option{value: 10} 10
+                      %option{value: 11} 11
+                      %option{value: 12} 12
+                  %span 月
+                .user-form__content__group__user-select__middle-box
+                  .user-form__content__group__user-select__middle-box__year
+                    %i.fa.fa-chevron-down
+                    = f.select :exp_year, "", {}, class: "user-select-default", id: "card-exp-year" do
+                      - card_years.each do |year|
+                        %option{value: year}
+                          = year
+                  %span 年
+            .user-form__content__group
+              %label セキュリティコード
+              %span.user-form__content__group--attention 必須
+              = f.text_field :cvc, placeholder: "カード背面の4桁もしくは3桁の番号", maxlength: "4", class: "user-form__content__group__default", id: "card-cvc"
+              %p.user-text.user-text-right
+                = link_to "#", method: :get do
+                  %i.fa.fa-question-circle>
+                  カード背面の番号とは？
+            =f.submit "次へ進む", class: "user-btn-default user-btn-red", id: "card-token-submit"
+
+
+  = render partial: 'shared/footer'

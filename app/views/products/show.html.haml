@@ -1,5 +1,6 @@
 #wrapper
   = render partial: 'shared/header'
+  = render partial: 'shared/nav'
   %main.main
     .product-box-content
       %h2.product-box-content__product-name
@@ -12,7 +13,10 @@
           .product-box-content__product-main-content__product-image__others
             -@images.each do |img|
               .image-list
-                = image_tag("/uploads/image/image/#{img[:id]}/#{img[:image]}")
+                = image_tag("#{img.image}")
+          - if @product.selling_status == "売却済"
+            .product-box-content__product-main-content__product-image__soldout-box
+              .product-box-content__product-main-content__product-image__soldout-box__text SOLD
 
         %table.product-box-content__product-main-content__product-information
           %tbody
@@ -47,12 +51,12 @@
                 = @product.status
             %tr
               %th 配送料の負担
-              %td
-                = @delivery.responsibility
+              %td 
+                = @delivery
             %tr
               %th 配送の方法
               %td
-                = @delivery.way
+                = @delivery.responsibility
             %tr
               %th 配送元地域
               %td
@@ -70,7 +74,11 @@
           = @postage
 
       .product-box-content__buy-btn
-        = link_to "購入画面に進む", "#"
+        -if @product.selling_status == "出品中"
+          = link_to "購入画面に進む", pay_product_path
+        - else
+          .sold-out
+            売り切れました
 
       .product-box-content__product-information
         %p.product-box-content__product-information__text
@@ -117,30 +125,32 @@
           = link_to "#{@seller.nickname}さんのその他の商品", "#", class: "product-box-head__link"
         .product-introduction-box-content
           - unless @seller_other_products.blank?
-            -@seller_other_products.each do |product|
+            -@seller_other_products.each_with_index do |product, i|
               .product-introduction-box-content__product-box
                 = link_to product_path(product.id) do
-                  %figure.product-box-photo
-                    = image_tag("/uploads/image/image/#{product.images[0][:id]}/#{product.images[0][:image]}")
-                  .product-box-body
-                    %h3.product-box-body__title
-                      =product.name
-                    .product-box-body__other
-                      .product-box-body__other__price
-                        = "¥#{product.price.to_s(:delimited)}"
-                      .product-box-body__other__like
-                        %span 数
+                  -if Rails.env.development?
+                    %figure.product-box-photo
+                      = image_tag("#{product.images[i].image}")
+                .product-box-body
+                  %h3.product-box-body__title
+                    =product.name
+                  .product-box-body__other
+                    .product-box-body__other__price
+                      = "¥#{product.price.to_s(:delimited)}"
+                    .product-box-body__other__like
+                      %span 数
 
       .products-introduction__category
         %h2.product-box-head
           = link_to "#{@category.name}その他の商品", "#", class: "product-box-head__link"
         .product-introduction-box-content
           - unless @category_other_products.blank?
-            -@category_other_products.each do |product|
+            -@category_other_products.each_with_index do |product, i|
               .product-introduction-box-content__product-box
                 = link_to product_path(product.id) do
-                  %figure.product-box-photo
-                    = image_tag("/uploads/image/image/#{product.images[0][:id]}/#{product.images[0][:image]}")
+                  -if Rails.env.development?
+                    %figure.product-box-photo
+                      = image_tag("#{product.images[i].image}")
                   .product-box-body
                     %h3.product-box-body__title
                       = product.name

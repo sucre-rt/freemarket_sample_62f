@@ -37,7 +37,7 @@
               %li.main__ladies__inner__list-item
                 = link_to product_path(image.product_id), class: 'main__ladies__inner__list-item-a' do
                   = image_tag("#{image.image}", class: 'main__ladies__inner__list-item-image')
-                  %p.main__ladies__inner__list-item-title #{@products[image.product_id-1].name}
+                  %p.main__ladies__inner__list-item-title #{image.product.name}
               - last_num = image.product_id-1
     %section.main__mens
       .main__mens__inner
