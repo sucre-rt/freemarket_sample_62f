@@ -1,13 +1,7 @@
 - if flash[:notice].blank?
   .pankuzu-box
     %nav.nav
-      %ul.nav__scope
-        %li
-          = link_to '/' do
-            メルカリ
-        %li
-          = link_to '/' do
-            メルカリなら新品も中古もお得！キャンプ用品 大特集！
+      = breadcrumbs container_tag: "ul", fragment_tag: "li", class: "nav__scope"
 - else
   .pankuzu-box
     .flash-message

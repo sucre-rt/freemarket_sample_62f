@@ -80,7 +80,6 @@ class SignupController < ApplicationController
 
   def create
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-
     # ユーザーの生成
     @user = User.new(
       nickname:         session[:nickname],

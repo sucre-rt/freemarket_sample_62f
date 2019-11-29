@@ -46,7 +46,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  
+
   #capistrano
   gem 'capistrano'
   gem 'capistrano-rbenv'
@@ -90,12 +90,15 @@ gem 'fog-aws'
 #Oauth認証
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'  
+gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'omniauth'
 
 # クレジットカード
 gem 'payjp'
+gem "gretel"
 
 # アンセストリー
 gem 'ancestry'
+
+gem 'recaptcha', require: "recaptcha/rails"
