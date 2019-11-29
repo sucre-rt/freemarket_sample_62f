@@ -14,7 +14,7 @@ class MypageController < ApplicationController
     
     # payjpからカード情報を取り出す
     if @card != nil
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       customer = Payjp::Customer.retrieve(@card.customer_id)  # ユーザー情報の取得
       @card_infomation = customer.cards.retrieve(@card.card_id) #ユーザーの情報からカードの情報を絞り込む
 
