@@ -7,8 +7,8 @@ class CardController < ApplicationController
   end
 
   def create
-    Payjp.api_key = Rails.application.credentials.payjp[:private_key]
-
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    
     unless params['payjp_token'].blank?   # jsにより、params['payjp_token']を受け取れる
 
       # payjp上でユーザーを作成。payjpにカード情報を登録
