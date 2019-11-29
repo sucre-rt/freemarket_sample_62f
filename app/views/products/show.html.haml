@@ -125,32 +125,30 @@
           = link_to "#{@seller.nickname}さんのその他の商品", "#", class: "product-box-head__link"
         .product-introduction-box-content
           - unless @seller_other_products.blank?
-            -@seller_other_products.each_with_index do |product, i|
+            -@seller_other_products.each do |product|
               .product-introduction-box-content__product-box
                 = link_to product_path(product.id) do
-                  -if Rails.env.development?
-                    %figure.product-box-photo
-                      = image_tag("#{product.images[i].image}")
-                .product-box-body
-                  %h3.product-box-body__title
-                    =product.name
-                  .product-box-body__other
-                    .product-box-body__other__price
-                      = "¥#{product.price.to_s(:delimited)}"
-                    .product-box-body__other__like
-                      %span 数
+                  %figure.product-box-photo
+                    = image_tag("#{product.images[0].image}")
+                  .product-box-body
+                    %h3.product-box-body__title
+                      =product.name
+                    .product-box-body__other
+                      .product-box-body__other__price
+                        = "¥#{product.price.to_s(:delimited)}"
+                      .product-box-body__other__like
+                        %span 数
 
       .products-introduction__category
         %h2.product-box-head
           = link_to "#{@category.name}その他の商品", "#", class: "product-box-head__link"
         .product-introduction-box-content
           - unless @category_other_products.blank?
-            -@category_other_products.each_with_index do |product, i|
+            -@category_other_products.each do |product|
               .product-introduction-box-content__product-box
                 = link_to product_path(product.id) do
-                  -if Rails.env.development?
-                    %figure.product-box-photo
-                      = image_tag("#{product.images[i].image}")
+                  %figure.product-box-photo
+                    = image_tag("#{product.images[0].image}")
                   .product-box-body
                     %h3.product-box-body__title
                       = product.name
