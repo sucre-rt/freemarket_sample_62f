@@ -35,7 +35,7 @@
           - @images.each_with_index do |image, j|
             - if last_num != image.product_id-1 then
               %li.main__ladies__inner__list-item
-                = link_to products_path + "/#{image.product_id}/", class: 'main__ladies__inner__list-item-a' do
+                = link_to products_path(image.product_id), class: 'main__ladies__inner__list-item-a' do
                   = image_tag("#{image.image}", class: 'main__ladies__inner__list-item-image')
                   %p.main__ladies__inner__list-item-title #{@products[image.product_id-1].name}
               - last_num = image.product_id-1
