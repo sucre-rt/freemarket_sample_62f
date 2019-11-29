@@ -79,7 +79,7 @@ class SignupController < ApplicationController
   end
 
   def create
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
     # ユーザーの生成
     @user = User.new(
       nickname:         session[:nickname],
