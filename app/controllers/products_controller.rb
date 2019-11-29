@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   include MypageHelper
-  before_action :set_product, only: [:pay, :show, :buy]
+  before_action :set_product, only: [:pay, :show, :buy, :destroy]
 
   def sell
     @product = Product.new
@@ -68,9 +68,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     if @product.user_id == current_user.id
-      @product.destroy
+      unless @product.destroy
+        flash[:notice] = "削除できなかったよ！"
+        redirect_to product_path(@product.id)
+      end
     end
   end
 
