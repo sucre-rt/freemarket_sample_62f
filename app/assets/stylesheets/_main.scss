@@ -140,7 +140,6 @@
 
     &__inner {
       @include responsive-width;
-
       &__header {
         font-size: 2.4rem;
         font-weight: bold;
@@ -229,3 +228,47 @@
 }
 
 @import './footer';
+
+.price-label {
+  align-items: center;
+  background: rgba(0,0,0,.4);
+  border-radius: 0 14px 14px 0;
+  bottom: 70px;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-flex;
+  font-size: 17px;
+  height: 28px;
+  letter-spacing: .02em;
+  margin: 0;
+  padding: 0 12px;
+  position: absolute;
+  z-index: 2;
+}
+
+.soldout-box {
+  &__text {
+    top: 18px;
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    transform: rotate(-45deg);
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  &::after {
+    border-width: 80px 80px 0 0;
+    border-color: #ea352d transparent;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+}

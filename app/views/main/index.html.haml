@@ -26,154 +26,70 @@
             = link_to "家電・スマホ・カメラ", '/', class: 'main__category__inner__list-link-a'
           %li.main__category__inner__list-link
             = link_to "おもちゃ・ホビー・グッズ", '/', class: 'main__category__inner__list-link-a'
+
     %section.main__ladies
       .main__ladies__inner
         %h2.main__ladies__inner__header
           レディース新着アイテム
         %ul.main__ladies__inner__list
-          - last_num = -1
-          - @images.each_with_index do |image, j|
-            - if last_num != image.product_id-1 then
+          - unless @women.blank?
+            - @women.each do |woman|
               %li.main__ladies__inner__list-item
-                = link_to product_path(image.product_id), class: 'main__ladies__inner__list-item-a' do
-                  = image_tag("#{image.image}", class: 'main__ladies__inner__list-item-image')
-                  %p.main__ladies__inner__list-item-title #{image.product.name}
-              - last_num = image.product_id-1
+                = link_to product_path(woman.id), class: 'main__ladies__inner__list-item-a' do
+                  -if woman.selling_status == "売却済"
+                    .soldout-box
+                      .soldout-box__text SOLD
+                  = image_tag("#{woman.images[0].image}", class: 'main__ladies__inner__list-item-image')
+                  %span.price-label
+                    = "¥#{woman.price.to_s(:delimited)}"
+                  %p.main__ladies__inner__list-item-title 
+                    = woman.name
+
     %section.main__mens
       .main__mens__inner
         %h2.main__mens__inner__header
           メンズ新着アイテム
         %ul.main__mens__inner__list
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
-          %li.main__mens__inner__list-item
-            = link_to '/', class: 'main__mens__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__mens__inner__list-item-image'
-              %p.main__mens__inner__list-item-title 初心者も安心！
+          - unless @men.blank?
+            - @men.each do |man|
+              %li.main__mens__inner__list-item
+                = link_to product_path(man.id), class: 'main__mens__inner__list-item-a' do
+                  = image_tag("#{man.images[0].image}", class: 'main__mens__inner__list-item-image')
+                  %span.price-label
+                    = "¥#{man.price.to_s(:delimited)}"
+                  %p.main__mens__inner__list-item-title 
+                    = man.name
+
     %section.main__electronics
       .main__electronics__inner
         %h2.main__electronics__inner__header
           家電・スマホ・カメラ新着アイテム
         %ul.main__electronics__inner__list
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
-          %li.main__electronics__inner__list-item
-            = link_to '/', class: 'main__electronics__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__electronics__inner__list-item-image'
-              %p.main__electronics__inner__list-item-title 初心者も安心！
+          - unless @home_appliances.blank?
+            - @home_appliances.each do |home_appliance|
+              %li.main__electronics__inner__list-item
+                = link_to product_path(home_appliance.id), class: 'main__electronics__inner__list-item-a' do
+                  = image_tag("#{home_appliance.images[0].image}", class: 'main__electronics__inner__list-item-image')
+                  %span.price-label
+                    = "¥#{home_appliance.price.to_s(:delimited)}"
+                  %p.main__electronics__inner__list-item-title
+                    = home_appliance.name
+
     %section.main__hobbys
       .main__hobbys__inner
         %h2.main__hobbys__inner__header
           おもちゃ・ホビー・グッズ新着アイテム
         %ul.main__hobbys__inner__list
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
-          %li.main__hobbys__inner__list-item
-            = link_to '/', class: 'main__hobbys__inner__list-item-a' do
-              = image_tag 'index_menu_02.png', class: 'main__hobbys__inner__list-item-image'
-              %p.main__hobbys__inner__list-item-title 初心者も安心！
+          - unless @toys.blank?
+            -@toys.each do |toy|
+              %li.main__hobbys__inner__list-item
+                = link_to product_path(toy.id), class: 'main__hobbys__inner__list-item-a' do
+                  = image_tag("#{toy.images[0].image}", class: 'main__hobbys__inner__list-item-image')
+                  %span.price-label
+                    = "¥#{toy.price.to_s(:delimited)}"
+                  %p.main__hobbys__inner__list-item-title
+                    = toy.name
+
     %section.main__category
       .main__brand__inner
         %h2.main__brand__inner__header

@@ -66,8 +66,8 @@ class ProductsController < ApplicationController
     @postage = @delivery.responsibility.include?("出品者負担") ? "送料込み" : "着払い"
     @back_product = Product.where('id < ?', @product.id).order("id DESC").first
     @next_product = Product.where('id > ?', @product.id).first
-    @seller_other_products = Product.where(user_id: @seller.id).order("id DESC").limit(6).where.not(id: @product.id)
-    @category_other_products = Product.where(category_id: @category.id).order("id DESC").limit(6).where.not(id: @product.id)
+    @seller_other_products = Product.where(user_id: @seller.id).order("id DESC").limit(6).where.not(id: @product.id).where.not(selling_status: "売却済")
+    @category_other_products = Product.where(category_id: @category.id).order("id DESC").limit(6).where.not(id: @product.id).where.not(selling_status: "売却済")
   end
 
   def buy
