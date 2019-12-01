@@ -1,3 +1,5 @@
+@import "./mixin";
+
 .like-link-btn {
   @include product-btn;
   position: relative;
