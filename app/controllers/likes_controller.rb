@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :set_product
+  before_action :move_to_login
 
   def create
     if current_user != nil
@@ -30,6 +31,10 @@ class LikesController < ApplicationController
   def set_product
     @product = Product.find(params[:product_id])
     @id_name = "#like-link-#{@product.id}"
+  end
+
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end

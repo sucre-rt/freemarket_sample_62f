@@ -1,5 +1,6 @@
 class MypageController < ApplicationController
   include MypageHelper
+  before_action :move_to_login, only: [:index, :logout, :card, :like]
 
   def index
   end
@@ -25,6 +26,10 @@ class MypageController < ApplicationController
   # いいね一覧
   def like
     @likes = current_user.likes
+  end
+
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end

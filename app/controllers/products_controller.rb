@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   include MypageHelper
   before_action :set_product, only: [:pay, :show, :buy, :destroy]
-  before_action :move_to_login, only: [:sell, :pay]
+  before_action :move_to_login, only: [:sell, :pay, :buy, :destroy]
 
   before_action :set_category, only: [:sell, :create]
 

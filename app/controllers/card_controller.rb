@@ -1,6 +1,7 @@
 class CardController < ApplicationController
   include CardHelper
   before_action :set_card_data, only: [:new, :destroy]
+  before_action :move_to_login
 
   def new
     redirect_to card_mypage_path unless @card.blank?
@@ -52,6 +53,10 @@ class CardController < ApplicationController
 
   def set_card_data
     @card = current_user.card
+  end
+
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
   
 end

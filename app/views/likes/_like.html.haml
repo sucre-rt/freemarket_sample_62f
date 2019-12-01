@@ -1,12 +1,19 @@
-- if current_user.likes.find_by(product_id: product.id)
-  .like-link-btn-favorite
-    = link_to product_like_path(product.id, current_user.likes.find_by(product_id: product.id).id), method: :delete, remote: true do
-      .likes-btn
-        %i.fa.fa-heart
-        = "いいね! #{product.likes.count}"
+-if user_signed_in?
+  - if current_user.likes.find_by(product_id: product.id)
+    .like-link-btn-favorite
+      = link_to product_like_path(product.id, current_user.likes.find_by(product_id: product.id).id), method: :delete, remote: true do
+        .likes-btn
+          %i.fa.fa-heart
+          = "いいね! #{product.likes.count}"
+  - else
+    .like-link-btn
+      = link_to product_likes_path(product.id), method: :post, remote: true do
+        .likes-btn
+          %i.fa.fa-heart-o
+          = "いいね! #{product.likes.count}"
 - else
   .like-link-btn
-    = link_to product_likes_path(product.id), method: :post, remote: true do
+    = link_to new_user_session_path, method: :get do
       .likes-btn
         %i.fa.fa-heart-o
         = "いいね! #{product.likes.count}"
