@@ -85,7 +85,8 @@
 
       .product-box-content__btn-box
         .product-box-content__btn-box__left
-          = button_tag "#{content_tag(:i, '', class: 'fa fa-heart')}いいね! 0".html_safe, type: :button, class: "like-btn"
+          .like-link{ id: "like-link-#{@product.id}"}
+            = render partial: 'likes/like', locals: { product: @product }
           = link_to "#{content_tag(:i, '', class: 'fa fa-flag-checkered')}不適切な商品の報告".html_safe, "#", class: "report-btn"
         .product-box-content__btn-box__right
           = link_to "#{content_tag(:i, '', class: 'fa fa-lock')}あんしん・あんぜんへの取り組み".html_safe, "#", class: "safe-guide"
@@ -150,8 +151,10 @@
                     .product-box-body__other
                       .product-box-body__other__price
                         = "¥#{product.price.to_s(:delimited)}"
-                      .product-box-body__other__like
-                        %span 数
+                      -if product.likes.count != 0
+                        .product-box-body__other__like
+                          %span
+                            = product.likes.count
 
       .products-introduction__category
         %h2.product-box-head
@@ -169,8 +172,10 @@
                     .product-box-body__other
                       .product-box-body__other__price
                         = "¥#{product.price.to_s(:delimited)}"
-                      .product-box-body__other__like
-                        %span 数
+                      -if product.likes.count != 0
+                        .product-box-body__other__like
+                          %span 
+                            = product.likes.count
 
     %nav.bread-crumbs-bottom
       %ul

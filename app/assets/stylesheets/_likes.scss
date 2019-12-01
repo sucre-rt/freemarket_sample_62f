@@ -1,0 +1,50 @@
+.like-link-btn {
+  @include product-btn;
+  position: relative;
+  height: 32px;
+  width: 120px;
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
+  a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.like-link-btn-favorite {
+  @include product-btn;
+  position: relative;
+  height: 32px;
+  width: 120px;
+  font-size: 14px;
+  border: 1px solid #ea352d;
+  background: none;
+  line-height: 32px;
+  text-align: center;
+  a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 8 16px;
+    color: #ea352d;
+    .fa-heart {
+      animation: bound 1s;
+    }
+  }
+}
+
+
+@keyframes bound{
+  0% { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.25, 0.75, 1); }
+  40% { transform: scale3d(0.75, 1.25, 1); }
+  50% { transform: scale3d(1.15, 0.85, 1); }
+  65% { transform: scale3d(0.95, 1.05, 1); }
+  75% { transform: scale3d(1.05, 0.95, 1); }
+  100% { transform: scale3d(1, 1, 1); }
+  }

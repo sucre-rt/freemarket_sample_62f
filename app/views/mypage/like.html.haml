@@ -1,0 +1,24 @@
+#wrapper
+  = render partial: 'shared/header'
+  = render partial: 'shared/nav'
+  %main.main
+    = render partial: 'leftcontent'
+    .main__right-content
+      .main__right-content__user-info
+        %h2 いいね！一覧
+        %ul.mypage-likes-list
+          - unless @likes.blank?
+            - @likes.each do |like|
+              %li
+                = link_to product_path(like.product.id), class: "mypage-likes-list__link" do
+                  .mypage-likes-list__link__img
+                    = image_tag("#{like.product.images[0].image}")
+                    - if like.product.selling_status == "売却済"
+                      .mypage-likes-list__link__img__sold-box
+                        .mypage-likes-list__link__img__sold-box--sold
+                          SOLD
+                  .mypage-likes-list__link__information
+                    .mypage-likes-list__link__information__text
+                      = like.product.name
+                    .mypage-likes-list__link__information__text
+                      = "¥#{like.product.price.to_s(:delimited)}"

@@ -22,4 +22,9 @@ class MypageController < ApplicationController
     end
   end
 
+  # いいね一覧
+  def like
+    @likes = current_user.likes
+  end
+
 end
