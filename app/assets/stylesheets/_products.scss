@@ -143,6 +143,7 @@ a {
 .sell-upload-drop-box {
   position: relative;
   padding: 40px;
+  margin-left: 2%;
   min-height: 162px;
   background: #f5f5f5;
   border: 1px dashed #ccc;
@@ -1077,4 +1078,25 @@ a {
       }
     }
   }
+}
+
+.sell-upload-item:first-child{
+  background-color: #f5f5f5;
+  margin: 16px 0 0 0;
+}
+.sell-upload-item{
+  background-color: #f5f5f5;
+  margin: 16px 0 0 12px;
+}
+.display-flex_box{
+  display: flex;
+  width: 620px;
+}
+#preview{
+  display: flex;
+}
+
+.img_view{ 
+  padding: 30px 0 0 0px;
+  width: 116px;
 }
