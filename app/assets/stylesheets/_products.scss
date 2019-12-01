@@ -6,6 +6,7 @@
 @import "./color";
 @import "./pay";
 @import "./mypage";
+@import "./likes";
 
 
 html {
@@ -549,11 +550,8 @@ a {
       margin-right: 8px;
     }
     &__left {
+      display: flex;
       float: left;
-      .like-btn {
-        @include product-btn;
-        font-size: 14px;
-      }
       .report-btn {
         @include product-btn;
         margin: 0 0 0 16px;

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   as :mypage do
     get 'logout', to: 'mypage#logout', as: :logout_mypage
     get 'mypage/card', to: 'mypage#card', as: :card_mypage
+    get 'mypage/like/history', to: 'mypage#like', as: :like_mypage
   end
 
 
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:create, :show, :destroy] do
+    resources :likes, only: [:create, :destroy]
     collection do
       get 'sell'
       get 'done'
