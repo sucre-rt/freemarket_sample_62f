@@ -9,9 +9,10 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   VALID_NAME_CANA = /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :nickname, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: 'は有効なものを入力してください' }
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'は英字と数字の両方を含んだ7文字以上で入力してください' }, on: :create
   validates :family_name, presence: true
   validates :first_name, presence: true
