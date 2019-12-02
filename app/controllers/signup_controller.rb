@@ -34,7 +34,7 @@ class SignupController < ApplicationController
       telphone:         "00000000000"
     )
 
-    if @user.valid?
+    if @user.valid?   # １ページ目のバリデーションチェック
       session[:nickname]          = user_params[:nickname]
       session[:email]             = user_params[:email]
       session[:password]          = session[:uid].blank? ? user_params[:password] : password
@@ -79,7 +79,7 @@ class SignupController < ApplicationController
       birthday:         session[:birthday],
       telphone:         user_params[:telphone]
     )
-    if @user.valid?
+    if @user.valid?   # 電話番号のバリデーションチェック
       session[:telphone] = user_params[:telphone]
     else
       status_bar("through", "active", "", "", "")
@@ -97,8 +97,8 @@ class SignupController < ApplicationController
   def credit_card
     status_bar("through", "through", "through", "active", "")
     
-    #ここからアドレス
-    addresses = user_params[:address_attributes]   
+    addresses = user_params[:address_attributes]   # addressのみのparamsを取得し変数に格納
+    # 発送元住所のバリデーションチェックのためにインスタンスを生成
     @address = @user.build_address(
       family_name:      addresses[:family_name],
       first_name:       addresses[:first_name],
@@ -111,7 +111,7 @@ class SignupController < ApplicationController
       building:         addresses[:building],
       tel:              addresses[:tel]
     )
-    if @address.valid?
+    if @address.valid?    # 発送元住所のバリデーションチェック
       session[:ad_family_name]      = addresses[:family_name]
       session[:ad_first_name]       = addresses[:first_name]
       session[:ad_family_name_cana] = addresses[:family_name_cana]
@@ -128,7 +128,6 @@ class SignupController < ApplicationController
       render address_signup_index_path
     end
 
-    #ここまでアドレス
   end
 
   def done
@@ -185,10 +184,6 @@ class SignupController < ApplicationController
       redirect_to controller: :signup, action: :registration
     end
 
-  end
-
-  # ユーザー情報確認ページ addressコントローラマージされたらそっちに移す
-  def edit
   end
 
   # ユーザープロフィールページ
