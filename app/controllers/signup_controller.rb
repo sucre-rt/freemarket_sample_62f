@@ -1,6 +1,6 @@
 class SignupController < ApplicationController
   include SignupHelper, CardHelper
-  before_action :set_user, only: [:registration, :sms_confirmation, :sms, :address, :credit_card]
+  before_action :set_user, only: [:registration, :address, :credit_card]
 
   def index
   end
