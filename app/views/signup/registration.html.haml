@@ -55,14 +55,19 @@
             .form-half
               =f.text_field :family_name, autocomplete: "family_name", placeholder: "例) 山田", class: "user-form__content__group__default half"
               =f.text_field :first_name, autocomplete: "first_name", placeholder: "例) 彩", class: "user-form__content__group__default half"
-            -if @user.errors[:family_name][0] != nil
+            -if @user.errors[:family_name][0] != nil || @user.errors[:first_name][0] != nil
               .error-message-box
-                - @user.errors[:family_name].each do |error|
-                  = error
-            -if @user.errors[:first_name][0] != nil
-              .error-message-box
-                - @user.errors[:first_name].each do |error|
-                  = error
+                - if @user.errors[:family_name][0] != nil && @user.errors[:first_name][0] != nil
+                  - @user.errors[:family_name].each do |error|
+                    = error
+                  - @user.errors[:first_name].each do |error|
+                    = error
+                -elsif @user.errors[:first_name][0] != nil
+                  - @user.errors[:first_name].each do |error|
+                    = error
+                -else
+                  - @user.errors[:family_name].each do |error|
+                    = error
 
           .user-form__content__group
             %label お名前カナ(全角)
@@ -70,14 +75,19 @@
             .form-half
               =f.text_field :family_name_cana, autocomplete: "family_name_cana", placeholder: "例) ヤマダ", class: "user-form__content__group__default half"
               =f.text_field :first_name_cana, autocomplete: "first_name_cana", placeholder: "例) アヤ", class: "user-form__content__group__default half"
-            -if @user.errors[:family_name_cana][0] != nil
+            -if @user.errors[:family_name_cana][0] != nil || @user.errors[:first_name_cana][0] != nil
               .error-message-box
-                - @user.errors[:family_name_cana].each do |error|
-                  = error
-            -if @user.errors[:first_name_cana][0] != nil
-              .error-message-box
-                - @user.errors[:first_name_cana].each do |error|
-                  = error
+                - if @user.errors[:family_name_cana][0] != nil && @user.errors[:first_name_cana][0] != nil
+                  - @user.errors[:family_name_cana].each do |error|
+                    = error
+                  - @user.errors[:first_name_cana].each do |error|
+                    = error
+                -elsif @user.errors[:first_name_cana][0] != nil
+                  - @user.errors[:first_name_cana].each do |error|
+                    = error
+                -else
+                  - @user.errors[:family_name_cana].each do |error|
+                    = error
 
           .user-form__content__group
             %label 生年月日
