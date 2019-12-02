@@ -13,17 +13,32 @@
             %label ニックネーム
             %span.user-form__content__group--attention 必須
             =f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例)フリマケ太郎", class: "user-form__content__group__default"
+            -if @user.errors[:nickname][0] != nil
+              .error-message-box
+                - @user.errors[:nickname].each do |error|
+                  = "ニックネーム#{error}" 
+                  %br
 
           .user-form__content__group
             %label メールアドレス
             %span.user-form__content__group--attention 必須
             =f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "user-form__content__group__default"
+            -if @user.errors[:email][0] != nil
+              .error-message-box
+                - @user.errors[:email].each do |error|
+                  = "メールアドレス#{error}" 
+                  %br
 
           - unless @sns.present?
             .user-form__content__group.user-form__content__password
               %label パスワード
               %span.user-form__content__group--attention 必須
-              =f.password_field :password, autocomplete: "password", placeholder: "7文字以上", class: "user-form__content__group__default"
+              =f.password_field :password, autocomplete: "password", placeholder: "7文字以上の半角英数字", class: "user-form__content__group__default"
+              -if @user.errors[:password][0] != nil
+                .error-message-box
+                  - @user.errors[:password].each do |error|
+                    = "パスワード#{error}"
+                    %br
               .user-form__content__password__check
                 .checkbox-default
                   %input
@@ -43,6 +58,23 @@
             .form-half
               =f.text_field :family_name, autocomplete: "family_name", placeholder: "例) 山田", class: "user-form__content__group__default half"
               =f.text_field :first_name, autocomplete: "first_name", placeholder: "例) 彩", class: "user-form__content__group__default half"
+            -if @user.errors[:family_name][0] != nil || @user.errors[:first_name][0] != nil
+              .error-message-box
+                - if @user.errors[:family_name][0] != nil && @user.errors[:first_name][0] != nil
+                  - @user.errors[:family_name].each do |error|
+                    = "姓#{error}"
+                    %br
+                  - @user.errors[:first_name].each do |error|
+                    = "名#{error}"
+                    %br
+                -elsif @user.errors[:first_name][0] != nil
+                  - @user.errors[:first_name].each do |error|
+                    = "名#{error}"
+                    %br
+                -else
+                  - @user.errors[:family_name].each do |error|
+                    = "姓#{error}"
+                    %br
 
           .user-form__content__group
             %label お名前カナ(全角)
@@ -50,6 +82,23 @@
             .form-half
               =f.text_field :family_name_cana, autocomplete: "family_name_cana", placeholder: "例) ヤマダ", class: "user-form__content__group__default half"
               =f.text_field :first_name_cana, autocomplete: "first_name_cana", placeholder: "例) アヤ", class: "user-form__content__group__default half"
+            -if @user.errors[:family_name_cana][0] != nil || @user.errors[:first_name_cana][0] != nil
+              .error-message-box
+                - if @user.errors[:family_name_cana][0] != nil && @user.errors[:first_name_cana][0] != nil
+                  - @user.errors[:family_name_cana].each do |error|
+                    = "姓（カナ）#{error}"
+                    %br
+                  - @user.errors[:first_name_cana].each do |error|
+                    = "名（カナ）#{error}"
+                    %br
+                -elsif @user.errors[:first_name_cana][0] != nil
+                  - @user.errors[:first_name_cana].each do |error|
+                    = "名（カナ）#{error}"
+                    %br
+                -else
+                  - @user.errors[:family_name_cana].each do |error|
+                    = "姓（カナ）#{error}"
+                    %br
 
           .user-form__content__group
             %label 生年月日
@@ -93,6 +142,12 @@
                           = day
                   %span 日
               =f.text_field :birthday, autocomplete: "birthday", type: "hidden", value: "", class: "user-birthday-data"
+              -if @user.errors[:birthday][0] != nil
+                .error-message-box
+                  - @user.errors[:birthday].each do |error|
+                    = "生年月日#{error}"
+                    %br
+
               %p.user-form-info
                 ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           .user-form__content__group
