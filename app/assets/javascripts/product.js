@@ -176,7 +176,7 @@ $(function(){
 //ここから画像プレビュー
 $(function(){
   var dropzone = $('.sell-dropbox-container.clearfix.state-image-number-10');
-  var dropzone2 = $('.dropzone-area2');
+  var dropzone2 = $('.sell-dropbox-container.clearfix.state-image-number-10');
   var dropzone_box = $('.dropzone-box');
   var images = [];
   var inputs  =[];
@@ -191,7 +191,7 @@ $(function(){
     console.log(reader)
     inputs.push($(this));
     var img = $(`<div class="sell-upload-item">
-                <div class= "img_view"><img width = "114" height = "65"></div>
+                <div class= "img_view"><img width="116" height="65"></div>
                 </div>`);
 
     reader.onload = function(e) {
@@ -205,11 +205,13 @@ $(function(){
     reader.readAsDataURL(file);
     images.push(img); //配列にimgを入れる
 
-    if(images.length >= 10) {
+    if(images.length >= 5) {
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview2.append(image);
-
+        dropzone.css({
+          'width': `calc(100% - (135px * ${images.length - 5}))`
+        })
       })
       if(images.length == 9) {
         dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
@@ -220,7 +222,9 @@ $(function(){
           image.attr('data-image', index);
           preview.append(image);
         })
-
+        dropzone.css({
+          'width': `calc(100% - (135px * ${images.length - 5}))`
+        })
       }
     if(images.length == 10) {
       dropzone2.css({

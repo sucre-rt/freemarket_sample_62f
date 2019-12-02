@@ -19,7 +19,11 @@
                   = i.label :image, class: "dropzone-box", for: "upload-image" do
                     .sell-upload-drop-box.have-item-0
                       =i.file_field :image, multiple: true, name: "images[:image][]", id: "upload-image", class: "sell-upload-drop-file"
-                      %pre.visible-pc ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                      %p.visible-pc クリックしてファイルをアップロード
+                #preview2
+                  .sell-dropbox-container.clearfix.state-image-number-10
+                    = i.label :image, class: "dropzone-box2", for: "upload-image" do
+                      %p.visible-pc クリックしてファイルをアップロード
             //ここから"商品詳細"
             .sell-content
               .form-group

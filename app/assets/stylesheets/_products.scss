@@ -135,7 +135,6 @@ a {
 }
 
 .sell-dropbox-container {
-  margin: 16px auto 0;
   display: block;
   width: 620px;
 }
@@ -143,7 +142,6 @@ a {
 .sell-upload-drop-box {
   position: relative;
   padding: 40px;
-  margin-left: 2%;
   min-height: 162px;
   background: #f5f5f5;
   border: 1px dashed #ccc;
@@ -156,7 +154,7 @@ a {
   }
 }
 
-.sell-upload-drop-box pre {
+.sell-upload-drop-box p {
   position: absolute;
   top: 40%;
   left: 16px;
@@ -164,6 +162,7 @@ a {
   text-align: center;
   font-size: 14px;
   line-height: 1.5;
+  
 }
 
 .sell-content {
@@ -1082,21 +1081,41 @@ a {
 
 .sell-upload-item:first-child{
   background-color: #f5f5f5;
-  margin: 16px 0 0 0;
+  border: solid 1px #eee;
 }
 .sell-upload-item{
   background-color: #f5f5f5;
-  margin: 16px 0 0 12px;
+  margin-right: 12px;
+  border: solid 1px #eee;
 }
 .display-flex_box{
   display: flex;
   width: 620px;
+  margin: 16px auto 0;
 }
 #preview{
   display: flex;
 }
 
 .img_view{ 
-  padding: 30px 0 0 0px;
+  padding: 30px 0 30px 0;
   width: 116px;
+}
+.btn_wrapper{
+  display: flex;
+  justify-content: space-between;
+  height: calc(100% - 127px);
+  .btn{
+    width: 50%;
+    line-height: 30px;
+    text-align: center;
+    color: #0099e8;
+  }
+  .btn:hover{
+    opacity: 0.6;
+    text-decoration: underline;
+  }
+  .edit{
+    border-right: solid 1px #eee;
+  }
 }
