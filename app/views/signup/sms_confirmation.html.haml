@@ -8,6 +8,11 @@
           .user-form__content__group
             %label 電話番号の確認
             =f.text_field :telphone, placeholder: "携帯電話の番号を入力", class: "user-form__content__group__default"
+            -if @user.errors[:telphone][0] != nil
+              .error-message-box
+                - @user.errors[:telphone].each do |error|
+                  = error
+
           %p.user-text 本人確認のため、電話番号のSMS(ショートサービス)を利用して認証を行います。
           =f.submit "SMSを送信する", class: "user-btn-default user-btn-red"
           %p.user-text ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。

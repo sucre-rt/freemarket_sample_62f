@@ -91,7 +91,7 @@ class SignupController < ApplicationController
     status_bar("through", "through", "active", "", "")
 
     @prefecture = User.set_prefecture
-    @user.build_address
+    @address = @user.build_address
   end
 
   def credit_card
@@ -99,7 +99,7 @@ class SignupController < ApplicationController
     
     #ここからアドレス
     addresses = user_params[:address_attributes]   
-    address = @user.build_address(
+    @address = @user.build_address(
       family_name:      addresses[:family_name],
       first_name:       addresses[:first_name],
       family_name_cana: addresses[:family_name_cana],
@@ -111,7 +111,7 @@ class SignupController < ApplicationController
       building:         addresses[:building],
       tel:              addresses[:tel]
     )
-    if address.valid?
+    if @address.valid?
       session[:ad_family_name]      = addresses[:family_name]
       session[:ad_first_name]       = addresses[:first_name]
       session[:ad_family_name_cana] = addresses[:family_name_cana]

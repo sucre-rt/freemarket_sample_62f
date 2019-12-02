@@ -10,16 +10,39 @@
               %label お名前
               %span.user-form__content__group--attention 必須
               =a.text_field :family_name, placeholder: "例) 山田", class: "user-form__content__group__default"
+              -if @address.errors[:family_name][0] != nil
+                .error-message-box
+                  - @address.errors[:family_name].each do |error|
+                    = error
               =a.text_field :first_name, placeholder: "例) 綾", class: "user-form__content__group__default"
+              -if @address.errors[:first_name][0] != nil
+                .error-message-box
+                  - @address.errors[:first_name].each do |error|
+                    = error
+
             .user-form__content__group
               %label お名前カナ
               %span.user-form__content__group--attention 必須
               =a.text_field :family_name_cana, placeholder: "例) ヤマダ", class: "user-form__content__group__default"
+              -if @address.errors[:family_name_cana][0] != nil
+                .error-message-box
+                  - @address.errors[:family_name_cana].each do |error|
+                    = error
               =a.text_field :first_name_cana, placeholder: "例) アヤ", class: "user-form__content__group__default"
+              -if @address.errors[:first_name_cana][0] != nil
+                .error-message-box
+                  - @address.errors[:first_name_cana].each do |error|
+                    = error
+
             .user-form__content__group
               %label 郵便番号
               %span.user-form__content__group--attention 必須
               =a.text_field :postal_code, placeholder: "例) 123-4567", class: "user-form__content__group__default"
+              -if @address.errors[:postal_code][0] != nil
+                .error-message-box
+                  - @address.errors[:postal_code].each do |error|
+                    = error
+
             .user-form__content__group
               %label 都道府県
               %span.user-form__content__group--attention 必須
@@ -28,21 +51,47 @@
                   %i.fa.fa-chevron-down
                   = a.select :prefecture, @prefecture, {}, class: "user-select-default"
             =a.text_field :prefecture, autocomplete: "prefecture", type: "hidden", value: "北海道"
+            -if @address.errors[:prefecture][0] != nil
+              .error-message-box
+                - @address.errors[:prefecture].each do |error|
+                  = error
+
             .user-form__content__group
               %label 市区町村
               %span.user-form__content__group--attention 必須
               =a.text_field :city, placeholder: "例) 横浜市緑区", class: "user-form__content__group__default"
+              -if @address.errors[:city][0] != nil
+                .error-message-box
+                  - @address.errors[:city].each do |error|
+                    = error
+
             .user-form__content__group
               %label 番地
               %span.user-form__content__group--attention 必須
               =a.text_field :address, placeholder: "例) 青山1-1-1", class: "user-form__content__group__default"
+              -if @address.errors[:address][0] != nil
+                .error-message-box
+                  - @address.errors[:address].each do |error|
+                    = error
+
             .user-form__content__group
               %label 建物名
               %span.user-form__content__group--optional 任意
               =a.text_field :building, placeholder: "例) 柳ビル103", class: "user-form__content__group__default"
+              -if @address.errors[:building][0] != nil
+                .error-message-box
+                  - @address.errors[:building].each do |error|
+                    = error
+
+
             .user-form__content__group
               %label 電話
               %span.user-form__content__group--optional 任意
               =a.text_field :tel, placeholder: "例) 09012345678", class: "user-form__content__group__default"
+              -if @address.errors[:tel][0] != nil
+                .error-message-box
+                  - @address.errors[:tel].each do |error|
+                    = error
+
             =f.submit "次へ進む", class: "user-btn-default user-btn-red"
   =render partial: 'shared/footer2'
