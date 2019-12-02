@@ -13,32 +13,53 @@ class SignupController < ApplicationController
   def sms_confirmation           #電話番号確認
     status_bar("through", "active", "", "", "")
 
+    # SNSの情報を格納
     session[:uid]       = user_params[:uid]
     session[:provider]  = user_params[:provider]
+    # SNSでログインした際に、パスワードを自動で発行させる
+    number    = [*0..9].sample(2)*''   # 数字を2つランダムで取り出す
+    alpha     = [*'A'..'Z', *'a'..'z'].sample(5)*''   #アルファベットをランダムで5つ取り出す
+    password  = (number + alpha).split("").shuffle.join    # 取り出した数字と英字をシャッフル
 
+    # バリデーションにかけるために仮インスタンスを作成
+    @user = User.new(
+      nickname:         user_params[:nickname],
+      email:            user_params[:email],
+      password:         session[:uid].blank? ? user_params[:password] : password,
+      family_name:      user_params[:family_name],
+      first_name:       user_params[:first_name],
+      family_name_cana: user_params[:family_name_cana],
+      first_name_cana:  user_params[:first_name_cana],
+      birthday:         user_params[:birthday],
+      telphone:         "000000000000"
+    )
 
-    if session[:uid].blank?
+    if @user.valid?
       session[:nickname]          = user_params[:nickname]
       session[:email]             = user_params[:email]
-      session[:password]          = user_params[:password]
+      session[:password]          = session[:uid].blank? ? user_params[:password] : password
       session[:family_name]       = user_params[:family_name]
       session[:first_name]        = user_params[:first_name]
       session[:family_name_cana]  = user_params[:family_name_cana]
       session[:first_name_cana]   = user_params[:first_name_cana]
       session[:birthday]          = user_params[:birthday]
+      session[:telphone]          = ""    # 仮の値を削除
+
+      # 仮の値を消すために再度仮インスタンスを生成
+      @user = User.new(
+        nickname:         session[:nickname],
+        email:            session[:email],
+        password:         session[:password],
+        family_name:      session[:family_name],
+        first_name:       session[:first_name],
+        family_name_cana: session[:family_name_cana],
+        first_name_cana:  session[:first_name_cana],
+        birthday:         session[:birthday],
+        telphone:         session[:telphone]
+      )
     else
-      # SNSでログインした際に、パスワードを自動で発行させる
-      number    = [*0..9].sample(2)*''   # 数字を2つランダムで取り出す
-      alpha     = [*'A'..'Z', *'a'..'z'].sample(5)*''   #アルファベットをランダムで5つ取り出す
-      password  = (number + alpha).split("").shuffle.join    # 取り出した数字と英字をシャッフル
-      session[:nickname]          = user_params[:nickname]
-      session[:email]             = user_params[:email]
-      session[:password]          = password
-      session[:family_name]       = user_params[:family_name]
-      session[:first_name]        = user_params[:first_name]
-      session[:family_name_cana]  = user_params[:family_name_cana]
-      session[:first_name_cana]   = user_params[:first_name_cana]
-      session[:birthday]          = user_params[:birthday]
+      status_bar("active", "", "", "", "")
+      render registration_signup_index_path
     end
 
   end
@@ -46,7 +67,24 @@ class SignupController < ApplicationController
   def sms
     status_bar("through", "active", "", "", "")
 
-    session[:telphone] = user_params[:telphone]
+    # バリデーションにかけるために仮インスタンスを作成
+    @user = User.new(
+      nickname:         session[:nickname],
+      email:            session[:email],
+      password:         session[:password],
+      family_name:      session[:family_name],
+      first_name:       session[:first_name],
+      family_name_cana: session[:family_name_cana],
+      first_name_cana:  session[:first_name_cana],
+      birthday:         session[:birthday],
+      telphone:         user_params[:telphone]
+    )
+    if @user.valid?
+      session[:telphone] = user_params[:telphone]
+    else
+      status_bar("through", "active", "", "", "")
+      render sms_confirmation_signup_index_path
+    end
   end
 
   def address
@@ -60,17 +98,36 @@ class SignupController < ApplicationController
     status_bar("through", "through", "through", "active", "")
     
     #ここからアドレス
-    addreses = user_params[:address_attributes]                             #変数に入れてる
-    session[:ad_family_name]      = addreses[:family_name]
-    session[:ad_first_name]       = addreses[:first_name]
-    session[:ad_family_name_cana] = addreses[:family_name_cana]
-    session[:ad_first_name_cana]  = addreses[:first_name_cana]
-    session[:postal_code]         = addreses[:postal_code]
-    session[:prefecture]          = addreses[:prefecture]
-    session[:city]                = addreses[:city]
-    session[:address]             = addreses[:address]
-    session[:building]            = addreses[:building]
-    session[:tel]                 = addreses[:tel]
+    addresses = user_params[:address_attributes]   
+    address = @user.build_address(
+      family_name:      addresses[:family_name],
+      first_name:       addresses[:first_name],
+      family_name_cana: addresses[:family_name_cana],
+      first_name_cana:  addresses[:first_name_cana],
+      postal_code:      addresses[:postal_code],
+      prefecture:       addresses[:prefecture],
+      city:             addresses[:city],
+      address:          addresses[:address],
+      building:         addresses[:building],
+      tel:              addresses[:tel]
+    )
+    if address.valid?
+      session[:ad_family_name]      = addresses[:family_name]
+      session[:ad_first_name]       = addresses[:first_name]
+      session[:ad_family_name_cana] = addresses[:family_name_cana]
+      session[:ad_first_name_cana]  = addresses[:first_name_cana]
+      session[:postal_code]         = addresses[:postal_code]
+      session[:prefecture]          = addresses[:prefecture]
+      session[:city]                = addresses[:city]
+      session[:address]             = addresses[:address]
+      session[:building]            = addresses[:building]
+      session[:tel]                 = addresses[:tel]
+    else
+      status_bar("through", "through", "active", "", "")
+      @prefecture = User.set_prefecture
+      render address_signup_index_path
+    end
+
     #ここまでアドレス
   end
 
@@ -113,7 +170,6 @@ class SignupController < ApplicationController
       customer_id:  customer.id,
       card_id:      customer.default_card
     )
-
     if @user.save && session[:uid].blank?
       sign_in_and_redirect @user
     elsif @user.save && session[:uid]
@@ -121,7 +177,7 @@ class SignupController < ApplicationController
       SnsCredential.create(
         uid:        session[:uid],
         provider:   session[:provider],
-        user_id:    session[:id]
+        user_id:    session[:user_id]
       )
       sign_in_and_redirect @user
     else
