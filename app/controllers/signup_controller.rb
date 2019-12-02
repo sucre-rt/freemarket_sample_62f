@@ -31,7 +31,7 @@ class SignupController < ApplicationController
       family_name_cana: user_params[:family_name_cana],
       first_name_cana:  user_params[:first_name_cana],
       birthday:         user_params[:birthday],
-      telphone:         "000000000000"
+      telphone:         "00000000000"
     )
 
     if @user.valid?

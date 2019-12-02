@@ -11,7 +11,8 @@
             -if @user.errors[:telphone][0] != nil
               .error-message-box
                 - @user.errors[:telphone].each do |error|
-                  = error
+                  = "電話番号#{error}"
+                  %br
 
           %p.user-text 本人確認のため、電話番号のSMS(ショートサービス)を利用して認証を行います。
           =f.submit "SMSを送信する", class: "user-btn-default user-btn-red"

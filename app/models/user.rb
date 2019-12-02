@@ -8,16 +8,17 @@ class User < ApplicationRecord
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   VALID_NAME_CANA = /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
 
   validates :nickname, presence: true
   validates :email, presence: true
-  validates :password, format: { with: VALID_PASSWORD_REGEX }, on: :create
+  validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'は英字と数字の両方を含んだ7文字以上で入力してください' }, on: :create
   validates :family_name, presence: true
   validates :first_name, presence: true
-  validates :family_name_cana, presence: true, format: { with: VALID_NAME_CANA }
-  validates :first_name_cana, presence: true, format: { with: VALID_NAME_CANA }
+  validates :family_name_cana, presence: true, format: { with: VALID_NAME_CANA, message: 'は全角カタカナのみで入力してください' }
+  validates :first_name_cana, presence: true, format: { with: VALID_NAME_CANA, message: 'は全角カタカナのみで入力してください' }
   validates :birthday, presence: true
-  validates :telphone, presence: true
+  validates :telphone, presence: true, format: { with: VALID_PHONE_REGEX, message: 'はハイフンを除いた10桁か11桁の数字を入力してください' }
 
   has_many :sns_credentials, dependent: :destroy
   has_many :payments

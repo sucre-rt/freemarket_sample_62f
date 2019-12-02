@@ -13,12 +13,12 @@
               -if @address.errors[:family_name][0] != nil
                 .error-message-box
                   - @address.errors[:family_name].each do |error|
-                    = error
+                    = "姓#{error}"
               =a.text_field :first_name, placeholder: "例) 綾", class: "user-form__content__group__default"
               -if @address.errors[:first_name][0] != nil
                 .error-message-box
                   - @address.errors[:first_name].each do |error|
-                    = error
+                    = "名#{error}"
 
             .user-form__content__group
               %label お名前カナ
@@ -27,12 +27,12 @@
               -if @address.errors[:family_name_cana][0] != nil
                 .error-message-box
                   - @address.errors[:family_name_cana].each do |error|
-                    = error
+                    = "姓（カナ）#{error}"
               =a.text_field :first_name_cana, placeholder: "例) アヤ", class: "user-form__content__group__default"
               -if @address.errors[:first_name_cana][0] != nil
                 .error-message-box
                   - @address.errors[:first_name_cana].each do |error|
-                    = error
+                    = "名（カナ）#{error}"
 
             .user-form__content__group
               %label 郵便番号
@@ -41,7 +41,7 @@
               -if @address.errors[:postal_code][0] != nil
                 .error-message-box
                   - @address.errors[:postal_code].each do |error|
-                    = error
+                    = "郵便番号#{error}"
 
             .user-form__content__group
               %label 都道府県
@@ -54,7 +54,7 @@
             -if @address.errors[:prefecture][0] != nil
               .error-message-box
                 - @address.errors[:prefecture].each do |error|
-                  = error
+                  = "都道府県#{error}"
 
             .user-form__content__group
               %label 市区町村
@@ -63,7 +63,7 @@
               -if @address.errors[:city][0] != nil
                 .error-message-box
                   - @address.errors[:city].each do |error|
-                    = error
+                    = "市区町村#{error}"
 
             .user-form__content__group
               %label 番地
@@ -72,7 +72,7 @@
               -if @address.errors[:address][0] != nil
                 .error-message-box
                   - @address.errors[:address].each do |error|
-                    = error
+                    = "番地#{error}"
 
             .user-form__content__group
               %label 建物名
@@ -81,7 +81,7 @@
               -if @address.errors[:building][0] != nil
                 .error-message-box
                   - @address.errors[:building].each do |error|
-                    = error
+                    = "建物名#{error}"
 
 
             .user-form__content__group
@@ -91,7 +91,7 @@
               -if @address.errors[:tel][0] != nil
                 .error-message-box
                   - @address.errors[:tel].each do |error|
-                    = error
+                    = "電話番号#{error}"
 
             =f.submit "次へ進む", class: "user-btn-default user-btn-red"
   =render partial: 'shared/footer2'
