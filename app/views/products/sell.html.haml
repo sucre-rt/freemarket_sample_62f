@@ -92,11 +92,7 @@
                   %div
                     .select-wrap
                       %i.icon-arrow-bottom
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "1~2日で発送"} 1~2日で発送
-                        %option{value: "2~3日で発送"} 2~3日で発送
-                        %option{value: "4~7日で発送"} 4~7日で発送
+                      = f.select :sending_days, options_for_select(sending_days.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
                     =f.text_field :sending_days, autocomplete: "sending_days", type: "hidden", value: "1~2日で発送"
             //ここまで配送について
             //ここから販売価格
