@@ -4,6 +4,7 @@ class MainController < ApplicationController
     # @images = Image.all
     @women = []
     @men = []
+    @parents = Category.all.limit(13)
     @home_appliances = []
     @toys = []
 
