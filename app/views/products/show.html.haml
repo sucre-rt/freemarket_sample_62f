@@ -95,7 +95,8 @@
       .prduct-box-content-delete
         .prduct-box-content-delete__content
           %button#product-edit
-            %i.fa.fa-product-edit 商品の編集
+            =link_to "商品の編集", edit_product_path, class: "product-edit"
+            %i.fa.fa-product-edit
           .product-or
             or
           %button#product-stop

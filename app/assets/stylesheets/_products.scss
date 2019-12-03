@@ -856,14 +856,15 @@ a {
     position: relative;
     #product-edit{
       width: 100%;
-      .fa-product-edit{
-        height: 50px;
-        font-size: 14px;
+      margin-top: 20px;
+      height: 50px;
+      font-size: 14px;
+      background: #ea352d;
+      display: block;
+      line-height: 48px;
+      cursor: pointer;
+      .product-edit{
         color: #fff;
-        background: #ea352d;
-        display: block;
-        line-height: 48px;
-        cursor: pointer;
       }
     }
 
@@ -895,7 +896,6 @@ a {
       margin-top: 20px;
       height: 50px;
       font-size: 14px;
-      color: #fff;
       background: #aaa;
       display: block;
       line-height: 48px;
