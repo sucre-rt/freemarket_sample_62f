@@ -115,7 +115,6 @@ a {
 .sell-form{
   border-top: 1px solid #eee;
   .sell-upload-box{
-    width: 620px;
     padding: 40px;
     .sell-upload-head{
       font-size: 16px;
@@ -136,7 +135,6 @@ a {
 }
 
 .sell-dropbox-container {
-  margin: 16px auto 0;
   display: block;
   width: 620px;
 }
@@ -156,7 +154,7 @@ a {
   }
 }
 
-.sell-upload-drop-box pre {
+.sell-upload-drop-box p {
   position: absolute;
   top: 40%;
   left: 16px;
@@ -164,6 +162,7 @@ a {
   text-align: center;
   font-size: 14px;
   line-height: 1.5;
+  
 }
 
 .sell-content {
@@ -1074,5 +1073,53 @@ a {
         }
       }
     }
+  }
+}
+
+.sell-upload-item:first-child{
+  background-color: #f5f5f5;
+  border: solid 1px #eee;
+}
+.sell-upload-item{
+  width: 117px;
+  background-color: #f5f5f5;
+  margin-right: 9px;
+  border: solid 1px #eee;
+}
+#display-flex_box{
+  display: flex;
+  width: 620px;
+  margin: 16px auto 0;
+}
+#display-flex_box2{
+  display:  none;
+  width: 620px;
+  margin: 16px auto 0;
+}
+
+#preview, #preview2{
+  display: flex;
+}
+
+.img_view{ 
+  padding: 30px 0 30px 0;
+  width: 116px;
+}
+.btn_wrapper{
+  display: flex;
+  justify-content: space-between;
+  height: calc(100% - 127px);
+  .btn{
+    width: 50%;
+    line-height: 30px;
+    text-align: center;
+    color: #0099e8;
+  }
+  .btn:hover{
+    opacity: 0.6;
+    text-decoration: underline;
+  }
+  .edit{
+    border-right: solid 1px #eee;
   }
 }
