@@ -223,7 +223,7 @@ $(function(){
         let data = image.data('image')
         if (data >= 5){
           preview2.append(image);
-          dropzone.css({
+          dropzone2.css({
             'width': `calc(100% - (116px * ${images.length - 5}))`
           })
         }
@@ -254,6 +254,7 @@ $(function(){
 
   $(document).on('click', '.delete', function() {
     var target_image = $(this).parent().parent();
+
     $.each(inputs, function(index, input){
       if ($(this).data('image') == target_image.data('image')){
         $(this).remove();
@@ -268,9 +269,11 @@ $(function(){
         }
       }
     })
+
     $('input[type= "file"].upload-image:first').attr({
       'data-image': inputs.length
     })
+
     $.each(inputs, function(index, input) {
       var input = $(this)
       input.attr({
@@ -278,36 +281,56 @@ $(function(){
       })
       $('input[type= "file"].upload-image:first').after(input)
     })
-    if (images.length >= 10) {
+
+    if (images.length == 5) {
       dropzone2.css({
         'display': 'block'
       })
-      $.each(images, function(index, image) {
-        image.attr('data-image', index);
-        preview2.append(image);
+      flex2.css({
+        'display': 'flex'
       })
-      if(images.length == 9) {
-        dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
-      }
-      if(images.length == 8) {
-        dropzone2.find('i').replaceWith('<p>ここをクリックしてください</p>')
-      }
-    } else {
       dropzone.css({
+        'display': 'none'
+      })
+    }
+
+    if(images.length == 9) {
+      dropzone2.css({
         'display': 'block'
       })
+      return;
+    }
+
+    if (images.length >= 6){
+      $.each(images, function(index, image) {
+        image.attr('data-image', index);
+        let data = image.data('image')
+        if (data >= 5){
+          preview2.append(image);
+          dropzone2.css({
+            'width': `calc(100% - (116px * ${images.length-5}))`
+          })
+        }
+      }) 
+    } else {
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview.append(image);
+      })
+      dropzone.css({
+        'width': `calc(100% - (116px * ${images.length}))`
+      })
+      dropzone2.css({
+        'width': `calc(100% - (116px * ${images.length - 5}))`
       })
     }
     if(images.length == 4) {
       dropzone2.css({
         'display': 'none'
       })
-    }
-    if(images.length == 3) {
-      dropzone.find('i').replaceWith('<p>ここをクリックしてください</p>')
+      dropzone.css({
+        'display': 'block'
+      })
     }
   })
 });
