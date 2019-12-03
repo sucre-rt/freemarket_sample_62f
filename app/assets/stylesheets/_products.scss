@@ -114,7 +114,6 @@ a {
 .sell-form{
   border-top: 1px solid #eee;
   .sell-upload-box{
-    width: 620px;
     padding: 40px;
     .sell-upload-head{
       font-size: 16px;
@@ -1084,16 +1083,23 @@ a {
   border: solid 1px #eee;
 }
 .sell-upload-item{
+  width: 117px;
   background-color: #f5f5f5;
   margin-right: 12px;
   border: solid 1px #eee;
 }
-.display-flex_box{
+#display-flex_box{
   display: flex;
   width: 620px;
   margin: 16px auto 0;
 }
-#preview{
+#display-flex_box2{
+  display:  none;
+  width: 620px;
+  margin: 16px auto 0;
+}
+
+#preview, #preview2{
   display: flex;
 }
 

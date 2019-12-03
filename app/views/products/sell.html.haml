@@ -13,16 +13,19 @@
                 出品画像
                 %span.form-require 必須
               %p 最大10枚までアップロードできます
-              .display-flex_box
+              #display-flex_box
                 #preview
                 .sell-dropbox-container.clearfix.state-image-number-10
                   = i.label :image, class: "dropzone-box", for: "upload-image" do
                     .sell-upload-drop-box.have-item-0
                       =i.file_field :image, multiple: true, name: "images[:image][]", id: "upload-image", class: "sell-upload-drop-file"
                       %p.visible-pc クリックしてファイルをアップロード
+              #display-flex_box2
                 #preview2
-                  .sell-dropbox-container.clearfix.state-image-number-10
-                    = i.label :image, class: "dropzone-box2", for: "upload-image" do
+                .sell-dropbox-container.clearfix.state-image-number-102
+                  = i.label :image, class: "dropzone-box", for: "upload-image" do
+                    .sell-upload-drop-box.have-item-1
+                      =i.file_field :image, multiple: true, name: "images[:image][]", id: "upload-image", class: "sell-upload-drop-file"
                       %p.visible-pc クリックしてファイルをアップロード
             //ここから"商品詳細"
             .sell-content

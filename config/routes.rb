@@ -11,16 +11,16 @@ Rails.application.routes.draw do
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
   
+  root 'main#index'
+  
   resources :mypage, only: [:index]
+
   as :mypage do
     get 'logout', to: 'mypage#logout', as: :logout_mypage
     get 'mypage/card', to: 'mypage#card', as: :card_mypage
   end
 
-
-
   
-  root 'main#index'
   
   resources :signup, only: [:create, :index, :update] do
     collection do
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
+
   as :signup do
     get 'mypage/profile', to: 'signup#profile', as: :profile_signup
   end

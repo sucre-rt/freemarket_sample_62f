@@ -175,28 +175,29 @@ $(function(){
 
 //ここから画像プレビュー
 $(function(){
-  var dropzone = $('.sell-dropbox-container.clearfix.state-image-number-10');
-  var dropzone2 = $('.sell-dropbox-container.clearfix.state-image-number-10');
-  var dropzone_box = $('.dropzone-box');
-  var images = [];
-  var inputs  =[];
-  var input_area = $('.sell-upload-drop-box.have-item-0');
-  var preview = $('#preview');
-  var preview2 = $('#preview2');
+  let dropzone = $('.sell-dropbox-container.clearfix.state-image-number-10');
+  let dropzone2 = $('.sell-dropbox-container.clearfix.state-image-number-102');
+  let images = [];
+  let inputs  =[];
+  let input_area = $('.sell-upload-drop-box.have-item-0');
+  let preview = $('#preview');
+  let preview2 = $('#preview2');
+  let flex = $('#display-flex_box')
+  let flex2 = $('#display-flex_box2')
 
   $(document).on('change', 'input[type= "file"]',function(event) {
-    console.log('ok')
-    var file = $(this).prop('files')[0];
-    var reader = new FileReader();
-    console.log(reader)
+    let file = $(this).prop('files')[0];
+    let reader = new FileReader();
     inputs.push($(this));
-    var img = $(`<div class="sell-upload-item">
-                <div class= "img_view"><img width="116" height="65"></div>
-                </div>`);
+
+    let img = $(`<div class="sell-upload-item">
+                <div class= "img_view"><img width="116" height="65"></div></div>
+                `);
 
     reader.onload = function(e) {
-      var btn_wrapper = $('<div class="btn_wrapper"><div class="btn edit">編集</div><div class="btn delete">削除</div></div>');
+      let btn_wrapper = $('<div class="btn_wrapper"><div class="btn edit">編集</div><div class="btn delete">削除</div></div>');
       img.append(btn_wrapper);
+      // preview.append(box)
       img.find('img').attr({
         src: e.target.result
       })
@@ -205,25 +206,40 @@ $(function(){
     reader.readAsDataURL(file);
     images.push(img); //配列にimgを入れる
 
-    if(images.length >= 5) {
+    if(images.length == 5) {
+      dropzone2.css({
+        'display': 'block'
+      })
+      dropzone.css({
+        'display': 'none'
+      })
+      flex2.css({
+        'display': 'flex'
+      })
+    }
+    if(images.length >= 6){
       $.each(images, function(index, image) {
         image.attr('data-image', index);
-        preview2.append(image);
-        dropzone.css({
-          'width': `calc(100% - (135px * ${images.length - 5}))`
-        })
+        let data = image.data('image')
+        if (data >= 5){
+          preview2.append(image);
+          dropzone.css({
+            'width': `calc(100% - (116px * ${images.length - 5}))`
+          })
+        }
       })
-      if(images.length == 9) {
-        dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
-      }
     } else {
         $('#preview').empty();
         $.each(images, function(index, image) {
           image.attr('data-image', index);
+          if (image.find("data-image") == 6) {
+            preview2.append(image);
+          };
           preview.append(image);
+          
         })
         dropzone.css({
-          'width': `calc(100% - (135px * ${images.length - 5}))`
+          'width': `calc(100% - (116px * ${images.length}))`
         })
       }
     if(images.length == 10) {
