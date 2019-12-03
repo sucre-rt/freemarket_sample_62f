@@ -22,9 +22,11 @@ exhibit, purchase = Delivery.create([{responsibility: "送料込み(出品者負
 
 #子
 ## カテゴリー
-lady_tops, lady_jacket = lady.children.create([{name: "トップス"}, {name: "ジャケット/アウター"}])
-lady_pants, lady_skirt = lady.children.create([{name: "パンツ"}, {name: "スカート"}])
-lady_onepiece = lady.children.create(name: "パンツ")
+lady_tops = lady.children.create(name: "トップス")
+lady_jacket = lady.children.create(name: "ジャケット")
+lady_pants = lady.children.create(name: "パンツ")
+lady_skirt = lady.children.create(name: "スカート")
+lady_onepiece = lady.children.create(name: "ワンピース")
 lady_shoes = lady.children.create(name: "靴")
 lady_pajama = lady.children.create(name: "ルームウェア／パジャマ")
 lady_legwear = lady.children.create(name: "レッグウェア")
