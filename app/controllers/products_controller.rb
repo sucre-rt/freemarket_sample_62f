@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:pay, :show, :buy, :destroy]
   before_action :move_to_login, only: [:sell, :pay, :buy, :destroy]
 
-  before_action :set_category, only: [:sell, :create]
+  before_action :set_category, only: [:sell, :create, :edit]
 
   def sell
     @product = Product.new
@@ -13,12 +13,12 @@ class ProductsController < ApplicationController
 
   #ここからAjax通信用
   ##delivery
-  def delivery_children  
+  def delivery_children
     @delivery_children = Delivery.find(params[:productdelivery]).children
   end
 
   ##category
-  def category_children  
+  def category_children
     @category_children = Category.find(params[:productcategory]).children 
   end
 
@@ -68,6 +68,15 @@ class ProductsController < ApplicationController
     @next_product = Product.where('id > ?', @product.id).first
     @seller_other_products = Product.where(user_id: @seller.id).order("id DESC").limit(6).where.not(id: @product.id).where.not(selling_status: "売却済")
     @category_other_products = Product.where(category_id: @category.id).order("id DESC").limit(6).where.not(id: @product.id).where.not(selling_status: "売却済")
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+    @delivery = Delivery.all.order("id ASC").limit(2)
+  end
+
+  def update
+    
   end
 
   def buy

@@ -1,0 +1,130 @@
+#wrapper
+  = render partial: 'shared/header3' 
+  //ここからメインコンテンツ
+  %main.single-main
+    %section.l-single-container.buy-item-container
+      .sell-container
+        %h2.l-single-head
+          商品の情報を入力
+        = form_for @product, url: products_path, meshod: :post, html: { class: "sell-form", multipart: true} do |f| 
+          = f.fields_for :images do |i|
+            .sell-upload-box
+              %h3.sell-upload-head
+                出品画像
+                %span.form-require 必須
+              %p 最大10枚までアップロードできます
+              #display-flex_box
+                #preview
+                .sell-dropbox-container.clearfix.state-image-number-10
+                  = i.label :image, class: "dropzone-box", for: "upload-image" do
+                    .sell-upload-drop-box.have-item-0
+                      =i.file_field :image, multiple: true, name: "images[:image][]", id: "upload-image", class: "sell-upload-drop-file"
+                      %p.visible-pc クリックしてファイルをアップロード
+              #display-flex_box2
+                #preview2
+                .sell-dropbox-container.clearfix.state-image-number-102
+                  = i.label :image, class: "dropzone-box", for: "upload-image" do
+                    .sell-upload-drop-box.have-item-1
+                      =i.file_field :image, multiple: true, name: "images[:image][]", id: "upload-image", class: "sell-upload-drop-file"
+                      %p.visible-pc クリックしてファイルをアップロード
+            //ここから"商品詳細"
+            .sell-content
+              .form-group
+                %label
+                  商品名
+                  %span.form-require 必須
+                %div
+                  =f.text_field :name, class: "input-default", placeholder: "商品名（必須 40文字まで)"
+              .form-group
+                %label
+                  商品の説明
+                  %span.form-require 必須
+                %div
+                  = f.text_area :information, class: "textarea-default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+                  =f.text_field :selling_status, autocomplete: "selling_status", type: "hidden", value: "出品中"
+            .sell-content.clearfix
+              %h3.sell-sub-head 商品の詳細
+              .sell-form-box
+                .form-group.sell
+                  %label
+                    カテゴリー
+                    %span.form-require 必須
+                  %div.select
+                    .select-wrap
+                      %i.icon-arrow-bottom
+                      = f.collection_select :category_id, @category, :id, :name, { prompt: @category }, { class: "select-default", id: "category_select" }
+                  .select-children
+                    =f.text_field :brand_id, autocomplete: "brand", type: "hidden", value: "1"
+                .form-group
+                  %label
+                    商品の状態
+                    %span.form-require 必須
+                  %div
+                    .select-wrap
+                      %i.icon-arrow-bottom
+                      = f.select :status, options_for_select(status.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'} 
+                      //ここまで"商品詳細"
+            //ここから"配送について"
+            .sell-content.clearfix
+              %h3.sell-sub-head 商品の詳細
+              .sell-form-box
+                .form-group
+                  %label
+                    配送料の負担
+                    %span.form-require 必須
+                  %div
+                    .select-wrap
+                      %i.icon-arrow-bottom
+                      =f.collection_select :delivery_id, @delivery, :id, :responsibility, { prompt: "---" }, { class: "select-default", id: "delivery_select" }
+                .form-group_children
+                .form-group
+                  %label
+                    発送元の地域
+                    %span.form-require 必須
+                  %div
+                    .select-wrap
+                      %i.icon-arrow-bottom
+                      = f.select :area, options_for_select(prefecture.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
+                .form-group
+                  %label
+                    発送までの日数
+                    %span.form-require 必須
+                  %div
+                    .select-wrap
+                      %i.icon-arrow-bottom
+                      = f.select :sending_days, options_for_select(sending_days.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
+            //ここまで配送について
+            //ここから販売価格
+            .sell-content.clearfix
+              %h3.sell-sub-head 販売価格(300〜9,999,999)
+              .sell-form-box
+                %ul.sell-price
+                  %li.form-group
+                    .clearfix
+                      %label.l-left
+                        価格
+                        %span.form-require 必須
+                      .l-right.sell-price-input
+                        ¥
+                        %div
+                          =f.text_field :price, autocomplete: "price", placeholder: "例）300", class: "input-default"
+                          =f.text_field :profit, autocomplete: "profit", type: "hidden", class: "input-default", value: 100
+                  %li.clearfix
+                    .l-left
+                      販売手数料 (10%)
+                    .l-right -
+                  %li.clearfix.bold
+                    .l-left 販売利益
+                    .l-right -
+            .sell-content.sell-btn-box
+              %div
+                %p 禁止されている出品、行為を必ずご確認ください。
+                %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であ
+                %p り処罰される可能性があります。
+                %p また、出品をもちまして加盟店規約に同意したことになります。
+              %button.btn-default.btn-red{type: "submit"}
+                出品する
+              %a.btn-default.btn-gray もどる
+    //"ここまで販売価格"
+    //ここまでメインコンテンツ
+  = render partial: 'shared/footer2'
