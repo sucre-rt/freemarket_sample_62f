@@ -17,15 +17,15 @@
               カテゴリーから探す
             %ul.parents
               - @parents.each do |parent|
-                %li{class: "parent"}
+                %li.parent
                   = link_to "#{parent.name}", '/'
                   %ul.children
                     - parent.children.each do |child|
-                      %li{class: "child"}
+                      %li.child
                         = link_to "#{child.name}", '/'
                         %ul.grandchildren
                           - child.children.each do |grandchild|
-                            %li{class: "grandchild"}
+                            %li.grandchild
                               = link_to "#{grandchild.name}", '/'
 
           %li
