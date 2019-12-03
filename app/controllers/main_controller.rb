@@ -1,7 +1,6 @@
 class MainController < ApplicationController
   def index
     @products = Product.all.order("id DESC")
-    # @images = Image.all
     @women = []
     @men = []
     @home_appliances = []

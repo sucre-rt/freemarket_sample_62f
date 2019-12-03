@@ -76,7 +76,8 @@ class ProductsController < ApplicationController
   end
 
   def update
-    
+    @product = Product.find(params[:id])
+    @product.update(product_params)
   end
 
   def buy
@@ -126,6 +127,22 @@ private
       :delivery_id,
       :brand_id,
       images_attributes: [:id, :product_id, :image]
+    ).merge(user_id: current_user.id)
+  end
+
+  def product_update_params
+    params.require(:product).permit(
+      :name,
+      :information,
+      :price,
+      :area,
+      :status,
+      :sending_days,
+      :profit,
+      :selling_status,
+      :category_id,
+      :delivery_id,
+      :brand_id,
     ).merge(user_id: current_user.id)
   end
 
