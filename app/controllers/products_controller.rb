@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
   include MypageHelper
-  before_action :set_product, only: [:pay, :show, :buy, :destroy]
   before_action :move_to_login, only: [:sell, :pay, :buy, :destroy]
 
+  before_action :set_product, only: [:pay, :show, :edit, :update, :buy, :destroy]
+  before_action :set_delivery, only: [:sell, :edit]
   before_action :set_category, only: [:sell, :create, :edit]
 
   def sell
@@ -71,13 +72,18 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
-    @delivery = Delivery.all.order("id ASC").limit(2)
   end
 
   def update
-    @product = Product.find(params[:id])
-    @product.update(product_params)
+    
+    if @product.update(product_params)
+      flash[:notice] = "変更しました。"
+      redirect_to product_path(@product.id)
+    else
+      flash[:alert] = "変更失敗しました。"
+      redirect_to edit_product_path(@product.id)
+    end
+
   end
 
   def buy
@@ -152,6 +158,10 @@ private
     
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_delivery
+    @delivery = Delivery.order("id ASC").limit(2)
   end
 
   def like_search_params
