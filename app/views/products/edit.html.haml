@@ -1,6 +1,4 @@
-.notifications
-  - flash.each do |key, value|
-    = content_tag(:div, value, class: key)
+= render partial: 'shared/flash'
 #wrapper
   = render partial: 'shared/header3' 
   //ここからメインコンテンツ
@@ -127,7 +125,7 @@
                 %p また、出品をもちまして加盟店規約に同意したことになります。
               %button.btn-default.btn-red{type: "submit"}
                 出品する
-              %a.btn-default.btn-gray もどる
+              =link_to "もどる", product_path(@product.id), class: "btn-default btn-gray"
     //"ここまで販売価格"
     //ここまでメインコンテンツ
   = render partial: 'shared/footer2'
