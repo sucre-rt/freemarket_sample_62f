@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   include MypageHelper
   before_action :move_to_login, only: [:sell, :pay, :buy, :destroy]
-
+  
   before_action :set_product, only: [:pay, :show, :edit, :update, :buy, :destroy]
   before_action :set_delivery, only: [:sell, :edit]
   before_action :set_category, only: [:sell, :create, :edit]
@@ -35,9 +35,10 @@ class ProductsController < ApplicationController
       params[:images][":image"].each do |a|
         @product_image = @product.images.create!(image: a, product_id: @product.id)
       end
+      flash[:notice] = "出品しました"
       redirect_to root_path
     else
-      flash[:alert] = "変更失敗しました。"
+      flash[:alert] = "出品失敗しました"
       redirect_to controller: :products, action: :sell
     end
 

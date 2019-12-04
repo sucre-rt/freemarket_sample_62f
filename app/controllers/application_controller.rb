@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     @products = Product.all.order("id DESC")
     @women = []
     @men = []
-    @parents = Category.all.limit(13)
+    @parents = Category.all.limit(2)
     @home_appliances = []
     @toys = []
     @products.each do |product|
