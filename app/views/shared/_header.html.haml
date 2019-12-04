@@ -11,10 +11,23 @@
     .header__lower-contents
       .header__lower-contents__left-contents
         %ul.header__lower-contents__left-contents__menu
-          %li
+          %li.header__lower-contents__left-contents__menu__category
             = link_to '/' do
               %i.fa.fa-list>
               カテゴリーから探す
+            %ul.parents
+              - @parents.each do |parent|
+                %li.parent
+                  = link_to "#{parent.name}", '/'
+                  %ul.children
+                    - parent.children.each do |child|
+                      %li.child
+                        = link_to "#{child.name}", '/'
+                        %ul.grandchildren
+                          - child.children.each do |grandchild|
+                            %li.grandchild
+                              = link_to "#{grandchild.name}", '/'
+
           %li
             = link_to '/' do
               %i.fa.fa-tag>

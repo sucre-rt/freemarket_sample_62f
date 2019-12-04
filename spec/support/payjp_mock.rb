@@ -1,4 +1,68 @@
 module PayjpMock
+
+  def self.customer_create_response
+    {
+      "cards": {
+        "count": 0,
+        "data": [],
+        "has_more": false,
+        "object": "list",
+        "url": "/v1/customers/cus_121673955bd7aa144de5a8f6c262/cards"
+      },
+      "created": 1433127983,
+      "default_card": "car_d0e44730f83b0a19ba6caee04160",
+      "description": "test",
+      "email": nil,
+      "id": "cus_121673955bd7aa144de5a8f6c262",
+      "livemode": false,
+      "metadata": nil,
+      "object": "customer",
+      "subscriptions": {
+        "count": 0,
+        "data": [],
+        "has_more": false,
+        "object": "list",
+        "url": "/v1/customers/cus_121673955bd7aa144de5a8f6c262/subscriptions"
+      }
+    }
+  end
+
+  def self.error_response
+    {
+      "cards": {
+        "count": 0,
+        "data": [],
+        "has_more": false,
+        "object": "list",
+        "url": "/v1/customers/cus_121673955bd7aa144de5a8f6c262/cards"
+      },
+      "created": 1433127983,
+      "default_card": "",
+      "description": "test",
+      "email": nil,
+      "id": "",
+      "livemode": false,
+      "metadata": nil,
+      "object": "customer",
+      "subscriptions": {
+        "count": 0,
+        "data": [],
+        "has_more": false,
+        "object": "list",
+        "url": "/v1/customers/cus_121673955bd7aa144de5a8f6c262/subscriptions"
+      }
+    }
+  end
+
+  def self.customer_delete
+    {
+      "deleted": true,
+      "id": "cus_121673955bd7aa144de5a8f6c262",
+      "livemode": false
+    }
+  end
+
+
   def self.prepare_valid_charge
     {
       "amount": 3500,
