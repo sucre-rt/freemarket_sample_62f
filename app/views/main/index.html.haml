@@ -1,5 +1,6 @@
 #wrapper
-  = render partial: 'shared/header'
+  .head
+    = render partial: 'shared/header'
   = link_to sell_products_path, class: 'pagetop' do
     %p 出品
     %i.fa.fa-camera
@@ -42,7 +43,7 @@
                   = image_tag("#{woman.images[0].image}", class: 'main__ladies__inner__list-item-image')
                   %span.price-label
                     = "¥#{woman.price.to_s(:delimited)}"
-                  %p.main__ladies__inner__list-item-title 
+                  %p.main__ladies__inner__list-item-title
                     = woman.name
 
     %section.main__mens
@@ -60,7 +61,7 @@
                   = image_tag("#{man.images[0].image}", class: 'main__mens__inner__list-item-image')
                   %span.price-label
                     = "¥#{man.price.to_s(:delimited)}"
-                  %p.main__mens__inner__list-item-title 
+                  %p.main__mens__inner__list-item-title
                     = man.name
 
     %section.main__electronics

@@ -1,9 +1,7 @@
 @import "./variable";
 @import "./mixin";
 @import './header';
-@import './nav';
 @import "./color";
-
 
 .main {
   @include block;

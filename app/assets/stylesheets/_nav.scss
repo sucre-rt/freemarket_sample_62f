@@ -2,21 +2,23 @@
 @import "./mixin";
 @import "./color";
 
+.head {
+  box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
+}
+
 .pankuzu-box {
   position: relative;
 
   .nav {
     position: absolute;
     top: 0;
-    z-index: 1;
     @include block;
     @include clearfix;
 
     height: 4.8rem;
 
     background-color: $white;
-    box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
-    z-index: 3;
+    z-index: 2;
 
     &__scope {
       @include responsive-width;

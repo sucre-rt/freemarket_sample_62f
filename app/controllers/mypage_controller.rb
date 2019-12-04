@@ -12,7 +12,7 @@ class MypageController < ApplicationController
   # クレジットカード登録画面
   def card
     @card = current_user.card
-    
+
     # payjpからカード情報を取り出す
     if @card != nil
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)

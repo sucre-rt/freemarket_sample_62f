@@ -2,9 +2,14 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters , if: :devise_controller?
   before_action :basic_auth, if: :production?
+  before_action :configure_category
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :family_name, :first_name, :family_name_cana, :first_name_cana, :birthday, :telphone, :profile, :image, :point])
+  end
+
+  def configure_category
+    @parents = Category.all.limit(13)
   end
 
   private
@@ -18,5 +23,5 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
-  
+
 end
