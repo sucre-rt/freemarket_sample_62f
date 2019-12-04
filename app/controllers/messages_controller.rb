@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
       flash[:notice] = "メッセージを送信しました"
       redirect_to  product_path(params[:product_id])
     else
-      flash[:notice] = "メッセージの送信に失敗しました"
+      flash[:alert] = "メッセージの送信に失敗しました"
       redirect_to  product_path(params[:product_id])
     end
   end
