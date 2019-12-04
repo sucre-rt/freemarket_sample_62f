@@ -15,4 +15,23 @@
 
 @import "./reset";
 @import "font-awesome";
-@import "./color"
+@import "./color";
+
+//エラーメッセージ用
+.notifications {
+  position: relative;
+  color: $white-color;
+  text-align: center;
+  line-height: 1.8;
+
+  .notice {
+    background-color: lightBlue;
+  }
+
+  .alert {
+    background-color: $attention-color;
+    position:absolute;
+    top: 50%;
+    width: 100%;
+  }
+}

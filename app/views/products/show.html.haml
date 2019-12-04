@@ -94,8 +94,8 @@
     - if current_user == @product.user
       .prduct-box-content-delete
         .prduct-box-content-delete__content
-          %button#product-edit
-            %i.fa.fa-product-edit 商品の編集
+          #product-edit
+            =link_to "商品の編集", edit_product_path, class: "product-edit"
           .product-or
             or
           %button#product-stop

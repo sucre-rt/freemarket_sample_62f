@@ -196,7 +196,7 @@ class SignupController < ApplicationController
       flash[:notice] = "変更しました。"
       redirect_to profile_signup_path
     else 
-      flash[:notice] = "変更に失敗しました。"
+      flash[:alert] = "変更に失敗しました。"
       redirect_to profile_signup_path
     end
     

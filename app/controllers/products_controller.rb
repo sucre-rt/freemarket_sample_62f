@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
   include MypageHelper
-  before_action :set_product, only: [:pay, :show, :buy, :destroy]
   before_action :move_to_login, only: [:sell, :pay, :buy, :destroy]
 
-  before_action :set_category, only: [:sell, :create]
+  before_action :set_product, only: [:pay, :show, :edit, :update, :buy, :destroy]
+  before_action :set_delivery, only: [:sell, :edit]
+  before_action :set_category, only: [:sell, :create, :edit]
 
   def sell
     @product = Product.new
@@ -13,12 +14,12 @@ class ProductsController < ApplicationController
 
   #ここからAjax通信用
   ##delivery
-  def delivery_children  
+  def delivery_children
     @delivery_children = Delivery.find(params[:productdelivery]).children
   end
 
   ##category
-  def category_children  
+  def category_children
     @category_children = Category.find(params[:productcategory]).children 
   end
 
@@ -68,6 +69,21 @@ class ProductsController < ApplicationController
     @next_product = Product.where('id > ?', @product.id).first
     @seller_other_products = Product.where(user_id: @seller.id).order("id DESC").limit(6).where.not(id: @product.id).where.not(selling_status: "売却済")
     @category_other_products = Product.where(category_id: @category.id).order("id DESC").limit(6).where.not(id: @product.id).where.not(selling_status: "売却済")
+  end
+
+  def edit
+  end
+
+  def update
+    
+    if @product.update(product_params)
+      flash[:notice] = "変更しました。"
+      redirect_to product_path(@product.id)
+    else
+      flash[:alert] = "変更失敗しました。"
+      redirect_to edit_product_path(@product.id)
+    end
+
   end
 
   def buy
@@ -120,12 +136,32 @@ private
     ).merge(user_id: current_user.id)
   end
 
+  def product_update_params
+    params.require(:product).permit(
+      :name,
+      :information,
+      :price,
+      :area,
+      :status,
+      :sending_days,
+      :profit,
+      :selling_status,
+      :category_id,
+      :delivery_id,
+      :brand_id,
+    ).merge(user_id: current_user.id)
+  end
+
   def set_category
     @category = Category.all.order("id ASC").limit(2)
   end
     
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_delivery
+    @delivery = Delivery.order("id ASC").limit(2)
   end
 
   def like_search_params
