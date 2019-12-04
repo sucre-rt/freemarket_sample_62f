@@ -73,13 +73,13 @@
         %span.pruduct-tax  (税込)
         %span.product-postage
           = @postage
-
-      .product-box-content__buy-btn
-        -if @product.selling_status == "出品中"
-          = link_to "購入画面に進む", pay_product_path
-        - else
-          .sold-out
-            売り切れました
+      - unless @product.user == current_user
+        .product-box-content__buy-btn
+          -if @product.selling_status == "出品中"
+            = link_to "購入画面に進む", pay_product_path
+          - else
+            .sold-out
+              売り切れました
 
       .product-box-content__product-information
         %p.product-box-content__product-information__text
@@ -123,7 +123,10 @@
           = form_for @message, url: product_messages_path(product_id: params[:id]), method: :post, html: {class: "product-message-form"} do |f|
             %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             = f.text_area :message, class: "product-textarea"
-            = f.submit 'コメントする', class: "product-mesage-submit"
+            - if @product.selling_status == "売却済"
+              = f.submit '売り切れのためコメントできません', class: "product-mesage-submit"
+            - else
+              = f.submit 'コメントする', class: "product-mesage-submit"
 
     %ul.product-link-list
       -unless @back_product.blank?

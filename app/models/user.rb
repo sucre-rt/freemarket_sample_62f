@@ -22,11 +22,8 @@ class User < ApplicationRecord
   validates :telphone, presence: true, format: { with: VALID_PHONE_REGEX, message: 'はハイフンを除いた10桁か11桁の数字を入力してください' }
 
   has_many :sns_credentials, dependent: :destroy
-  has_many :payments
   has_many :products
   has_many :likes
-  has_many :comments
-  has_many :evaluations
   has_many :sns_credentials, dependent: :destroy
   has_one :address, dependent: :destroy
   has_one :card, dependent: :destroy

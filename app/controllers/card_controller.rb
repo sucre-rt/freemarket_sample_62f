@@ -25,8 +25,10 @@ class CardController < ApplicationController
       )
 
       if @card.save
+        flash[:notice] = "カード情報を登録しました"
         redirect_to card_mypage_path
       else
+        flash[:alert] = "カード情報の登録に失敗しました"
         redirect_to card_new_path
       end
 
@@ -42,7 +44,7 @@ class CardController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete   # payjp側の情報を削除
       if @card.destroy       # cardテーブルの情報を削除
-        flash[:alert] = "カード情報を削除しました"
+        flash[:notice] = "カード情報を削除しました"
         redirect_to card_mypage_path
       else
         flash[:alert] = "カード情報の削除に失敗しました"
