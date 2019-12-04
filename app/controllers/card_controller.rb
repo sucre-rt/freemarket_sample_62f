@@ -42,10 +42,10 @@ class CardController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete   # payjp側の情報を削除
       if @card.destroy       # cardテーブルの情報を削除
-        flash[:notice] = "カード情報を削除しました"
+        flash[:alert] = "カード情報を削除しました"
         redirect_to card_mypage_path
       else
-        flash[:notice] = "カード情報の削除に失敗しました"
+        flash[:alert] = "カード情報の削除に失敗しました"
         redirect_to card_mypage_path
       end
     else

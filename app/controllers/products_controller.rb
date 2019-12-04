@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     @delivery = Delivery.all.order("id ASC").limit(2) # deliveryの親
   end
 
-  #ここからAjax通信用
+#ここからAjax通信用
   ##delivery
   def delivery_children
     @delivery_children = Delivery.find(params[:productdelivery]).children
@@ -26,17 +26,18 @@ class ProductsController < ApplicationController
   def category_grandchildren
     @category_grandchildren = Category.find(params[:productcategory]).children
   end
-  #ここまでAjax通信用 
-
+#ここまでAjax通信用 
 
   def create
     @product = Product.new(product_params)
+
     if @product.save
       params[:images][":image"].each do |a|
         @product_image = @product.images.create!(image: a, product_id: @product.id)
       end
-      redirect_to done_products_path
+      redirect_to root_path
     else
+      flash[:alert] = "変更失敗しました。"
       redirect_to controller: :products, action: :sell
     end
 
@@ -99,18 +100,22 @@ class ProductsController < ApplicationController
       flash[:notice] = "商品を購入しました。"
       redirect_to product_path(@product.id)
     else
-      flash[:notice] = "商品の購入に失敗しました"
+      flash[:alert] = "商品の購入に失敗しました"
       redirect_to product_path(@product.id)
     end
   end
 
   def destroy
+
     if @product.user_id == current_user.id
-      unless @product.destroy
-        flash[:notice] = "削除できなかったよ！"
-        redirect_to product_path(@product.id)
-      end
+      @product.destroy
+      flash[:notice] = "削除しました!"
+      redirect_to root_path
+    else @product.destroy
+      flash[:alert] = "削除できませんでした！"
+      redirect_to product_path(@product.id)
     end
+
   end
 
   def search
@@ -157,7 +162,8 @@ private
   end
     
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.find_by_id(params[:id])
+    redirect_to root_path if @product.nil?
   end
 
   def set_delivery
@@ -167,7 +173,6 @@ private
   def like_search_params
     params.fetch(:product_like, {}).permit(:keyword)
   end
-
 
   def move_to_login
     redirect_to new_user_session_path unless user_signed_in?

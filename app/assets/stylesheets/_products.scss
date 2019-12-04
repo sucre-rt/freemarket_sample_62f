@@ -59,6 +59,20 @@ a {
   text-decoration: none;
   color: $black;
 }
+//フラッシュメッセージ用
+.flash-message {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  height: 70px;
+  width: 100%;
+  background: #dff0d8;
+  color: #468847;
+  font-size: 16px;
+  text-align: center;
+  line-height: 70px;
+  font-weight: bold;
+}
 
 
 .form-require, .form-arbitrary, .message-is-seller, .news-private{
@@ -898,6 +912,7 @@ a {
     }
 
     #product-delete{
+      position: relative;
       width: 100%;
       margin-top: 20px;
       height: 50px;
@@ -907,6 +922,10 @@ a {
       line-height: 48px;
       cursor: pointer;
       .product-delete{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         color: #fff;
       }
     }

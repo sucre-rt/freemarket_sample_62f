@@ -1,0 +1,5 @@
+//フラッシュメッセージ用
+- unless flash[:notice].blank? && flash[:alert].blank?
+  .flash-message
+    - flash.each do |key, value|
+      = content_tag(:div, value, class: key) 

@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
     @parents = Category.all.limit(13)
     @home_appliances = []
     @toys = []
-
     @products.each do |product|
       case product.category.parent.parent.name
       when "レディース"
