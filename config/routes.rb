@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:show] do
-    get 'comment/'
+    get 'comment'
   end
     
 
