@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
   include MypageHelper
-  before_action :set_product, only: [:pay, :show, :buy, :destroy]
-  before_action :move_to_login, only: [:sell, :pay]
+  before_action :move_to_login, only: [:sell, :pay, :buy, :destroy]
 
-  before_action :set_category, only: [:sell, :create]
+  before_action :set_product, only: [:pay, :show, :edit, :update, :buy, :destroy]
+  before_action :set_delivery, only: [:sell, :edit]
+  before_action :set_category, only: [:sell, :create, :edit]
 
   def sell
     @product = Product.new
@@ -11,31 +12,32 @@ class ProductsController < ApplicationController
     @delivery = Delivery.all.order("id ASC").limit(2) # deliveryの親
   end
 
-  #ここからAjax通信用
+#ここからAjax通信用
   ##delivery
-  def delivery_children  
+  def delivery_children
     @delivery_children = Delivery.find(params[:productdelivery]).children
   end
 
   ##category
-  def category_children  
+  def category_children
     @category_children = Category.find(params[:productcategory]).children 
   end
 
   def category_grandchildren
     @category_grandchildren = Category.find(params[:productcategory]).children
   end
-  #ここまでAjax通信用 
-
+#ここまでAjax通信用 
 
   def create
     @product = Product.new(product_params)
+
     if @product.save
       params[:images][":image"].each do |a|
         @product_image = @product.images.create!(image: a, product_id: @product.id)
       end
-      redirect_to done_products_path
+      redirect_to root_path
     else
+      flash[:alert] = "変更失敗しました。"
       redirect_to controller: :products, action: :sell
     end
   end
@@ -71,6 +73,21 @@ class ProductsController < ApplicationController
     @messages = @product.messages
   end
 
+  def edit
+  end
+
+  def update
+    
+    if @product.update(product_params)
+      flash[:notice] = "変更しました。"
+      redirect_to product_path(@product.id)
+    else
+      flash[:alert] = "変更失敗しました。"
+      redirect_to edit_product_path(@product.id)
+    end
+
+  end
+
   def buy
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
     if current_user.card != nil
@@ -84,18 +101,22 @@ class ProductsController < ApplicationController
       flash[:notice] = "商品を購入しました。"
       redirect_to product_path(@product.id)
     else
-      flash[:notice] = "商品の購入に失敗しました"
+      flash[:alert] = "商品の購入に失敗しました"
       redirect_to product_path(@product.id)
     end
   end
 
   def destroy
+
     if @product.user_id == current_user.id
-      unless @product.destroy
-        flash[:notice] = "削除できなかったよ！"
-        redirect_to product_path(@product.id)
-      end
+      @product.destroy
+      flash[:notice] = "削除しました!"
+      redirect_to root_path
+    else @product.destroy
+      flash[:alert] = "削除できませんでした！"
+      redirect_to product_path(@product.id)
     end
+
   end
 
   def search
@@ -121,18 +142,38 @@ private
     ).merge(user_id: current_user.id)
   end
 
+  def product_update_params
+    params.require(:product).permit(
+      :name,
+      :information,
+      :price,
+      :area,
+      :status,
+      :sending_days,
+      :profit,
+      :selling_status,
+      :category_id,
+      :delivery_id,
+      :brand_id,
+    ).merge(user_id: current_user.id)
+  end
+
   def set_category
     @category = Category.all.order("id ASC").limit(2)
   end
     
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.find_by_id(params[:id])
+    redirect_to root_path if @product.nil?
+  end
+
+  def set_delivery
+    @delivery = Delivery.order("id ASC").limit(2)
   end
 
   def like_search_params
     params.fetch(:product_like, {}).permit(:keyword)
   end
-
 
   def move_to_login
     redirect_to new_user_session_path unless user_signed_in?

@@ -83,12 +83,22 @@ ActiveRecord::Schema.define(version: 2019_12_03_043126) do
     t.index ["product_id"], name: "index_images_on_product_id"
   end
 
+<<<<<<< HEAD
   create_table "messages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "user_id", null: false
     t.text "message", null: false
     t.index ["product_id"], name: "index_messages_on_product_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+=======
+  create_table "likes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_likes_on_product_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+>>>>>>> master
   end
 
   create_table "products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -157,8 +167,13 @@ ActiveRecord::Schema.define(version: 2019_12_03_043126) do
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
   add_foreign_key "images", "products"
+<<<<<<< HEAD
   add_foreign_key "messages", "products"
   add_foreign_key "messages", "users"
+=======
+  add_foreign_key "likes", "products"
+  add_foreign_key "likes", "users"
+>>>>>>> master
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "deliveries"

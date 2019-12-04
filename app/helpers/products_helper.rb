@@ -28,4 +28,8 @@ module ProductsHelper
     ]
   end
 
+  def sending_days
+    [{name: '1~2日で発送'}, {name: "2~3日で発送"}, {name: "4~7日で発送"}]
+  end
+
 end

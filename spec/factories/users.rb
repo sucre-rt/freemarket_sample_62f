@@ -16,6 +16,7 @@ FactoryBot.define do
   factory :another_user, class: User do
     nickname              {"testくん"}
     email                 {"test@ggggmail.com"}
+    initialize_with       { User.find_or_create_by(email: email)}
     password              {"test1111"}
     family_name           {"桜"}
     first_name            {"咲"}

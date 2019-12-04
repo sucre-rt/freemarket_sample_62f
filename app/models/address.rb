@@ -1,15 +1,21 @@
 class Address < ApplicationRecord
   
-  # validates :family_name, presence: true
-  # validates :first_name, presence: true
-  # validates :family_name_cana, presence: true
-  # validates :first_name_cana, presence: true
-  # validates :postal_code, presence: true
-  # validates :prefecture, presence: true
-  # validates :city, presence: true
-  # validates :address, presence: true
+  VALID_NAME_CANA = /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/
+  VALID_POSTAL_CODE = /\A\d{3}[-]\d{4}\z/
+
+  validates :family_name, presence: true
+  validates :first_name, presence: true
+  validates :family_name_cana, presence: true, format: { with: VALID_NAME_CANA, message: 'は全角カタカナのみで入力してください' }
+  validates :first_name_cana, presence: true, format: { with: VALID_NAME_CANA, message: 'は全角カタカナのみで入力してください' }
+  validates :postal_code, presence: true, format: { with: VALID_POSTAL_CODE, message: 'はハイフンを含めた7桁の数字を入力してください' }
+  validates :prefecture, presence: true
+  validates :city, presence: true
+  validates :address, presence: true
 
   belongs_to :user
+
+
+
 
   def self.set_prefecture
     prefecture = ["北海道", "青森県", "岩手県","宮城県", "秋田県",

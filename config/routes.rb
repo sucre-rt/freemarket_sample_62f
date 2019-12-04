@@ -11,16 +11,17 @@ Rails.application.routes.draw do
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
   
+  root 'main#index'
+  
   resources :mypage, only: [:index]
+
   as :mypage do
     get 'logout', to: 'mypage#logout', as: :logout_mypage
     get 'mypage/card', to: 'mypage#card', as: :card_mypage
+    get 'mypage/like/history', to: 'mypage#like', as: :like_mypage
   end
 
-
-
   
-  root 'main#index'
   
   resources :signup, only: [:create, :index, :update] do
     collection do
@@ -38,16 +39,19 @@ Rails.application.routes.draw do
     get 'mypage/profile', to: 'signup#profile', as: :profile_signup
   end
 
-  resources :products, only: [:create, :show, :destroy] do
+  resources :products, only: [:create, :show, :edit, :update, :destroy] do
+    resources :likes, only: [:create, :destroy]
     collection do
       get 'sell'
       get 'done'
       get 'search'
-      
       #ajax用
       get 'delivery_children'
       get 'category_children' 
       get 'category_grandchildren'
+      get ":id/category_children", to: 'products#category_children'
+      get ":id/category_grandchildren", to: 'products#category_grandchildren'
+      get ':id/delivery_children', to: 'products#delivery_children'
     end
     member do
       get 'pay'

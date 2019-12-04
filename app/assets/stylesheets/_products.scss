@@ -6,6 +6,7 @@
 @import "./color";
 @import "./pay";
 @import "./mypage";
+@import "./likes";
 
 
 html {
@@ -57,6 +58,20 @@ button, input, select, textarea {
 a {
   text-decoration: none;
   color: $black;
+}
+//フラッシュメッセージ用
+.flash-message {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  height: 70px;
+  width: 100%;
+  background: #dff0d8;
+  color: #468847;
+  font-size: 16px;
+  text-align: center;
+  line-height: 70px;
+  font-weight: bold;
 }
 
 
@@ -114,7 +129,6 @@ a {
 .sell-form{
   border-top: 1px solid #eee;
   .sell-upload-box{
-    width: 620px;
     padding: 40px;
     .sell-upload-head{
       font-size: 16px;
@@ -135,7 +149,6 @@ a {
 }
 
 .sell-dropbox-container {
-  margin: 16px auto 0;
   display: block;
   width: 620px;
 }
@@ -155,7 +168,7 @@ a {
   }
 }
 
-.sell-upload-drop-box pre {
+.sell-upload-drop-box p {
   position: absolute;
   top: 40%;
   left: 16px;
@@ -163,6 +176,7 @@ a {
   text-align: center;
   font-size: 14px;
   line-height: 1.5;
+  
 }
 
 .sell-content {
@@ -549,11 +563,8 @@ a {
       margin-right: 8px;
     }
     &__left {
+      display: flex;
       float: left;
-      .like-btn {
-        @include product-btn;
-        font-size: 14px;
-      }
       .report-btn {
         @include product-btn;
         margin: 0 0 0 16px;
@@ -921,15 +932,22 @@ a {
     padding: 24px;
     position: relative;
     #product-edit{
-      width: 100%;
-      .fa-product-edit{
-        height: 50px;
-        font-size: 14px;
-        color: #fff;
-        background: #ea352d;
+      width: 652px;
+      height: 50px;
+      text-align: center;
+      position: relative;
+      .product-edit{
         display: block;
-        line-height: 48px;
-        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 16px;
+        line-height: 60px;
+        width: 100%;
+        height: 100%;
+        background: #ea352d;
+        color: #fff;
+        font-weight: bold
       }
     }
 
@@ -957,16 +975,20 @@ a {
     }
 
     #product-delete{
+      position: relative;
       width: 100%;
       margin-top: 20px;
       height: 50px;
       font-size: 14px;
-      color: #fff;
       background: #aaa;
       display: block;
       line-height: 48px;
       cursor: pointer;
       .product-delete{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         color: #fff;
       }
     }
@@ -1139,5 +1161,53 @@ a {
         }
       }
     }
+  }
+}
+
+.sell-upload-item:first-child{
+  background-color: #f5f5f5;
+  border: solid 1px #eee;
+}
+.sell-upload-item{
+  width: 117px;
+  background-color: #f5f5f5;
+  margin-right: 9px;
+  border: solid 1px #eee;
+}
+#display-flex_box{
+  display: flex;
+  width: 620px;
+  margin: 16px auto 0;
+}
+#display-flex_box2{
+  display:  none;
+  width: 620px;
+  margin: 16px auto 0;
+}
+
+#preview, #preview2{
+  display: flex;
+}
+
+.img_view{ 
+  padding: 30px 0 30px 0;
+  width: 116px;
+}
+.btn_wrapper{
+  display: flex;
+  justify-content: space-between;
+  height: calc(100% - 127px);
+  .btn{
+    width: 50%;
+    line-height: 30px;
+    text-align: center;
+    color: #0099e8;
+  }
+  .btn:hover{
+    opacity: 0.6;
+    text-decoration: underline;
+  }
+  .edit{
+    border-right: solid 1px #eee;
   }
 }

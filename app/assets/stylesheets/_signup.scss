@@ -381,3 +381,16 @@
     }
   }
 }
+
+.field_with_errors {
+  display: contents;
+  font-size: 14px;
+  input, select {
+    border: 1px solid red !important;
+  }
+}
+.error-message-box {
+  font-size: 12px;
+  color: red;
+  padding-top: 5px;
+}
