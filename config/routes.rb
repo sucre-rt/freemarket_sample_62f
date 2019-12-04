@@ -53,7 +53,11 @@ Rails.application.routes.draw do
       get 'pay'
       post 'buy'
     end
+    resources :messages, only: [:create]
   end
+
+  
+    
 
   resources :card, only: [:create, :destroy]
   as :card do

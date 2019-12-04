@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_040201) do
+ActiveRecord::Schema.define(version: 2019_12_03_043126) do
 
   create_table "addresses", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 2019_11_28_040201) do
     t.index ["size_id"], name: "index_category_sizes_on_size_id"
   end
 
+  create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "user_id", null: false
+    t.text "comment", null: false
+    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "deliveries", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "responsibility", null: false
     t.datetime "created_at", null: false
@@ -73,6 +81,14 @@ ActiveRecord::Schema.define(version: 2019_11_28_040201) do
     t.integer "product_id", null: false
     t.string "images"
     t.index ["product_id"], name: "index_images_on_product_id"
+  end
+
+  create_table "messages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "user_id", null: false
+    t.text "message", null: false
+    t.index ["product_id"], name: "index_messages_on_product_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -138,7 +154,11 @@ ActiveRecord::Schema.define(version: 2019_11_28_040201) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
   add_foreign_key "images", "products"
+  add_foreign_key "messages", "products"
+  add_foreign_key "messages", "users"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "deliveries"

@@ -1,5 +1,6 @@
 #wrapper
   = render partial: 'shared/header'
+  = render partial: 'shared/nav'
   %main.main
     .product-box-content
       %h2.product-box-content__product-name
@@ -104,13 +105,22 @@
             =link_to "この商品を削除する", product_path(params[:id]), method: :delete ,class: "product-delete"
             %i.fa.fa-product-delete
 
-
     .product-box-content-under
       .product-box-content-under__message
-        .product-box-content__message__box
-          = form_for "#", html: { class: "product-message-form"} do |f|
+        %ul.product-box-content-under__message__talk
+          - unless @messages.blank?
+            - @messages.each do |message|
+              %li.product-box-content-under__message__talk__box
+                .product-box-content-under__message__talk__box__name
+                  = message.user.nickname
+                .product-box-content-under__message__talk__box__in
+                  = message.message
+                .balloon2-left
+      .product-box-content__message__box
+        - if current_user
+          = form_for @message, url: product_messages_path(product_id: params[:id]), method: :post, html: {class: "product-message-form"} do |f|
             %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            = f.text_area :text, class: "product-textarea"
+            = f.text_area :message, class: "product-textarea"
             = f.submit 'コメントする', class: "product-mesage-submit"
 
     %ul.product-link-list
