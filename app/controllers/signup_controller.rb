@@ -7,7 +7,6 @@ class SignupController < ApplicationController
 
   def registration
     status_bar("active", "", "", "", "")
-    
   end
 
   def sms_confirmation           #電話番号確認
