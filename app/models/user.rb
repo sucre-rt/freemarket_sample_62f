@@ -25,7 +25,7 @@ class User < ApplicationRecord
   has_many :payments
   has_many :products
   has_many :likes
-  has_many :messages
+  has_many :comments
   has_many :evaluations
   has_many :sns_credentials, dependent: :destroy
   has_one :address, dependent: :destroy
