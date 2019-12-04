@@ -56,7 +56,9 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
-  
+  resources :comments, only: [:show] do
+    get 'comment/'
+  end
     
 
   resources :card, only: [:create, :destroy]
