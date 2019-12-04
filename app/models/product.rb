@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   has_one :payment
   has_many :likes, dependent: :destroy
   has_many :transactions
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
   belongs_to :user
