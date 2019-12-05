@@ -1,21 +1,24 @@
-.user-main
-  .user-main__content
-    %h2.user-title 会員登録完了
-    .user-form
-      .user-form__content
-        .user-text-big.user-text-center
-          ありがとうございます。
-          %br
-            会員登録が完了しました。
-          = link_to "フリマケをはじめる", root_path, class: "user-btn-default user-btn-red"
-    .image-box
-      .left-menus
-        .left-menus__img-sub-title ＼スマホでかんたんフリマアプリ／
-        .left-menus__img-title 今すぐ無料ダウンロード！
-        .left-menus__img-icons
-          = link_to "#", target: "_blank" do
-            = image_tag "logo_red.svg", width: '50', height: '50', alt: "freemarket_mini"
-          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", alt: :appstore, class: "appstore-icon"
-          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg",  alt: :gogleplay, class: "gogleplay-icon"
-      .phone-box
-        = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: "phone-img"
+#wrapper 
+  = render partial: 'shared/header2'
+  .user-main
+    .user-main__content
+      %h2.user-title 会員登録完了
+      .user-form
+        .user-form__content
+          .user-text-big.user-text-center
+            ありがとうございます。
+            %br
+              会員登録が完了しました。
+            = link_to "フリマケをはじめる", root_path, class: "user-btn-default user-btn-red"
+      .image-box
+        .left-menus
+          .left-menus__img-sub-title ＼スマホでかんたんフリマアプリ／
+          .left-menus__img-title 今すぐ無料ダウンロード！
+          .left-menus__img-icons
+            = link_to "#", target: "_blank" do
+              = image_tag "logo_red.svg", width: '50', height: '50', alt: "freemarket_mini"
+            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", alt: :appstore, class: "appstore-icon"
+            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg",  alt: :gogleplay, class: "gogleplay-icon"
+        .phone-box
+          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: "phone-img"
+  = render partial: 'shared/footer3'
