@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   validates :status, presence: true
   validates :sending_days, presence: true
   validates :user_id, presence: true
-  validates :category_id, presence: true, numericality: { greater_than_or_equal_to: 152 }
+  validates :category_id, presence: true, numericality: { greater_than_or_equal_to: 111 }
   validates :delivery_id, presence: true, numericality: { greater_than_or_equal_to: 3 }
 
   has_one :evaluation
