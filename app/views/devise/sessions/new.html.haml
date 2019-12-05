@@ -11,6 +11,8 @@
         / 新規会員登録ボタンエリア
         %p アカウントをお持ちでない方はこちら
         = link_to "新規会員登録", signup_index_path, class: "market-container-second__new-login"
+        = render 'devise/shared/exhibit_user'
+        = render 'devise/shared/buying_user' 
       - if Rails.env.development?    # 開発環境のみOauth認証の実装
         .login-contents-second
           %button#facebook-login.login-contents-second__button-facebook

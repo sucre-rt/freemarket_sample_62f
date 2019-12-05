@@ -1,0 +1,8 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .field
+    =f.hidden_field :email ,value: "test2@test2.com"
+    =f.hidden_field :password ,value: "test1234"
+  %label.actions
+    = f.submit "購入者用かんたんログイン"
+    .boxFileSelect
+      購入者用かんたんログイン
