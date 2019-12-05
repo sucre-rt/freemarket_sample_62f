@@ -34,6 +34,12 @@ a {
   color: $black;
 }
 
+.head {
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
+}
+
 .header {
   @include block;
   @include clearfix;
@@ -41,10 +47,9 @@ a {
   padding-top: 0.8rem;
 
   background-color: $white;
-  box-shadow: 0 0.3rem 0.3rem 0 rgba(0,0,0,0.16);
   border-bottom: 0.1rem solid $light-gray;
 
-  z-index: 2;
+  z-index: 3;
 
   &__upper-contents {
     @include responsive-width;
@@ -99,9 +104,11 @@ a {
 
     height: 4.4rem;
     margin-top: 0.8rem;
+    z-index: 4;
 
     &__left-contents {
       float: left;
+      height: 100%;
 
       &__menu {
         li {
@@ -110,7 +117,7 @@ a {
 
           font-size: $small;
           font-weight: bold;
-          line-height: 3.6rem;
+          line-height: 4.4rem;
 
           a {
             display: block;
@@ -144,7 +151,7 @@ a {
             min-height: 100%;
 
             li {
-              width: 200px;
+              width: 20.0rem;
               line-height: 4.4rem;
               padding: 0;
 
@@ -223,13 +230,14 @@ a {
           float: left;
 
           margin-left: 1.2rem;
+          height: 4.4rem;
 
           font-size: $small;
           line-height: $small;
 
           a {
             display: block;
-            padding: 0.8rem 1.0rem;
+            padding: 1.0rem 1.0rem;
 
             color: $white;
             background-color: $red;
@@ -252,9 +260,10 @@ a {
           margin-left: 1.2rem;
 
           font-size: $small;
-          line-height: $small;
+
           a {
-            padding: 0.8rem 1.0rem;
+            padding-left: 2.0rem;
+            line-height: 4.4rem;
             display: block;
           }
         }
