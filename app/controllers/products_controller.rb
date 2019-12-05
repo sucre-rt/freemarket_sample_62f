@@ -160,7 +160,7 @@ private
   end
 
   def set_category
-    @category = Category.all.order("id ASC").limit(2)
+    @category = Category.all.order("id ASC").limit(4)
   end
     
   def set_product
