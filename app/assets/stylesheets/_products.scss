@@ -59,6 +59,20 @@ a {
   text-decoration: none;
   color: $black;
 }
+//フラッシュメッセージ用
+.flash-message {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  height: 70px;
+  width: 100%;
+  background: #dff0d8;
+  color: #468847;
+  font-size: 16px;
+  text-align: center;
+  line-height: 70px;
+  font-weight: bold;
+}
 
 
 .form-require, .form-arbitrary, .message-is-seller, .news-private{
@@ -574,15 +588,78 @@ a {
   }
 }
 
-.product-box-content-under {
+.product-box-content-under {                           //コメント部分
   background: $white-color;
   width: 700px;
   margin: 8px auto;
+  padding: 24px;
+  background: #fff;
   &__message {
-    padding: 24px;
-    .product-message-form {
+    padding: 20px;
+    margin-top: -50px;
+    &__talk{                                  //内側大枠
+      margin: 0;
+      list-style: none;
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 5px; 
+      &__box{                                  //コメント一つ単体
+        margin: 1.5em 0 0;
+        padding-top: 10px;
+        &__name{
+          margin-bottom: 3px;
+        }
+        &__in{
+          width: 600px;
+          position: relative;
+          padding: 16px;
+          background: #CCFF66;
+          border-radius: 15px;
+          line-height: 1.5;
+          word-break: break-all;
+        }
+        .balloon2-left{
+          position: relative;
+          display: inline-block;
+          margin: -3.5em 0 2.5em 7px;
+          padding: 0px 10px;
+          max-width: 100%;
+          color: #CCFF66;
+          font-size: 16px;
+          background: #CCFF66;
+          box-sizing: border-box;
+        }
+        .balloon2-left:before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: -24px;
+          margin-top: -12px;
+          border: 12px solid transparent;
+          z-index: 2;
+        }
+        
+        .balloon2-left:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: -30px;
+          margin-top: -14px;
+          border: 14px solid transparent;
+          border-right: 14px solid #CCFF66;
+          z-index: 1;
+        }
+      }
+    }    
+  }
+  .product-box-content__message__box{
+    .product-message-form { 
       p {
         padding: 8px;
+        padding-top: 10px;
         font-size: 14px;
         background: #fff6de;
       }
@@ -855,15 +932,22 @@ a {
     padding: 24px;
     position: relative;
     #product-edit{
-      width: 100%;
-      .fa-product-edit{
-        height: 50px;
-        font-size: 14px;
-        color: #fff;
-        background: #ea352d;
+      width: 652px;
+      height: 50px;
+      text-align: center;
+      position: relative;
+      .product-edit{
         display: block;
-        line-height: 48px;
-        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 16px;
+        line-height: 60px;
+        width: 100%;
+        height: 100%;
+        background: #ea352d;
+        color: #fff;
+        font-weight: bold
       }
     }
 
@@ -891,16 +975,20 @@ a {
     }
 
     #product-delete{
+      position: relative;
       width: 100%;
       margin-top: 20px;
       height: 50px;
       font-size: 14px;
-      color: #fff;
       background: #aaa;
       display: block;
       line-height: 48px;
       cursor: pointer;
       .product-delete{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         color: #fff;
       }
     }

@@ -7,7 +7,6 @@ class SignupController < ApplicationController
 
   def registration
     status_bar("active", "", "", "", "")
-    
   end
 
   def sms_confirmation           #電話番号確認
@@ -169,6 +168,7 @@ class SignupController < ApplicationController
       customer_id:  customer.id,
       card_id:      customer.default_card
     )
+
     if @user.save && session[:uid].blank?
       sign_in_and_redirect @user
     elsif @user.save && session[:uid]
@@ -191,15 +191,13 @@ class SignupController < ApplicationController
   end
 
   def update
-
     if current_user.update(update_params)
       flash[:notice] = "変更しました。"
       redirect_to profile_signup_path
     else 
-      flash[:notice] = "変更に失敗しました。"
+      flash[:alert] = "変更に失敗しました。"
       redirect_to profile_signup_path
     end
-    
   end
 
   private
@@ -210,7 +208,6 @@ class SignupController < ApplicationController
 
  # 許可するキーを設定します
   def user_params
-
     if params[:user][:sns_credential].blank?
       params.require(:user).permit(
         :nickname,

@@ -35,27 +35,29 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
-
   as :signup do
     get 'mypage/profile', to: 'signup#profile', as: :profile_signup
   end
 
-  resources :products, only: [:create, :show, :destroy] do
+  resources :products, only: [:create, :show, :edit, :update, :destroy] do
     resources :likes, only: [:create, :destroy]
     collection do
       get 'sell'
       get 'done'
       get 'search'
-      
       #ajax用
       get 'delivery_children'
       get 'category_children' 
       get 'category_grandchildren'
+      get ":id/category_children", to: 'products#category_children'
+      get ":id/category_grandchildren", to: 'products#category_grandchildren'
+      get ':id/delivery_children', to: 'products#delivery_children'
     end
     member do
       get 'pay'
       post 'buy'
     end
+    resources :messages, only: [:create]
   end
 
   resources :card, only: [:create, :destroy]

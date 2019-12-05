@@ -153,6 +153,25 @@
           color: #888;
           font-size: 14px;
         }
+        &__password {
+          &__check {
+            &__show {
+              display: none;
+              line-height: 1.5;
+              font-size: 16px;
+              font-weight: 500;
+              font-family: monospace;
+              margin: 14px 0;
+              word-break: break-all;
+              overflow-wrap: break-word;
+              span {
+                display: inline-block;
+                background-color: #f5f5f5;
+                padding: 4px 8px;
+              }
+            }
+          }
+        }
       }
     }
   }

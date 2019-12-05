@@ -1,8 +1,9 @@
 - breadcrumb :mypage, @mypage
 #wrapper
   .head
-    = render partial: 'shared/header'
-    = render partial: 'shared/nav'
+  = render partial: 'shared/flash'
+  = render partial: 'shared/header'
+  = render partial: 'shared/nav'
   %main.main
     = render partial: 'leftcontent'
     .main__right-content

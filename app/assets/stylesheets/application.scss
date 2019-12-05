@@ -15,4 +15,25 @@
 
 @import "./reset";
 @import "font-awesome";
-@import "./color"
+@import "./color";
+
+//フラッシュメッセージ用
+.flash-message {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  height: 70px;
+  width: 100%;
+  background: #dff0d8;
+  color: #468847;
+  font-size: 16px;
+  text-align: center;
+  line-height: 70px;
+  font-weight: bold;
+  
+  .alert {
+    color: $white-color;
+    background-color: $attention-orange-color;
+  }
+}
+

@@ -25,7 +25,7 @@
 - has_many :payments
 - has_many :products
 - has_many :likes
-- has_many :messages
+- has_many :comments
 - has_many :evaluations
 - has_many :sns_credentials, dependent: :destroy
 - has_one :adress, dependent: :destroy
@@ -193,7 +193,7 @@
 |------|----|-------|
 |product|references|null: false, foreign_key|
 |user|references|null: false, foreign_key|
-|message|text|null: false|
+|comment|text|null: false|
 ### Association
 - belongs_to :user
 - belongs_to :product

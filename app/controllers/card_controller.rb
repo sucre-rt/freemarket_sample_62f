@@ -1,7 +1,7 @@
 class CardController < ApplicationController
   include CardHelper
-  before_action :set_card_data, only: [:new, :destroy]
   before_action :move_to_login
+  before_action :set_card_data, only: [:new, :destroy]
 
   def new
     redirect_to card_mypage_path unless @card.blank?
@@ -17,17 +17,18 @@ class CardController < ApplicationController
       customer = Payjp::Customer.create(
         card:  params['payjp_token']
       )
-
       # payjpから送られてくる情報を利用してcardテーブルのインスタンスを作成
       @card = Card.new(
         user_id:      current_user.id,
-        customer_id:  customer.id,
-        card_id:      customer.default_card
+        customer_id:  customer[:id],
+        card_id:      customer[:default_card]
       )
 
       if @card.save
+        flash[:notice] = "カード情報を登録しました"
         redirect_to card_mypage_path
       else
+        flash[:alert] = "カード情報の登録に失敗しました"
         redirect_to card_new_path
       end
 
@@ -42,8 +43,13 @@ class CardController < ApplicationController
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete   # payjp側の情報を削除
-      @card.destroy       # cardテーブルの情報を削除
-      redirect_to card_mypage_path
+      if @card.destroy       # cardテーブルの情報を削除
+        flash[:notice] = "カード情報を削除しました"
+        redirect_to card_mypage_path
+      else
+        flash[:alert] = "カード情報の削除に失敗しました"
+        redirect_to card_mypage_path
+      end
     else
       redirect_to card_mypage_path
     end

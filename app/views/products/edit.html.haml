@@ -1,5 +1,5 @@
+= render partial: 'shared/flash'
 #wrapper
-  = render partial: 'shared/flash'
   = render partial: 'shared/header3' 
   //ここからメインコンテンツ
   %main.single-main
@@ -7,8 +7,8 @@
       .sell-container
         %h2.l-single-head
           商品の情報を入力
-        = form_for @product, url: products_path, meshod: :post, html: { class: "sell-form", multipart: true} do |f| 
-          = f.fields_for :images do |i|
+        = form_for @product, url: product_path, meshod: :put, html: { class: "sell-form"} do |f| 
+          = f.fields_for @product.images do |i|
             .sell-upload-box
               %h3.sell-upload-head
                 出品画像
@@ -53,8 +53,8 @@
                   %div.select
                     .select-wrap
                       %i.icon-arrow-bottom
-                      = f.collection_select :category_id, @category, :id, :name, { prompt: "---" }, { class: "select-default", id: "category_select" }
-                  %div.select-children
+                      = f.collection_select :category_id, @category, :id, :name, { prompt: @category }, { class: "select-default", id: "category_select" }
+                  .select-children
                     =f.text_field :brand_id, autocomplete: "brand", type: "hidden", value: "1"
                 .form-group
                   %label
@@ -94,7 +94,6 @@
                     .select-wrap
                       %i.icon-arrow-bottom
                       = f.select :sending_days, options_for_select(sending_days.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
-                    =f.text_field :sending_days, autocomplete: "sending_days", type: "hidden", value: "1~2日で発送"
             //ここまで配送について
             //ここから販売価格
             .sell-content.clearfix
@@ -126,7 +125,7 @@
                 %p また、出品をもちまして加盟店規約に同意したことになります。
               %button.btn-default.btn-red{type: "submit"}
                 出品する
-              =link_to "もどる", root_path, class: "btn-default btn-gray"
+              =link_to "もどる", product_path(@product.id), class: "btn-default btn-gray"
     //"ここまで販売価格"
     //ここまでメインコンテンツ
   = render partial: 'shared/footer2'

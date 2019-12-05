@@ -20,7 +20,7 @@ class LikesController < ApplicationController
       if @like.destroy
         @like_count = @product.likes.count
       else
-        flash[:notice] = "いいねの削除に失敗しました"
+        flash[:alert] = "いいねの削除に失敗しました"
         redirect_to product_path(@product.id)
       end
     end
